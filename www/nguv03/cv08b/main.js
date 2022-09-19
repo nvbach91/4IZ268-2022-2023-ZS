@@ -93,7 +93,7 @@ console.log(animals);
 const book = {
     title: 'JavaScript Programming od A do Z',
     price: 500,
-    year: 2020,
+    year: 2022,
     isbn: '8-123-456-789',
 };
 

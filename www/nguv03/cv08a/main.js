@@ -80,7 +80,7 @@ const fruits = ['orange', 'apple', 'melon'];
 const myCar = {
     color: 'silver',
     speed: 200,
-    productionYear: 2020,
+    productionYear: 2022,
     wheels: ['black', 'blue', 'yellow', 'pink'],
 };
 
