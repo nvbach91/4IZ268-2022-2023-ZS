@@ -1,0 +1,11 @@
+@media print {
+    * {
+        background-image: none !important;
+    }
+    body {
+        color: black !important;
+    }
+    div {
+        padding: 10px;
+    }
+}

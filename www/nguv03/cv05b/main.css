@@ -1,0 +1,33 @@
+* {
+    box-sizing: border-box;
+}
+
+header {
+    background-color: blue;
+    padding: 20px;
+}
+
+aside {
+    background-color: orange;
+    padding: 30px;
+    width: 200px;
+}
+
+main {
+    background-color: grey;
+    padding: 30px;
+    width: calc(100% - 200px);
+}
+
+aside, main {
+    float: left;
+}
+
+footer {
+    background-color: green;
+    padding: 20px;
+}
+
+.clear {
+    clear: both;
+}

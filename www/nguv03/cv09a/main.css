@@ -1,0 +1,15 @@
+* {
+    box-sizing: border-box;
+}
+
+#pokemons {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.pokemon {
+    border: 1px solid pink;
+    padding: 20px;
+    margin: 10px;
+}
+

@@ -1,0 +1,40 @@
+* {
+    box-sizing: border-box;
+}
+
+header {
+    background-color: cadetblue;
+    color: white;
+    padding: 20px;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+}
+
+h1 {
+    margin: 0;
+}
+
+h2 {
+    text-align: center;
+    background-color: chocolate;
+    padding: 10px;
+    color: white;
+}
+
+article {
+    border-width: 2px;
+    border-style: solid;
+    border-color: purple;
+    padding: 20px;
+    margin-bottom: 10px;
+}
+
+main {
+    max-width: 800px;
+    margin-top: 0;
+    margin-right: auto;
+    margin-bottom: 0;
+    margin-left: auto;
+}

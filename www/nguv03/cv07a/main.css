@@ -1,0 +1,91 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+}
+
+.btn {
+    background-color: blue;
+    padding: 50px;
+    width: 300px;
+    height: 300px;
+    transition: background-color 1s ease,
+                width 1s ease,
+                height 1s ease;
+}
+.btn:hover {
+    background-color: red;
+    width: 500px;
+    height: 500px;
+}
+
+.spinner {
+    border: 50px solid red;
+    height: 200px;
+    width: 200px;
+    border-radius: 100px;
+    border-left-color: blue;
+    /*animation: name duration timing-function iteration-count;*/
+    animation: spinning 10s linear infinite;
+}
+
+@keyframes spinning {
+    from {
+        transform: rotate(0deg) translate(5px)
+    }
+    to {
+        transform: rotate(360deg) translate(100px);
+    }
+}
+
+
+
+#line-1 {
+    stroke:seagreen !important;
+    stroke-width: 50px !important;
+}
+
+
+.item, .sub-item {
+    /*border: 5px solid red;*/
+    padding: 10px;
+}
+
+.line {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.item-1 {
+    width: 100px;
+    background-color: yellow;
+}
+.item-2 {
+    width: 200px;
+    background-color: green;
+}
+.item-3 {
+    width: 200px;
+    background-color: red;
+}
+.item-4 {
+    width: 20%;
+    flex-grow: 1;
+}
+.item-4 .sub-item {
+    background-color: cadetblue;
+}
+
+
+
+
+
+
+
+
+
+
+
+

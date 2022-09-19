@@ -1,0 +1,35 @@
+body {
+    font-family: "Open Sans";
+}
+
+header {
+    background-color: cadetblue;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+}
+h1 {
+    margin: 0;
+    color: white;
+}
+
+h2 {
+    text-align: center;
+    background-color: chocolate;
+    padding: 5px;
+    color: white;
+}
+
+article {
+    border-width: 1px;
+    border-style: solid;
+    border-color: brown;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+main {
+    max-width: 640px;
+    margin: auto;
+}

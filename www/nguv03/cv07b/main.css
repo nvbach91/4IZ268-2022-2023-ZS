@@ -1,0 +1,118 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    color: green;
+}
+
+.btn {
+    background-color: red;
+    width: 200px;
+    height: 200px;
+    transition: background-color .3s ease,
+                width 1s ease;
+}
+
+.btn:hover {
+    background-color: green;
+    width: 300px;
+}
+
+
+.spinner {
+    border: 50px solid red;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    border-left-color: transparent;
+    /*animation: name duration timing-function iteration-count;*/
+    animation: spinning 2s linear infinite;
+}
+
+.wrapper {
+    animation: moving 2s linear infinite;
+}
+
+#line-1 {
+    stroke: red !important;
+    stroke-width: 50px !important;
+}
+#line-2 {
+    stroke: green !important;
+}
+
+
+@keyframes spinning {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+@keyframes moving {
+    0% {
+        transform: translate(0px);
+    }
+    100% {
+        transform: translate(100px);
+    }
+}
+
+
+.item {
+    color: white;
+    flex-grow: 1;
+    padding: 100px;
+    font-size: 50px;
+    display: flex;
+}
+.item-1 { background-color: pink; }
+.item-2 { background-color: green; }
+.item-3 { background-color: red; }
+.item-4 { background-color: yellow; }
+.item-5 { background-color: blue; }
+.item-6 { background-color: blue; }
+
+.item-3 {
+    width: 70%;
+}
+.item-4 {
+    flex-direction: column;
+    padding: 0;
+}
+.something {
+    background-color: pink;
+    
+}
+.item-3 {
+    align-items: flex-start;
+    justify-content: flex-end;
+}
+.line {
+    display: flex;
+    width: 100%;
+}
+
+
+
+
+
+
+.gallery {
+    display: flex;
+}
+
+.col-1, .col-2, .col-3 {
+    display: flex;
+    flex-direction: column;
+}
+
+.img {
+    background-color: red;
+    width: 300px;
+    height: 200px;
+    margin: 5px;
+}
+

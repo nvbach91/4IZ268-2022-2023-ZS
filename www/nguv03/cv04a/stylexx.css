@@ -1,0 +1,23 @@
+a {
+    font-weight: bold;
+}
+h2 {
+    color: pink;
+}
+.product {
+    font-size: 24px;
+}
+
+h1:hover {
+    color: red;
+}
+
+li.product {
+    text-decoration: none;
+    color: blue;
+}
+
+li {
+    text-decoration: underline;
+    color: red;
+}

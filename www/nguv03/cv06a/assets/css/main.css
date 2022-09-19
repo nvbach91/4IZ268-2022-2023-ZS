@@ -1,0 +1,162 @@
+* {
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+}
+ul {
+    list-style-type: none;
+}
+body {
+    margin: 0;
+    font-family: sans-serif;
+}
+.clear {
+    clear: both;
+}
+header {
+    width: 100%;
+    display: inline-block;
+    border-top: 5px solid cadetblue;
+}
+header > * {
+    float: left;
+}
+.logo {
+    width: 200px;
+    height: 100px;
+    padding: 30px;
+    text-indent: 50px;
+    background-image: url(https://upload.wikimedia.org/wikipedia/commons/c/cf/Bitcoin.com_logo.png);
+    background-size: 60px;
+    background-position: left 5px center;
+    font-size: 32px;
+}
+
+nav {
+    margin-left: auto;
+    padding: 20px 0;
+}
+
+nav ul {
+    margin: 0;
+}
+nav ul li {
+    float: left;
+    padding: 20px;
+}
+nav ul li:hover {
+    background-color: cadetblue;
+}
+nav a {
+    text-decoration: none;
+}
+
+nav ul li:hover a {
+    color: white;
+}
+
+.promo {
+    padding: 100px 40px;
+    background-image: url(https://softwarecompanyregistration.com/wp-content/uploads/2020/10/register-company-online-980x513.png);
+    background-size: cover;
+}
+
+.promo h1, .promo h3 {
+    background-color: rgba(0, 0, 0, .5);
+    padding: 20px;
+    color: white;
+    text-align: center;
+    max-width: 1024px;
+    margin: 0 auto;
+}
+.promo h1 {
+    margin-bottom: 10px;
+}
+
+.intro {
+}
+
+.intro p {
+    text-align: justify;
+}
+
+.intro, .products-heading, .products {
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 20px;
+
+}
+
+.products-heading {
+    text-align: center;
+    color: white;
+    background-image: url(https://images.pexels.com/photos/269077/pexels-photo-269077.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500);
+    background-size: cover;
+}
+
+.products li {
+    float: left;
+    padding: 20px;
+    width: 50%;
+    height: 350px;
+    border: 5px solid white;
+}
+
+.products h2 {
+    border-bottom-width: 5px;
+    border-bottom-style: solid;
+    border-bottom-color: red;
+}
+
+.products li:nth-child(0) h2 { border-bottom-color: blue; }
+.products li:nth-child(1) h2 { border-bottom-color: red; }
+.products li:nth-child(2) h2 { border-bottom-color: yellow; }
+.products li:nth-child(3) h2 { border-bottom-color: brown; }
+.products li:nth-child(4) h2 { border-bottom-color: green; }
+.products li:nth-child(5) h2 { border-bottom-color: purple; }
+.products li:nth-child(6) h2 { border-bottom-color: pink; }
+.products li:nth-child(7) h2 { border-bottom-color: orange; }
+
+.products p {
+    height: 200px;
+}
+
+.products button {
+    padding: 10px 20px;
+    border: none;
+    background-color: cadetblue;
+    color: white;
+    cursor: pointer;
+}
+
+@media screen and (min-width: 720px) {
+
+    .promo {
+        padding: 100px 80px;
+    }
+    .products li {
+        width: calc(100% / 3);
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    
+    .promo {
+        padding: 100px 120px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    
+    .promo {
+        padding: 100px 150px;
+    }
+    .products li {
+        width: calc(100% / 4);
+    }
+}
+@media screen and (min-width: 1440px) {
+    
+    .promo {
+        padding: 100px 200px;
+    }
+}
