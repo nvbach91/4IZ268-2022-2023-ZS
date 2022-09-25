@@ -1,0 +1,151 @@
+body {
+    font-family: Arial, serif;
+}
+
+/* COMMON */
+
+.text-white {
+    color: white;
+}
+
+.text-red {
+    color: red;
+}
+
+.text-green {
+    color: rgb(41, 255, 125);
+}
+
+.text-blue {
+    color: #2f77ff;
+}
+
+.text-bold {
+    font-weight: bold;
+}
+
+.text-18 {
+    font-size: 18px;
+}
+
+.text-24 {
+    font-size: 24px;
+}
+
+.text-italic {
+    font-style: italic;
+}
+
+.bg-brown {
+    background-color: brown;
+}
+
+.d-none {
+    display: none;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+/* PARAGRAPHS */
+
+#paragraph-1 {
+    text-align: center;
+    line-height: 32px;
+}
+
+#paragraph-2 {
+    text-align: justify;
+    text-transform: uppercase;
+}
+
+/* BOXES */
+
+#box-1 {
+    box-sizing: border-box;
+    width: 400px;
+    height: 300px;
+    padding: 30px;
+    border: 1px solid purple;
+}
+
+#box-2 {
+    box-sizing: border-box;
+    width: 500px;
+    height: 200px;
+    margin: 100px;
+    background-color: #b22222;
+}
+
+#box-3 {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    background-color: #2d5d86;
+    padding: 50px;
+    border: 10px solid yellow;
+}
+
+#box-4 {
+    width: 500px;
+    height: 200px;
+    background-color: green;
+    opacity: .5;
+}
+
+#box-5 {
+    position: relative;
+    width: 400px;
+    height: 300px;
+    background-color: lightblue;
+}
+
+#box-5 > div {
+    position: absolute;
+    top: 50px;
+    right: 10px;
+    width: 50px;
+    height: 50px;
+    background-color: pink;
+    font-size: 5px;
+}
+
+#box-6 {
+    width: 200px;
+    height: 400px;
+    border: 20px solid brown;
+    border-radius: 10px;
+}
+
+#box-7 {
+    width: 200px;
+    height: 500px;
+    background-color: #5f9ea0;
+    margin-top: 200px;
+}
+
+#box-7:hover {
+    cursor: pointer;
+}
+
+/* BUTTONS */
+
+#button-1 {
+    width: 300px;
+    height: 100px;
+}
+
+#button-1:focus {
+    color: blue;
+}
+
+#button-2 {
+    width: 200px;
+    height: 50px;
+    transition: .2s background-color ease-in-out;
+}
+
+#button-2:hover {
+    background-color: brown;
+}
