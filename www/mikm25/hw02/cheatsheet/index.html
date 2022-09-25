@@ -2,10 +2,10 @@
 <html lang="cs">
 <head>
     <meta charset="UTF-8">
-    <meta name="author" content="Marek Mikula">
-    <meta name="description" content="4iz268 - hw02">
-    <meta name="keywords" content="4iz268, hw02">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Marek Mikula" name="author">
+    <meta content="4iz268 - hw02" name="description">
+    <meta content="4iz268, hw02" name="keywords">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>HW02 / HTML5 tahák</title>
 <body>
     <header>
@@ -51,20 +51,40 @@
         </section>
         <section>
             <p>
-                Odstavec - Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Fusce wisi. Aenean id metus id velit ullamcorper pulvinar. Proin in tellus sit amet nibh dignissim sagittis. Vestibulum erat nulla, ullamcorper nec, rutrum non, nonummy ac, erat. Vestibulum fermentum tortor id mi. In sem justo, commodo ut, suscipit at, pharetra vitae, orci. Curabitur ligula sapien, pulvinar a vestibulum quis, facilisis vel sapien. Donec vitae arcu. Nulla non arcu lacinia neque faucibus fringilla. Curabitur sagittis hendrerit ante. Duis condimentum augue id magna semper rutrum.
+                Odstavec - Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Fusce wisi. Aenean id metus id
+                velit ullamcorper pulvinar. Proin in tellus sit amet nibh dignissim sagittis. Vestibulum erat nulla,
+                ullamcorper nec, rutrum non, nonummy ac, erat. Vestibulum fermentum tortor id mi. In sem justo, commodo
+                ut, suscipit at, pharetra vitae, orci. Curabitur ligula sapien, pulvinar a vestibulum quis, facilisis
+                vel sapien. Donec vitae arcu. Nulla non arcu lacinia neque faucibus fringilla. Curabitur sagittis
+                hendrerit ante. Duis condimentum augue id magna semper rutrum.
             </p>
         </section>
         <section>
             <form>
-                <input type="password" placeholder="Password">
-                <input type="text" placeholder="Text">
-                <input type="email" placeholder="Email">
-                <input type="color">
-                <select>
-                    <option value="p1">Položka 1</option>
-                    <option value="p2">Položka 2</option>
-                </select>
-                <button>Button</button>
+                <span>
+                    <label for="input-password">Heslo</label>
+                    <input name="password" id="input-password" placeholder="Password" type="password">
+                </span>
+                <span>
+                    <label for="input-text">Text</label>
+                    <input name="text" id="input-text" placeholder="Text" type="text">
+                </span>
+                <span>
+                    <label for="input-email">Email</label>
+                    <input name="email" id="input-email" placeholder="Email" type="email">
+                </span>
+                <span>
+                    <label for="input-color">Barva</label>
+                    <input name="color" id="input-color" type="color">
+                </span>
+                <span>
+                    <label for="input-select">Výběr</label>
+                    <select name="select" id="input-select">
+                        <option value="p1">Položka 1</option>
+                        <option value="p2">Položka 2</option>
+                    </select>
+                </span>
+                <button>Tlačítko</button>
             </form>
         </section>
         <section>
@@ -87,6 +107,10 @@
                     </tr>
                 </tfoot>
             </table>
+        </section>
+        <section>
+            <hr/>
+            <p>Horizontální oddělovací čára</p>
         </section>
         <section>
             <p>
