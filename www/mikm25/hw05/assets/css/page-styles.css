@@ -2,14 +2,12 @@
     box-sizing: border-box;
 }
 
+/* COMMON */
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-}
-
-.clear {
-    clear: both;
 }
 
 h1 {
@@ -25,20 +23,18 @@ h1 {
     margin: 0 auto 50px;
 }
 
-.colors > input {
-    width: 50%;
+.instructions .colors {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.instructions .colors > input {
+    flex-basis: 50%;
     padding: 5px;
     border: none;
     font-size: 18px;
     margin: 0;
-    float: left;
     color: white;
-}
-
-.wrapper {
-    background-color: #ccc;
-    max-width: 1280px;
-    margin: 0 auto;
 }
 
 @media screen and (max-width: 720px) {
@@ -46,14 +42,76 @@ h1 {
 }
 
 @media screen and (min-width: 720px) {
-    .colors > input {
+    .instructions .colors > input {
         padding: 20px;
-        width: calc(100% / 3);
+        flex-basis: calc(100% / 3);
     }
 }
 
 @media screen and (min-width: 1024px) {
-    .colors > input {
-        width: 20%;
+    .instructions .colors > input {
+        flex-basis: 20%;
+    }
+}
+
+/* WRAPPER */
+
+.wrapper {
+    display: flex;
+    flex-flow: column wrap;
+    max-width: 1280px;
+    padding: 20px;
+    margin: 0 auto;
+    color: white;
+    font-size: 25px;
+}
+
+.wrapper > header {
+    background-color: rgb(223, 114,  75);
+    padding: 25px;
+    text-align: center;
+}
+
+.wrapper > nav {
+    background-color: rgb( 47, 108, 136);
+    padding: 25px;
+    text-align: center;
+}
+
+.wrapper .row {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.wrapper .row > main {
+    flex-grow: 1;
+    flex-shrink: 1;
+    background-color: rgb(192,  70,  94);
+    padding: 25px;
+    text-align: center;
+}
+
+.wrapper .row > aside {
+    flex-basis: 350px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    background-color: rgb( 53, 184, 155);
+    padding: 25px;
+    text-align: center;
+}
+
+.wrapper > footer {
+    background-color: rgb( 39,  39,  39);
+    padding: 25px;
+    text-align: center;
+}
+
+@media screen and (max-width: 720px) {
+    .wrapper .row {
+        flex-flow: column wrap;
+    }
+
+    .wrapper .row > aside {
+        flex-basis: auto;
     }
 }
