@@ -1,0 +1,163 @@
+* {
+    box-sizing: border-box;
+}
+
+/* COMMON */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    padding: 50px 10px;
+    color: white;
+    background-color: rgb(78, 146, 179);
+}
+
+.instructions {
+    max-width: 1280px;
+    padding: 20px;
+    margin: 0 auto 50px;
+}
+
+/* COLORS */
+
+.colors {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.colors > input {
+    padding: 20px;
+    border: none;
+    font-size: 18px;
+    margin: 0;
+    width: 25%;
+    color: white;
+    flex-basis: 25%;
+    flex-shrink: 0;
+    flex-grow: 0;
+    text-align: center;
+}
+
+.colors input:nth-child(1) {
+    background-color: rgb(255, 125, 78);
+}
+
+.colors input:nth-child(2) {
+    background-color: rgb(168, 89, 60);
+}
+
+.colors input:nth-child(3) {
+    background-color: rgb(33, 165, 121);
+}
+
+.colors input:nth-child(4) {
+    background-color: rgb(47, 83, 160);
+}
+
+.colors input:nth-child(5) {
+    background-color: rgb(197, 56, 56);
+}
+
+.colors input:nth-child(6) {
+    background-color: rgb(112, 158, 94);
+}
+
+.colors input:nth-child(7) {
+    background-color: rgb(182, 109, 197);
+}
+
+.colors input:nth-child(8) {
+    background-color: rgb(167, 35, 79);
+}
+
+.colors input:nth-child(9) {
+    background-color: rgb(38, 189, 189);
+}
+
+/* WRAPPER & COMMON CONTAINER */
+
+.wrapper {
+    max-width: 1280px;
+    padding: 20px;
+    margin: auto;
+}
+
+.wrapper .container {
+    display: flex;
+    flex-flow: row wrap;
+    background-color: lightgrey;
+}
+
+.wrapper .container > div {
+    flex-shrink: 0;
+    flex-grow: 0;
+    text-align: center;
+    font-size: 40px;
+    color: white;
+    padding: 100px;
+}
+
+.wrapper .container > div:nth-child(1) {
+    background-color: rgb(255, 125, 78);
+}
+
+.wrapper .container > div:nth-child(2) {
+    background-color: rgb(168, 89, 60);
+}
+
+.wrapper .container > div:nth-child(3) {
+    background-color: rgb(33, 165, 121);
+}
+
+.wrapper .container > div:nth-child(4) {
+    background-color: rgb(47, 83, 160);
+}
+
+.wrapper .container > div:nth-child(5) {
+    background-color: rgb(197, 56, 56);
+}
+
+.wrapper .container > div:nth-child(6) {
+    background-color: rgb(112, 158, 94);
+}
+
+.wrapper .container > div:nth-child(7) {
+    background-color: rgb(182, 109, 197);
+}
+
+.wrapper .container > div:nth-child(8) {
+    background-color: rgb(167, 35, 79);
+}
+
+.wrapper .container > div:nth-child(9) {
+    background-color: rgb(38, 189, 189);
+}
+
+/* CONTAINER 01 */
+
+.wrapper .container.container-01 > div {
+    flex-basis: 100%;
+}
+
+/* CONTAINER 02 */
+
+.wrapper .container.container-02 > div {
+    flex-basis: 50%;
+}
+
+/* CONTAINER 03 */
+
+.wrapper .container.container-03 > div {
+    flex-basis: calc(100% / 3);
+}
+
+/* CONTAINER 04 */
+
+.wrapper .container.container-04 > div {
+    flex-basis: 25%;
+}
