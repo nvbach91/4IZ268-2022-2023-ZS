@@ -1,0 +1,248 @@
+/* COMMON */
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* MAIN WRAPPER */
+
+#main-wrapper {
+    box-sizing: border-box;
+    padding: 10px;
+    max-width: 1280px;
+    height: 100vh;
+    margin: 0 auto;
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+/* SIDE MENU */
+
+.menu {
+    display: flex;
+    overflow: scroll;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 250px;
+    margin-right: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    background-image: linear-gradient(to bottom, rgb(140, 74, 242), rgba(103, 87, 246, 0.5));
+}
+
+.menu .menu-items .menu-item {
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    position: relative;
+    transition: background-color .1s ease-in-out, color .1s ease-in-out;
+}
+
+.menu .menu-items .menu-item a {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.menu .menu-items .menu-item:hover, .menu .menu-items .menu-item.active {
+    background-color: #dedaff;
+    color: rgb(140, 74, 242);
+}
+
+.menu .menu-items .menu-item:not(:last-child) {
+    margin-bottom: 5px;
+}
+
+.menu .menu-footer ul {
+    margin-top: 5px;
+}
+
+.menu .menu-footer ul {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.menu .menu-footer ul li {
+    flex-grow: 1;
+    flex-shrink: 1;
+    text-align: center;
+    padding: 10px;
+    color: white;
+    border-radius: 5px;
+    position: relative;
+    transition: background-color .1s ease-in-out, color .1s ease-in-out;
+}
+
+.menu .menu-footer ul li a {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.menu .menu-footer ul li:hover {
+    background-color: #dedaff;
+    color: rgb(140, 74, 242);
+}
+
+/* CONTENT */
+
+#content-wrapper {
+    flex-grow: 1;
+    padding: 10px;
+    background-color: #f8f7ff;
+    border-radius: 15px;
+    overflow: scroll;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+}
+
+footer {
+    padding: 15px 10px;
+    background-color: rgb(245, 245, 245);
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.main-header {
+    padding: 15px 10px;
+    margin: 0 0 15px 0;
+    background-color: rgb(245, 245, 245);
+    border-radius: 10px;
+}
+
+/* KPIS */
+
+.kpis {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 0 15px;
+    grid-template-areas:
+    ". . . .";
+}
+
+.kpis .kpi-item {
+    padding: 10px;
+    background-color: rgb(240, 240, 240);
+    border-radius: 10px;
+}
+
+@media screen and (max-width: 1000px) {
+    .kpis {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto;
+        gap: 15px 15px;
+        grid-template-areas:
+                ". ."
+                ". .";
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .kpis {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto auto;
+        gap: 15px 15px;
+        grid-template-areas:
+                "."
+                "."
+                "."
+                ".";
+    }
+}
+
+.kpis .kpi-item h2 {
+    margin-top: 0;
+}
+
+/* CARDS */
+
+.cards {
+    margin-top: 15px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 10px 10px;
+    grid-template-areas:
+    "video video spinner"
+    "app usage settings"
+    "recent image image";
+}
+
+@media screen and (max-width: 750px) {
+    .cards {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto auto auto auto auto auto;
+        gap: 15px 0;
+        grid-template-areas:
+                "video"
+                "spinner"
+                "app"
+                "usage"
+                "settings"
+                "recent"
+                "image";
+    }
+}
+
+.cards .card {
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: rgb(240, 240, 240);
+    box-sizing: border-box;
+}
+
+.cards .card:not(.card-video) {
+    padding: 10px;
+}
+
+.cards .card-video {
+    grid-area: video;
+    background-color: grey;
+    height: 350px;
+}
+
+.cards .card-performance {
+    grid-area: spinner;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cards .card-app {
+    grid-area: app;
+}
+
+.cards .card-usage {
+    grid-area: usage;
+}
+
+.cards .card-settings {
+    grid-area: settings;
+}
+
+.cards .card-recent {
+    grid-area: recent;
+}
+
+.cards .card-image {
+    grid-area: image;
+}
+
+.cards .card-image img {
+    width: 100%;
+}
