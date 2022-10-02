@@ -93,7 +93,7 @@ document.getElementById('decipher-btn').addEventListener('click', () => {
   const message = document.getElementById('decipher-text').value;
   if (!message || message.length === 0) {
     resultBox.value = 'Nezadali jste žádnou zprávu pro dešifrování!'
-    return''
+    return;
   }
 
   const key = document.getElementById('decipher-key').value;
