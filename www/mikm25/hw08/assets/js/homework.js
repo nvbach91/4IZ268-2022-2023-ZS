@@ -81,8 +81,10 @@ function writeToConsole(fn, ...args) {
 
   const resultBox = document.getElementById('task-result');
 
+  const newRow = `${fn.name} > ${result}`;
+
   // write result to result box in formatted way with fn name
-  resultBox.value = resultBox.value ? `${resultBox.value}\n${fn.name} > ${result}` : `${fn.name} > ${result}`;
+  resultBox.value = resultBox.value ? `${resultBox.value}\n${newRow}` : newRow;
 
   // scroll down in textarea to see the result
   resultBox.scrollTop = resultBox.scrollHeight;
