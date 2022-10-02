@@ -1,0 +1,35 @@
+textarea {
+    resize: none;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 1.2em;
+}
+
+main {
+    max-width: 870px;
+    margin: auto;
+}
+
+.box-wrapper {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.box-wrapper .box:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.box-wrapper .box {
+    padding: 20px;
+    background-color: rgb(240,240,240);
+    border-radius: 15px;
+}
+
+.box-wrapper .box > div:not(:last-child) {
+    margin-bottom: 10px;
+}
