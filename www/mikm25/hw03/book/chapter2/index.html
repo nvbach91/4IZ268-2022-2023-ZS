@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Marek Mikula">
+    <meta name="description" content="Laravel, digging deeper">
+    <meta name="keywords" content="book, chapter 2, 4iz268">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Laravel / Book / Chapter 2 / Digging deeper</title>
+</head>
+<body>
+    <main>
+        <h1>Laravel book</h1>
+        <small>Marek Mikula</small>
+        <hr>
+        <section>
+            <header>
+                <h2>Digging deeper</h2>
+            </header>
+            <nav>
+                <span id="toc">Table of contents</span>
+                <ul>
+                    <li>
+                        <a href="#artisan-console">1 Artisan console</a>
+                        <ul>
+                            <li>
+                                <a href="#artisan-console-writing">1.1 Writing commands</a>
+                                <ul>
+                                    <li>
+                                        <a href="#artisan-console-generating">1.1.1 Generating commands</a>
+                                    </li>
+                                    <li>
+                                        <a href="#artisan-console-structure">1.1.2 Command structure</a>
+                                    </li>
+                                    <li>
+                                        <a href="#artisan-console-closure">1.1.3 Closure commands</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <header>
+                <h3 id="artisan-console">1 Artisan console</h3>
+                <small><a href="#toc">&#8593; Table of contents</a></small>
+            </header>
+
+            <h4 id="artisan-console-writing">1.1 Writing commands</h4>
+            <p>
+                In addition to the commands provided with Artisan, you may build your own custom commands. Commands are
+                typically stored in the <code>app/Console/Commands</code> directory; however, you are free to choose your own storage
+                location as long as your commands can be loaded by Composer.
+            </p>
+            <table>
+                <caption>Laravel commands</caption>
+                <thead>
+                    <tr>
+                        <th>Command</th>
+                        <th>Full example</th>
+                        <th>Description</th>
+                        <th>Arguments</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>make:controller</td>
+                        <td><code>php artisan make:controller UserController</code></td>
+                        <td>This command creates a new controller file in <code>app/Http/Controllers</code> folder.</td>
+                        <td>--resource, --api, --invokable ...</td>
+                        <td>Creating</td>
+                    </tr>
+                    <tr>
+                        <td>make:model</td>
+                        <td><code>php artisan make:model User</code></td>
+                        <td>Create a new Eloquent model class.</td>
+                        <td>--migration, --controller ...</td>
+                        <td>Creating</td>
+                    </tr>
+                    <tr>
+                        <td>make:migration</td>
+                        <td><code>php artisan make:migration create_projects_table</code></td>
+                        <td>Create a new migration file.</td>
+                        <td>--path=Path, --create=Table ...</td>
+                        <td>Creating</td>
+                    </tr>
+                    <tr>
+                        <td>make:seeder</td>
+                        <td><code>php artisan make:seeder BooksTableSeeder</code></td>
+                        <td>Create a new database seeder class.</td>
+                        <td>none</td>
+                        <td>Creating</td>
+                    </tr>
+                    <tr>
+                        <td>make:request</td>
+                        <td><code>php artisan make:request StoreBlogPost</code></td>
+                        <td>Create a new form request class in <code>app/Http/Requests</code> folder.</td>
+                        <td>none</td>
+                        <td>Creating</td>
+                    </tr>
+                    <tr>
+                        <td>make:middleware</td>
+                        <td><code>php artisan make:middleware CheckAge</code></td>
+                        <td>Create a new middleware class.</td>
+                        <td>none</td>
+                        <td>Creating</td>
+                    </tr>
+                    <tr>
+                        <td>make:policy</td>
+                        <td><code>php artisan make:policy PostPolicy</code></td>
+                        <td>Create a new policy class.</td>
+                        <td>--model=Photo</td>
+                        <td>Creating</td>
+                    </tr>
+                    <tr>
+                        <td>make:command</td>
+                        <td><code>php artisan make:command SendEmails</code></td>
+                        <td>Create a new Artisan command.</td>
+                        <td>--command=Command</td>
+                        <td>Creating</td>
+                    </tr>
+                    <tr>
+                        <td>make:event</td>
+                        <td><code>php artisan make:event OrderShipped</code></td>
+                        <td>Create a new event class.</td>
+                        <td>none</td>
+                        <td>Creating</td>
+                    </tr>
+                    <tr>
+                        <td>make:job</td>
+                        <td><code>php artisan make:job SendReminderEmail</code></td>
+                        <td>Create a new job class.</td>
+                        <td>--sync</td>
+                        <td>Creating</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h5 id="artisan-console-generating">1.1.1 Generating commands</h5>
+            <p>
+                To create a new command, you may use the <code>make:command</code> Artisan command. This command will
+                create a new
+                command class in the <code>app/Console/Commands</code> directory. Don't worry if this directory does not
+                exist in
+                your application - it will be created the first time you run the <code>make:command</code> Artisan
+                command:
+            </p>
+            <pre>
+php artisan make:command SendEmails
+            </pre>
+
+            <h5 id="artisan-console-structure">1.1.2 Command structure</h5>
+            <p>
+                After generating your command, you should define appropriate values for the <code>signature</code> and
+                <code>description</code>
+                properties of the class. These properties will be used when displaying your command on the list screen.
+                The signature property also allows you to define your command's input expectations. The handle method
+                will be called when your command is executed. You may place your command logic in this method.
+            </p>
+            <p>
+                Let's take a look at an example command. Note that we are able to request any dependencies we need via
+                the command's <code>handle</code> method. The Laravel service container will automatically inject all
+                dependencies
+                that are type-hinted in this method's signature:
+            </p>
+            <pre>
+namespace App\Console\Commands;
+
+use App\Models\User;
+use App\Support\DripEmailer;
+use Illuminate\Console\Command;
+
+class SendEmails extends Command
+{
+    /**
+     * The name and signature of the console command.
+     *
+     * @var string
+     */
+    protected $signature = 'mail:send {user}';
+
+    /**
+     * The console command description.
+     *
+     * @var string
+     */
+    protected $description = 'Send a marketing email to a user';
+
+    /**
+     * Execute the console command.
+     *
+     * @param  \App\Support\DripEmailer  $drip
+     * @return mixed
+     */
+    public function handle(DripEmailer $drip)
+    {
+        $drip->send(User::find($this->argument('user')));
+    }
+}
+            </pre>
+            <p>
+                Useful command methods:
+            </p>
+            <ul>
+                <li>confirm</li>
+                <li>ask</li>
+                <li>argument</li>
+                <li>option</li>
+            </ul>
+
+            <h5 id="artisan-console-closure">1.1.3 Closure commands</h5>
+            <p>
+                Closure based commands provide an alternative to defining console commands as classes. In the same way
+                that route closures are an alternative to controllers, think of command closures as an alternative to
+                command classes. Within the commands method of your <code>app/Console/Kernel.php</code> file, Laravel
+                loads the
+                <code>routes/console.php</code> file:
+            </p>
+            <pre>
+/**
+ * Register the closure based commands for the application.
+ *
+ * @return void
+ */
+protected function commands()
+{
+    require base_path('routes/console.php');
+}
+            </pre>
+            <figure>
+                <img src="../../assets/img/closure-based-command.png" alt="Closure based command">
+                <figcaption>
+                    Closure based command
+                </figcaption>
+            </figure>
+
+            <small><a href="#toc">&#8593; Table of contents</a></small>
+        </section>
+        <hr>
+        <footer>
+            <nav>
+                <a href="../chapter1/index.html">Chapter 1 - The Basics</a>
+                <a href="../chapter3/index.html">Chapter 3 - Security</a>
+            </nav>
+            <p>Content: Copyright &copy; 2011-2022 Laravel LLC.</p>
+            <p>Made with &hearts; by Marek Mikula, 2022</p>
+        </footer>
+    </main>
+</body>
+</html>
