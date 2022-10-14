@@ -1,0 +1,92 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+header {
+    border-top: 5px solid cadetblue;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+nav ul {
+    display: flex;
+}
+nav {
+    display: flex;
+    align-items: center;
+}
+nav a {
+    text-decoration: none;
+    padding: 20px;
+}
+
+header span {
+    background-image: url(https://upload.wikimedia.org/wikipedia/commons/c/cf/Bitcoin.com_logo.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 50px;
+    text-indent: 75px;
+    display: flex;
+    align-items: center;
+    font-size: 32px;
+}
+
+.intro-image {
+    background-image: url(https://images.pexels.com/photos/771881/pexels-photo-771881.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+    padding: 80px;
+    background-position: center;
+}
+
+.intro-image h1 {
+    font-size: 62px;
+}
+
+.intro-image h1, .intro-image h3 {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 50px;
+    color: white;
+    text-align: center;
+}
+
+/*
+
+.wrapper {
+    background-color: pink;
+}
+
+header {
+    padding: 20px;
+    background-color: yellow;
+}
+
+.container {
+    display: flex;
+    background-color: blue;
+}
+
+aside {
+    max-width: 25%;
+    padding: 50px;
+    background-color: red;
+}
+
+main {
+    width: 75%;
+    padding: 50px;
+    background-color: green;
+}
+
+footer {
+    padding: 20px;
+}*/
