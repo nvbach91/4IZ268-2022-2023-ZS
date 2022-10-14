@@ -1,0 +1,99 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+
+header {
+    background-color: rgb(99, 190, 160);
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+
+header h1 {
+    margin: 0;
+}
+
+header ul {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+main h2, aside h2 {
+    font-size: 38px;
+    text-align: center;
+    padding: 20px;
+    background-color: rgb(99, 190, 160);
+}
+
+main {
+    background-color: #e1e1e1;
+    width: 80%;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 20px;
+    border-radius: 3px;
+}
+
+nav a:hover {
+    background-color: brown;
+}
+
+article {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 50px;
+    margin-bottom: 10px;
+}
+
+article h3 {
+    background-color: rgb(99, 190, 160);
+    padding: 20px;
+    color: white;
+    border-radius: 3px;
+    margin: 0;
+}
+
+img.article-image {
+    float: right;
+    width: 150px;
+    margin-left: 20px;
+}
+
+.wrapper {
+    display: flex;
+}
+
+aside {
+    width: 20%;
+    padding: 0 50px;
+    flex-grow: 1;
+    background-color:#e1e1e1;
+    display: flex;
+    flex-direction: column;
+}
+
+aside button {
+    display: block;
+    padding: 20px;
+    border: none;
+    background-color: white;
+}
+
+footer {
+    background-color: rgb(99, 190, 160);
+    padding: 100px;
+    text-align: center;
+    color: white;
+}

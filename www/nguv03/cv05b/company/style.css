@@ -1,0 +1,51 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+}
+
+header {
+    border-top: 5px solid cadetblue;
+    display: flex;
+    padding: 30px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+nav a {
+    color: black;
+    text-decoration: none;
+    padding: 20px;
+}
+
+.logo {
+    height: 80px;
+    background-image: url(https://upload.wikimedia.org/wikipedia/commons/c/cf/Bitcoin.com_logo.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    text-indent: 100px;
+    font-size: 32px;
+    display: flex;
+    align-items: center;
+}
+.intro-image {
+    background-image: url(https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80);
+    padding: 120px;
+    background-position: center;
+}
+
+.intro-image h1, .intro-image h3 {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    color: white;
+}
