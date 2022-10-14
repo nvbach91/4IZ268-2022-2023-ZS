@@ -1,0 +1,11 @@
+#search-form button[type="submit"] .btn-loader {
+    display: none;
+}
+
+#search-form button[type="submit"].loading .btn-loader {
+    display: initial;
+}
+
+#search-form button[type="submit"].loading .btn-text {
+    display: none;
+}
