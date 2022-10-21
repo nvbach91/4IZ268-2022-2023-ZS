@@ -28,7 +28,13 @@ nav {
 }
 nav a {
     text-decoration: none;
-    padding: 20px;
+    padding: 10px;
+    transition: background-color 0.5s ease;
+}
+
+nav a:hover {
+    background-color: brown;
+    color: white;
 }
 
 header span {
@@ -44,20 +50,197 @@ header span {
 
 .intro-image {
     background-image: url(https://images.pexels.com/photos/771881/pexels-photo-771881.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
-    padding: 80px;
+    padding: 20px;
     background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .intro-image h1 {
-    font-size: 62px;
+    font-size: 20px;
+}
+
+.intro-image h3 {
+    font-size: 14px;
 }
 
 .intro-image h1, .intro-image h3 {
     background-color: rgba(0, 0, 0, 0.5);
-    padding: 50px;
+    padding: 20px;
     color: white;
     text-align: center;
+    max-width: 1024px;
+    margin: 0 auto;
+    margin-bottom: 20px;
 }
+
+main {
+    max-width: 1024px;
+    margin: 0 auto;
+}
+
+.intro {
+    background-image: url(https://www.raconteur.net/wp-content/uploads/2016/11/increase-productivity.jpg);
+    background-position: center;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.intro p {
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 20px;
+}
+
+.products {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.product {
+    width: 50%;
+    padding: 10px;
+}
+
+.product h2 {
+    margin: 0;
+}
+
+.product:nth-child(1) h2 { border-bottom: 5px solid red; }
+.product:nth-child(2) h2 { border-bottom: 5px solid blue; }
+.product:nth-child(3) h2 { border-bottom: 5px solid purple; }
+.product:nth-child(4) h2 { border-bottom: 5px solid cyan; }
+.product:nth-child(5) h2 { border-bottom: 5px solid brown; }
+.product:nth-child(6) h2 { border-bottom: 5px solid pink; }
+.product:nth-child(7) h2 { border-bottom: 5px solid orange; }
+.product:nth-child(8) h2 { border-bottom: 5px solid burlywood; }
+
+.product p {
+    height: 150px;
+}
+
+.product button {
+    background-color: tomato;
+    border: none;
+    padding: 20px;
+    transition: background-color 0.5s ease;
+    cursor: pointer;
+    color: white;
+    border-radius: 3px;
+}
+
+.product button:hover {
+    background-color: rgb(203, 80, 58);
+}
+
+footer {
+    background-color: rgb(40, 36, 44);
+    color: white;
+    text-align: center;
+    padding: 50px;
+}
+
+
+@media screen and (min-width: 640px) {
+    nav a {
+        padding: 20px;
+    }
+
+    .intro-image {
+        padding: 80px;
+    }
+    
+    .intro-image h1 {
+        font-size: 42px;
+    }
+
+    .intro-image h3 {
+        font-size: 20px;
+    }
+
+    .product {
+        width: calc(100% / 3);
+    }
+}
+
+@media screen and (min-width: 1024px) {
+
+    .product {
+        width: calc(100% / 4);
+    }
+
+}
+
+@media screen and (min-width: 1920px) {
+
+    .product {
+        width: calc(100% / 5);
+    }
+
+    .product p {
+        height: 200px;
+    }
+
+    main {
+        max-width: 1280px;
+    }
+}
+
+@media print {
+    * {
+        background-image: none !important;
+    }
+    header {
+        border: none;
+    }
+    .intro-image {
+        padding: 0;
+    }
+    .intro-image h1, .intro-image h3 {
+        font-size: 14px;
+        background-color: transparent;
+        color: black;
+        margin: 0 auto;
+        padding: 0;
+    }
+    .intro-image h1 {
+        font-size: 20px;
+    }
+    .intro {
+        margin: 0;
+        padding: 0;
+    }
+    .logo {
+        text-indent: 0;
+    }
+    nav {
+        display: none;
+    }
+    .intro p {
+        padding: 0;
+    }
+
+    .product {
+        width: auto;
+    }
+    .product h2 {
+        border: none !important;
+    }
+    .product button {
+        display: none;
+    }
+    .product p {
+        height: initial;
+    }
+    .products {
+        display: block;
+    }
+
+    footer {
+        background-color: white;
+        color: black;
+    }
+}
+
 
 /*
 
