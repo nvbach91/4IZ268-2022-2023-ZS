@@ -23,12 +23,6 @@ p {
     text-align: justify;
 }
 
-body {
-    display: flex;
-    flex-flow: column;
-    min-height: 100vh;
-}
-
 /*MAIN HEADER*/
 
 #main-header {
@@ -241,4 +235,21 @@ body {
 .fw-header .fw-logo img {
     max-height: 100%;
     max-width: 100%;
+}
+
+figure {
+    margin: 0;
+    padding: 10px;
+    border: 2px solid rgba(141, 158, 255, .2);
+    border-radius: 10px;
+}
+
+figure img {
+    max-width: 100%;
+}
+
+figure figcaption {
+    background-color: rgba(141, 158, 255, .2);
+    padding: 10px;
+    border-radius: 10px;
 }
