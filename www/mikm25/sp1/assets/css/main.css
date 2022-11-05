@@ -294,6 +294,8 @@ figure figcaption {
     background-color: rgba(141, 158, 255, .2);
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
+    font-size: 1.25rem;
+    font-weight: bolder;
 }
 
 .table-wrapper table td,
