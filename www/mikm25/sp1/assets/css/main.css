@@ -19,12 +19,6 @@ ul {
     padding: 0;
 }
 
-/*UTILITIES*/
-
-.m-0 {
-    margin: 0;
-}
-
 /*MAIN HEADER*/
 
 #main-header {
@@ -43,6 +37,12 @@ ul {
     background-repeat: no-repeat;
     background-position: right 15px center;
     background-size: auto calc(100% - 30px);
+}
+
+#main-header .page-title {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: bold;
 }
 
 #main-header h1 {
