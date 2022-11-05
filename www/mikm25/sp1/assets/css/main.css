@@ -116,7 +116,14 @@ ul {
     border-radius: 5px;
 }
 
-#side-nav > ul > li:hover, #side-nav > ul > li.active {
+#side-nav > ul > li.nav-section {
+    padding: 8px 0;
+    background-color: transparent;
+    border-radius: 0;
+}
+
+#side-nav > ul > li:not(.nav-section):hover,
+#side-nav > ul > li:not(.nav-section).active {
     background-color: rgba(108, 74, 182, 1);
     color: white;
 }
