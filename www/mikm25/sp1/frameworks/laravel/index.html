@@ -5,7 +5,8 @@
     <meta name="author" content="Marek Mikula">
     <meta name="keywords" content="php, framework, laravel">
     <meta name="description" content="Stránka obsahující detailní porovnání nejznámějších PHP frameworků">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>PHP Frameworky | Laravel</title>
     <link rel="stylesheet" href="../../assets/css/normalize.css">
@@ -84,15 +85,99 @@
                 </div>
             </header>
             <div id="content">
+                <div class="table-wrapper">
+                    <table>
+                        <caption>Základní informace</caption>
+                        <tbody>
+                            <tr>
+                                <th>Autoři</th>
+                                <td>Taylor Otwell</td>
+                            </tr>
+                            <tr>
+                                <th>Datum vydání</th>
+                                <td>Červen 2011</td>
+                            </tr>
+                            <tr>
+                                <th>Aktuální major verze</th>
+                                <td>9 (k datu 5. 11. 2022)</td>
+                            </tr>
+                            <tr>
+                                <th>Licence</th>
+                                <td>MIT</td>
+                            </tr>
+                            <tr>
+                                <th>Společnosti používající framework</th>
+                                <td>About You, Twitch, Disney, New York Times, Warner Bros</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <h2>O frameworku</h2>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus rhoncus. In laoreet, magna id
-                    viverra tincidunt, sem odio bibendum justo, vel imperdiet sapien wisi sed libero. Maecenas
-                    sollicitudin. Nullam at arcu a est sollicitudin euismod. Sed vel lectus. Donec odio tempus molestie,
-                    porttitor ut, iaculis quis, sem. Quisque tincidunt scelerisque libero. Nullam at arcu a est
-                    sollicitudin euismod. Duis viverra diam non justo. Integer vulputate sem a nibh rutrum consequat.
-                    Curabitur bibendum justo non orci. Aenean fermentum risus id tortor. Aliquam erat volutpat. Cum
-                    sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+                    Laravel je momentálně nejvíce používaný PHP framework vůbec. Na Githubu má k datu 5. 11. 2022
+                    625 aktivních přispěvatelů. Laravel je <strong>open-source</strong>, tzn. že jeho zdrojový kód je
+                    veřejně dostupný a každý do něho může přispívat, samozřejmě po přezkoumání a schválení autory.
                 </p>
+                <h2>Architektura</h2>
+                <p>
+                    Laravel stojí na architektuře <strong>MVC</strong> - model, view, controller. Tato architektura
+                    rozděluje části aplikace na komponenty uživatelského rozhraní, datových modelů a komponenty řídící
+                    logiky.
+                </p>
+                <p>
+                    Datový model je v Laravelu implementován pomocí tzv. eloquentu, který představuje
+                    <strong>ORM</strong>.
+                    Můžeme si to představit jako způsob, jak k datům v persistentní databázi přistupovat jako k objektu
+                    v jazyku PHP. Prakticky to pak znamená, že máme různé třídy, které představují entity naší databáze
+                    a zároveň rozšiřují jednu abstraktní třídu, která nám přínáší základní funkcionalitu pro práci s
+                    daty.
+                </p>
+                <p>
+                    Laravel také přináší velmi jednoduchou možnost vytvářet různé balíčky, které poté můžeme do naší
+                    aplikace jednoduše implementovat pomocí konfiguračních souborů. Základem těchto balíčků jsou
+                    service providery, které obalují celou funkcionalitu našeho balíčku. Pokud daný service
+                    provider uvedeme v konfiguračním souboru, tak se náš balíček "zprovozní". Pokud máme opravdu
+                    velký projekt, tak nám tato funkcionalita dovoluje náš kód rozdělovat do různých domén a mít tak
+                    kód, který se týká stejné části aplikace, sdružený ve stejné podsložce.
+                </p>
+                <h2>Možné rozšíření</h2>
+                <p>
+                    Díky obrovské komunitě kolem Laravelu vzniká nespočetné množství různých balíčků, které dále rozšiřují
+                    funkcionalitu Laravelu. Ty největší najdete v tabulce pod tímto textem.
+                </p>
+                <div class="table-wrapper">
+                    <table>
+                        <caption>Ukázka balíčků pro Laravel</caption>
+                        <thead>
+                            <tr>
+                                <th>Název balíčku</th>
+                                <th>Popis</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Telescope</td>
+                                <td>Přehledné UI pro zobrazení aplikačních logů</td>
+                            </tr>
+                            <tr>
+                                <td>Sanctum</td>
+                                <td>Hotové řešení autentizace pro SPA aplikace a pro jednoduché APIs</td>
+                            </tr>
+                            <tr>
+                                <td>Pint</td>
+                                <td>Automatizovaná kontrola kvality a syntaxe kódu</td>
+                            </tr>
+                            <tr>
+                                <td>Socialite</td>
+                                <td>Jednoduchá autentizace pomocí OAuth dostupných providerů jako Facebook nebo Github</td>
+                            </tr>
+                            <tr>
+                                <td>Dusk</td>
+                                <td>Psaní automatizovaných testů</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </section>
         <footer id="footer">

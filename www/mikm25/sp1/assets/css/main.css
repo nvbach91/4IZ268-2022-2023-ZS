@@ -21,6 +21,18 @@ ul {
 
 p {
     text-align: justify;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+/*UTILITIES*/
+
+.mb-15 {
+    margin-bottom: 15px;
+}
+
+.mb-0 {
+    margin-bottom: 0;
 }
 
 /*MAIN HEADER*/
@@ -170,6 +182,14 @@ p {
 
 /*CONTENT*/
 
+/*CONTENT WRAPPER*/
+
+#content-wrapper header {
+    margin-bottom: 15px;
+}
+
+/*FRAMEWORK HEADER*/
+
 .fw-header {
     padding: 15px;
     border-radius: 10px;
@@ -237,6 +257,8 @@ p {
     max-width: 100%;
 }
 
+/*FIGURES*/
+
 figure {
     margin: 0;
     padding: 10px;
@@ -251,5 +273,40 @@ figure img {
 figure figcaption {
     background-color: rgba(141, 158, 255, .2);
     padding: 10px;
-    border-radius: 10px;
+    border-radius: 5px;
+}
+
+/*TABLES*/
+
+.table-wrapper {
+    overflow-x: auto;
+    border: 2px solid rgba(141, 158, 255, .2);
+    border-radius: 8px;
+}
+
+.table-wrapper table {
+    width: 100%;
+    border-spacing: 3px;
+}
+
+.table-wrapper table caption {
+    padding: 8px;
+    background-color: rgba(141, 158, 255, .2);
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+.table-wrapper table td,
+.table-wrapper table th {
+    text-align: left;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.table-wrapper table td {
+    background-color: rgba(220, 220, 220, .2);
+}
+
+.table-wrapper table th {
+    background-color: rgba(141, 158, 255, .2);
 }
