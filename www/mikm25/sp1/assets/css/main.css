@@ -75,6 +75,12 @@ ul.list-circle {
     font-size: 3rem;
 }
 
+@media screen and (max-width: 850px) {
+    #main-header > div {
+        background-image: none;
+    }
+}
+
 /*BREADCRUMBS*/
 
 #breadcrumbs {
@@ -118,6 +124,17 @@ ul.list-circle {
     padding: 0 15px;
     max-width: 1080px;
     margin: auto;
+}
+
+@media screen and (max-width: 850px) {
+    #main {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+        grid-template-areas:
+        "nav"
+        "content"
+        "footer";
+    }
 }
 
 /*SIDE-NAV*/
