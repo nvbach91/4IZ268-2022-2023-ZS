@@ -25,6 +25,11 @@ p {
     margin-bottom: 15px;
 }
 
+ul.list-circle {
+    list-style-type: circle;
+    padding-left: 20px;
+}
+
 /*UTILITIES*/
 
 .mb-15 {
@@ -33,6 +38,10 @@ p {
 
 .mb-0 {
     margin-bottom: 0;
+}
+
+.w-50 {
+    width: 50%;
 }
 
 /*MAIN HEADER*/
