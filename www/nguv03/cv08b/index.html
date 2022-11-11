@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>HTML forms with JavaScript</h1>
+
+    <!-- input types 
+        button
+        checkbox
+        radio
+        password
+        text (default)
+        date
+        number
+        color
+    -->
+    <form action="." method="GET">
+        <div class="form-row">
+            <label>Email:</label>
+            <input name="email" type="email">
+        </div>
+        <div class="form-row">
+            <label>Password:</label>
+            <input name="password" type="password">
+        </div>
+        <div class="form-row">
+            <label>Gender:</label>
+            <select name="gender">
+                <option value="M">Male</option>
+                <option value="F">Female</option>
+                <option value="N">N/A</option>
+            </select>
+        </div>
+        
+        <div class="form-row">
+            <label>Your job description:</label>
+            <textarea name="job"></textarea>
+        </div>
+        <div class="form-row form-controls">
+            <button class="form-submit">Submit</button>
+            <button class="form-cancel">Cancel</button>
+        </div>
+        <div class="form-row">
+            <label>Your profile image</label>
+            <input type="file" name="profile-image">
+        </div>
+    </form>
+
+    <script src="./main.js"></script>
+</body>
+</html>

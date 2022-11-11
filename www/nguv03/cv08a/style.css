@@ -1,0 +1,35 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #e1e1e1;
+}
+form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+form input {
+    background-color: #e1e1e1;
+    border: none;
+    padding: 10px;
+}
+
+.form-row {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+form button {
+    border: none;
+    padding: 10px 20px;
+    background-color: #e1e1e1;
+}
+
+form button:hover {
+    background-color: rgb(81, 81, 81);
+}
