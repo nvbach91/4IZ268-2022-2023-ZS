@@ -6,7 +6,7 @@
       key: '1220030E-30E2-4AAE-8711-7F28D82B5E12'
     },
     storage: {
-      key: 'selected-currencies'
+      key: 'selectedCurrencies'
     },
     currencies: {
       fiat: {
