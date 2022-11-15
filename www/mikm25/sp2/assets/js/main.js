@@ -948,6 +948,9 @@ const client = axios.create({
 
 const repository = {
   async getTimeSeriesData(fiatCurrency, cryptoCurrency) {
+    return testData
+
+
     const timeEnd = new Date()
     const timeStart = new Date()
 
@@ -1031,6 +1034,22 @@ const createChart = (id, data, fiatCurrency) => {
         }
       },
       plugins: {
+        zoom: {
+          zoom: {
+            wheel: {
+              enabled: true,
+              speed: 0.03
+            },
+            pinch: {
+              enabled: false
+            },
+            drag: {
+              enabled: true,
+              backgroundColor: 'rgba(13, 109, 253, .2)'
+            },
+            mode: 'x'
+          }
+        },
         tooltip: {
           callbacks: {
             label: function (context) {
