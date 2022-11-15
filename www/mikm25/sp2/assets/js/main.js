@@ -35,6 +35,8 @@
     },
     chart: {
       lineColor: '#0d6efd',
+      tension: 0.4,
+      dragBgColor: 'rgba(13, 109, 253, 0.2)'
     }
   }
 
@@ -115,28 +117,12 @@
         {
           label: `Price`,
           data: points,
-          tension: 0.4,
+          tension: CONFIG.chart.tension,
           fill: false,
           borderColor: CONFIG.chart.lineColor,
         }
       ],
     }
-  }
-
-  const normalizeFiat = val => {
-    if (val && CONFIG.currencies.fiat.available.includes(val.toUpperCase())) {
-      return val.toUpperCase()
-    }
-
-    return CONFIG.currencies.fiat.default
-  }
-
-  const normalizeCrypto = val => {
-    if (val && CONFIG.currencies.crypto.available.includes(val.toUpperCase())) {
-      return val.toUpperCase()
-    }
-
-    return CONFIG.currencies.crypto.default
   }
 
   const createChart = (id, data, fiatCurrency) => {
@@ -191,7 +177,7 @@
               },
               drag: {
                 enabled: true,
-                backgroundColor: 'rgba(13, 109, 253, .2)'
+                backgroundColor: CONFIG.chart.dragBgColor
               },
               mode: 'x'
             }
@@ -222,6 +208,22 @@
         }
       }
     })
+  }
+
+  const normalizeFiat = val => {
+    if (val && CONFIG.currencies.fiat.available.includes(val.toUpperCase())) {
+      return val.toUpperCase()
+    }
+
+    return CONFIG.currencies.fiat.default
+  }
+
+  const normalizeCrypto = val => {
+    if (val && CONFIG.currencies.crypto.available.includes(val.toUpperCase())) {
+      return val.toUpperCase()
+    }
+
+    return CONFIG.currencies.crypto.default
   }
 
   const selectCurrencies = (fiat, crypto) => {
