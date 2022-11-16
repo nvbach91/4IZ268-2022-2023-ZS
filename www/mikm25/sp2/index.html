@@ -27,31 +27,24 @@
                     <div class="row g-3 mb-3">
                         <div class="col-sm-12 col-md-6">
                             <label for="fiat-currency" class="form-label">Fiat currency</label>
-                            <select name="fiatCurrency" id="fiat-currency" class="form-control" required>
-                                <option value="USD" selected>USD</option>
-                                <option value="EUR">EUR</option>
-                                <option value="CZK">CZK</option>
-                                <option value="JPY">JPY</option>
-                                <option value="GBP">GBP</option>
-                            </select>
+                            <select name="fiatCurrency" id="fiat-currency" class="form-control" required></select>
                         </div>
                         <div class="col-sm-12 col-md-6">
                             <label for="crypto-currency" class="form-label">Cryptocurrency</label>
-                            <select name="cryptoCurrency" id="crypto-currency" class="form-control" required>
-                                <option value="BTC" selected>BTC</option>
-                                <option value="ETH">ETH</option>
-                                <option value="LTC">LTC</option>
-                                <option value="DOGE">DOGE</option>
-                                <option value="XRP">XRP</option>
-                                <option value="ADA">ADA</option>
-                                <option value="SOL">SOL</option>
-                                <option value="DOT">DOT</option>
-                            </select>
+                            <select name="cryptoCurrency" id="crypto-currency" class="form-control" required></select>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
-                            <button type="submit" class="btn btn-primary">Show graph</button>
+                            <div class="d-flex align-items-center">
+                                <button type="submit" class="btn btn-sm btn-primary" id="submit-btn">Show graph</button>
+                                <div class="form-check ms-3">
+                                    <input class="form-check-input" type="checkbox" value="" id="automatic-apply">
+                                    <label class="form-check-label" for="automatic-apply">
+                                        Apply changes automatically
+                                    </label>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </form>

@@ -6,7 +6,7 @@
       key: '1220030E-30E2-4AAE-8711-7F28D82B5E12'
     },
     storage: {
-      key: 'selectedCurrencies'
+      key: 'config' // key for storing data in local storage (selected values, options etc.)
     },
     currencies: {
       fiat: {
@@ -32,6 +32,9 @@
           'DOT',
         ]
       }
+    },
+    form: {
+      autoApply: false // default value for auto-apply checkbox
     },
     chart: {
       lineColor: '#0d6efd',
@@ -75,30 +78,63 @@
 
       // no value stored
       if (value === null) {
-        return [null, null]
+        return {
+          fiat: CONFIG.currencies.fiat.default,
+          crypto: CONFIG.currencies.crypto.default,
+          autoApply: CONFIG.form.autoApply
+        }
       }
 
-      /**
-       * @type {{fiat?: string, crypto?: string}}
-       */
       let json
 
       try {
         json = JSON.parse(value)
       } catch (e) {
-        console.error(e)
-        return [null, null]
+        return {
+          fiat: CONFIG.currencies.fiat.default,
+          crypto: CONFIG.currencies.crypto.default,
+          autoApply: CONFIG.form.autoApply
+        }
       }
 
-      return [json?.fiat ?? null, json?.crypto ?? null]
+      return {
+        fiat: normalizeFiat(json.fiat ?? null),
+        crypto: normalizeCrypto(json.crypto ?? null),
+        autoApply: !!(json.autoApply ?? CONFIG.form.autoApply)
+      }
     },
 
-    set(fiat, crypto) {
-      localStorage.setItem(CONFIG.storage.key, JSON.stringify({
-        fiat: normalizeFiat(fiat),
-        crypto: normalizeCrypto(crypto)
-      }))
+    set(fiat, crypto, autoApply) {
+      localStorage.setItem(CONFIG.storage.key, JSON.stringify({ fiat, crypto, autoApply }))
     }
+  }
+
+  const elements = {
+    chartContainer: document.getElementById('chart-container'),
+    chartLoader: document.getElementById('chart-loader'),
+    chartError: document.getElementById('chart-error'),
+    chart: document.getElementById('chart'),
+    form: document.getElementById('form'),
+    autoApply: document.getElementById('automatic-apply'),
+    formSubmit: document.getElementById('submit-btn'),
+    cryptoSelect: document.getElementById('crypto-currency'),
+    fiatSelect: document.getElementById('fiat-currency')
+  }
+
+  const normalizeFiat = val => {
+    if (val && CONFIG.currencies.fiat.available.includes(val.toUpperCase())) {
+      return val.toUpperCase()
+    }
+
+    return CONFIG.currencies.fiat.default
+  }
+
+  const normalizeCrypto = val => {
+    if (val && CONFIG.currencies.crypto.available.includes(val.toUpperCase())) {
+      return val.toUpperCase()
+    }
+
+    return CONFIG.currencies.crypto.default
   }
 
   // transforms raw data to data object for chart
@@ -125,18 +161,8 @@
     }
   }
 
-  const createChart = (id, data, fiatCurrency) => {
-    const element = document.getElementById(id)
-
-    if (!element) {
-      throw new Error(`Missing element for chart with ID ${id}.`)
-    }
-
-    if (element.tagName !== 'CANVAS') {
-      throw new Error('Chart element must be a canvas element.')
-    }
-
-    const context = element.getContext('2d')
+  const createChart = (data, fiatCurrency) => {
+    const context = elements.chart.getContext('2d')
 
     // create formatter for labels
     const formatter = new Intl.NumberFormat('en-US', {
@@ -210,52 +236,118 @@
     })
   }
 
-  const normalizeFiat = val => {
-    if (val && CONFIG.currencies.fiat.available.includes(val.toUpperCase())) {
-      return val.toUpperCase()
-    }
+  const initSelectEvents = () => {
+    elements.cryptoSelect.addEventListener('change', event => {
+      // autoApply is not turned off
+      if (! elements.autoApply.checked) {
+        return
+      }
 
-    return CONFIG.currencies.fiat.default
+      elements.form.dispatchEvent(new Event('submit'))
+    })
+
+    elements.fiatSelect.addEventListener('change', event => {
+      // autoApply is not turned off
+      if (! elements.autoApply.checked) {
+        return
+      }
+
+      elements.form.dispatchEvent(new Event('submit'))
+    })
   }
 
-  const normalizeCrypto = val => {
-    if (val && CONFIG.currencies.crypto.available.includes(val.toUpperCase())) {
-      return val.toUpperCase()
-    }
+  const persistAutoApplyValue = (value) => {
+    const { fiat, crypto } = STORAGE.get()
 
-    return CONFIG.currencies.crypto.default
+    STORAGE.set(fiat, crypto, value)
   }
 
-  const selectCurrencies = (fiat, crypto) => {
-    const fiatSelect = document.getElementById('fiat-currency')
-    const cryptoSelect = document.getElementById('crypto-currency')
+  const initAutoApplyEvent = () => {
+    elements.autoApply.addEventListener('change', event => {
+      const checked = elements.autoApply.checked
 
-    if (fiatSelect === null || cryptoSelect === null) {
-      throw new Error('Missing both selects for currencies.')
-    }
+      elements.formSubmit.disabled = checked
 
-    fiatSelect.value = fiat
-    cryptoSelect.value = crypto
+      // persist changed value to local storage
+      persistAutoApplyValue(checked)
+    })
+
+    // dispatch event to change the button state
+    elements.autoApply.dispatchEvent(new Event('change'))
+  }
+
+  const initFormEvent = () => {
+    elements.form.addEventListener('submit', async (event) => {
+      event.preventDefault()
+
+      const fiat = elements.fiatSelect.value
+      const crypto = elements.cryptoSelect.value
+      const autoApply = elements.autoApply.checked
+
+      await updateChart(normalizeFiat(fiat), normalizeCrypto(crypto))
+
+      // set values on update to locale storage
+      STORAGE.set(fiat, crypto, autoApply)
+    })
+  }
+
+  // inits crypto currency select, fills it with
+  // values and sets default value
+  const initCryptoSelectValues = () => {
+    const cryptoOptions = []
+
+    CONFIG.currencies.crypto.available.forEach(crypto => {
+      const option = document.createElement('option')
+
+      // set attributes
+      option.value = crypto
+      option.text = crypto
+
+      cryptoOptions.push(option)
+    })
+
+    elements.cryptoSelect.append(...cryptoOptions)
+  }
+
+  // inits fiat currency select, fills it with
+  // values and sets default value
+  const initFiatSelectValues = () => {
+    const fiatOptions = []
+
+    CONFIG.currencies.fiat.available.forEach(fiat => {
+      const option = document.createElement('option')
+
+      // set attributes
+      option.value = fiat
+      option.text = fiat
+
+      fiatOptions.push(option)
+    })
+
+    elements.fiatSelect.append(...fiatOptions)
+  }
+
+  // retrieves data from local storage and sets them
+  // to form inputs
+  const initDefaultValues = () => {
+    let { fiat, crypto, autoApply } = STORAGE.get()
+
+    elements.fiatSelect.value = fiat
+    elements.cryptoSelect.value = crypto
+    elements.autoApply.checked = autoApply
   }
 
   let loaderInterval = null
-
   const toggleLoader = state => {
-    const loader = document.getElementById('chart-loader')
-
-    if (loader === null) {
-      throw new Error('Missing loader element.')
-    }
-
     if (!state) {
       window.clearInterval(loaderInterval)
-      loader.classList.add('d-none')
+      elements.chartLoader.classList.add('d-none')
 
       return
     }
 
     loaderInterval = window.setInterval(() => {
-      const span = loader.querySelector('span > span')
+      const span = elements.chartLoader.querySelector('span > span')
 
       if (span === null) {
         throw new Error('Missing loader span element.')
@@ -268,11 +360,10 @@
       }
     }, 200)
 
-    loader.classList.remove('d-none')
+    elements.chartLoader.classList.remove('d-none')
   }
 
   let chart = null
-
   const toggleChart = state => {
     const chartContainer = document.getElementById('chart-container')
 
@@ -281,7 +372,7 @@
     }
 
     if (state) {
-      chartContainer.classList.remove('d-none')
+      elements.chartContainer.classList.remove('d-none')
 
       return
     }
@@ -291,18 +382,12 @@
       chart.destroy()
     }
 
-    chartContainer.classList.add('d-none')
+    elements.chartContainer.classList.add('d-none')
   }
 
   const toggleError = (state, message = null) => {
-    const chartError = document.getElementById('chart-error')
-
-    if (chartError === null) {
-      throw new Error('Missing chart error element.')
-    }
-
     if (!state) {
-      chartError.classList.add('d-none')
+      elements.chartError.classList.add('d-none')
 
       return
     }
@@ -311,7 +396,7 @@
       throw new Error('Cannot show error element without a message.')
     }
 
-    const alert = chartError.querySelector('.alert')
+    const alert = elements.chartError.querySelector('.alert')
 
     if (alert === null) {
       throw new Error('Missing chart error alert element.')
@@ -323,7 +408,7 @@
     alert.innerHTML = message
 
     // show error container
-    chartError.classList.remove('d-none')
+    elements.chartError.classList.remove('d-none')
   }
 
   const updateChart = async (fiat, crypto) => {
@@ -339,7 +424,7 @@
     try {
       const { data } = await REPOSITORY.getTimeSeriesData(fiat, crypto)
 
-      chart = createChart('chart', transformData(data), fiat)
+      chart = createChart(transformData(data), fiat)
 
       toggleLoader(false)
 
@@ -351,52 +436,23 @@
     }
   }
 
-  const currenciesChanged = async () => {
-    const fiatSelect = document.getElementById('fiat-currency')
-    const cryptoSelect = document.getElementById('crypto-currency')
+  // initializes whole app
+  const init = () => {
+    // initialize select options
+    initCryptoSelectValues()
+    initFiatSelectValues()
 
-    if (fiatSelect === null || cryptoSelect === null) {
-      throw new Error('Missing both selects for currencies.')
-    }
+    // initialize default values
+    initDefaultValues()
 
-    const fiat = fiatSelect.value
-    const crypto = cryptoSelect.value
+    // initialize events on elements
+    initSelectEvents()
+    initAutoApplyEvent()
+    initFormEvent()
 
-    await updateChart(normalizeFiat(fiat), normalizeCrypto(crypto))
-
-    // save selected options to the storage
-    STORAGE.set(fiat, crypto)
+    // trigger submit event to load the chart
+    elements.form.dispatchEvent(new Event('submit'))
   }
 
-  const initDefault = () => {
-    let [fiat, crypto] = STORAGE.get()
-
-    if (fiat === null) {
-      fiat = CONFIG.currencies.fiat.default
-    }
-
-    if (crypto === null) {
-      crypto = CONFIG.currencies.crypto.default
-    }
-
-    selectCurrencies(normalizeFiat(fiat), normalizeCrypto(crypto))
-
-    currenciesChanged()
-  }
-
-  const initEvent = () => {
-    const form = document.getElementById('form')
-
-    if (form === null) {
-      throw new Error('Missing form element.')
-    }
-
-    form.addEventListener('submit', async e => {
-      e.preventDefault()
-      await currenciesChanged()
-    })
-  }
-
-  initEvent()
-  initDefault()
+  init()
 })()
