@@ -337,6 +337,14 @@
     elements.autoApply.checked = autoApply
   }
 
+  // toggles disabled state of the form
+  const toggleForm = state => {
+    elements.cryptoSelect.disabled = !state
+    elements.fiatSelect.disabled = !state
+    elements.formSubmit.disabled = !state
+    elements.autoApply.disabled = !state
+  }
+
   let loaderInterval = null
   const toggleLoader = state => {
     if (!state) {
@@ -421,6 +429,9 @@
     // show loader
     toggleLoader(true)
 
+    // disable form
+    toggleForm(false)
+
     try {
       const { data } = await REPOSITORY.getTimeSeriesData(fiat, crypto)
 
@@ -429,8 +440,12 @@
       toggleLoader(false)
 
       toggleChart(true)
+
+      toggleForm(true)
     } catch (e) {
       toggleLoader(false)
+
+      toggleForm(true)
 
       toggleError(true, e.message)
     }
