@@ -341,8 +341,17 @@
   const toggleForm = state => {
     elements.cryptoSelect.disabled = !state
     elements.fiatSelect.disabled = !state
-    elements.formSubmit.disabled = !state
     elements.autoApply.disabled = !state
+
+    if (!state && elements.formSubmit.disabled) {
+      elements.formSubmit.classList.add('was-disabled')
+    }
+
+    elements.formSubmit.disabled = elements.formSubmit.classList.contains('was-disabled') || !state
+
+    if (state) {
+      elements.formSubmit.classList.remove('was-disabled')
+    }
   }
 
   let loaderInterval = null
