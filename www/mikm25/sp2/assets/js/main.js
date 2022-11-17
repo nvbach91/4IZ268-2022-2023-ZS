@@ -1,6 +1,7 @@
 (() => {
   const CONFIG = {
     testMode: true, // if true, the API won't be called and test data will be used
+    language: 'en-US', // default language for dates and currencies
     api: {
       baseUrl: 'https://rest.coinapi.io/v1/',
       key: '1220030E-30E2-4AAE-8711-7F28D82B5E12'
@@ -142,8 +143,10 @@
     const labels = []
     const points = []
 
+    const language = navigator?.language ?? CONFIG.language
+
     data.forEach(item => {
-      labels.push(new Date(item.time_period_start).toLocaleString('en-US'))
+      labels.push(new Date(item.time_period_start).toLocaleString(language))
       points.push(item.rate_open)
     })
 
