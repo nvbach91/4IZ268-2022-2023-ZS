@@ -1,6 +1,6 @@
 (() => {
   const CONFIG = {
-    testMode: true, // if true, the API won't be called and test data will be used
+    testMode: false, // if true, the API won't be called and test data will be used
     language: navigator?.language ?? 'en-US', // default language for dates and currencies
     api: {
       baseUrl: 'https://rest.coinapi.io/v1/',
