@@ -17,8 +17,10 @@ console.log('Ahoj světe.');
  */
 // Solution here
 
-const age = 20;
+const ageOfBirth = 1988;
 const name = "Pepe";
+const currentYear = new Date().getFullYear();
+age = currentYear - ageOfBirth;
 console.log(name + 'is' + age + 'years old');
 
 
@@ -31,16 +33,16 @@ console.log(name + 'is' + age + 'years old');
  */
 // Solution here
 
-const first_celsius = 20;
-const first_farenheit = (first_celsius * 9) / 5 + 32;
+const firstCelsius = 20;
+const firstFarenheit = (firstCelsius * 9) / 5 + 32;
 
-console.log(first_celsius + '==' + first_farenheit)
+console.log(firstCelsius + '==' + firstFarenheit)
 
-const secondFahrenheiht = 90;
-const secondCelsius = ((secondFahrenheiht - 32) * 5) / 9;
+const secondFarenheiht = 90;
+const secondCelsius = ((secondFarenheiht - 32) * 5) / 9;
 
 
-console.log(secondFahrenheiht + '==' + secondCelsius)
+console.log(secondFarenheiht + '==' + secondCelsius)
 
 
 /**
@@ -73,7 +75,7 @@ function celsiusToFarenheit(celsius) {
 console.log(celsiusToFarenheit(20));
 
 function farenheitToCelsius(farenheit) {
-    return ((secondFahrenheiht - 32) * 5) / 9;
+    return ((farenheit - 32) * 5) / 9;
 };
 
 console.log(farenheitToCelsius(90));
@@ -90,11 +92,11 @@ console.log(farenheitToCelsius(90));
 // Solution here
 
 function censored(a, b) {
-    const a_percent = (a / b) * 100;
-    const b_percent = (b / a) * 100;
+    const aPercent = (a / b) * 100;
+    const bPercent = (b / a) * 100;
 
-    console.log(a + ' je ' + a_percent + '% z ' + b)
-    console.log(b + ' je ' + b_percent + '% z ' + a)
+    console.log(a + ' je ' + aPercent + '% z ' + b)
+    console.log(b + ' je ' + bPercent + '% z ' + a)
 }
 
 censored(5, 10);
@@ -150,7 +152,7 @@ function thirteen() {
 // Solution here
 
 
-function aroundAbout(a) {
+function calculateCircleArea(a) {
     console.log(Math.PI * (a ^ 2));
 }
 
@@ -183,11 +185,11 @@ function dimension(height, radius) {
 function triangle(a, b, c) {
     if (a + b > c && a + c > b && c + b > a) {
         console.log('A: ' + a + ' B: ' + b + " C: " + c);
-        console.log("TRUE");
+        return console.log("TRUE");
     }
     else {
         console.log('A: ' + a + ' B: ' + b + " C: " + c);
-        console.log('FALSE');
+        return console.log('FALSE');
     }
 }
 
