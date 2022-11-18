@@ -70,11 +70,9 @@ const buttonAtrbs = document.getElementById('buttonArgs')
 buttonAtrbs.addEventListener('click', wtf);
 
 
-const result = document.getElementById('result');
+const results = document.getElementById('results');
 
-let arg1;
-let arg2;
-let arg3;
+
 let myArray = [];
 
 function wtf() {
@@ -83,11 +81,14 @@ function wtf() {
     console.log("arguments are " + arguments);
 
     myArray = arguments.split(",");
-    arg1 = myArray[0];
-    arg2 = myArray[1];
-    arg3 = myArray[2];
+
+    arg1 =parseInt(myArray[0]);
+    arg2 =parseInt(myArray[1]);
+    arg3 =parseInt(myArray[2]);
+
     console.log(myArray);
-    result.innerHTML = ("Your arguments are " + myArray);
+    results.innerHTML = ("Your arguments are " + myArray);
+    return myArray;
 }
 
 
@@ -102,7 +103,7 @@ function wtf() {
 
 const sayHello = () => {
     console.log('Hello');
-    result.innerHTML = "Hello!";
+    results.innerHTML = "Hello!";
     return "Hello!";
 };
 
@@ -142,7 +143,7 @@ function calculatePepeAge(pepeBornYear) {
     const sentence = `Pepe's age is ${pepeAge}`;
     //return sentence;
     //console.log(sentence);
-    result.innerHTML = sentence;
+    results.innerHTML = sentence;
 }
 
 //console.log(calculatePepeAge(2022));
@@ -152,7 +153,7 @@ function calculatePepeAge(pepeBornYear) {
 // vytvoření tlačítka
 const buttonPepeAge = document.createElement('button');
 // nastavení textu tlačítka
-buttonPepeAge.innerText = "Pepe's age";
+buttonPepeAge.innerText = "Pepe's age (first arg as a year of birth)";
 // nastavení atributu id tlačítka
 buttonPepeAge.setAttribute('id', 'task-1');
 // nabindování funkce na událost click tlačítka
@@ -169,7 +170,7 @@ tasks.appendChild(buttonPepeAge);
 
 function calculateFtoC(teplotaF) {
     teplotaFtoC = ((teplotaF - 32) * 5) / 9;
-    result.innerHTML = (teplotaF + "F " + "je " + teplotaFtoC.toFixed(2) + " C");
+    results.innerHTML = (teplotaF + "F " + "je " + teplotaFtoC.toFixed(2) + " C");
     return teplotaFtoC;
 }
 
@@ -187,7 +188,7 @@ tasks.appendChild(buttonFtoC);
 
 function calculateCtoF(teplotaC) {
     let teplotaCtoF = ((teplotaC * 9) / 5) + 32;
-    result.innerHTML = (teplotaC + "C " + "je " + teplotaCtoF.toFixed(2) + " F");
+    results.innerHTML = (teplotaC + "C " + "je " + teplotaCtoF.toFixed(2) + " F");
     return teplotaCtoF;
 }
 
@@ -227,13 +228,13 @@ function podilCisel(prvniCislo, druheCislo) {
     }
 
     //console.log(sentence);
-    result.innerHTML = sentence;
+    results.innerHTML = sentence;
     return sentence;
 }
 
 
 const buttonPodilCisel = document.createElement('button');
-buttonPodilCisel.innerText = "PodilCisel";
+buttonPodilCisel.innerText = "PodilCisel (first 2 args)";
 buttonPodilCisel.setAttribute('id', 'task-4');
 buttonPodilCisel.addEventListener('click', () => { podilCisel(arg1, arg2) });
 const tasks4 = document.querySelector('#tasks');
@@ -259,15 +260,15 @@ tasks.appendChild(buttonPodilCisel);
 function kdoKoho(prvniCislo, druheCislo) {
 
     if (prvniCislo > druheCislo) {
-        result.innerHTML = prvniCislo;
+        results.innerHTML = prvniCislo;
         return prvniCislo;
     }
     if (prvniCislo < druheCislo) {
-        result.innerHTML = druheCislo;
+        results.innerHTML = druheCislo;
         return druheCislo;
     }
     else {
-        result.innerHTML = "Cisla se rovnaji";
+        results.innerHTML = "Cisla se rovnaji";
         return "Cisla se rovnaji";
     }
 }
@@ -275,7 +276,7 @@ function kdoKoho(prvniCislo, druheCislo) {
 //console.log(kdoKoho(-100, -100))
 
 const buttonKdoKoho = document.createElement('button');
-buttonKdoKoho.innerText = "Kdo koho?";
+buttonKdoKoho.innerText = "Kdo koho? (only for the first two args)";
 buttonKdoKoho.setAttribute('id', 'task-5');
 buttonKdoKoho.addEventListener('click', () => { kdoKoho(arg1, arg2) });
 const tasks5 = document.querySelector('#tasks');
@@ -299,7 +300,7 @@ function pattern() {
         myArray2[i] = i * 13
 
     }
-    result.innerHTML = myArray2
+    results.innerHTML = myArray2
 }
 
 //pattern();
@@ -321,20 +322,20 @@ tasks.appendChild(buttonPattern);
  * staticky.
  */
 // Solution here
-function aroundAndAbout(polomer) {
+function obsahKruznice(polomer) {
     obsah = polomer ** 2 * Math.PI;
-    result.innerHTML = obsah;
+    results.innerHTML = obsah;
     return obsah;
 }
 //console.log(aroundAndAbout(4));
 
 
-const buttonAaA = document.createElement('button');
-buttonAaA.innerText = "Around and about: obsah kruznice";
-buttonAaA.setAttribute('id', 'task-7');
-buttonAaA.addEventListener('click', () => { aroundAndAbout(arg1) });
+const buttonObsahKruznice = document.createElement('button');
+buttonObsahKruznice.innerText = "Around and about: obsah kruznice (first arg is polomer)";
+buttonObsahKruznice.setAttribute('id', 'task-7');
+buttonObsahKruznice.addEventListener('click', () => { obsahKruznice(arg1) });
 const tasks7 = document.querySelector('#tasks');
-tasks.appendChild(buttonAaA);
+tasks.appendChild(buttonObsahKruznice);
 
 
 
@@ -347,15 +348,16 @@ tasks.appendChild(buttonAaA);
  */
 // Solution here
 
-function objemKuzelu(vyska, polomer) {
-    result.innerHTML = (aroundAndAbout(polomer) * vyska * 1 / 3);
-    return aroundAndAbout(polomer) * vyska * 1 / 3;
-}
+function objemKuzelu(polomer, vyska) {
 
+    var objem =1/3 * obsahKruznice(polomer) * vyska;
+    results.innerHTML = objem;
+    return objem;
+}
 //console.log(objemKuzelu(1, 2));
 
 const buttonObjem = document.createElement('button');
-buttonObjem.innerText = "Objem kuzelu";
+buttonObjem.innerText = "Objem kuzelu (first arg is polomer, druhy je vyska)";
 buttonObjem.setAttribute('id', 'task-8');
 buttonObjem.addEventListener('click', () => { objemKuzelu(arg1, arg2) });
 const tasks8 = document.querySelector('#tasks');
@@ -373,15 +375,15 @@ tasks.appendChild(buttonObjem);
 // Solution here
 
 function isTriangle(a, b, c) {
-    //return (a + b > c && a + c > b && b + c > a);
-    result.innerHTML = (a + b > c && a + c > b && b + c > a);
+    results.innerHTML = (a + b > c) && (a + c > b) && (b + c > a);
+    return (a + b > c) && (a + c > b) && (b + c > a);
 }
 
 //console.log(isTriangle(1, 10, 1));
 //console.log(isTriangle(1, 1, 1));
 
 const buttonIsTriangle = document.createElement('button');
-buttonIsTriangle.innerText = "Is Triangle?";
+buttonIsTriangle.innerText = "Is Triangle? (First 3 args as the sides of the triangle)";
 buttonIsTriangle.setAttribute('id', 'task-9');
 buttonIsTriangle.addEventListener('click', () => { isTriangle(arg1, arg2, arg3) });
 const tasks9 = document.querySelector('#tasks');
@@ -411,20 +413,24 @@ tasks.appendChild(buttonIsTriangle);
 // - krok 3 - nabindujte na toto tlačítko callback, ve kterém zavoláte implementovanou funkci pro výpočet a výpis výsledků
 // - krok 4 - tlačítko umístěte na stránku
 // - krok 5 - otestujte řešení klikáním na tlačítko
+
 function getTriangleArea(a, b, c) {
     if (!isTriangle(a, b, c)) {
-        result.innerHTML = "Neni trojúhelník"
-        return `Neni trojuhelnik`;
+        results.innerHTML = "Neni trojúhelník"
+        return "Neni trojuhelnik";
     }
-    let s = (a + b + c) / 2;
-    //return Math.sqrt(s * (s - a) * (s - b) * (s - c));
-    result.innerHTML = Math.sqrt(s * (s - a) * (s - b) * (s - c));
+
+    var s = (a + b + c) / 2;
+    var area=Math.sqrt(s * (s - a) * (s - b) * (s - c));
+
+    results.innerHTML = area;
+    return area;
 };
 
 //console.log(getTriangleArea(1, 1, 1));
 
 const buttonTriangleArea = document.createElement('button');
-buttonTriangleArea.innerText = "Triangle area";
+buttonTriangleArea.innerText = "Area of triangle (3 args as sides) ";
 buttonTriangleArea.setAttribute('id', 'task-10');
 buttonTriangleArea.addEventListener('click', () => { getTriangleArea(arg1, arg2, arg3) });
 const tasks10 = document.querySelector('#tasks');
