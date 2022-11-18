@@ -1,4 +1,5 @@
 console.log('Ahoj, světe!');
+const resultDisplay = document.getElementById('result');
 
 /* Creates button with specific properties and binds onclick funciton. */
 function createButton(id, buttonText, functionName, ...funcitonArguments) {
@@ -6,13 +7,14 @@ function createButton(id, buttonText, functionName, ...funcitonArguments) {
 
     button.innerHTML = buttonText;
     button.id = id;
-    button.onclick = function () { functionName(...funcitonArguments) };
+    button.addEventListener('click', () => { functionName(...funcitonArguments) })
     document.getElementById('task-buttons').appendChild(button);
 }
 
-function writeResult(result) {
-    document.getElementById('result').innerHTML = result;
-}
+
+const writeResult = (result) => {
+    resultDisplay.innerHTML = result;
+};
 
 
 /**
