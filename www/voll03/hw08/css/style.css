@@ -1,0 +1,37 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+}
+
+#results {
+    margin-top: 10vh;
+    margin-left: 6vw;
+    padding-right: 20px;
+    width: 65%;
+}
+
+#tasks {
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+}
+
+#tasks button {
+    font-size: 14px;
+}
+
+@media screen and (max-width: 1279px) {
+    #tasks, #results  {
+        width: 50%;
+    }
+}
+
+button {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    text-align: justify;
+    padding: 10px;
+    margin: 2px;
+}
+
