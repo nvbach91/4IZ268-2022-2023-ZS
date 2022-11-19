@@ -202,7 +202,7 @@ createButton('task-9', 'Úloha 9 (Not sure if triangle, or just some random valu
 // - krok 3 - nabindujte na toto tlačítko callback, ve kterém zavoláte implementovanou funkci pro výpočet a výpis výsledků
 // - krok 4 - tlačítko umístěte na stránku
 // - krok 5 - otestujte řešení klikáním na tlačítko
-function getTriangleSurface(a, b, c) {
+function getTriangleArea(a, b, c) {
     if (!isTriangle(a, b, c)) {
         return writeResult('Ze zadaných hodnot nelze sestrojit trojúhelník. Dále nepočítám.');
     }
@@ -210,4 +210,4 @@ function getTriangleSurface(a, b, c) {
     let s = (a + b + c) / 2;
     writeResult(`Obsah trojúhelníku (a = ${a} cm, b = ${b} cm, c = ${c} cm) je ${Math.sqrt(s * (s - a) * (s - b) * (s - c)).toFixed(2)} cm2.`);
 }
-createButton('task-10', 'Úloha 10 (Not sure if triangle, or just some random values)', getTriangleSurface, 5, 3, 7);
+createButton('task-10', 'Úloha 10 (Not sure if triangle, or just some random values)', getTriangleArea, 5, 3, 7);
