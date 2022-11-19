@@ -59,7 +59,9 @@
  * // nastavení atributu id tlačítka
  * buttonSayHello.setAttribute('id', 'task-0');
  * // nabindování funkce na událost click tlačítka
- * buttonSayHello.addEventListener('click', sayHello);
+ * buttonSayHello.addEventListener('click', () => {
+ *   sayHello();
+ * });
  * 
  * // výběr existujícího elementu na stránce s id="tasks"
  * const tasks = document.querySelector('#tasks');
