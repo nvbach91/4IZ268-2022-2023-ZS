@@ -176,7 +176,7 @@ function areaOfCircle(r) {
 // Solution here
 
 function volumeOfCone(h, r) {
-    volume = Math.PI * 1/3 * h * r * r;
+    const volume = Math.PI * 1/3 * h * r * r;
     document.getElementById('results').append(volume.toFixed(2) + " | ");
 };
 
@@ -222,7 +222,7 @@ function isTriangle(a, b, c) {
 function heronsFormula(a, b, c) {
     if (a + b > c && a + c > b && b + c > a) {
         s = (a + b + c)/2
-        area = Math.sqrt(s*(s-a)*(s-b)*(s-c))
+        const area = Math.sqrt(s*(s-a)*(s-b)*(s-c))
         document.getElementById('results').append(area.toFixed(2) + " | ");
     } else {
         document.getElementById('results').append("Invalid triangle | ");
