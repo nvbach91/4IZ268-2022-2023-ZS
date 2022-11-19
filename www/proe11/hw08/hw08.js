@@ -132,7 +132,9 @@ const getPepeAge = (birthYear) => {
 const buttonPepeAge = document.createElement('button');
 buttonPepeAge.innerText = 'Pepův věk';
 buttonPepeAge.setAttribute('id', 'task-0');
-buttonPepeAge.addEventListener('click', getPepeAge);
+buttonPepeAge.addEventListener('click', () => {
+getPepeAge(1984)
+});
 tasks.appendChild(buttonPepeAge);
 
 
@@ -150,8 +152,6 @@ tasks.appendChild(buttonPepeAge);
 // Solution here
 
 const percentageBetweenTwo = (a, b) => {
-    a = 20
-    b = 40
     const result5 = document.querySelector('#result5');
     if (b === 0) {
         result5.innerHTML ='Nulou se nedělí ani v neděli bráško. ';
@@ -161,7 +161,9 @@ const percentageBetweenTwo = (a, b) => {
 const buttonPercentage = document.createElement('button');
 buttonPercentage.innerText = 'Poměr';
 buttonPercentage.setAttribute('id', 'task-0');
-buttonPercentage.addEventListener('click', percentageBetweenTwo);
+buttonPercentage.addEventListener('click', () => {
+    percentageBetweenTwo(20, 40)
+    });
 tasks.appendChild(buttonPercentage);
 
 
@@ -181,8 +183,6 @@ tasks.appendChild(buttonPercentage);
 
 
 const comparasion = (a, b) => {
-    a = 69;
-    b = 69;
     const result6 = document.querySelector('#result6');
     if (a > b) {
         result6.innerHTML = a;
@@ -198,7 +198,9 @@ const comparasion = (a, b) => {
 const buttonTwoNumbers = document.createElement('button');
 buttonTwoNumbers.innerText = 'Dvě čísla';
 buttonTwoNumbers.setAttribute('id', 'task-0');
-buttonTwoNumbers.addEventListener('click', comparasion);
+buttonTwoNumbers.addEventListener('click', () => {
+    comparasion(69, 69)
+    });
 tasks.appendChild(buttonTwoNumbers);
 
 
@@ -231,14 +233,15 @@ for (var i = 0; i < 730; i += 13){
 // Solution here
 
 const circleArea = (radius) => {
-    radius = 120;
     const result7 = document.querySelector('#result7');
     result7.innerHTML = (Math.PI * radius ** 2);
 };
 const buttonCircleArea = document.createElement('button');
 buttonCircleArea.innerText = 'Obsah kružnice';
 buttonCircleArea.setAttribute('id', 'task-0');
-buttonCircleArea.addEventListener('click', circleArea);
+buttonCircleArea.addEventListener('click', () => {
+    circleArea(120)
+    });
 tasks.appendChild(buttonCircleArea);
 
 
@@ -255,14 +258,14 @@ tasks.appendChild(buttonCircleArea);
 
 const coneVolume = (height, radius) => {
     const result8 = document.querySelector('#result8');
-    height = 16;
-    radius = 8;
     result8.innerHTML = (Math.PI * radius ** 2 * height / 3);
 };
 const buttonConeVolume = document.createElement('button');
 buttonConeVolume.innerText = 'Objem kuželu';
 buttonConeVolume.setAttribute('id', 'task-0');
-buttonConeVolume.addEventListener('click', coneVolume);
+buttonConeVolume.addEventListener('click', () => {
+    coneVolume(16, 8)
+    });
 tasks.appendChild(buttonConeVolume);
 
 
@@ -280,9 +283,6 @@ tasks.appendChild(buttonConeVolume);
 
 
 const testThatTriangle = (a, b, c) => {
-    a= 20;
-    b= 40;
-    c= 30;
     const result9 = document.querySelector('#result9');
     if (a + b > c && a + c > b && b + c > a) {
         result9.innerHTML = 'Jop, je to trojúhelník. ';
@@ -294,7 +294,9 @@ const testThatTriangle = (a, b, c) => {
 const buttonIsThatAMfTriangle = document.createElement('button');
 buttonIsThatAMfTriangle.innerText = 'Test trojúhelníku';
 buttonIsThatAMfTriangle.setAttribute('id', 'task-0');
-buttonIsThatAMfTriangle.addEventListener('click', testThatTriangle);
+buttonIsThatAMfTriangle.addEventListener('click', () => {
+    testThatTriangle(20, 40, 30)
+    });
 tasks.appendChild(buttonIsThatAMfTriangle);
 
 
@@ -310,9 +312,6 @@ tasks.appendChild(buttonIsThatAMfTriangle);
 // Solution here
 
 const getTriangleArea = (a, b, c) => { 
-    a = 20;
-    b = 30;
-    c = 40;
     const result10 = document.querySelector('#result10');
     if(!(a + b > c && a + c > b && b + c > a)) {
         result10.innerHTML = 'Neplatné rozměry trojúhelníku';
@@ -325,6 +324,8 @@ const getTriangleArea = (a, b, c) => {
 const buttonGetTraingleArea = document.createElement('button');
 buttonGetTraingleArea.innerText = 'Obsah trojúhelníku';
 buttonGetTraingleArea.setAttribute('id', 'task-0');
-buttonGetTraingleArea.addEventListener('click', getTriangleArea);
+buttonGetTraingleArea.addEventListener('click', () => {
+    getTriangleArea(20, 30, 40)
+    });
 tasks.appendChild(buttonGetTraingleArea);
 
