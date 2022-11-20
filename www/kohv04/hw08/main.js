@@ -195,7 +195,7 @@ PERCENTAGeFROM(number_1, number_2);
 const ButtonR4 = document.createElement('button');
 ButtonR4.innerText = 'Reseni Uloha 4 (%CENSORED%)';
 ButtonR4.setAttribute('id', 'result-4');
-ButtonR4.addEventListener('click', PERCENTAGe_FROM);
+ButtonR4.addEventListener('click', PERCENTAGeFROM);
 tasks.appendChild(ButtonR4);
 /**
  * 5) Kdo s koho. Vytvořte funkci, která vezme 2 číselné argumenty a vypíše, který z nich je větší, do předem vytvořeného 
