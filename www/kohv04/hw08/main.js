@@ -31,10 +31,14 @@ const sentence1 = (Pepe) => {
 };
 sentence1(Pepe);
 
+sentence2 = () =>{
+    console.log(sentence1(Pepe);
+};
+
 const ButtonR1 = document.createElement('button');
 ButtonR1.innerText = 'Reseni Uloha 1 (Pepe s age)';
 ButtonR1.setAttribute('id', 'result-1');
-ButtonR1.addEventListener('click', sentence1);
+ButtonR1.addEventListener('click', sentence2);
 const results = document.querySelector('#results');
 tasks.appendChild(ButtonR1);
 
@@ -59,7 +63,7 @@ const FAHRENHEIT = 68;
 
 const FROMCELSIUSTOFAHRENHEIT = (CELSIUS) => {
   const TemperatureC = CELSIUS;
-  const ComputationCTO_F = TemperatureC * 9 / 5 + 32;
+  const ComputationCTOF = TemperatureC * 9 / 5 + 32;
   const result1 = `${TemperatureC}\xB0C is ${ComputationCTOF} in \xB0F.`;
     console.log(result1);
 };
