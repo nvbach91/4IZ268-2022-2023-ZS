@@ -31,12 +31,12 @@ const sentence1 = (Pepe) => {
 };
 sentence1(Pepe);
 
-const Button_R1 = document.createElement('button');
-Button_R1.innerText = 'Reseni Uloha 1 (Pepe s age)';
-Button_R1.setAttribute('id', 'result-1');
-Button_R1.addEventListener('click', sentence1);
+const ButtonR1 = document.createElement('button');
+ButtonR1.innerText = 'Reseni Uloha 1 (Pepe s age)';
+ButtonR1.setAttribute('id', 'result-1');
+ButtonR1.addEventListener('click', sentence1);
 const results = document.querySelector('#results');
-tasks.appendChild(Button_R1);
+tasks.appendChild(ButtonR1);
 
 /**
  * 2) WTF (wow, that's fun). Vypište na konzoli teplotu v Fahrenheiht, pokud znáte teplotu v Celsius, a také naopak. 
@@ -57,28 +57,28 @@ tasks.appendChild(Button2);
 const CELSIUS = 20;
 const FAHRENHEIT = 68;
 
-const FROM_CELSIUS_TO_FAHRENHEIT = (CELSIUS) => {
-  const Temperature_C = CELSIUS;
-  const Computation_C_TO_F = Temperature_C * 9 / 5 + 32;
-  const result1 = `${Temperature_C}\xB0C is ${Computation_C_TO_F} in \xB0F.`;
+const FROMCELSIUSTOFAHRENHEIT = (CELSIUS) => {
+  const TemperatureC = CELSIUS;
+  const ComputationCTO_F = TemperatureC * 9 / 5 + 32;
+  const result1 = `${TemperatureC}\xB0C is ${ComputationCTOF} in \xB0F.`;
     console.log(result1);
 };
-FROM_CELSIUS_TO_FAHRENHEIT(CELSIUS);
+FROMCELSIUSTOFAHRENHEIT(CELSIUS);
 
-const FROM_FAHRENHEIT_TO_CELSIUS = (FAHRENHEIT) => {
-  const Temperature_F = FAHRENHEIT;
-  const Computation_F_TO_C  = (Temperature_F - 32) * 5 / 9;
-  const result2 = `${Temperature_F}\xB0F is ${Computation_F_TO_C} in \xB0C.`;
+const FROMFAHRENHEITTOCELSIUS = (FAHRENHEIT) => {
+  const TemperatureF = FAHRENHEIT;
+  const ComputationFTOC  = (TemperatureF - 32) * 5 / 9;
+  const result2 = `${TemperatureF}\xB0F is ${ComputationFTOC} in \xB0C.`;
     console.log(result2);
 };
-FROM_FAHRENHEIT_TO_CELSIUS(FAHRENHEIT);
+FROMFAHRENHEITTOCELSIUS(FAHRENHEIT);
 
-const Button_R2 = document.createElement('button');
-Button_R2.innerText = 'Reseni Uloha 2 (WTF (wow, that is fun))';
-Button_R2.setAttribute('id', 'result-2');
-Button_R2.addEventListener('click', FROM_CELSIUS_TO_FAHRENHEIT);
-Button_R2.addEventListener('click', FROM_FAHRENHEIT_TO_CELSIUS);
-tasks.appendChild(Button_R2);
+const ButtonR2 = document.createElement('button');
+ButtonR2.innerText = 'Reseni Uloha 2 (WTF (wow, that is fun))';
+ButtonR2.setAttribute('id', 'result-2');
+ButtonR2.addEventListener('click', FROMCELSIUSTOFAHRENHEIT);
+ButtonR2.addEventListener('click', FROMFAHRENHEITTOCELSIUS);
+tasks.appendChild(ButtonR2);
 
 
 /**
@@ -142,20 +142,20 @@ sentence1(Gianna);
 
 const CELSIUS2 = 0;
 const FAHRENHEIT2 = 451;
-FROM_CELSIUS_TO_FAHRENHEIT(CELSIUS2);
-FROM_FAHRENHEIT_TO_CELSIUS(FAHRENHEIT2);
+FROMCELSIUSTOFAHRENHEIT(CELSIUS2);
+FROMFAHRENHEITTOCELSIUS(FAHRENHEIT2);
 const CELSIUS3 = 100;
 const FAHRENHEIT3 = -459;
-FROM_CELSIUS_TO_FAHRENHEIT(CELSIUS3);
-FROM_FAHRENHEIT_TO_CELSIUS(FAHRENHEIT3);
+FROMCELSIUSTOFAHRENHEIT(CELSIUS3);
+FROMFAHRENHEITTOCELSIUS(FAHRENHEIT3);
 
-const Button_R3 = document.createElement('button');
-Button_R3.innerText = 'Reseni Uloha 3 (Funkce function fonction funktio)';
-Button_R3.setAttribute('id', 'result-3');
-Button_R3.addEventListener('click', sentence1);
-Button_R3.addEventListener('click', FROM_CELSIUS_TO_FAHRENHEIT);
-Button_R3.addEventListener('click', FROM_FAHRENHEIT_TO_CELSIUS);
-tasks.appendChild(Button_R3);
+const ButtonR3 = document.createElement('button');
+ButtonR3.innerText = 'Reseni Uloha 3 (Funkce function fonction funktio)';
+ButtonR3.setAttribute('id', 'result-3');
+ButtonR3.addEventListener('click', sentence1);
+ButtonR3.addEventListener('click', FROMCELSIUSTOFAHRENHEIT);
+ButtonR3.addEventListener('click', FROMFAHRENHEITTOCELSIUS);
+tasks.appendChild(ButtonR3);
 
 /**
  * 4) %CENSORED%. Vytvořte funkci, která vezme 2 číselné argumenty a vrátí podíl prvního čísla a druhého čísla. 
@@ -179,20 +179,20 @@ const number_1 = 10;
 const number_2 = 100;     
 
 
-const PERCENTAGE_FROM = (number1, number2) => {
+const PERCENTAGeFROM = (number1, number2) => {
     const calculation1 = `${number1} is ${((number1/number2)*100).toFixed(2)}\u0025 from ${number2}`;
     console.log(calculation1);
 }
           
-PERCENTAGE_FROM(number_1, number_2);
+PERCENTAGeFROM(number_1, number_2);
 
 
 
-const Button_R4 = document.createElement('button');
-Button_R4.innerText = 'Reseni Uloha 4 (%CENSORED%)';
-Button_R4.setAttribute('id', 'result-4');
-Button_R4.addEventListener('click', PERCENTAGE_FROM);
-tasks.appendChild(Button_R4);
+const ButtonR4 = document.createElement('button');
+ButtonR4.innerText = 'Reseni Uloha 4 (%CENSORED%)';
+ButtonR4.setAttribute('id', 'result-4');
+ButtonR4.addEventListener('click', PERCENTAGe_FROM);
+tasks.appendChild(ButtonR4);
 /**
  * 5) Kdo s koho. Vytvořte funkci, která vezme 2 číselné argumenty a vypíše, který z nich je větší, do předem vytvořeného 
  * místa na stránce. Pokud se čísla rovnají, vypište, že se rovnají. 
@@ -216,7 +216,7 @@ const number_4 = 0.3;
 const number_5 = 2/10;
 const number_6 = 4/10;
 
-const BIGGER_OR_EQUAL = (number_1, number_2) => {  
+const BIGGERorEQUAL = (number_1, number_2) => {  
   bigger = 0;
     if (number_1 === number_2) {
     bigger = `The numbers are equal`;
@@ -230,24 +230,24 @@ const BIGGER_OR_EQUAL = (number_1, number_2) => {
   console.log(bigger);
 }
 
-BIGGER_OR_EQUAL(number_1, number_2);
-BIGGER_OR_EQUAL(number_2, number_1);
+BIGGERorEQUAL(number_1, number_2);
+BIGGERorEQUAL(number_2, number_1);
 
-BIGGER_OR_EQUAL(number_3, number_4);
-BIGGER_OR_EQUAL(number_4, number_3);
+BIGGERorEQUAL(number_3, number_4);
+BIGGERorEQUAL(number_4, number_3);
 
-BIGGER_OR_EQUAL(number_5, number_6);
-BIGGER_OR_EQUAL(number_6, number_5);
+BIGGERorEQUAL(number_5, number_6);
+BIGGERorEQUAL(number_6, number_5);
 
-BIGGER_OR_EQUAL(number_1, number_1);
-
-
+BIGGERorEQUAL(number_1, number_1);
 
 
-const Button_R5 = document.createElement('button');
-Button_R5.innerText = 'Reseni Uloha 5 (Kdo s koho)';
-Button_R5.setAttribute('id', 'result-5');
-Button_R5.addEventListener('click', BIGGER_OR_EQUAL);
+
+
+const ButtonR5 = document.createElement('button');
+ButtonR5.innerText = 'Reseni Uloha 5 (Kdo s koho)';
+ButtonR5.setAttribute('id', 'result-5');
+ButtonR5.addEventListener('click', BIGGERorEQUAL);
 tasks.appendChild(Button_R5);
 /**
  * 6) I can cleary see the pattern. Vytvořte funkci, která vypíše popořadě všechny násobky 13, které jsou menší 
@@ -270,7 +270,7 @@ tasks.appendChild(Button6);
 const number_7 = 13;
 const number_8 = 730;
 
-const MULTIPLES_WITH_LIMIT =(number_7, number_8) => {
+const MULTIPLESwithLIMIT =(number_7, number_8) => {
     const multiples = [0,];
     
     for(let i = number_7; i<= number_8; i= i+number_7){
@@ -279,14 +279,14 @@ const MULTIPLES_WITH_LIMIT =(number_7, number_8) => {
     console.log(multiples)
 };
 
-MULTIPLES_WITH_LIMIT(number_7,number_8);
+MULTIPLESwithLIMIT(number_7,number_8);
 
 
-const Button_R6 = document.createElement('button');
-Button_R6.innerText = 'Reseni Uloha 6';
-Button_R6.setAttribute('id', 'result-6');
-Button_R6.addEventListener('click', MULTIPLES_WITH_LIMIT);
-tasks.appendChild(Button_R6);
+const ButtonR6 = document.createElement('button');
+ButtonR6.innerText = 'Reseni Uloha 6';
+ButtonR6.setAttribute('id', 'result-6');
+ButtonR6.addEventListener('click', MULTIPLESwithLIMIT);
+tasks.appendChild(ButtonR6);
 
 
 /**
@@ -314,11 +314,11 @@ const volume = (rad) => {
 
 volume(rad);
 
-const Button_R7 = document.createElement('button');
-Button_R7.innerText = 'Reseni Uloha 7';
-Button_R7.setAttribute('id', 'result-7');
-Button_R7.addEventListener('click', volume);
-tasks.appendChild(Button_R7);
+const ButtonR7 = document.createElement('button');
+ButtonR7.innerText = 'Reseni Uloha 7';
+ButtonR7.setAttribute('id', 'result-7');
+ButtonR7.addEventListener('click', volume);
+tasks.appendChild(ButtonR7);
 
 
 /**
@@ -339,17 +339,17 @@ Button8.addEventListener('click', task8);
 tasks.appendChild(Button8);
 
 const height = 5;
-const volume_cone = (rad,height) => {
+const volumeCone = (rad,height) => {
     const volume3 = `The volume of cone with radius ${rad} and height of ${height} is ${(1/3)*Math.pow(rad,2)*Math.PI*height}`;
     console.log(volume3);
 };
-volume_cone(rad,height);
+volumeCone(rad,height);
 
-const Button_R8 = document.createElement('button');
-Button_R8.innerText = 'Reseni Uloha 8';
-Button_R8.setAttribute('id', 'result-8');
-Button_R8.addEventListener('click', volume_cone);
-tasks.appendChild(Button_R8);
+const ButtonR8 = document.createElement('button');
+ButtonR8.innerText = 'Reseni Uloha 8';
+ButtonR8.setAttribute('id', 'result-8');
+ButtonR8.addEventListener('click', volumeCone);
+tasks.appendChild(ButtonR8);
 
 /** 
  * 9) Not sure if triangle, or just some random values. Vytvořte funkci, která rozhodne, zda se z 
@@ -384,11 +384,11 @@ const sides = (a,b,c) => {
 
 console.log(sides(a,b,c))
 
-const Button_R9 = document.createElement('button');
-Button_R9.innerText = 'Reseni Uloha 9';
-Button_R9.setAttribute('id', 'result-9');
-Button_R9.addEventListener('click', sides);
-tasks.appendChild(Button_R9);
+const ButtonR9 = document.createElement('button');
+ButtonR9.innerText = 'Reseni Uloha 9';
+ButtonR9.setAttribute('id', 'result-9');
+ButtonR9.addEventListener('click', sides);
+tasks.appendChild(ButtonR9);
 
 
 /**
@@ -431,11 +431,11 @@ const heron = (a,b,c) => {
 console.log(heron(a,b,c));
 
 
-const Button_R10 = document.createElement('button');
-Button_R10.innerText = 'Reseni Uloha 10';
-Button_R10.setAttribute('id', 'result-10');
-Button_R10.addEventListener('click', heron);
-tasks.appendChild(Button_R10);
+const ButtonR10 = document.createElement('button');
+ButtonR10.innerText = 'Reseni Uloha 10';
+ButtonR10.setAttribute('id', 'result-10');
+ButtonR10.addEventListener('click', heron);
+tasks.appendChild(ButtonR10);
 
 
 
