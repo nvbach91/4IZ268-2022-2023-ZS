@@ -78,21 +78,21 @@ console.log('Ahoj světe');
 // Solution here
 
 function pepeAge(age) {
-    var pepeBirthDate = Date.parse(age);
-    var today = new Date();
-    var timeDiff = today-pepeBirthDate;
-    var result = Math.floor(timeDiff/(1000*60*60*24*365.25));
-    var pepeResult= ('Pepe is ' + result + ' years old.');
+    const pepeBirthDate = Date.parse(age);
+    const today = new Date();
+    const timeDiff = today-pepeBirthDate;
+    const result = Math.floor(timeDiff/(1000*60*60*24*365.25));
+    const pepeResult= ('Pepe is ' + result + ' years old.');
     console.log(pepeResult);
 };
 
 function celsiusConversion(celsiusInput) {
-    var celsiusOutput = (((celsiusInput*9/5)+32) + '°F');
+    const celsiusOutput = (((celsiusInput*9/5)+32) + '°F');
     console.log(celsiusOutput);
 };
 
 function fahrenheitConversion(fahrenheihtInput) {
-    var fahrenheihtOutput = (((fahrenheihtInput-32)*5/9) + '°C');
+    const fahrenheihtOutput = (((fahrenheihtInput-32)*5/9) + '°C');
     console.log(fahrenheihtOutput);
 };
 
@@ -107,7 +107,7 @@ function fahrenheitConversion(fahrenheihtInput) {
 // Solution here
 
 function ratio(x, y) {
-    var ratio = x/y;
+    const ratio = x/y;
     ratioResult = (ratio.toFixed(2)*100) + '%';
     if (y == 0) {
         document.getElementById('results').append("Cannot divide by zero! | ");
@@ -163,7 +163,7 @@ function timesThirteenTillSevenThirty() {
 // Solution here
 
 function areaOfCircle(r) {
-    area = Math.PI * r * r;
+    const area = Math.PI * r * r;
     document.getElementById('results').append(area.toFixed(2) + " | ");
 };
 
