@@ -84,17 +84,17 @@ function pepeAge(age) {
     const result = Math.floor(timeDiff/(1000*60*60*24*365.25));
     const pepeResult= ('Pepe is ' + result + ' years old.');
     console.log(pepeResult);
-};
+}
 
 function celsiusConversion(celsiusInput) {
     const celsiusOutput = (((celsiusInput*9/5)+32) + '°F');
     console.log(celsiusOutput);
-};
+}
 
 function fahrenheitConversion(fahrenheihtInput) {
     const fahrenheihtOutput = (((fahrenheihtInput-32)*5/9) + '°C');
     console.log(fahrenheihtOutput);
-};
+}
 
 /**
  * 4) %CENSORED%. Vytvořte funkci, která vezme 2 číselné argumenty a vrátí podíl prvního čísla a druhého čísla. 
@@ -108,13 +108,13 @@ function fahrenheitConversion(fahrenheihtInput) {
 
 function ratio(x, y) {
     const ratio = x/y;
-    ratioResult = (ratio.toFixed(2)*100) + '%';
+    const ratioResult = (ratio.toFixed(2)*100) + '%';
     if (y == 0) {
         document.getElementById('results').append("Cannot divide by zero! | ");
     } else {
         document.getElementById('results').append(ratioResult + ' | ');
-    };
-};
+    }
+}
 
 /**
  * 5) Kdo s koho. Vytvořte funkci, která vezme 2 číselné argumenty a vypíše, který z nich je větší, do předem vytvořeného 
@@ -135,8 +135,8 @@ function compare(x, y) {
         document.getElementById('results').append(x + ' < ' + y + ' | ');
     } else {
         document.getElementById('results').append("Not applicable! | ");
-    };
-};
+    }
+}
 
 /**
  * 6) I can cleary see the pattern. Vytvořte funkci, která vypíše popořadě všechny násobky 13, které jsou menší 
@@ -150,9 +150,9 @@ function timesThirteenTillSevenThirty() {
     document.getElementById('results').append("0");
     for (let i = 13; i < 730; i = i+13) {
         document.getElementById('results').append(", " + i);
-    };
+    }
     document.getElementById('results').append(" | ");
-};
+}
 
 /**
  * 7) Around and about. Vytvořte funkci, která vypočte obsah kružnice podle dodaného poloměru v argumentu. 
@@ -165,7 +165,7 @@ function timesThirteenTillSevenThirty() {
 function areaOfCircle(r) {
     const area = Math.PI * r * r;
     document.getElementById('results').append(area.toFixed(2) + " | ");
-};
+}
 
 /**
  * 8) Another dimension. Vytvořte funkci, která vypočte objem kuželu, pokud dostanete na argumentech výšku a poloměr. 
@@ -178,7 +178,7 @@ function areaOfCircle(r) {
 function volumeOfCone(h, r) {
     const volume = Math.PI * 1/3 * h * r * r;
     document.getElementById('results').append(volume.toFixed(2) + " | ");
-};
+}
 
 /** 
  * 9) Not sure if triangle, or just some random values. Vytvořte funkci, která rozhodne, zda se z 
@@ -195,8 +195,8 @@ function isTriangle(a, b, c) {
         document.getElementById('results').append("Possible triangle | ");
     } else {
         document.getElementById('results').append("Impossible triangle | ");
-    };
-};
+    }
+}
 
 /**
  * 10) Heroic performance. Vytvořte funkci, která vypočte a vypíše obsah trojúhelníka podle Heronova vzorce, 
@@ -221,10 +221,10 @@ function isTriangle(a, b, c) {
 
 function heronsFormula(a, b, c) {
     if (a + b > c && a + c > b && b + c > a) {
-        s = (a + b + c)/2
-        const area = Math.sqrt(s*(s-a)*(s-b)*(s-c))
+        const s = (a + b + c)/2;
+        const area = Math.sqrt(s*(s-a)*(s-b)*(s-c));
         document.getElementById('results').append(area.toFixed(2) + " | ");
     } else {
         document.getElementById('results').append("Invalid triangle | ");
-    };
-};
+    }
+}
