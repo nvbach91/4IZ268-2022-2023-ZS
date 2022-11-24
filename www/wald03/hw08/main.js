@@ -183,13 +183,18 @@ function dimension(height, radius) {
 
 
 function triangle(a, b, c) {
+     boolean = true;
     if (a + b > c && a + c > b && c + b > a) {
         console.log('A: ' + a + ' B: ' + b + " C: " + c);
-        return console.log("TRUE");
+        boolean = true;
+        console.log(boolean);
+        return boolean;
     }
     else {
         console.log('A: ' + a + ' B: ' + b + " C: " + c);
-        return console.log('FALSE');
+        boolean=false;
+        console.log(boolean);
+        return boolean;
     }
 }
 
