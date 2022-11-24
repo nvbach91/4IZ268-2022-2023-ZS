@@ -145,7 +145,7 @@ const whosIsBigger = (a, b) => {
 const buttonWhoIsBigger = document.createElement("button");
 buttonWhoIsBigger.innerText = "Uloha 5 (Kdo z koho)";
 buttonWhoIsBigger.setAttribute("id", "task-5");
-buttonWhoIsBigger.addEventListener("click", () => whosIsBigger(23, 21));
+buttonWhoIsBigger.addEventListener("click", () => whosIsBigger(1 / 5, 1 / 6));
 
 tasks.appendChild(buttonWhoIsBigger);
 
@@ -157,20 +157,20 @@ tasks.appendChild(buttonWhoIsBigger);
  */
 // Solution here
 
-const nasobkyTrinacti = () => {
-  const nasobky13 = document.createElement("div");
+const multiplesOfThirteen = () => {
+  const multiples13 = document.createElement("div");
   for (let i = 13; i < 730; i += 13) {
-    nasobky13.innerText += i + " ";
+    multiples13.innerText += i + " ";
   }
-  result.appendChild(nasobky13);
+  result.appendChild(multiples13);
 };
 
-const buttonNasobky13 = document.createElement("button");
-buttonNasobky13.innerText = "Úloha 6 (Násobky třinácti)";
-buttonNasobky13.setAttribute("id", "task-6");
-buttonNasobky13.addEventListener("click", () => nasobkyTrinacti());
+const buttonMultiples13 = document.createElement("button");
+buttonMultiples13.innerText = "Úloha 6 (Násobky třinácti)";
+buttonMultiples13.setAttribute("id", "task-6");
+buttonMultiples13.addEventListener("click", () => multiplesOfThirteen());
 
-tasks.appendChild(buttonNasobky13);
+tasks.appendChild(buttonMultiples13);
 /**
  * 7) Around and about. Vytvořte funkci, která vypočte obsah kružnice podle dodaného poloměru v argumentu.
  *
@@ -179,18 +179,18 @@ tasks.appendChild(buttonNasobky13);
  */
 // Solution here
 
-const obsahKruhu = (r) => {
-  const obsah = document.createElement("div");
-  obsah.innerText = 2 * Math.PI * r * r;
-  result.appendChild(obsah);
+const areaOfCircle = (r) => {
+  const area = document.createElement("div");
+  area.innerText = (2 * Math.PI * r * r).toFixed(2);
+  result.appendChild(area);
 };
 
-const buttonObsahKruhu = document.createElement("button");
-buttonObsahKruhu.innerText = "Úloha 7 (Obsah kruhu)";
-buttonObsahKruhu.setAttribute("id", "task-7");
-buttonObsahKruhu.addEventListener("click", () => obsahKruhu(10));
+const buttonAreaOfCircle = document.createElement("button");
+buttonAreaOfCircle.innerText = "Úloha 7 (Obsah kruhu)";
+buttonAreaOfCircle.setAttribute("id", "task-7");
+buttonAreaOfCircle.addEventListener("click", () => areaOfCircle(10));
 
-tasks.appendChild(buttonObsahKruhu);
+tasks.appendChild(buttonAreaOfCircle);
 /**
  * 8) Another dimension. Vytvořte funkci, která vypočte objem kuželu, pokud dostanete na argumentech výšku a poloměr.
  *
@@ -199,18 +199,18 @@ tasks.appendChild(buttonObsahKruhu);
  */
 // Solution here
 
-const objemKuzele = (v, r) => {
-  const objemKuzele = document.createElement("div");
-  objemKuzele.innerText = (1 / 3) * Math.PI * r * r * v;
-  result.appendChild(objemKuzele);
+const volumeOfCone = (v, r) => {
+  const volumeOfCone = document.createElement("div");
+  volumeOfCone.innerText = ((1 / 3) * Math.PI * r * r * v).toFixed(2);
+  result.appendChild(volumeOfCone);
 };
 
-const buttonObjemKuzele = document.createElement("button");
-buttonObjemKuzele.innerText = "Úloha 8 (Objem kužele)";
-buttonObjemKuzele.setAttribute("id", "task-8");
-buttonObjemKuzele.addEventListener("click", () => objemKuzele(10, 5));
+const buttonVolumeOfCone = document.createElement("button");
+buttonVolumeOfCone.innerText = "Úloha 8 (Objem kužele)";
+buttonVolumeOfCone.setAttribute("id", "task-8");
+buttonVolumeOfCone.addEventListener("click", () => volumeOfCone(10, 5));
 
-tasks.appendChild(buttonObjemKuzele);
+tasks.appendChild(buttonVolumeOfCone);
 
 /**
  * 9) Not sure if triangle, or just some random values. Vytvořte funkci, která rozhodne, zda se z
@@ -222,15 +222,15 @@ tasks.appendChild(buttonObjemKuzele);
  */
 // Solution here
 
-const triangle = (a, b, c) => {
-  const triangle = document.createElement("div");
-  result.appendChild(triangle);
+const isTriangle = (a, b, c) => {
+  const isTriangle = document.createElement("div");
+  result.appendChild(isTriangle);
   if (a + b > c && a + c > b && b + c > a) {
-    triangle.innerText = `a=${a}, b=${b}, c=${c} = Ano`;
+    isTriangle.innerText = `a=${a}, b=${b}, c=${c} = Ano`;
     console.log(true);
     return true;
   } else {
-    triangle.innerText = `a=${a}, b=${b}, c=${c} = Ne`;
+    isTriangle.innerText = `a=${a}, b=${b}, c=${c} = Ne`;
     console.log(false);
     return false;
   }
@@ -239,7 +239,7 @@ const triangle = (a, b, c) => {
 const buttonTriangle = document.createElement("button");
 buttonTriangle.innerText = "Úloha 9 (Not sure if triangle)";
 buttonTriangle.setAttribute("id", "task-9");
-buttonTriangle.addEventListener("click", () => triangle(10, 10, 5));
+buttonTriangle.addEventListener("click", () => isTriangle(10, 10, 5));
 
 tasks.appendChild(buttonTriangle);
 
@@ -264,25 +264,24 @@ tasks.appendChild(buttonTriangle);
 // - krok 4 - tlačítko umístěte na stránku
 // - krok 5 - otestujte řešení klikáním na tlačítko
 
-const obsahTrojuhelniku = (a, b, c) => {
-  const obsahTrojuhelniku = document.createElement("div");
-  if (triangle(a, b, c)) {
+const areaOfTriangle = (a, b, c) => {
+  const areaOfTriangle = document.createElement("div");
+  if (isTriangle(a, b, c)) {
     const s = (a + b + c) / 2;
-    obsahTrojuhelniku.innerText =
-      "Obsah trojúhelníku = " + Math.sqrt(s * (s - a) * (s - b) * (s - c));
-    result.appendChild(obsahTrojuhelniku);
+    areaOfTriangle.innerText =
+      "Obsah trojúhelníku = " +
+      Math.sqrt(s * (s - a) * (s - b) * (s - c)).toFixed(2);
+    result.appendChild(areaOfTriangle);
   } else {
-    obsahTrojuhelniku.innerText =
+    areaOfTriangle.innerText =
       "Nejedná se o trojúhelník, nemá to cenu počítat!";
   }
-  result.appendChild(obsahTrojuhelniku);
+  result.appendChild(areaOfTriangle);
 };
 
-const buttonObsahTrojuhelniku = document.createElement("button");
-buttonObsahTrojuhelniku.innerText = "Úloha 10 (Heroic performance)";
-buttonObsahTrojuhelniku.setAttribute("id", "task-10");
-buttonObsahTrojuhelniku.addEventListener("click", () =>
-  obsahTrojuhelniku(10, 10, 5)
-);
+const buttonAreaOfTriangle = document.createElement("button");
+buttonAreaOfTriangle.innerText = "Úloha 10 (Heroic performance)";
+buttonAreaOfTriangle.setAttribute("id", "task-10");
+buttonAreaOfTriangle.addEventListener("click", () => areaOfTriangle(10, 10, 5));
 
-tasks.appendChild(buttonObsahTrojuhelniku);
+tasks.appendChild(buttonAreaOfTriangle);
