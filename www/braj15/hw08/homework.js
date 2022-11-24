@@ -10,7 +10,7 @@
  */
 
 const greeting = () => {
-    console.log('Ahoj světe');
+    console.log('Hello world');
 }
 
 
@@ -30,14 +30,14 @@ tasks.appendChild(buttonGreeting);
  */
 // Solution here
 
-const pepuvVek = (vek) => {
+const pepesAge = (vek) => {
     console.log(`Pepovi je ${vek} let.`)
 }
 
 const buttonAge = document.createElement('button');
-buttonAge.innerText = 'Jaky je Pepuv vek?';
+buttonAge.innerText = 'What is Pepes age?';
 buttonAge.setAttribute('id', 'task-1');
-buttonAge.addEventListener('click', () => pepuvVek(15));
+buttonAge.addEventListener('click', () => pepesAge(15));
 tasks.appendChild(buttonAge);
 
 
@@ -52,17 +52,17 @@ tasks.appendChild(buttonAge);
  */
 // Solution here
 
-const prevod = (teplotaC, teplotaF) => {
-    const prevedenoNaC = ((teplotaF - 32)*5)/9;
-    const prevedenoNaF = ((teplotaC*9)/5)+32;
-    console.log(`teplota prevedena na C: ${prevedenoNaC} a teplota prevedena na F: ${prevedenoNaF}`)
+const unitTransfer = (temperatureC, temperatureF) => {
+    const transferToC = ((temperatureF - 32)*5)/9;
+    const transferToF = ((temperatureC*9)/5)+32;
+    console.log(`teplota prevedena na C: ${transferToC} a teplota prevedena na F: ${transferToF}`)
 }
 
-const buttonPrevodTeploty = document.createElement('button');
-buttonPrevodTeploty.innerText = 'Prevod teploty';
-buttonPrevodTeploty.setAttribute('id', 'task-2');
-buttonPrevodTeploty.addEventListener('click', () => prevod(15,18));
-tasks.appendChild(buttonPrevodTeploty);
+const buttonunitTransferTeploty = document.createElement('button');
+buttonunitTransferTeploty.innerText = 'unitTransfer';
+buttonunitTransferTeploty.setAttribute('id', 'task-2');
+buttonunitTransferTeploty.addEventListener('click', () => unitTransfer(15,18));
+tasks.appendChild(buttonunitTransferTeploty);
 
 
 
@@ -122,25 +122,25 @@ const results = document.querySelector('#results');
 
 const censored = (x,y) => {
     if (y !== 0) {
-        const vysledek = (x/y)*100;
-        const vysledekDeleni = document.createElement('div')
-        vysledekDeleni.innerText = `${vysledek.toFixed(2)}%`;
-        vysledekDeleni.setAttribute('id', 'result-4');
-        results.appendChild(vysledekDeleni);
+        const result = (x/y)*100;
+        const resultDivide = document.createElement('div')
+        resultDivide.innerText = `${result.toFixed(2)}%`;
+        resultDivide.setAttribute('id', 'result-4');
+        results.appendChild(resultDivide);
     } 
     else {
-        const vysledekDeleni = document.createElement('div')
-        vysledekDeleni.innerText = 'Deleni';
-        vysledekDeleni.setAttribute('id', 'result-4');
-        results.appendChild(vysledekDeleni);
+        const resultDivide = document.createElement('div')
+        resultDivide.innerText = 'Deleni';
+        resultDivide.setAttribute('id', 'result-4');
+        results.appendChild(resultDivide);
     }
 }
 
-const buttonDeleni = document.createElement('button');
-buttonDeleni.innerText = 'Deleni';
-buttonDeleni.setAttribute('id', 'task-3');
-buttonDeleni.addEventListener('click', () => censored(21,42));
-tasks.appendChild(buttonDeleni);
+const buttonDivide = document.createElement('button');
+buttonDivide.innerText = 'Deleni';
+buttonDivide.setAttribute('id', 'task-3');
+buttonDivide.addEventListener('click', () => censored(21,42));
+tasks.appendChild(buttonDivide);
 
 
 
@@ -154,28 +154,28 @@ tasks.appendChild(buttonDeleni);
  */
 // Solution here
 
-const kdoSKoho = (x,y) => {
-    let kdo = "";
+const whoIsBigger = (x,y) => {
+    let who = "";
     if (x > y){
-        kdo = `${x} je vetší než ${y}`;
+        who = `${x} je vetší než ${y}`;
     }
     else if (x<y){
-        kdo = `${y} je vetší než ${x}`;
+        who = `${y} je vetší než ${x}`;
     }
     else {
-        kdo = `čísla ${x} a ${y} jsou stejně velká `;
+        who = `čísla ${x} a ${y} jsou stejně velká `;
     }
-    const kdoVyhral = document.createElement('div')
-    kdoVyhral.innerText = kdo;
-    kdoVyhral.setAttribute('id', 'result-4');
-    results.appendChild(kdoVyhral);
+    const whoWon = document.createElement('div')
+    whoWon.innerText = who;
+    whoWon.setAttribute('id', 'result-4');
+    results.appendChild(whoWon);
 }
 
-const buttonKdoVyhral = document.createElement('button');
-buttonKdoVyhral.innerText = 'Kdo s koho';
-buttonKdoVyhral.setAttribute('id', 'task-3');
-buttonKdoVyhral.addEventListener('click', () => kdoSKoho(21,42));
-tasks.appendChild(buttonKdoVyhral);
+const buttonWhoWon = document.createElement('button');
+buttonWhoWon.innerText = 'Kdo s koho';
+buttonWhoWon.setAttribute('id', 'task-3');
+buttonWhoWon.addEventListener('click', () => whoIsBigger(21,42));
+tasks.appendChild(buttonWhoWon);
 
 
 
@@ -188,67 +188,67 @@ tasks.appendChild(buttonKdoVyhral);
  */
 // Solution here
 
-const nasobky = () => {   
-    const nasobky13 = document.createElement('div')
+const multiply = () => {   
+    const multipliedContainer = document.createElement('div')
     for (let i = 0; i < 730; i+=13) {      
-        nasobky13.innerText += `${i} `;       
+        multipliedContainer.innerText += `${i} `;       
     }
     
-    nasobky13.setAttribute('id', 'result-4');
-    results.appendChild(nasobky13);   
+    multipliedContainer.setAttribute('id', 'result-4');
+    results.appendChild(multipliedContainer);   
 }
 
-const buttonSpustNasobeni = document.createElement('button');
-buttonSpustNasobeni.innerText = 'Násobky 13';
-buttonSpustNasobeni.setAttribute('id', 'task-4');
-buttonSpustNasobeni.addEventListener('click', () => nasobky());
-tasks.appendChild(buttonSpustNasobeni);
+const buttonStartMultiply = document.createElement('button');
+buttonStartMultiply.innerText = 'Násobky 13';
+buttonStartMultiply.setAttribute('id', 'task-4');
+buttonStartMultiply.addEventListener('click', () => multiply());
+tasks.appendChild(buttonStartMultiply);
 
 
 
 
 
 /**
- * 7) Around and about. Vytvořte funkci, která vypočte obsah kružnice podle dodaného poloměru v argumentu. 
+ * 7) Around and about. Vytvořte funkci, která vypočte content kružnice podle dodaného poloměru v argumentu. 
  *
  * Pro testování vytvořte tlačítko s touto funkcí podle pokynu v úloze č. 3. Argumenty pro volání funkce zadávejte 
  * staticky.
  */
 // Solution here
 
-const obsah = (r) => {
-    const obsahKruznice = 2*3.14*r*r;
-    console.log(obsahKruznice);
-    return obsahKruznice;
+const content = (r) => {
+    const contentcircle = 2*3.14*r*r;
+    console.log(contentcircle);
+    return contentcircle;
 }
 
-const buttonObsahKruhu = document.createElement('button');
-buttonObsahKruhu.innerText = 'Obsah kruhu';
-buttonObsahKruhu.setAttribute('id', 'task-4');
-buttonObsahKruhu.addEventListener('click', () => obsah(10));
-tasks.appendChild(buttonObsahKruhu);
+const buttonContentCircle = document.createElement('button');
+buttonContentCircle.innerText = 'content kruhu';
+buttonContentCircle.setAttribute('id', 'task-4');
+buttonContentCircle.addEventListener('click', () => content(10));
+tasks.appendChild(buttonContentCircle);
 
 
 
 
 /**
- * 8) Another dimension. Vytvořte funkci, která vypočte objem kuželu, pokud dostanete na argumentech výšku a poloměr. 
+ * 8) Another dimension. Vytvořte funkci, která vypočte objem coneVolume, pokud dostanete na argumentech výšku a poloměr. 
  * 
  * Pro testování vytvořte tlačítko s touto funkcí podle pokynu v úloze č. 3. Argumenty pro volání funkce zadávejte 
  * staticky.
  */
 // Solution here
 
-const kuželu = (v,r) => {
+const coneVolume = (v,r) => {
     const objemKuzelu = (2*3.14*r*r*v)/3
     console.log(objemKuzelu);
 }
 
-const buttonObjemKuzelu = document.createElement('button');
-buttonObjemKuzelu.innerText = 'Objem kužele';
-buttonObjemKuzelu.setAttribute('id', 'task-4');
-buttonObjemKuzelu.addEventListener('click', () => kuželu(10,10));
-tasks.appendChild(buttonObjemKuzelu);
+const buttonConeVolume = document.createElement('button');
+buttonConeVolume.innerText = 'Objem kužele';
+buttonConeVolume.setAttribute('id', 'task-4');
+buttonConeVolume.addEventListener('click', () => coneVolume(10,10));
+tasks.appendChild(buttonConeVolume);
 
 
 
@@ -263,7 +263,7 @@ tasks.appendChild(buttonObjemKuzelu);
  */
 // Solution here
 
-const notSureIfTriangle = (a,b,c) => {
+const isTriangle = (a,b,c) => {
     if ((a+b)>=c && (a+c)>=b && (b+c)>=a) {
         console.log(true);
         return true;
@@ -275,16 +275,16 @@ const notSureIfTriangle = (a,b,c) => {
     
 }
 
-const buttonNotSureIfTriangle = document.createElement('button');
-buttonNotSureIfTriangle.innerText = 'notSureIfTriangle';
-buttonNotSureIfTriangle.setAttribute('id', 'task-4');
-buttonNotSureIfTriangle.addEventListener('click', () => notSureIfTriangle(10,10,10));
-tasks.appendChild(buttonNotSureIfTriangle);
+const buttonIsTriangle = document.createElement('button');
+buttonIsTriangle.innerText = 'isTriangle';
+buttonIsTriangle.setAttribute('id', 'task-4');
+buttonIsTriangle.addEventListener('click', () => isTriangle(10,10,10));
+tasks.appendChild(buttonIsTriangle);
 
 
 
 /**
- * 10) Heroic performance. Vytvořte funkci, která vypočte a vypíše obsah trojúhelníka podle Heronova vzorce, 
+ * 10) Heroic performance. Vytvořte funkci, která vypočte a vypíše content trojúhelníka podle Heronova vzorce, 
  * tj. funkce dostane délky všech 3 stran. Použijte přitom předchozí validaci v úloze č. 9, tj. počítejte pouze, 
  * když to má smysl. Hint: funkce pro odmocninu je Math.sqrt().
  * 
@@ -297,7 +297,7 @@ tasks.appendChild(buttonNotSureIfTriangle);
 //   - krok 1.2 - zvalidujte vstupní argumenty pomocí funkce z úlohy č. 9
 //     - v případě nevalidních hodnot vypište chybovou hlášku na místo pro výpis výsledků a funkci ukončete
 //     - v případě validních hodnot pokračujte s výpočtem
-//   - krok 1.3 - spočítejte obsah trojúhelníku podle Heronovy vzorce a výsledek uložte do proměnné
+//   - krok 1.3 - spočítejte content trojúhelníku podle Heronovy vzorce a výsledek uložte do proměnné
 //   - krok 1.4 - vypište výsledek na místo pro výpis výsledků
 // - krok 2 - vytvořte tlačítko
 // - krok 3 - nabindujte na toto tlačítko callback, ve kterém zavoláte implementovanou funkci pro výpočet a výpis výsledků
@@ -306,19 +306,19 @@ tasks.appendChild(buttonNotSureIfTriangle);
 
 
 const heroicPerformance = (a,b,c) => {
-    let obsahVzorec = "";
-    if (notSureIfTriangle(a,b,c)) {
+    let contentFormula = "";
+    if (isTriangle(a,b,c)) {
         const s = (a+b+c)/2;
-        obsahVzorec = Math.sqrt(s*(s-a)*(s-b)*(s-c));
-        console.log(obsahVzorec);
+        contentFormula = Math.sqrt(s*(s-a)*(s-b)*(s-c));
+        console.log(contentFormula);
     }
     else {
         console.log("nejedná se o trojuhelnik a nema cenu pocitat")
     }
-    const obsahHeron = document.createElement('div')
-    obsahHeron.innerText = obsahVzorec;
-    obsahHeron.setAttribute('id', 'result-10');
-    results.appendChild(obsahHeron);
+    const contentHeron = document.createElement('div')
+    contentHeron.innerText = contentFormula;
+    contentHeron.setAttribute('id', 'result-10');
+    results.appendChild(contentHeron);
 }
 
 const buttonHeroicPerformance = document.createElement('button');
