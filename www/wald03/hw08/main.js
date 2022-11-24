@@ -20,7 +20,7 @@ console.log('Ahoj světe.');
 const ageOfBirth = 1988;
 const name = "Pepe";
 const currentYear = new Date().getFullYear();
-age = currentYear - ageOfBirth;
+const age = currentYear - ageOfBirth;
 console.log(name + 'is' + age + 'years old');
 
 
@@ -183,7 +183,7 @@ function dimension(height, radius) {
 
 
 function triangle(a, b, c) {
-     boolean = true;
+    let boolean = true;
     if (a + b > c && a + c > b && c + b > a) {
         console.log('A: ' + a + ' B: ' + b + " C: " + c);
         boolean = true;
