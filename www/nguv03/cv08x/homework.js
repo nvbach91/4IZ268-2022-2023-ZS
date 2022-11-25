@@ -2,8 +2,8 @@
 /**
  * 0) Pre-preparacion.
  * - Vytvořte HTML stránku s nadpisem h1 "JavaScript is awesome!" 
- * - Na stránce vytvořte místo pro umístění jednotlivých spouštěčů úkolů - tlačítek (tj. div, který má id s hodnotou "task-buttons"). 
- * - Na stránce vytvořte místo pro výpis výsledků úkolů (div, který má id s hodnotou "result").
+ * - Na stránce vytvořte místo pro umístění jednotlivých spouštěčů úkolů - tlačítek (tj. div, který má id s hodnotou "tasks" - <div id="tasks"></div>). 
+ * - Na stránce vytvořte místo pro výpis výsledků úkolů (div, který má id s hodnotou "result" - <div id="results"></div>).
  * 
  * - Připojte tento homework.js soubor k vytvořené HTML stránce pomocí tagu <script> (viz LAB) a vyzkoušejte
  * console.log('Ahoj světe');
@@ -44,7 +44,29 @@
  * místa <div id="tasks"></div> a pomocí posluchače události "click" nabindujte implementovanou funkci na toto tlačítko.
  * 
  * Výsledkem má být tlačítko, na které když kliknete, tak se provede to, co je implementováno ve funkci.
+ *
+ * Příklad vytvoření tlačítka s funkcí:
  * 
+ * // deklarace a implementace funkce
+ * const sayHello = () => {
+ *   console.log('Hello');
+ * };
+ * 
+ * // vytvoření tlačítka
+ * const buttonSayHello = document.createElement('button');
+ * // nastavení textu tlačítka
+ * buttonSayHello.innerText = 'Say Hello';
+ * // nastavení atributu id tlačítka
+ * buttonSayHello.setAttribute('id', 'task-0');
+ * // nabindování funkce na událost click tlačítka
+ * buttonSayHello.addEventListener('click', () => {
+ *   sayHello();
+ * });
+ * 
+ * // výběr existujícího elementu na stránce s id="tasks"
+ * const tasks = document.querySelector('#tasks');
+ * // vložení vytvořeného tlačítka do vybraného elementu na stránce
+ * tasks.appendChild(buttonSayHello);
  */
 // Solution here
 

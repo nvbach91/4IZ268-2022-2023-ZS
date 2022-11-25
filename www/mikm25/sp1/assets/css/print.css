@@ -1,0 +1,49 @@
+/*MAIN*/
+
+#main {
+    display: block;
+}
+
+/*SIDE-NAV*/
+
+#side-nav {
+    display: none;
+}
+
+/*MAIN-HEADER*/
+
+#main-header {
+    display: none;
+}
+
+/*BREADCRUMBS*/
+
+#breadcrumbs {
+    display: none;
+}
+
+/*FOOTER*/
+
+#footer {
+    display: none;
+}
+
+/*FW-HEADER*/
+
+.fw-header {
+    border: 1px solid black;
+}
+
+.fw-header .fw-title .fw-pills, .fw-header .fw-logo {
+    display: none;
+}
+
+/*TABLES*/
+
+.table-wrapper {
+    border: 1px solid black;
+}
+
+.table-wrapper table {
+    page-break-inside: avoid;
+}

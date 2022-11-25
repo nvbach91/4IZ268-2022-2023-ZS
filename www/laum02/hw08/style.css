@@ -1,0 +1,8 @@
+#tasks, #results {
+    display: flex;
+    flex-direction: column;
+}
+
+#tasks > button {
+    max-width: 400px;
+}
