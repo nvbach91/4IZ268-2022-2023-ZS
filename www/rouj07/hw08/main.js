@@ -91,16 +91,18 @@ function temperatureConversion(celsius, fahrenheit) {
  */
 // Solution here
 
+const output = document.getElementById('results');
+
 function divide(a, b) {
     if (b === 0) {
         const result = 'Nulou nelze dělit';
-        document.getElementById('results').append(result);
+        output.append(result);
     }
-    else{
+    else {
         const result = b / (a / 100);
-        document.getElementById('results').append(b + ' je ' + result.toFixed(2) + '% z ' + a);
+        output.append(b + ' je ' + result.toFixed(2) + '% z ' + a);
     }
-} 
+}
 
 
 /**
@@ -114,14 +116,14 @@ function divide(a, b) {
 // Solution here
 
 function comparison(x, y) {
-    if(x > y){
-        document.getElementById('results').append('x = ' + x + ', y = ' + y + '. Větší je ' + x);
+    if (x > y) {
+        output.append('x = ' + x + ', y = ' + y + '. Větší je ' + x);
     }
-    if(x < y){
-        document.getElementById('results').append('x = ' + x + ', y = ' + y + '. Větší je ' + y);
+    if (x < y) {
+        output.append('x = ' + x + ', y = ' + y + '. Větší je ' + y);
     }
-    if(x == y){
-        document.getElementById('results').append('x = ' + x + ', y = ' + y + '. Čísla se rovnají');
+    if (x == y) {
+        output.append('x = ' + x + ', y = ' + y + '. Čísla se rovnají');
     }
 }
 
@@ -135,9 +137,9 @@ function comparison(x, y) {
  */
 // Solution here
 
-function pattern(){
-    for(let i = 0; i <= 730; i += 13 ){
-        document.getElementById('results').append(i + ', ');
+function pattern() {
+    for (let i = 0; i <= 730; i += 13) {
+        output.append(i + ', ');
     }
 }
 
@@ -151,10 +153,10 @@ function pattern(){
  */
 // Solution here
 
- function circle(radius){
+function circle(radius) {
     const result = (Math.PI * (radius * radius)).toFixed(2);
-    document.getElementById('results').append("Obsah kružnice je " + result);
- }
+    output.append("Obsah kružnice je " + result);
+}
 
 
 
@@ -166,9 +168,9 @@ function pattern(){
  */
 // Solution here
 
-function cone(height, radius){
-    const result = (1/3 * Math.PI * radius * radius * height).toFixed(2);
-    document.getElementById('results').append("Objem kuželu je " + result);
+function calculateConeVolume(height, radius) {
+    const result = (1 / 3 * Math.PI * radius * radius * height).toFixed(2);
+    output.append("Objem kuželu je " + result);
 }
 
 
@@ -183,15 +185,16 @@ function cone(height, radius){
  */
 // Solution here
 
-function triangle(a, b, c){
+function isTriangle(a, b, c) {
     let result = true;
-    if(a + b > c && b + c > a && c + a > b){
+    if (a + b > c && b + c > a && c + a > b) {
         result = true;
+        return output.append('a = ' + a + ', b = ' + b + ', c = ' + c + ', výsledek je ' + result);
     }
-    else{
+    else {
         result = false;
+        return output.append('a = ' + a + ', b = ' + b + ', c = ' + c + ', výsledek je ' + result);
     }
-    document.getElementById('results').append('a = ' + a + ', b = ' + b + ', c = ' + c + ', výsledek je ' + result);
 }
 
 
@@ -217,14 +220,14 @@ function triangle(a, b, c){
 // - krok 4 - tlačítko umístěte na stránku
 // - krok 5 - otestujte řešení klikáním na tlačítko
 
-function heron(a, b, c){
-    if(a + b > c && b + c > a && c + a > b){
+function heron(a, b, c) {
+    if (a + b > c && b + c > a && c + a > b) {
         const s = (a + b + c) / 2;
         const result = Math.sqrt(s * (s - a) * (s - b) * (s - c)).toFixed(2);
-        document.getElementById('results').append('Obsah trojúhelníka s použitím Heronova vzorce je ' + result);
+        output.append('Obsah trojúhelníka s použitím Heronova vzorce je ' + result);
     }
-    else{
-        document.getElementById('results').append('Trojúhelník nelze sestrojit');
+    else {
+        output.append('Trojúhelník nelze sestrojit');
     }
-    
+
 }
