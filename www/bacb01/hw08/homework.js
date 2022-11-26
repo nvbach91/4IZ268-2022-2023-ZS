@@ -157,18 +157,19 @@ function volumeCone (v, r) {
  */
 // Solution here
 function triangle (x, y, z) {
+    
     if (x > y + z) {
         document.getElementById('result8').append(`False`);
-        return 'False';
+        return false;
     } else if (y > x + z) {
         document.getElementById('result8').append(`False`);
-        return 'False';
+        return false;
     } else if (z > x + y) {
         document.getElementById('result8').append(`False`);
-        return 'False';
+        return false;
     } else {
         document.getElementById('result8').append(`True`);
-        return 'True';
+        return true;
     };
 };
 
