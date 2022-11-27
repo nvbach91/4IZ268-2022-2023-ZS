@@ -16,9 +16,9 @@ console.log('Ahoj světe');
  * používejte smysluplnou angličtinu.
  */
 // Solution here
-const birth_year = 2000;
-const actual_year = new Date().getFullYear();
-console.log('Pepovi je momentálně ' + (actual_year - birth_year) + ' let.');
+const birthYear = 2000;
+const actualYear = new Date().getFullYear();
+console.log('Pepovi je momentálně ' + (actualYear - birthYear) + ' let.');
 
 /**
  * 2) WTF (wow, that's fun). Vypište na konzoli teplotu v Fahrenheiht, pokud znáte teplotu v Celsius, a také naopak. 
@@ -27,10 +27,10 @@ console.log('Pepovi je momentálně ' + (actual_year - birth_year) + ' let.');
  *     z F na C: odečíst 32, vynásobit 5 a vydělit 9. 
  */
 // Solution here
-const temperature_c = 20;
-const temperature_f = 68;
-console.log('20°C = ' + (((temperature_c*9)/5)+32) + '°F');
-console.log('68°F = ' + (((temperature_f-32)*5)/9) + '°C');
+const temperatureC = 20;
+const temperatureF = 68;
+console.log('20°C = ' + (((temperatureC * 9) / 5) + 32) + '°F');
+console.log('68°F = ' + (((temperatureF - 32) * 5) / 9) + '°C');
 
 /**
  * 3) Funkce function fonction funktio. Vemte předchozí úlohy a udělejte z nich funkce. Tj. vytvoříte funkce, 
@@ -46,15 +46,15 @@ console.log('68°F = ' + (((temperature_f-32)*5)/9) + '°C');
  * 
  */
 // Solution here
-function Pepe(birth_year){
-    console.log('Pepovi je momentálně ' + (actual_year - birth_year) + ' let.');
+function Pepe(birthYear) {
+    console.log('Pepovi je momentálně ' + (actualYear - birthYear) + ' let.');
 }
-function temperature_conversion(temperature, what){
-    if(what==='C'){
-        console.log( temperature + '°C = ' + (((temperature*9)/5)+32) + '°F');
+function temperatureConversion(temperature, what) {
+    if (what === 'C') {
+        console.log(temperature + '°C = ' + (((temperature * 9) / 5) + 32) + '°F');
     }
-    if(what==='F'){
-        console.log( temperature + '°F = ' + (((temperature-32)*5)/9) + '°C');
+    if (what === 'F') {
+        console.log(temperature + '°F = ' + (((temperature - 32) * 5) / 9) + '°C');
     }
 }
 
@@ -67,13 +67,15 @@ function temperature_conversion(temperature, what){
  * Pro testování vytvořte tlačítko s touto funkcí podle pokynu v úloze č. 3
  */
 // Solution here
-function divide(x, y){
-    if(y>0){
-        const result = (x/((y/100).toFixed(2)));
-        document.getElementById('result').append(x + ' je ' + result + '%' + ' z ' + y +' | ');
-    }else{
+const resultDisplay = document.getElementById('result');
+
+function divide(x, y) {
+    if (y > 0) {
+        const result = (x / ((y / 100).toFixed(2)));
+        resultDisplay.append(x + ' je ' + result + '%' + ' z ' + y + ' | ');
+    } else {
         const result = 'nelze dělit nulou!!';
-        document.getElementById('result').append(result + ' | ');
+        resultDisplay.append(result + ' | ');
     }
 }
 
@@ -86,15 +88,15 @@ function divide(x, y){
  * úloze č. 3. Argumenty pro volání funkce zadávejte staticky.
  */
 // Solution here
-function compare(x,y){
-    if(x>y){
-        document.getElementById('result').append(x + ' > ' + y + ' | ') ;
+function compare(x, y) {
+    if (x > y) {
+        resultDisplay.append(x + ' > ' + y + ' | ');
     }
-    if(x<y){
-        document.getElementById('result').append(x + ' < ' + y + ' | ');
+    if (x < y) {
+        resultDisplay.append(x + ' < ' + y + ' | ');
     }
-    if(x==y){
-        document.getElementById('result').append(x + ' = ' + y + ' | ');
+    if (x == y) {
+        resultDisplay.append(x + ' = ' + y + ' | ');
     }
 }
 
@@ -105,11 +107,11 @@ function compare(x,y){
  * Pro testování vytvořte tlačítko s touto funkcí podle pokynu v úloze č. 3.
  */
 // Solution here
-function multiple(){
-    for(var i = 0; i*13<=730; i++){
-        document.getElementById('result').append(i*13 + ' , ');
+function multiple() {
+    for (var i = 0; i * 13 <= 730; i++) {
+        resultDisplay.append(i * 13 + ' , ');
     };
-    document.getElementById('result').append(' | ');
+    resultDisplay.append(' | ');
 }
 
 /**
@@ -119,9 +121,9 @@ function multiple(){
  * staticky.
  */
 // Solution here
-function area(radius){
+function area(radius) {
     const result = Math.PI * (radius * radius);
-    document.getElementById('result').append(result + ' | ');
+    resultDisplay.append(result + ' | ');
 }
 
 /**
@@ -131,9 +133,9 @@ function area(radius){
  * staticky.
  */
 // Solution here
-function volume(height, radius){
-    const result = ((1/3)*(Math.PI * (radius * radius) * height));
-    document.getElementById('result').append(result + ' | ');
+function volume(height, radius) {
+    const result = ((1 / 3) * (Math.PI * (radius * radius) * height));
+    resultDisplay.append(result + ' | ');
 }
 
 /** 
@@ -145,14 +147,14 @@ function volume(height, radius){
  * staticky.
  */
 // Solution here
-function triangle(a, b, c){
+function isTriangle(a, b, c) {
     var result = true;
-    if(a+b > c && a+c > b && b+c > a){
+    if (a + b > c && a + c > b && b + c > a) {
         result = true;
-    }else{
+    } else {
         result = false;
     }
-    document.getElementById('result').append('strana a: '+ a + ' strana b: '+ b +' strana c: '+ c + ' => trojúhelník lze sestrojit = ' + result);
+    resultDisplay.append('strana a: ' + a + ' strana b: ' + b + ' strana c: ' + c + ' => trojúhelník lze sestrojit = ' + result);
 }
 
 /**
@@ -176,15 +178,15 @@ function triangle(a, b, c){
 // - krok 4 - tlačítko umístěte na stránku
 // - krok 5 - otestujte řešení klikáním na tlačítko
 
-function triangle_area(a,b,c){
+function triangleArea(a, b, c) {
     if (a + b > c && a + c > b && c + b > a) {
-        const s = (a+b+c)/2;
-        const S = Math.sqrt(s*(s-a)*(s-b)*(s-c));
-        document.getElementById("result").append('Obsah trojúhelníka je: ' + S + ' | '); 
-  }
-  else {
-    console.log('A: ' + a + ' B: ' + b + " C: " + c);
-    document.getElementById("result").append('Trojúhelník nezle setrojit' + ' | '); 
-}
+        const s = (a + b + c) / 2;
+        const S = Math.sqrt(s * (s - a) * (s - b) * (s - c));
+        resultDisplay.append('Obsah trojúhelníka je: ' + S + ' | ');
+    }
+    else {
+        console.log('A: ' + a + ' B: ' + b + " C: " + c);
+        resultDisplay.append('Trojúhelník nezle setrojit' + ' | ');
+    }
 }
 
