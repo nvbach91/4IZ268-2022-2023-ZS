@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Long live SPARTA!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/main.css" />
+</head>
+
+<body>
+    <header></header>
+    <h1>Caesar cipher</h1>
+    <section>
+        <div class="crypting">
+            <h2>Encrypt</h2>
+            <div class="crypting-content">
+                <form id="encrypt-form">
+                    <div class="form-field">
+                        <label for="source-text">Source text</label>
+                        <textarea id="source-text" name="source-text" rows="4" required></textarea>
+                    </div>
+                    <div class="form-field">
+                        <label for="encryption-key">Key</label>
+                        <input id="encryption-key" name="encryption-key" type="number" min="0" step="1" required>
+                    </div>
+                    <button id="encrypt-button" type="submit" value="Encrypt">Encrypt!</button>
+                </form>
+                <div class="result">
+                    <h3>Result</h3>
+                    <span id="encrypted-result"></span>
+                </div>
+            </div>
+        </div>
+        <div class="crypting">
+            <h2>Decipher</h2>
+            <div class="crypting-content">
+                <form id="decrypt-form">
+                    <div class="form-field">
+                        <label for="encrypted-text">Encrypted text</label>
+                        <textarea id="encrypted-text" name="encrypted-text" rows="4"></textarea>
+                    </div>
+                    <div class="form-field">
+                        <label for="decryption-key">Key</label>
+                        <input id="decryption-key" name="decryption-key" type="number">
+                    </div>
+                    <button id="decrypt-button" type="submit" value="Decrypt">Decipher!</button>
+                </form>
+                <div class="result">
+                    <h3>Result</h3>
+                    <span id="decrypted-result"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
