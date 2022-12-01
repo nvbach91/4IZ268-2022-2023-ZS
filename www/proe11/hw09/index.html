@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Long live SPARTA!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div id="scroll-container">
+        <div id="scroll-text">
+            <h1>Long live SPARTA!</h1>
+        </div>
+    </div>
+    <section>
+        <div class="decrypt">
+            <div class="decrypt-content">
+                <form id="decrypt-form">
+                    <div class="decrypt-field1">
+                        <label for="decryption-key">Posunutí</label>
+                        <input id="decryption-key" name="decryption-key">
+                    </div>
+                    <div class="decrypt-field2">
+                        <label for="encrypted-text">Šifrovaný text</label>
+                        <textarea id="encrypted-text" name="encrypted-text" rows="4"></textarea>
+                    </div>
+                    <button id="decrypt-button" type="submit" value="Decrypt">Rozšifrovat</button>
+                </form>
+            </div>
+            <div class="result">
+                <h3>Zpráva</h3>
+                <span id="decrypted-result"></span>
+            </div>
+        </div>
+    </section>
+    <script src="main.js"></script>
+</body>
+
+</html>
