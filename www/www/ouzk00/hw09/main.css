@@ -1,0 +1,78 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  text-align: center;
+  padding-right: 130px;
+}
+
+#table {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(241, 241, 241);
+}
+
+.encrypted {
+  width: 400px;
+  height: 140px;
+  padding: 10px;
+  padding-left: 18px;
+  padding-top: 14px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 20px;
+  resize: none;
+}
+
+#key-and-button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 14px;
+}
+
+.key {
+  width: 240px;
+  height: 20px;
+  padding: 10px;
+  padding-left: 18px;
+  margin-right: 20px;
+  border: none;
+  border-radius: 14px;
+  resize: none;
+}
+
+button {
+  color: white;
+  background-color: rgb(124, 124, 124);
+  width: 140px;
+  height: 40px;
+  border: none;
+  border-radius: 14px;
+  resize: none;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: rgb(58, 58, 58);
+}
+
+.output {
+  color: white;
+  background-color: blue;
+  width: 400px;
+  height: 140px;
+  padding: 10px;
+  padding-left: 18px;
+  padding-top: 14px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  border: none;
+  border-radius: 20px;
+  resize: none;
+}
