@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <main>
+        <h1>Long live Sparta!</h1>
+        <div class="box-wrapper">
+            <div class="box">
+                <div>
+                    <label for="text">Text</label>
+                    <textarea id="text" rows="10"></textarea>
+                </div>
+                <div>
+                    <label for="cipher-key">Key</label>
+                    <input type="number" min="1" step="1" id="cipher-key">
+                </div>
+                <div>
+                    <button type="button" id="cipher-btn">Cipher!</button>
+                </div>
+                <div>
+                    <label for="cipher-result">Result</label>
+                    <textarea id="cipher-result" cols="30" rows="10"></textarea>
+                </div>
+            </div>
+            <div class="box">
+                <div>
+                    <label for="ciphered-text">Ciphered text</label>
+                    <textarea id="ciphered-text" rows="10"></textarea>
+                </div>
+                <div>
+                    <label for="key">Key</label>
+                    <input type="number" min="1" step="1" id="key">
+                </div>
+                <div>
+                    <button type="button" id="decipher-btn">Decipher!</button>
+                </div>
+                <div>
+                    <label for="result">Result</label>
+                    <textarea id="result" rows="10"></textarea>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="./main.js"></script>
+</body>
+</html>
