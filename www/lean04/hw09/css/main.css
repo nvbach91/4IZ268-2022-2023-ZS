@@ -47,7 +47,7 @@ button {
 }
 
 button:hover {
-    background-color: light#335c67;
+    background-color: lightgrey;
 }
 
 textarea {
