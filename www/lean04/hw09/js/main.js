@@ -97,7 +97,8 @@ encryptForm.addEventListener('submit', (event) => {
     event.preventDefault();
 
     const encryptedText = encrypt(sourceTextElement.value.toUpperCase(), parseInt(encryptionKeyElement.value));
-    encryptedResultElement.innerHTML = encryptedText;
+    const encryptedTextElement = document.createTextNode(encryptedText)
+    encryptedResultElement.appendChild(encryptedTextElement);
 });
 
 const decryptForm = document.querySelector('#decrypt-form');
@@ -109,5 +110,6 @@ decryptForm.addEventListener('submit', (event) => {
     event.preventDefault();
 
     const decryptedText = decrypt(encryptedTextElement.value.toUpperCase(), parseInt(decryptionKeyElement.value));
-    decryptedResultElement.innerHTML = decryptedText;
+    const decryptedTextElement = document.createTextNode(decryptedText)
+    decryptedResultElement.appendChild(decryptedTextElement);
 });
