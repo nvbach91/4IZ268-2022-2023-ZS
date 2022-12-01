@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Long live SPARTA!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <div>
+        <h1 class="form-heading">Long live Sparta!</h1>
+        <form method="get">
+            <div class="form-row">
+                <label>Zpráva</label>
+                <textarea name="text" id="text" placeholder="Zpráva" required></textarea>
+            </div>
+            <div class="form-row">
+                <label>Klíč</label>
+                <input name="key" type="number" id="key" placeholder="Klíč" required>
+            </div>
+            <div class="form-row form-controls">
+                <button class="form-submit" type="button"
+                    onclick="caesarDecipher(document.getElementById('text').value, document.getElementById('key').value)">Dešifrovat</button>
+            </div>
+            <div class="cypher-result">
+                <p id="result"></p>
+            </div>
+        </form>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
