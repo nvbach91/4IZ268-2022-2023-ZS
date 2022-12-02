@@ -52,7 +52,7 @@
         pokemonNameInput.setAttribute('name', 'name');
         pokemonNameInput.setAttribute('placeholder', 'Pokemon name');
         pokemonNameInput.addEventListener('keypress', () => {
-            console.log('key pressed');
+            // console.log('key pressed');
             const currentValue = pokemonNameInput.value;
             // projdeme vsechny karty
             const pokemonElements = document.querySelectorAll('.pokemon');
