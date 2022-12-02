@@ -1,0 +1,92 @@
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+
+    background-color: rgb(50,50,50);
+    font-weight: bold;
+}
+
+h1{
+    height: 15%;
+    text-align: center;
+    padding-top: 2.5%;
+
+    background-color: black;
+    color: #FEDE00;
+}
+
+#form {
+    padding: 2% 20% 5%;
+    width: 100%;
+    height: 88%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+form>* {
+    width: 100%;
+}
+
+#cipheredText {
+    height: 40%;
+    margin-bottom: 1%;
+}
+
+form div {
+    height: 6%;
+    margin-bottom: 5%;
+
+    display: flex;
+    flex-direction: row;
+
+}
+
+#keyLabel {
+    width: 8%;
+    align-content: center;
+    margin: auto;
+    margin-right: 0;
+    margin-left: 2%;
+   
+    color: #FEDE00;
+    font-size: 18px;
+}
+
+#key {
+    width: 42%;
+    border-radius: 3px;
+    font-size: 18px;
+}
+
+#buttonSubmit {
+    margin-left: 15%;
+    width: 20%;
+    color: green;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 100px;
+    background-color: #abe16c;
+    border: none;
+}
+
+#decipheredText {
+    height: 40%;
+}
+
+textarea {
+    resize: none;
+    font-size: 18px;
+    border-radius: 10px;
+}
