@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
+
+* {
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    padding: 32px 64px;
+    margin: 0;
+}
+
+p {
+    margin: 0;
+}
+
+.card {
+    display: grid;
+    grid-template-areas: "header header header" "message message message" "shift encrypt decrypt" "result result result";
+    grid-template-rows: auto 1fr auto auto;
+    grid-template-columns: 1fr auto auto;
+    max-width: 1040px;
+    margin: 32px auto;
+    padding: 16px;
+    border-radius: 4px;
+    background: #F2F2F2;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+#header {
+    grid-area: header;
+    margin: 0 0 16px;
+}
+
+#message, #shift {
+    padding: 16px 12px;
+    line-height: 20px;
+    font-size: 16px;
+    color: rgba(0, 0, 0, .87);
+    border-radius: 4px 4px 0 0;
+    border: none;
+    border-bottom: rgba(0, 0, 0, .21) solid 2px;
+    transition: border-bottom-color .25s ease;
+}
+
+#message {
+    grid-area: message;
+    margin-bottom: 8px;
+    min-height: 56px;
+    max-width: 100%;
+}
+
+#shift {
+    grid-area: shift;
+    line-height: unset;
+    padding-top: 0;
+    padding-bottom: 0;
+    min-height: 36px;
+}
+
+#message:focus, #shift:focus {
+    outline: 0;
+    border-bottom: 2px solid #CC0000;
+}
+
+.cryptButton {
+    grid-area: action;
+    min-width: 64px;
+    height: 36px;
+    line-height: 36px;
+    padding-left: 16px;
+    padding-right: 16px;
+    background-color: #CC0000;
+    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.24), 0 0 2px 0 rgba(0, 0, 0, 0.12);
+    border: none;
+    border-radius: 3px;
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+    color: #FFFFFF;
+    font-size: 14px;
+    cursor: pointer;
+    margin-left: 16px;
+}
+
+.cryptButton:hover {
+    background-color: #B80000;
+}
+
+.cryptButton:active {
+    background-color: #8F0100;
+}
+
+#encrypt {
+    grid-area: encrypt;
+}
+
+#decrypt {
+    grid-area: decrypt;
+}
+
+#result {
+    grid-area: result;
+    margin-top: 16px;
+}
+
+.hidden {
+    display: none;
+}
+
+.shown {
+    display: inherit;
+}
