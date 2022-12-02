@@ -1,0 +1,97 @@
+body {
+    font-family: sans-serif;
+    max-width: 1024px;
+    margin: auto;
+    color: #0a0908;
+    height: 100vh;
+    background-color: #f2f4f3;
+}
+
+h1,
+h2,
+h3 {
+    color: #49111c;
+}
+
+section {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+section > .crypting:not(:last-child) {
+    margin-bottom: 32px;
+}
+
+.crypting {
+    display: flex;
+    border-radius: 2px;
+    padding: 32px;
+    flex-direction: column;
+    background-color: #a9927d;
+}
+
+crypting:not(:last-child) {
+    margin-right: 32px;
+}
+
+.crypting-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+button {
+    padding: 8px;
+    border-radius: 2px;
+    border: 1px solid #335c67;
+}
+
+button:hover {
+    background-color: lightgrey;
+}
+
+textarea {
+    border-radius: 4px;
+    padding: 8px;
+    border-color: #335c67;
+}
+
+input {
+    border-radius: 4px;
+    padding: 8px;
+    border: 1px solid #335c67;
+}
+
+label:hover,
+button:hover {
+    cursor: pointer;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+}
+
+form > .form-field:not(:last-child) {
+    margin-bottom: 8px;
+}
+
+form > button {
+    margin-top: 16px;
+    width: 25%;
+    align-self: end;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-field > label {
+    margin-bottom: 4px;
+}
+
+.result {
+    width: 45%;
+}
