@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Long live SPARTA!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="main.css" />
+</head>
+
+<body>
+    <h1>Long Live Sparta: Caesar Cipher Decoder</h1>
+    <div class="box">
+        <label for="cipherText">Text</label>
+        <textarea id="cipherText" rows="10" placeholder="Only ABCDEFGHIJKLMNOPQRSTUVWXYZ chars supported. Try to use negative key if an answer doesn't make sense."></textarea>
+    </div>
+    <div class="button">
+        <div><label for="usedKey">Key</label>
+            <input type="number" min="-99" step="1" id="usedKey">
+        </div>
+
+        <button type="button" id="decipherBtn">Decipher!</button>
+    </div>
+    <div class="box">
+        <label for="resultBox">Result</label>
+        <textarea id="resultBox" rows="10"></textarea>
+    </div>
+    <script src="./main.js"></script>
+</body>
+
+</html>
