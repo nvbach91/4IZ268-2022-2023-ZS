@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
+    <title>GTD - download</title>
+    <link rel="stylesheet" href="./assets/homepage.css">
+</head>
+
+<body>
+    <header>
+        <section>
+            <h2 class="logo">Getting<span>Things</span>Done</h2>
+            <label for="toggle-1" class="toggle-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+            <input type="checkbox" id="toggle-1">
+            <nav>
+                <ul>
+                    <li><a href="./homepage.html"><i class="icon-home"></i>Home</a></li>
+                    <li>
+                        <div class="dropdown">
+                            <a href="./about/about.html" class="dropbtn">O aplikaci</a>
+                            <div class="dropdown-content">
+                                <a href="./about/development.html">O vývoji</a>
+                                <a href="./about/news.html">Novinky</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="./support.html"><i class="icon-thumbs-up-alt"></i>Podpora</a></li>
+                    <li><a href="./download.html"><i class="icon-gear"></i>Ke stažení</a></li>
+                </ul>
+            </nav>
+        </section>
+    </header>
+
+    <main>
+        <section class="content-download">
+            <h1>Download</h1>
+            <p>Aplikace je stále teprve ve vývoji. Očekávaná beta aplikace bude dostupná nejspíše až kolem října.
+                Veškeré novinky ohledně aplikace naleznež v sekci novinek v odkaze níže:</p>
+            <a href="./about/news.html">více...</a>
+        </section>
+
+        <div class="spin-container">
+            <div class="spin" id="spinner"></div>
+            <div class="spin" id="spinner2"></div>
+            <div class="spin" id="spinner3"></div>
+            <div class="spin" id="spinner4"></div>
+            <span id="text">Download</span>
+        </div>
+    </main>
+
+    <footer>
+        <p>Bohuslav Bachna ZS-2022</p>
+    </footer>
+    <script src="./assets/download.js"></script>
+</body>
+
+</html>
