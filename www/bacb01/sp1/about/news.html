@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
+    <title>GTD - about/news</title>
+    <link rel="stylesheet" href="../assets/homepage.css">
+</head>
+
+<body>
+    <header>
+        <section>
+            <h2 class="logo">Getting<span>Things</span>Done</h2>
+            <label for="toggle-1" class="toggle-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+            <input type="checkbox" id="toggle-1">
+            <nav>
+                <ul>
+                    <li><a href="../homepage.html"><i class="icon-home"></i>Home</a></li>
+                    <li>
+                        <div class="dropdown">
+                            <a href="./about.html" class="dropbtn">O aplikaci</a>
+                            <div class="dropdown-content">
+                                <a href="./development.html">O vývoji</a>
+                                <a href="./news.html">Novinky</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="../support.html"><i class="icon-thumbs-up-alt"></i>Podpora</a></li>
+                    <li><a href="../download.html"><i class="icon-gear"></i>Ke stažení</a></li>
+                </ul>
+            </nav>
+        </section>
+    </header>
+
+    <main class="main-home">
+        <!--h1>O aplikaci</h1-->
+        <section id="about" class="content-home">
+            <h2>Statistiky - plánované</h2>
+            <p>V menu přibyla nová záložka statistik, která bude umožňovat ohlednutí se na různé údaje ohledně vašeho
+                plnění úkolů a to i v grafickém provedení.
+            </p>
+        </section>
+
+        <section id="download" class="content-home">
+            <h2>Nastavení - ve vývoji</h2>
+            <p>V současné chvíli pracuji na vývoji nastavení, kde bude možné měnit základní pohled, upravovat počet dní
+                do automatického smazání úkolu, aj.</p>
+        </section>
+
+        <section id="support" class="content-home">
+            <h2>Možnost dokončení několika úkolů zároveň</h2>
+            <p>Zprovoznil jsem možnost ukončení několika úkolů zároveň. Tato možnost je zatím dostupná pouze v v pohledu
+                To-Do. Pohled Kanbanu do budoucna projde celkovou úpravou.
+            </p>
+        </section>
+    </main>
+
+    <footer id="footerNews">
+        <p>Bohuslav Bachna ZS-2022</p>
+    </footer>
+    <script src="./assets/homepage.js"></script>
+</body>
+
+</html>
