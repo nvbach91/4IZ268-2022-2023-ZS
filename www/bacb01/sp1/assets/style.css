@@ -148,13 +148,6 @@ nav ul li a i {
     box-shadow: 0 3px 20px rgba(0, 0, 0, 0.2);
 }
 
-.toggle-menu ul {
-    display: flex;
-    flex-wrap: wrap;
-    width: 25px;
-    padding: 15px;
-}
-
 .toggle-menu span {
     background: white;
     display: block;
@@ -165,17 +158,6 @@ nav ul li a i {
     padding: 7px;
     width: 50%;
     margin-bottom: 4px;
-}
-
-.toggle-menu ul li {
-    width: 100%;
-    height: 5px;
-    background-color: white;
-    margin-bottom: 4px;
-}
-
-.toggle-menu ul li:last-child {
-    margin-bottom: 0px;
 }
 
 input[type=checkbox],
