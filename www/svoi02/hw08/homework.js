@@ -16,8 +16,9 @@ console.log("Ahoj světe");
  * používejte smysluplnou angličtinu.
  */
 // Solution here
-const pepe_age = 42;
-console.log(`Pepův věk je: ${pepe_age}`);
+const pepe_age = 1950;
+const currentYear = new Date().getFullYear()
+console.log(`Pepův věk je: ${currentYear  - pepe_age}`);
 
 /**
  * 2) WTF (wow, that's fun). Vypište na konzoli teplotu v Fahrenheiht, pokud znáte teplotu v Celsius, a také naopak.
@@ -125,7 +126,7 @@ function isBigger(first, second) {
  */
 // Solution here
 function makeCycle() {
-  multiples = [];
+  const multiples = [];
   for (let i = 0; i <= 730; i = i + 13) {
     multiples.push(i);
   }
@@ -139,8 +140,10 @@ function makeCycle() {
  * staticky.
  */
 // Solution here
+
 function calculateArea(r) {
-  content = (3.14159265 * r ** 2).toFixed(2);
+  const pi = 3.14159265
+  const content = (pi * r ** 2).toFixed(2);
   document.getElementById("content").innerHTML = content;
 }
 
@@ -152,7 +155,8 @@ function calculateArea(r) {
  */
 // Solution here
 function calculateVolume(v, r) {
-  volume = ((1 / 3) * 3.14159265 * r ** 2 * v).toFixed(2);
+  const pi = 3.14159265
+  const volume = ((1 / 3) * pi * r ** 2 * v).toFixed(2);
   document.getElementById("volume").innerHTML = volume;
 }
 
