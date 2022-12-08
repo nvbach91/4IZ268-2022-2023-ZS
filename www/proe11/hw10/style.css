@@ -1,0 +1,52 @@
+* {
+    box-sizing: border-box;
+}
+
+h1, h2 {
+    text-align: center;
+}
+#field {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 4px;
+    row-gap: 8px;
+    justify-content: space-evenly;
+}
+
+.card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: transparent;
+    width: 18%;
+    height: 6vw;
+    background-color: gray;
+    border: 2px solid black;
+    border-radius: 10px;
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+
+
+}
+
+.card:hover {
+    border: 2px solid crimson;
+    background-color: aquamarine;
+    cursor: pointer;
+}
+
+.card.revealed {
+    color: grey;
+    background-color: bisque;
+}
+
+.card.done {
+    color: whitesmoke;
+    background-color: darkcyan;
+}
