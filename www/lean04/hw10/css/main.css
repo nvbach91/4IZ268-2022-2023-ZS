@@ -1,0 +1,47 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+#game-field {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1024px;
+    margin: 0 auto;
+}
+
+.card {
+    padding: 8px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 160px;
+    background-color: darkgray;
+    flex-basis: calc(20% - 32px);
+    transition: background-color 500ms ease;
+}
+
+.card:nth-child(-n + 12) {
+    margin-bottom: 16px;
+}
+
+.card:not(:nth-child(5n)) {
+    margin-right: 16px;
+}
+
+.card:hover {
+    background-color: lightgray;
+    cursor: pointer;
+}
+
+.card.revealed {
+    background-color: salmon;
+}
+
+.card.matched {
+    background-color: lightblue;
+}
