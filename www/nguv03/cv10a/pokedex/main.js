@@ -105,16 +105,13 @@
 
         const pokemonFormSubmitButton = document.createElement('button');
         pokemonFormSubmitButton.innerText = 'Add';
-
         const pokemonFormErrors = document.createElement('div');
+        const pokemonRemoveAllButton = createRemoveAllButton();
 
         pokemonForm.appendChild(pokemonNameInput);
         pokemonForm.appendChild(pokemonFormSubmitButton);
-        pokemonForm.appendChild(pokemonFormErrors);
-
-        const pokemonRemoveAllButton = createRemoveAllButton();
         pokemonForm.appendChild(pokemonRemoveAllButton);
-
+        pokemonForm.appendChild(pokemonFormErrors);
         return pokemonForm;
     };
 
