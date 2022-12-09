@@ -1,0 +1,21 @@
+#game-field {
+    width: 80%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0% 10%;
+}
+
+#game-field p {
+    display: flex;
+    margin: 1%;
+    border-radius: 7%;
+    width: calc(90% / 5);
+    height: 80px;
+    text-align: center;
+    justify-content: center;
+    padding-top: 50px;
+    color: #224B0C;
+    font-weight: bold;
+    font-size: 26px;
+}

@@ -1,0 +1,41 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto Condensed', sans-serif;
+    text-align: center;
+    max-width: 1050px;
+    margin: auto;
+}
+
+#game-field {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card {
+    height: 100px;
+    width: 200px;
+    text-align: center;
+    align-items: center;
+    background-color: rgb(6, 93, 127);
+    color: transparent;
+    transition: 0.5s;
+    margin: 5px;
+    padding-top: 30px;
+    border-radius: 15px;
+    font-size: x-large;
+}
+
+.card:hover {
+    background-color: rgb(13, 64, 11);
+    transition: 0.5s;
+
+}
+
+.card.onDisplay {
+    background-color: rgb(3, 64, 11);
+    color: white;
+    transition: 0.5s;
+}

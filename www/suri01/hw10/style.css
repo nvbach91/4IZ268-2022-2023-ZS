@@ -1,0 +1,43 @@
+body {
+  text-align: center;
+  margin: 0;
+}
+
+#container {
+  height: 80vh;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 18%;
+  height: 20%;
+  background-color: #03045e;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: transparent;
+}
+
+.card:hover {
+  background-color: #7209b7;
+  transition: 300ms;
+  cursor: pointer;
+}
+
+.card-new {
+  width: 18%;
+  height: 20%;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background-color: #7209b7;
+}
+
+.card-new:hover {
+  cursor: not-allowed;
+}
