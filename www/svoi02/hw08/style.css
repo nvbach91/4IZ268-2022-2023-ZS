@@ -1,0 +1,23 @@
+* {
+    box-sizing: border-box;
+}
+
+
+div {
+    padding: 10px;
+    margin: 0 auto;
+}
+
+button {
+    margin: 5px;
+    padding: 5px;
+}
+
+.results {
+    font-weight: 600;
+    color: green;
+}
+
+.results h3 {
+    color: black;
+}
