@@ -1,0 +1,46 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    background-color: lightblue;
+    margin: 0;
+    padding: 0;
+  }
+
+  h1 {
+    text-align: center;
+    font-weight: 400;
+    font-size: 3rem;
+  }
+
+  h2 {
+    text-align: center;
+  }
+
+  h3 {
+    text-align: center;
+  }
+  #game-field {
+    display: flex;
+    flex-wrap: wrap;
+    width: 60%;
+    margin: 0 auto;
+  }
+
+  .card {
+    background-color: whitesmoke;
+    height: 200px;
+    width: 200px;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    font-size: 30px;
+    font-weight: bold;
+    line-height: 200px;
+    text-align: center;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .card.flipped {
+    transform: rotateY(360deg);
+}
+    
