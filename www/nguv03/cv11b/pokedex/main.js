@@ -2,6 +2,11 @@
 (() => {
 
     const createPokemon = (pokemonName) => {
+        const localStoragePokemons = JSON.parse(localStorage.getItem('pokemons') || '[]');
+        if (!localStoragePokemons.includes(pokemonName)) {
+            localStoragePokemons.push(pokemonName);
+        }
+        localStorage.setItem('pokemons', JSON.stringify(localStoragePokemons));
         const pokemonElement = $('<li class="pokemon">');
         // https://img.pokemondb.net/sprites/sword-shield/icon/venusaur.png
 
@@ -145,6 +150,12 @@
     bodyElement.append(pokemonForm);
     bodyElement.append(pokemonList);
 
+
+    const localStoragePokemons = JSON.parse(localStorage.getItem('pokemons'));
+    localStoragePokemons.forEach((pokemonName) => {
+        const pokemon = createPokemon(pokemonName);
+        pokemonList.append(pokemon);
+    });
     // const request = fetch('https://jsonplaceholder.typicode.com/todos/1');
     // request.then((resp) => {
     //     return resp.json();
