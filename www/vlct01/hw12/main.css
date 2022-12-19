@@ -1,0 +1,123 @@
+* {
+    box-sizing: border-box;
+    border-radius: 5px;
+    font-family: sans-serif;
+}
+
+header,
+main {
+    text-align: center;
+}
+
+.app {
+    max-width: 840px;
+    margin: auto;
+}
+
+form {
+    background-color: #e1e1e1;
+    padding: 20px;
+    margin: 0 auto;
+    margin-bottom: 15px;
+}
+
+form>* {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: none;
+}
+
+button,
+a.btn-profile {
+    display: block;
+    background-color: crimson;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 10px;
+    border: none;
+    color: white;
+    margin-top: 10px;
+}
+
+.user-name {
+    padding: 15px;
+    color: white;
+    background-color: cadetblue;
+    margin-bottom: 10px;
+}
+
+.user-details {
+    display: flex;
+}
+
+.user-details ul {
+    display: block;
+    padding: 0;
+    margin: 0;
+    margin-left: 10px;
+    width: 100%;
+}
+
+.user-details li {
+    display: flex;
+    justify-content: flex-start;
+    padding: 15px;
+    margin-bottom: 10px;
+    align-items: center;
+    background-color: #e1e1e1;
+}
+
+.user-details li>div {
+    width: 50%;
+    text-align: start;
+}
+
+.user-details li:last-child {
+    margin-bottom: 0;
+}
+
+.user-details img {
+    max-width: 50%;
+    height: auto;
+}
+
+ul.repositories {
+    padding: 0;
+}
+
+.repositories>li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    background-color: #e1e1e1;
+    margin-bottom: 5px;
+}
+
+.repositories>li>div {
+    width: 50%;
+}
+
+.loader {
+    width: 30px;
+    height: 30px;
+    border: 20px solid crimson;
+    border-radius: 50%;
+    border-top-color: #fff;
+    border-bottom-color: #fff;
+    animation: spinning 1s ease infinite;
+    margin: auto;
+    margin-bottom: 15px;
+}
+
+@keyframes spinning {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
