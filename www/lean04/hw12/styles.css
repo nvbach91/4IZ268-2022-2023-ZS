@@ -1,0 +1,72 @@
+body {
+    font-family: sans-serif;
+    max-width: 1140px;
+    margin: auto;
+}
+
+#spinner {
+    display: inline-block;
+    width: 48px;
+    height: 48px;
+    border: 4px solid grey;
+    border-radius: 50%;
+    border-bottom-color: white;
+    animation: spinning 2s linear infinite;
+}
+
+@keyframes spinning {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+#search-form {
+    margin-bottom: 32px;
+}
+
+#search-result > section:not(:last-child) {
+    margin-bottom: 32px;
+}
+
+#gh-user-section {
+    display: flex;
+}
+
+#gh-user-avatar {
+    height: auto;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    margin-right: 16px;
+}
+
+.kv-list {
+    width: 50%;
+    display: grid;
+    grid-template-columns: max-content auto;
+}
+
+.kv-list-5-entries {
+    grid-template-rows: repeat(5, min-content);
+}
+
+.kv-list-7-entries {
+    grid-template-rows: repeat(7, min-content);
+}
+
+.kv-list > dt {
+    font-weight: bold;
+    grid-column-start: 1;
+}
+
+.kv-list > dd {
+    grid-column-start: 2;
+}
+
+.kv-list > dd:not(:last-child) {
+    margin-bottom: 8px;
+}
