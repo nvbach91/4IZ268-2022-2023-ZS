@@ -1,0 +1,36 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+#main-wrapper {
+    margin: 0 auto;
+    width: 1024px;
+    min-height: 100%;
+}
+
+#input {
+    display: flex;
+    justify-content: center;
+    padding: 50px;
+}
+
+#input img {
+    width: 192px;
+    height: 192px;
+    padding: 20px;
+}
+
+#input form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+#input form {
+    width: 25%;
+}
