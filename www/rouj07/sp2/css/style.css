@@ -1,0 +1,40 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+main {
+    width: 100%;
+    padding-left: 5%;
+    padding-right: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.box {
+    width: 45%;
+    background-color: #f6e8b1;
+    border-radius: 20px;
+    margin: 40px;
+    height: 420px;
+}
+
+.input {
+    text-align: left;
+    margin-left: 5%;
+}
+
+footer {
+    width: 100%;
+    background-color: #f6e8b1;
+    text-align: center;
+    padding: 30px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
