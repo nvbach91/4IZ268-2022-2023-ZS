@@ -1,0 +1,102 @@
+body {
+    background-color: #222629;
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.searchDiv{
+    margin: 10px;
+}
+
+.productsDiv {
+    height: 85vh;
+    overflow-y: scroll;
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.productsDiv::-webkit-scrollbar {
+    display: none;
+}
+
+
+
+
+.productsDiv h2 {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    color: #e4e4e4;
+}
+
+
+
+.productCard {
+    display: flex;
+    height: 170px;
+    max-width: 450px;
+    width: 700px;
+    margin: 0 auto;
+    background-color: #61892F;
+    overflow: hidden;
+    border-radius: 20px;
+    color: aliceblue;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.productCardPicture {
+    width: 125px;
+    filter: saturate(0.6);
+}
+
+.productCardPicture:hover {}
+
+.productCardInfo {
+    height: 100%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.productCardTitle {
+    padding: 10px;
+    margin: 0;
+    padding-left: 15px;
+}
+
+.productCardStats {
+    color: #e4e4e4;
+    margin: 0;
+    list-style: none;
+    padding: 0;
+    padding-left: 15px;
+}
+
+.productCardRating {
+    padding: 30px;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.productCard button{
+ background-color: rgb(238, 87, 87);
+ border: none;
+display: none;
+}
+.productCard:hover > button {
+    display: block;
+    cursor: pointer;
+}
