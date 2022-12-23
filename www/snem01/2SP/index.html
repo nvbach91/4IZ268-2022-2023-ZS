@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>SP2</title>
+</head>
+
+<body>
+    <header class="header parent">
+        <div class="header title">
+            <h1>Find your recipe</h1>
+        </div>
+    </header>
+    <div>
+        <div class="tile is-ancestor">
+            <div class="ingredient-search-container tile is-4 is-vertical is-parent control">
+                <form class="user-form">
+                    <input class="input is-primary block" type="text" id="q"
+                        placeholder="Enter ingredients here Ex. avocado, chicken, rice">
+                    <button 
+                        type="submit" class="search-btn">Search</button>
+                    <h3>Recently Searched:
+                        <div class="ingredient-search-history"></div>
+                    </h3>
+                    <!-- use local storage to append saved ingredients here -->
+                </form>
+            </div>
+            <div class="results tile is-parent column">
+                <article class="tile is-child notification box is-12 has-background-success-light">
+                    <h2 class="content title is-4 has-text-link">Your Recipe Results:</h2>
+                    <span class="recipe-results"> </span>
+                    <!-- recipes will populate here upon clicking search using javascript createElement -->
+                </article>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.2/jquery.min.js"
+    integrity="sha512-tWHlutFnuG0C6nQRlpvrEhE4QpkG1nn2MOUMWmUeRePl4e3Aki0VB6W1v3oLjFtd0hVOtRQ9PHpSfN6u6/QXkQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="./script.js"></script>
+
+</html>
