@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>The Movie Database</title>
+</head>
+
+<body>
+
+    <!-- header w/ logo, title & searchbar -->
+    <header>
+        <div class="header-banner">
+            <img src="./assets/img/logo.svg" alt="TMDB logo" width="128" height="72">
+            <h1>The Movie Database</h1>
+        </div>
+        <form class="movie-searchbar">
+            <input type="text" id="input-search-title" name="movie-title-input" placeholder="Search for movie...">
+            <button id="btn-search" name="btn-search">Find</button>
+        </form>
+    </header>
+
+    <main>
+        <!-- sidebar navigation -->
+        <aside>
+            <nav>
+                <h2>Menu</h2>
+                <ul>
+                    <li><button>New Releases</button></li>
+                    <li><button>Most Popular</button></li>
+                    <hr>
+                    <li><button>Rated</button></li>
+                    <li><button>Favourites</button></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- content panel -->
+        <section class="content-panel">
+            <h2>Work in progress...</h2>
+
+        </section>
+    </main>
+
+    <!-- footer w/ additional content -->
+    <footer>
+        <p>&copy; Lukáš Volf | 2022</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.2/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js"></script>
+    <script src="./assets/js/main.js"></script>
+</body>
+
+</html>
