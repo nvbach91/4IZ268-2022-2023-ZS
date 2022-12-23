@@ -1,0 +1,128 @@
+* {
+    box-sizing: border-box;
+}
+
+#heading-wrapper {
+    display: flex;
+    align-items: center;
+    width: 99vw;
+    height: 8vh;
+    border: 1px solid black;
+}
+
+#heading {
+    flex: 50%;
+    text-align: center;
+}
+
+#logo img {
+    max-width: 100px;
+    flex: 50%;
+}
+
+#content-wrapper {
+    margin-top: 5px;
+    display: flex;
+    width: 99vw;
+    height: 88vh;
+    border: 1px solid lightgrey;
+}
+
+#left-content-wrapper {
+    margin: 10px;
+    flex: 50%;
+    display: flex;
+    flex-direction: column;
+    background-color: lightpink;
+}
+
+#weather-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+    flex: 50%;
+    background-color: lightgrey;
+}
+
+#achievements-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+    flex: 50%;
+    background-color: lightgrey;;
+}
+
+#right-content-wrapper {
+    margin: 10px;
+    flex: 50%;
+    display: flex;
+    background-color: lightpink;
+}
+
+#anime-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+    background-color: lightgrey;
+}
+
+#content-heading {
+    flex: 60%;
+    margin: 5px;
+    text-align: center;
+    border: 1px solid grey;
+}
+
+#achievements-heading-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+#anime-heading-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+#content-heading-buttons {
+    flex: 20%;
+    display: flex;
+}
+
+#achievements-heading-wrapper button {
+    margin: 2px;
+}
+
+#anime-heading-wrapper button {
+    margin: 2px;
+    flex: 50%;
+}
+
+#content-heading-images {
+    flex: 20%;
+}
+
+#weather-content-wrapper {
+    display: flex;
+    margin: 5px
+}
+
+#weather-content-left {
+    padding: 5px;
+    flex: 50%;
+}
+
+#weather-content-right {
+    padding: 5px;
+    flex: 50%;
+}
+
+#anime-content-wrapper {
+    margin: 5px;
+}
+
+@media screen and (max-width: 800px) {
+    #content-wrapper {
+        flex-direction: column;
+    }
+}
+
