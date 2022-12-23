@@ -161,7 +161,7 @@
             console.log(findIndexOfDate(list));
 
             if (barInput.val() == "") {
-                alert("poshel nahuj")
+                alert("Input is empty")
             }
             else {
                 axios.get(url).then((resp) => {
