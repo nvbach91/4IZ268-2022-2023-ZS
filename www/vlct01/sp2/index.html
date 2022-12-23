@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vyhledávač článků | Semestrální práce 2</title>
+    <!-- Bootstrap -->
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+
+    <!-- Bootstrap icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+
+    <link href="./css/main.css" rel="stylesheet">
+    <script src="./js/main.js"></script>
+
+</head>
+
+<body class="bg-light">
+    <div class="toast-container position-fixed bottom-0 end-0 p-3" id="toastsContainer">
+        <div id="toastElement" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <strong class="me-auto">Informace</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body" id="toastBody"></div>
+        </div>
+    </div>
+    <main class="container card shadow mt-4 p-4">
+        <h1>Vyhledávač článků</h1>
+
+        <ul class="nav nav-tabs mt-4">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#" id="homeLink">Hledat články</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" id="savedArticlesLink">Uložené články</a>
+            </li>
+        </ul>
+        <section id="filtersSection" class="my-4">
+            <h2>Filtr vyhledávání</h2>
+            <form class="row" role="search">
+                <div class="col-md-3">
+                    <label for="keywordInput" class="form-label">Klíčová slova</label>
+                    <input class="form-control me-2" type="search" placeholder="Klíčová slova..." id="keywordInput">
+                </div>
+                <div class="col-md-3">
+                    <label for="resultsFromInput" class="form-label">Výsledky od</label>
+                    <input type="datetime-local" id="resultsFromInput" class="form-control" value="2022-12-23T15:47">
+                </div>
+                <div class="col-md-3">
+                    <label for="resultsToInput" class="form-label">Výsledky do</label>
+                    <input type="datetime-local" id="resultsToInput" class="form-control">
+                </div>
+                <div class="col-md-3 mb-2">
+                    <label for="sortBySelect" class="form-label">Seřadit podle</label>
+                    <select id="sortBySelect" class="form-select">
+                        <option value="relevancy">Relevance</option>
+                        <option value="popularity">Popularity</option>
+                        <option value="publishedAt">Data publikace</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <button class="btn btn-sm btn-primary" type="submit">Hledat</button>
+                </div>
+            </form>
+        </section>
+        <section class="mt-4">
+            <h2>Články k dispozici</h2>
+            <div id="articlesElement" class="row g-3">
+                <div class="alert alert-info">
+                    Pro vyhledání článků použijte formulář výše.
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="container py-4 mt-5 border-top">
+        <p class="text-center text-muted mb-0">© 2022 Created by <a href="https://github.com/tomas-vlcek">Tomáš
+                Vlček</a></p>
+        <p class="text-center text-muted">
+            Powered by <a href="https://newsapi.org/" target="_blank">NewsAPI</a>
+        </p>
+    </footer>
+</body>
+
+</html>
