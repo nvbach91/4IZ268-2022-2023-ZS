@@ -1,0 +1,118 @@
+body {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav {
+    width: 100%;
+    background-color: black;
+    height: 10vh;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main {
+    padding: 20px;
+}
+
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container div {
+    flex-basis: 33%;
+    background-color: black;
+    height: 40vh;
+    padding: 10px;
+    margin: 10px;
+    color: white;
+    text-align: center;
+}
+
+.container div li {
+    list-style-type:none;
+    text-align: left;
+    cursor: pointer;
+}
+
+.container div h3 {
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.meal__container {
+    background-color: black;
+    height: auto;
+    padding: 10px;
+    margin: 10px;
+    display: flex;
+}
+
+.recipe__container{
+    color: white;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    flex-wrap: wrap;
+}
+
+.recipe__container h2{
+    color: white;
+    display: inline-block;
+    text-align: center;
+    flex-basis: 100%;
+    padding: 0 20px;
+}
+
+#image {
+    padding: 10px;
+    margin: 10px;
+    flex-basis: 25%;
+    min-height: 35vh;
+    height: auto;
+    background-color: aliceblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;;
+}
+
+#title {
+    padding-top: 0px;
+    margin-top: 0px;
+    flex-basis: 100%;
+    display: inline-block;
+    text-align: center;
+}
+
+#recipe {
+    color:white;
+}
+
+form {
+    width: 100%;
+    text-align: center;
+    padding: 15px;
+}
+
+li:hover {
+    color:aqua;
+    transition: 0.25s;
+}
+
+#results h3:hover {
+    color:aqua;
+    transition: 0.25s;
+}
