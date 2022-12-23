@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h1>Github lookup</h1>
+        <p>Enter a username to lookup a github account.</p>
+        <div>
+
+            <input id="userName" placeholder="Github username">
+            <button id="lookupButton">Lookup</button>
+
+        </div>
+    </header>
+    <main>
+        <div id="returns" class="returns">
+            <div class="user">
+                <div id="userImg" class="userImg"></div>
+                <div id="userData" class="userData">
+                    <div>
+                        <p class="firstP">Login:</p>
+                        <p id="login"></p>
+                    </div>
+                    <div>
+                        <p class="firstP">ID:</p>
+                        <p id="id"></p>
+                    </div>
+                    <div>
+                        <p class="firstP">Location:</p>
+                        <p id="location"></p>
+                    </div>
+                    <div>
+                        <p class="firstP">BIO:</p>
+                        <p id="bio"></p>
+                    </div>
+                    <div>
+                        <p class="firstP">Company:</p>
+                        <p id="company"></p>
+                    </div>
+                    <div>
+                        <p class="firstP">Email:</p>
+                        <p id="email"></p>
+                    </div>
+                    <div>
+                        <p class="firstP">Registered:</p>
+                        <p id="registered"></p>
+                    </div>
+                    <div>
+                        <p class="firstP">Followers:</p>
+                        <p id="followers"></p>
+                    </div>
+                </div>
+            </div>
+            <div id="githubLink" class="githubLink"></div>
+            <div>
+                <h2>Repositories</h2>
+                <p id="repositoryCount"></p>
+            </div>
+            <div id="repositories" class="repositories"></div>
+        </div>
+    </main>
+    <footer>
+        <div>
+            <p>Poslední Úkol</p>
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
