@@ -1,0 +1,189 @@
+* {
+    box-sizing: border-box;
+    color: white
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+    background-color: rgba(3, 3, 3, 0.816);
+
+}
+
+
+
+#app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Form */
+form input {
+    background: none;
+    border: none;
+    border-bottom: 3px solid rgb(230, 134, 31);
+    width: 300px;
+}
+
+form button {
+    background-color: rgb(230, 134, 31);
+    border: none;
+    border-radius: 20px;
+    padding: 10px;
+    width: 80px;
+    font-size: 1.2em;
+    margin-left: 10px;
+}
+
+
+hr {
+    border-style: solid;
+    border-color: #eee;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg)
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.loader {
+    border: 5px solid cadetblue;
+    border-top: 5px solid #ccc;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: auto;
+}
+
+a {
+    text-decoration: none;
+}
+
+footer {
+    background-color: cadetblue;
+    padding: 20px 0;
+}
+
+#user-profile {
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(32, 32, 32);
+    width: 80%;
+    max-width: 700px;
+    justify-content: space-around;
+
+    border-radius: 20px;
+    overflow: hidden;
+    color: rgb(205, 205, 205);
+    margin: 20px auto;
+    padding: 10px;
+}
+
+.userAvatar {
+    width: 450px;
+    height: 450px;
+
+}
+
+.userStats {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: left;
+    padding: 10px;
+    margin-left: 20px;
+}
+
+.userStats * {
+    width: 100%;
+    padding: 5px;
+    margin: 0;
+    font-size: 1.3em;
+}
+
+.userStats h2 {
+    width: 100%;
+    padding: 5px;
+    margin: 0;
+    font-size: 2em;
+}
+
+.userStats a {
+    background-color: rgb(209, 97, 0);
+    border-radius: 20px;
+    width: 170px;
+    padding: 10px;
+    text-align: center;
+    color: black;
+    margin-bottom: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+    #user-profile {
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    .userAvatar {
+        width: auto;
+    }
+
+    .userStats a {
+        margin: 0 auto;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+
+        align-items: center;
+    }
+
+    form button {
+        margin-left: 0;
+        margin-top: 20px;
+    }
+}
+
+
+/* Repos */
+
+#repositories {
+    width: 80%;
+    max-width: 700px;
+    margin: 50px auto;
+    padding-left: 0;
+
+}
+
+.repoLi {
+    width: 100%;
+    display: flex;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: rgb(32, 32, 32);
+    color: white;
+    margin: 5px;
+}
+
+.repoLi * {
+    width: calc(100%/3);
+}
+
+.repoLi a {
+    color: white;
+}
+
+/* Footer*/
+footer {
+    background-color: rgb(32, 32, 32);
+    margin-top: auto;
+}
