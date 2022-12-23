@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PokéWordle</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <script src="main.js"></script>
+    
+    <div class="main-bar">
+        <input type="image" class="reset" id="reset" src="reset.png" onclick="reset()">
+        <h1 class="main-header">PokéWordle</h1>
+        <input type="image" class="help" id="help" src="help.png" onclick="help()">
+        <input type="image" class="settings" id="settings" src="settings.png" onclick="settings()">
+    </div>
+    <div class="category-names">
+        <h3>GEN</h3>
+        <h3>TYPE 1</h3>
+        <h3>TYPE 2</h3>
+        <h3>HEIGHT</h3>
+        <h3>WEIGHT</h3>
+    </div>
+    <div class="game-display">
+        <!--place to display guess results-->
+    </div>
+    <div class="input-box">
+        <label for="input">Guess a Pokémon</label>
+        <div>
+            <input type="text" id="input" name="input">
+            <button onclick="guess()">Confirm</button>
+        </div>
+    </div>
+    <footer class="footer">
+        Icons made by inkubators and Freepik from "www.flaticon.com".
+    </footer>
+</body>
+
+</html>

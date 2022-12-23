@@ -1,0 +1,50 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: lightgray;
+    margin: 0;
+}
+
+.main-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 8px;
+}
+
+.main-bar input{
+    height: 48px;
+    width: 48px;
+}
+
+.reset{
+    margin-right: 32px;
+}
+
+.help{
+    margin-left: 32px;
+}
+
+.category-names{
+    display: flex;
+    justify-content: center;
+    margin: 16px;
+    gap: 16px;
+}
+
+.input-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.footer{
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    font-size: 12px;
+}
