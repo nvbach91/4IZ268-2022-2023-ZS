@@ -1,0 +1,176 @@
+body {
+    font-size: 16px;
+    background-color: rgb(121, 167, 207);
+    color: white;
+    align-content: center
+}
+
+header {
+    align-content: center;
+}
+
+figure {
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    max-width: 60%;
+    height: auto;
+}
+
+.container {
+    align-content: center;
+    padding: 40px 20px;
+}
+
+
+p {
+    margin: 0 0 16px;
+}
+
+h1 {
+    font-size: 65px;
+    margin: 0 0 30px;
+}
+
+h2 {
+    font-size: 60px;
+    margin: 0 0 20px;
+
+}
+
+h3 {
+    font-size: 30px;
+    margin: 0;
+    padding: 30px;
+
+}
+
+small,
+.form_msg,
+.city_country {
+    font-size: 12px;
+}
+
+
+
+
+form {
+    width: 100%;
+    align-items: center;
+    margin-bottom: 20px;
+    max-width: 60%;
+}
+
+
+input {
+    border-radius: 4px;
+    border: 0;
+}
+
+input[type="text"] {
+    height: 60px;
+    color: black;
+    padding-left: 40px;
+    flex-grow: 1;
+    outline: none;
+    transition: all .2s ease-in-out;
+}
+
+
+
+form button {
+    height: 60px;
+    width: 60px;
+    background-color: white;
+    border: none;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all .2s ease-in-out;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: rgb(217, 229, 253);
+}
+
+form button:active {
+    background-color: rgb(217, 229, 253);
+}
+
+
+.form_row {
+    display: flex;
+    gap: 5px;
+}
+
+
+
+.cities {
+    max-width: 70%;
+    align-items: center;
+    display: grid;
+    padding: 0;
+    margin: 0 250px 40px;
+    gap: 40px;
+}
+
+.cities li {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    background-color: #fff;
+    align-items: center;
+    padding: 25px;
+    color: black;
+    border-radius: 4px;
+    box-shadow: 8px 8px 0px rgba(255, 255, 255, 0.08);
+}
+
+.city_conditions {
+    color: rgb(130, 130, 130);
+    margin-bottom: 20px;
+}
+
+.city_country {
+    color: #fff;
+    background-color: rgb(32, 45, 111);
+    border-radius: 4px;
+    padding: 3px 5px;
+    margin-left: 7px;
+
+}
+
+
+
+
+@media screen and (min-width: 560px) {
+    .cities {
+        grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+    }
+
+    .cities li {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .city__conditions {
+        margin-bottom: 20px;
+    }
+}
+
+
+
+@media screen and (min-width: 768px) {
+    .notification {
+        padding: 20px 40px;
+    }
+
+    .container {
+        padding: 40px;
+        margin-left: 210px;
+    }
+}
