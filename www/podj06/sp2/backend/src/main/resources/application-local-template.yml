@@ -1,0 +1,16 @@
+golemio:
+  apiKey: "blabla"
+
+spring:
+  datasource:
+    url: jdbc:postgresql://ip/db
+    username: username
+    password: username
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+
+discord:
+  token: "blabla"
