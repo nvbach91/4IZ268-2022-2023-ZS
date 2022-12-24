@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div class="app">
+        <div id="login-button" data-bs-toggle="modal" data-bs-target="#login">
+            <span class="small text-secondary">Přihlásit se</span>
+            <i class="fa-solid fa-user"></i>
+        </div>
+
+        <form data-parsley-validate class="modal fade" id="login" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Přihlásit se</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>ID</p>
+                        <input type="text" class="form-control" name="" id="idInput">
+                        <div id="msg"></div>
+                        <br>
+                        <p>Heslo</p>
+                        <input type="password" class="form-control" name="password" id="passwordInput">
+                        <br>
+                        <p>API</p>
+                        <input type="text" class="form-control" name="" id="apiInput">
+                        <!--textarea name="" class="form-control" id="textarea" cols="30" rows="5"></textarea-->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Zavřít</button>
+                        <button type="submit" id="add" class="btn btn-primary">Přihlásit</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <h4 class="mb-3">ToDo Aplikace</h4>
+
+        <div id="addNewTask" data-bs-toggle="modal" data-bs-target="#form">
+            <span>Přidat nový úkol</span>
+            <i class="fas fa-plus"></i>
+        </div>
+
+        <form class="modal fade" id="form" tabindex="-1" aria-labelledby="addTask" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addTask">Přidat nový úkol</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Název úkolu</p>
+                        <input type="text" class="form-control" name="" id="ntTittleInput">
+                        <div id="ntMsg"></div>
+                        <br>
+                        <p>Deadline</p>
+                        <input type="date" class="form-control" name="" id="ntDateInput">
+                        <br>
+                        <p>Popis</p>
+                        <textarea name="" class="form-control" id="ntTextArea" cols="30" rows="5"></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Zavřít</button>
+                        <button type="submit" id="ntAdd" class="btn btn-primary">Přidat</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <h5 class="text-center my-3">Seznam úkolů</h5>
+
+        <div id="tasks">
+
+        </div>
+    </div>
+</body>
+<script src="./main.js"></script>
+<script src="https://kit.fontawesome.com/7360be37d1.js" crossorigin="anonymous"></script>
+<!--Parsley-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js"
+    integrity="sha512-eyHL1atYNycXNXZMDndxrDhNAegH2BDWt1TmkXJPoGf1WLlNYt08CSjkqF5lnCRmdm3IrkHid8s2jOUY4NIZVQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!--Bootstrap-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+</html>
