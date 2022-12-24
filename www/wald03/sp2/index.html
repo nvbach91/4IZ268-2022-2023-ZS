@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script defer src="main.js"></script>
     <title>Not Quizlet For Sure</title>
 </head>
+
 <body>
     <header class="header">
         <nav>
@@ -21,8 +24,22 @@
 
     <h1>Not Quizlet For Sure</h1>
     <h2 id="subject_header">Subject</h2>
-    
 
-    <button id="next_question">Next</button>
+    <div id="container">
+        <div id="image_container" class="hide">
+            <div id="image"></div>
+            <div id="answers_btns" class="btn_grid">
+                <button class="btn"> Answer1</button>
+                <button class="btn"> Answer2</button>
+                <button class="btn"> Answer3</button>
+            </div>
+
+        </div>
+        <div class="controls">
+            <button id="start_btn" class="start_btn btn">Start</button>
+            <button id="next_btn" class="next_btn btn hide">Next</button>
+        </div>
+    </div>
 </body>
+
 </html>
