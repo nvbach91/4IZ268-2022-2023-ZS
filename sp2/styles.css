@@ -1,0 +1,55 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: rgb(105, 158, 208);
+}
+
+h1 {
+    text-align: center;
+    color: white;
+    font-size: 34px;
+    margin-bottom: 80px;
+}
+
+.post {
+    color: white;
+    display: block;
+    margin: auto;
+    width: 70%;
+    font-size: 24px;
+}
+
+button {
+    margin-left: 70%;
+    width: 15%;
+    min-width: 65px;
+    margin-top: 5px;
+}
+
+.center {
+    display: block;
+    margin: auto;
+    width: 70%;
+    height: 30vh;
+}
+
+.sendAndLog {
+    color: aliceblue;
+    margin: auto;
+    width: 70%;
+    margin-top: 10px;
+}
+
+#twitter-button {
+    width: 220px;
+    text-align: center;
+}
+
+#facebook-button {
+    width: 220px;
+    text-align: center;
+}
+
+#myTextArea {
+    min-width: 285px;
+    min-height: 200px;
+}
