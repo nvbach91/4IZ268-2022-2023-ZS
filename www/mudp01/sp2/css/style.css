@@ -1,0 +1,151 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Noto Sans", sans-serif;
+}
+
+html {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+h2 {
+    text-align: center;
+    height: 100%;
+}
+
+/* Pinned */
+main .divPinned {
+    display: flex;
+    height: 20%;
+}
+
+main .divPinned .divPinnedSort {
+    display: flex;
+    flex-direction: column;
+    width: 12%;
+}
+
+main .divPinned .divPinnedSort .divPinnedHeading {
+    width: 100%;
+    height: 30%;
+}
+
+main .divPinned .divPinnedSort .divPinnedHeading h2 {
+    padding: 5% 0%;
+}
+
+main .divPinned .divPinnedSort .divPinnedSorting {
+    width: 100%;
+    height: 70%;
+    text-align: center;
+    padding: 10% 0% 0%;
+}
+
+main .divPinned .divPinnedTasks {
+    width: 76%;
+    margin: 1%;
+    background-color: rgb(240, 240, 240);
+    border: 1px solid black;
+    border-radius: 2%;
+}
+
+main .divPinned .divSettings {
+    width: 10%;
+    text-align: center;
+    padding-top: 1%;
+}
+
+/* Tasks and Calendar */
+main .divTasksCalendar {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 80%;
+}
+
+main .divTasksCalendar .divAfterDate,
+.divBeforeDate {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    padding: 0% 2%;
+    height: 100%;
+}
+
+main .divTasksCalendar .divCalendar {
+    width: 66%;
+    height: 100%;
+
+    border: 1px solid black;
+}
+
+main .divTasksCalendar .divTasksHeading {
+    width: 100%;
+    height: 6%;
+    margin-top: 24%;
+    margin-bottom: 14%;
+}
+
+main .divTasksCalendar .divTasks {
+    width: 100%;
+    height: 94%;
+    margin-bottom: 6%;
+    border: 1px solid black;
+    border-radius: 3%;
+    background-color: rgb(240, 240, 240);
+}
+
+/* Calendar */
+main .divTasksCalendar .divCalendar {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5% 3%;
+    width: 60%;
+    height: 100%;
+
+    border: none;
+}
+
+main .divTasksCalendar .divCalendar .divCalendarHeading {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 18.5%;
+    padding: 0% 10%;
+}
+
+main .divTasksCalendar .divCalendar .divCalendarHeading .divMonth, .divYear{
+    display: flex;
+    width: 20%;
+    margin: auto 15%;
+    justify-content: center;
+}
+
+main .divTasksCalendar .divCalendar .divCalendarHeading p{
+    display: flex;
+}
+
+main .divTasksCalendar .divCalendar .divCalendarBody {
+    display: flex;
+    width: 100%;
+    height: 78.5%;
+    margin-top: 2%;
+    border: 2px solid black;
+    border-radius: 2%;
+    background-color: rgb(240, 240, 240);
+}
