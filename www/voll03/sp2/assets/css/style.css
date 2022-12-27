@@ -2,9 +2,10 @@
     box-sizing: border-box;
 }
 
-body  {
+body {
     margin: 0;
     padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 main {
@@ -19,7 +20,7 @@ header {
     flex-direction: column;
     align-items: center;
     padding-bottom: 40px;
-    background-color: rgb(37, 37, 37);
+    background-color: rgb(24, 24, 24);
     color: #fff;
 }
 
@@ -35,20 +36,264 @@ header {
 
 aside {
     width: 15%;
-    background-color: brown;
+    background-color: rgb(15, 15, 15);
 }
 
 section {
     width: 85%;
-    background-color: aquamarine;
+    background-color: rgb(255, 255, 255);
 }
 
-footer {
-    background-color: chartreuse;
+aside nav {
     padding: 20px;
 }
 
-footer p {
-    margin: 0;
+aside nav ul {
     padding: 0;
+}
+
+aside nav ul li {
+    list-style-type: none;
+}
+
+aside nav ul li button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    margin-bottom: 3px;
+    margin-top: 3px;
+    font-size: 18px;
+    text-align: right;
+    background-color: rgb(26, 26, 26);
+    color: #e9dd77;
+}
+
+#btn-list-rated, #btn-list-favourites {
+    color: #6dc5ff;
+}
+
+aside nav ul li button:hover {
+    cursor: pointer;
+    background-color: #e9dd77;
+    color: #000;
+}
+
+#btn-list-rated:hover, #btn-list-favourites:hover {
+    background-color: #1a346d;
+    color: #fff;
+}
+
+footer {
+    background-color: rgb(7, 7, 7);
+    padding-top: 30px;
+    padding-bottom: 40px;
+    text-align: center;
+}
+
+footer p {
+    color: #fff;
+    margin: 0;
+    padding: 10px;
+}
+
+footer p a {
+    color: #6dc5ff;
+}
+
+.footer-info {
+    margin-bottom: 30px;
+}
+
+.content-panel {
+    padding: 40px 60px;
+}
+
+.content-panel-heading {
+    text-align: center;
+    padding-bottom: 30px;
+}
+
+.movie-cards-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+
+}
+
+.movie-card {
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(212, 212, 212);
+    border-radius: 16px;
+    box-shadow: 0px 1px 16px 8px rgba(227, 227, 227, 1);
+    padding: 8px;
+}
+
+.movie-card-poster img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 8px;
+}
+
+.movie-card-info h3 {
+    text-align: center;
+    margin: 0;
+    padding: 16px 20px;
+}
+
+.movie-card-info {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+.movie-card-info .movie-rating {    
+    margin: auto;
+    margin-bottom: 20px;
+    background-color: black;
+    color: #fff;
+    padding: 8px 24px;
+    border-radius: 32px;
+}
+
+.movie-meta-data {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding-bottom: 2px;
+}
+
+.movie-meta-data > * {
+    padding: 6px 12px;
+    border-radius: 24px;
+    font-size: 12px;
+}
+
+.movie-country {
+    background-color: rgb(233, 221, 117);
+    color: black;
+}
+
+.movie-genre {
+    color: #fff;
+    background-color: rgb(58, 86, 129);
+}
+
+.movie-release-year {
+    background-color: rgb(20, 20, 92);
+    color: #fff;
+}
+
+/** RESPONSIVE QUERIES */
+
+@media screen and (max-width: 1440px) {
+    .content-panel {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .movie-card {
+        width: 200px;
+    }
+
+    .movie-cards-wrapper {
+        gap: 10px;
+    }
+}
+
+
+@media screen and (max-width: 1200px) {
+    aside {
+        width: 20%;
+    }
+    section {
+        width: 80%;
+    }
+
+    .content-panel {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .movie-card {
+        width: 180px;
+    }
+
+    .movie-meta-data { 
+        gap: 6px;
+    }
+    .movie-meta-data > * {
+        padding: 4px 8px;
+    }
+    .movie-card-info .movie-rating {
+        padding: 4px 16px;
+        border-radius: 32px;
+    }
+
+}
+
+@media screen and (max-width: 1024px) { 
+    .movie-card {
+        width: 160px;
+    }
+}
+
+@media screen and (max-width: 960px) {
+    aside {
+        width: 25%;
+    }
+    section {
+        width: 75%;
+    }
+    .movie-card {
+        width: 250px;
+    }
+}
+
+
+@media screen and (max-width: 840px) {
+    .movie-card {
+        width: 225px;
+    }
+
+}
+
+@media screen and (max-width: 720px) {
+    main {
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+    aside {
+        width: 100%;
+    }
+    section {
+        width: 100%;
+    }
+    aside nav {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    aside nav ul li {
+       display: inline-block;
+    }
+
+    aside nav ul li button {
+        text-align: center;
+    }
+}
+
+
+@media screen and (max-width: 580px) {
+
+
+    .movie-card {
+        width: 280px;
+    }
 }
