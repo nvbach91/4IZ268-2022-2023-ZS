@@ -149,3 +149,39 @@ main .divTasksCalendar .divCalendar .divCalendarBody {
     border-radius: 2%;
     background-color: rgb(240, 240, 240);
 }
+
+/* Login button */
+.loginWindow{
+position: absolute; 
+width: 350px;
+height: 450px;
+top: 0;
+bottom: 0;
+left: 0;
+right: 0;
+margin: auto;
+background-color: white;
+border: 3px solid #4285F4;
+display: flex;
+flex-direction: column;
+text-align: center;
+border-radius: 3%;
+}
+
+.loginText{
+    color: black;
+    font-size: large;
+    font-weight: bold;
+}
+
+.loginIcon{
+    margin: 8% auto 12%;
+}
+.loginImg{
+    margin: 6% auto 15%;
+}
+
+.loginRegister{
+    color: black;
+    size: 10px;
+}

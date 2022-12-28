@@ -33,12 +33,13 @@
             <div class="divAfterDate">
                 <div class="divTasksHeading">
                     <h2>Prošlé úkoly</h2>
+                    <input readonly>
                 </div>
                 <div class="divTasks"></div>
             </div>
             <div class="divCalendar">
                 <div class="divCalendarHeading">
-                    <div class="divMonth">
+                    <div id="test" class="divMonth">
                         <p>Prosinec</p>
                     </div>
                     <div class="divYear">
@@ -55,7 +56,9 @@
             </div>
         </div>
     </main>
-    <script src="js/script.js"></script>
+    <script id="gapi" async defer src="https://apis.google.com/js/api.js" ></script>
+    <script id="gis" async defer src="https://accounts.google.com/gsi/client" ></script>
+    <script src="js/script.js"></script> 
 </body>
 
 </html>
