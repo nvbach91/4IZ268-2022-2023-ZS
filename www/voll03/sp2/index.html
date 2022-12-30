@@ -18,8 +18,65 @@
             <h1>The Movie Database</h1>
         </div>
         <form class="movie-searchbar">
-            <input type="text" id="input-search-title" name="movie-title-input" placeholder="Search for movie...">
-            <button id="btn-search" name="btn-search">Find</button>
+            <h2>Vyhledávání</h2>
+            <div class="movie-searchbar-input-field">
+                <input type="text" id="input-search-title" name="movie-title-input" placeholder="Search for movie...">
+                <button id="btn-search" name="btn-search">Find</button>
+            </div>
+            
+            <div class="movie-searchbar-filters">
+                <h3>Filtry</h3>
+
+                <div class="filters-container">
+                    <div class="filters-rating-wrapper">
+                        <label for="rating">Hodnocení:</label>
+                        <select name="rating">
+                            <option value="highest">Od nejlepšího</option>
+                            <option value="lowest">Od nejhoršího</option>
+                        </select>
+                    </div>
+                   
+                    <div class="filters-genre-wrapper">
+                        <label for="genre">Žánr:</label>
+                        <select name="genre">
+                            <option value="action">Akční</option>
+                            <option value="sci-fi">Sci-fi</option>
+                            <option value="fantasy">Fantasy</option>
+                            <!-- and more -->
+                        </select>
+                    </div>
+                    
+                    <div class="filters-year-wrapper">
+                        <label for="year-from">Rok:</label>
+                        <select name="year-from">
+                            <option value="">-vše-</option>
+                            <option value="2000">2000</option>
+                            <option value="2001">2001</option>
+                            <option value="2002">2002</option>
+                            <!-- ... -->
+                        </select>
+                        <span>až</span>
+                        <select name="year-to">
+                            <option value="" selected="selected">-vše-</option>
+                            <option value="2000">2000</option>
+                            <option value="2001">2001</option>
+                            <option value="2002">2002</option>
+                            <!-- ... -->
+                        </select>
+                    </div>
+    
+                    <div class="filters-genre-wrapper">
+                        <label for="genre">Původ:</label>
+                        <select name="genre">
+                            <option value="cz">ČR</option>
+                            <option value="usa">USA</option>
+                            <option value="de">Německo</option>
+                            <!-- všechny státy -->
+                        </select>
+                    </div>
+                </div>
+             
+            </div>
         </form>
     </header>
 
