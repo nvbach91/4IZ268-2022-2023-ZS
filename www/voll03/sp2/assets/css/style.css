@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Oxanium&family=Quicksand&family=Rajdhani&display=swap');
+
 * {
     box-sizing: border-box;
 }
@@ -5,7 +7,10 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
+}
+
+header, section, aside, footer {
+    font-family: 'Oxanium', sans-serif;
 }
 
 main {
@@ -48,10 +53,10 @@ header {
 }
 
 .movie-searchbar-input-field {
-    padding: 20px 0 30px 0;    
+    padding: 20px 0 30px 0;
 }
 
-.movie-searchbar-input-field > input {
+.movie-searchbar-input-field>input {
     min-width: 320px;
     padding: 8px;
     border-radius: 8px;
@@ -59,7 +64,7 @@ header {
     border: none;
 }
 
-.movie-searchbar-input-field > button {
+.movie-searchbar-input-field>button {
     padding: 8px 24px;
     border: none;
     border-radius: 12px;
@@ -75,9 +80,27 @@ header {
 .movie-searchbar-filters .filters-container {
     display: flex;
     flex-direction: row;
-    gap: 20px;
+    gap: 32px;
     flex-wrap: wrap;
 }
+
+.filters-container .filters-rating-wrapper label {
+    padding-right: 10px;
+} 
+
+.filters-container .filters-genre-wrapper label,
+.filters-container .filters-year-wrapper label {
+    padding-right: 10px;
+} 
+
+.filters-container .filters-year-wrapper span {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.filters-container .filters-origin-wrapper label {
+    padding-right: 10px;
+} 
 
 /** BODY/CONTENT PAGE STYLING */
 section {
@@ -129,13 +152,16 @@ aside nav ul li button {
     border: none;
     margin-bottom: 3px;
     margin-top: 3px;
-    font-size: 18px;
     text-align: right;
     background-color: rgb(26, 26, 26);
     color: #e9dd77;
+    font-family: 'Oxanium', sans-serif;
+    font-size: 18px;
+
 }
 
-#btn-list-rated, #btn-list-favourites {
+#btn-list-rated,
+#btn-list-favourites {
     color: #6dc5ff;
 }
 
@@ -145,7 +171,8 @@ aside nav ul li button:hover {
     color: #000;
 }
 
-#btn-list-rated:hover, #btn-list-favourites:hover {
+#btn-list-rated:hover,
+#btn-list-favourites:hover {
     background-color: #1a346d;
     color: #fff;
 }
@@ -220,7 +247,7 @@ footer p a {
     flex-wrap: nowrap;
 }
 
-.movie-card-info .movie-rating {    
+.movie-card-info .movie-rating {
     margin: auto;
     margin-bottom: 20px;
     background-color: black;
@@ -238,7 +265,7 @@ footer p a {
     padding-bottom: 2px;
 }
 
-.movie-meta-data > * {
+.movie-meta-data>* {
     padding: 6px 12px;
     border-radius: 24px;
     font-size: 12px;
@@ -269,24 +296,24 @@ footer p a {
     gap: 12px;
 }
 
-.pagination > button {
+.pagination>button {
     padding: 8px 12px;
     border-radius: 8px;
     outline: none;
     border: 1px solid rgb(194, 194, 194);
     background-color: rgb(231, 238, 245);
     color: #666;
-    box-shadow: 2px 2px 10px -2px rgba(0,0,0,0.25);
+    box-shadow: 2px 2px 10px -2px rgba(0, 0, 0, 0.25);
 }
 
-.pagination > button:hover {
+.pagination>button:hover {
     border: 1px solid rgb(0, 0, 0);
     background-color: rgb(36, 36, 36);
     color: rgb(255, 255, 255);
     transition: 0.1s ease-out;
 }
 
-.pagination > .active {
+.pagination>.active {
     border: 1px solid rgb(36, 92, 112);
     background-color: rgb(82, 114, 204);
     color: rgb(255, 255, 255);
@@ -307,6 +334,7 @@ footer p a {
     from {
         transform: rotate(0deg)
     }
+
     to {
         transform: rotate(360deg);
     }
@@ -334,6 +362,7 @@ footer p a {
     aside {
         width: 20%;
     }
+
     section {
         width: 80%;
     }
@@ -347,22 +376,25 @@ footer p a {
         width: 180px;
     }
 
-    .movie-meta-data { 
+    .movie-meta-data {
         gap: 6px;
     }
-    .movie-meta-data > * {
+
+    .movie-meta-data>* {
         padding: 4px 8px;
     }
+
     .movie-card-info .movie-rating {
         padding: 4px 16px;
         border-radius: 32px;
     }
 }
 
-@media screen and (max-width: 1024px) { 
+@media screen and (max-width: 1024px) {
     .movie-card {
         width: 160px;
     }
+
     .content-panel-heading {
         padding-top: 10px;
         padding-bottom: 20px;
@@ -373,9 +405,11 @@ footer p a {
     aside {
         width: 25%;
     }
+
     section {
         width: 75%;
     }
+
     .movie-card {
         width: 250px;
     }
@@ -389,23 +423,34 @@ footer p a {
 }
 
 @media screen and (max-width: 720px) {
+    .filters-container .filters-genre-wrapper label {
+        padding-left: 0;
+    } 
+
+    .filters-container .filters-year-wrapper label {
+        padding-left: 0;
+    } 
+
     main {
         flex-direction: column;
         flex-wrap: wrap;
     }
+
     aside {
         width: 100%;
     }
+
     section {
         width: 100%;
     }
+
     aside nav {
         padding-top: 0;
         padding-bottom: 0;
     }
 
     aside nav ul li {
-       display: inline-block;
+        display: inline-block;
     }
 
     aside nav ul li button {
