@@ -80,14 +80,35 @@ header {
 }
 
 /** BODY/CONTENT PAGE STYLING */
-aside {
-    width: 15%;
-    background-color: rgb(15, 15, 15);
-}
-
 section {
     width: 85%;
     background-color: rgb(255, 255, 255);
+}
+
+.home-text-panel {
+    max-width: 1024px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: auto;
+    text-align: justify;
+    line-height: 30px;
+}
+
+.home-text-panel p {
+    padding: 10px;
+}
+
+.home-text-panel p a {
+    color: #205477;
+}
+
+.home-text-panel p:last-child {
+    text-align: center;
+}
+
+aside {
+    width: 15%;
+    background-color: rgb(15, 15, 15);
 }
 
 aside nav {
@@ -156,7 +177,9 @@ footer p a {
 
 .content-panel-heading {
     text-align: center;
-    padding-bottom: 30px;
+    padding-top: 30px;
+    padding-bottom: 40px;
+    margin: 0;
 }
 
 .movie-cards-wrapper {
@@ -269,6 +292,26 @@ footer p a {
     color: rgb(255, 255, 255);
 }
 
+/** SPINNER */
+.spinner {
+    border: 8px solid rgb(73, 125, 184);
+    border-top: 8px solid #ccc;
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    animation: spin 1.2s linear infinite;
+    margin: auto;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg)
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 /** RESPONSIVE QUERIES */
 
 @media screen and (max-width: 1440px) {
@@ -319,6 +362,10 @@ footer p a {
 @media screen and (max-width: 1024px) { 
     .movie-card {
         width: 160px;
+    }
+    .content-panel-heading {
+        padding-top: 10px;
+        padding-bottom: 20px;
     }
 }
 

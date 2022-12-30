@@ -25,7 +25,8 @@
     // DOM object
     const DOM = {
         searchForm: $('.movie-searchbar'),
-        contentPanel: $('.content-panel')
+        contentPanel: $('.content-panel'),
+        spinner: $('<div class="spinner">')
     }
 
     // API strings
@@ -77,9 +78,13 @@
 
     const changeRating = (movie, rating) => { };
 
-    const showSpinner = () => { };
+    const showSpinner = () => {
+        // spinner.appendTo("");
+     };
 
-    const hideSpinner = () => { };
+    const hideSpinner = () => {
+        spinner.remove();
+    };
 
     const showPagination = (movies) => { };
 

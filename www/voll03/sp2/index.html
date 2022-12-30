@@ -23,7 +23,7 @@
                 <input type="text" id="input-search-title" name="movie-title-input" placeholder="Search for movie...">
                 <button id="btn-search" name="btn-search">Find</button>
             </div>
-            
+
             <div class="movie-searchbar-filters">
                 <h3>Filtry</h3>
 
@@ -35,7 +35,7 @@
                             <option value="lowest">Od nejhoršího</option>
                         </select>
                     </div>
-                   
+
                     <div class="filters-genre-wrapper">
                         <label for="genre">Žánr:</label>
                         <select name="genre">
@@ -45,7 +45,7 @@
                             <!-- and more -->
                         </select>
                     </div>
-                    
+
                     <div class="filters-year-wrapper">
                         <label for="year-from">Rok:</label>
                         <select name="year-from">
@@ -64,7 +64,7 @@
                             <!-- ... -->
                         </select>
                     </div>
-    
+
                     <div class="filters-genre-wrapper">
                         <label for="genre">Původ:</label>
                         <select name="genre">
@@ -75,7 +75,7 @@
                         </select>
                     </div>
                 </div>
-             
+
             </div>
         </form>
     </header>
@@ -96,9 +96,33 @@
 
         <!-- content panel -->
         <section class="content-panel">
-            <h2 class="content-panel-heading">Work in progress...</h2>
+            <h2 class="content-panel-heading">Vítejte!</h2>
+            <div class="home-text-panel">
+                <p>Právě se nacházíte na stránkách webové aplikace, kterou jsem vytvořil pro účely kurzu 4IZ268 - Webové
+                    Technologie vyučovaném na Fakultě informatiky a statistiky Vysoké školy ekonomické v Praze. Tato
+                    webová aplikace
+                    simuluje filmovou databázi a vychází z již podobných existujících webů tohoto typu (např.
+                    <a href="https://www.csfd.cz">CSFD</a>, <a href="https://www.imdb.com">IMDB</a>,
+                    <a href="https://www.themoviedb.org/">TMDB</a> apod.).
+                </p>
+                <p>Uživatel aplikace může v databázi vyhledávat filmy a zobrazovat si jejich seznamy podle vybraných
+                    kategorií. Každý film si může rozkliknout detailněji a přidat mu vlastní hodnocení, nebo si tento
+                    film může také zařadit do seznamu svých oblíbených filmů.</p>
+                <p>Pro vyhledání libovolného filmu z databáze stačí zadat jeho název do vyhledávače v záhlaví.
+                    Ve vyhledávači je implementováno i jednoduché filtrování. V levé postranní liště jsou rovněž
+                    dostupné základní filtrované seznamy filmů, včetně seznamů uživatelem hodnocených a oblíbených
+                    filmů.</p>
+                <p>Aplikace je napsaná v JavaScriptu s použitím externích knihoven
+                    <a href="https://api.jquery.com/">jQuery</a> a <a
+                        href="https://axios-http.com/docs/intro">Axios</a>. Pro zobrazení obsahu
+                    využívá <a href="https://developers.themoviedb.org/3">The Movie Database API</a>. 
+                    Pro ukládání hodnocení a seznamu oblíbených filmů se využívá pouze localstorage v prohlížeči.
+                </p>
+                <p>Good luck & have fun!</p>
+            </div>
 
-            <!-- movie cards -->
+            <!--
+            movie cards 
             <div class="movie-cards-wrapper">
 
                 <div class="movie-card">
@@ -244,7 +268,7 @@
 
             </div>
 
-            <!-- pagination -->
+            pagination 
             <div class="pagination">
                 <button id="btn-pagination-prev">&lt;&lt;</button>
                 <button id="btn-pagination-first" class="active">1</button>
@@ -256,6 +280,7 @@
                 <button id="btn-pagination-last">10</button>
                 <button id="btn-pagination-next">&gt;&gt;</button>
             </div>
+            -->
         </section>
     </main>
 
