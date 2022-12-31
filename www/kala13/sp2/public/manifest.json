@@ -1,0 +1,8 @@
+{
+  "short_name": "Guessing Game",
+  "name": "Anime Guessing Game",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff"
+}
