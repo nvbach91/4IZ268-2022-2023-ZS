@@ -23,9 +23,11 @@
             });
 
 
-            DOM.Aside.btnNewReleases.click(async () => {
+            DOM.Aside.btnNewReleases.click(() => {
                 listLatest();
             })
+
+            fetchGenres();
         }
     };
 
@@ -47,54 +49,21 @@
         KEY: "?api_key=3ac4c22045a1dcb03ef960d46c30d0a2",
         NEWEST: "movie/now_playing",
         PAGE: "&page=",
-        GENRE_LIST: "/genre/movie/list",
+        GENRE_LIST: "genre/movie/list",
+        COUNTRY_LIST: "configuration/countries"
     };
 
-    const getGenreTitles = (genreIdList) => {
-        if (App.fetchErrors.fetchGenres !== "" || App.genreList.length !== 0) {
-            let genreTitles = [];
-
-            genreIdList.forEach((genreId) => {
-                let genreTitle = (App.genreList.find((g) => g.id === genreId)).name;
-                genreTitles.push(genreTitle);
-            });
-
-            return genreTitles;
-        }
-
-        return ["N/A"];
-    }
-
-    const renderGenreListing = (genre_id_list) => {
-        const genres = getGenreTitles(genre_id_list);
+    const renderGenreListing = (genres) => {
         let genreElementList = [];
-
         genres.forEach((genre) => {
-            genreElement = $(`<div class="movie-genre">${genre}</div>`);
+            let genreElement = $(`<div class="movie-genre">${genre.name}</div>`);
             genreElementList.push(genreElement);
         });
 
         return genreElementList;
     }
 
-    const renderCountryList = async (movie_id) => {
-        const movie = (await fetchMovieById(movie_id)).data;
-
-        if (movie === null) {
-            return $('<div class="movie-country">N/A</div>');
-        }
-
-        let countryElementList = [];
-
-        await movie.production_countries.forEach((country) => {
-            const countryElement = $(`<div class="movie-country">${country.iso_3166_1}</div>`);
-            countryElementList.push(countryElement);
-        });
-
-        return countryElementList;
-    }
-
-    const renderMovieCard = async (movie) => {
+    const renderMovieCard = (movie) => {
         const movieCardElement = $(`
         <div class="movie-card">
             <div class="movie-card-poster">
@@ -102,39 +71,44 @@
             </div>
             <div class="movie-card-info">
                 <h3>${movie.title}</h3>
-                <div class="movie-rating">${movie.vote_average}</div>
-                <div class="movie-meta-data">
+                <div class="movie-rating">${(parseFloat(movie.vote_average)).toFixed(2)}</div>
+                <div class="movie-meta-data"></div>
             </div>
         </div>
         `);
 
         const metaDataElement = movieCardElement.find('.movie-meta-data');
 
-        // movie origin country
-        const movieCountriesList = await renderCountryList(movie.id);
-        metaDataElement.append(movieCountriesList);
+        // movie origin countries
+        let movieCountryList = [];
+        movie.production_countries.forEach((country) => {
+            const countryElement = $(`<div class="movie-country">${country.iso_3166_1}</div>`);
+            movieCountryList.push(countryElement);
+        });
+
+        metaDataElement.append(movieCountryList);
 
         // movie release year
         const movieYear = $(`<div class="movie-release-year">${(movie.release_date).substring(0, 4)}</div>`);
         metaDataElement.append(movieYear);
 
         // movie genres
-        const genreElementList = renderGenreListing(movie.genre_ids);
+        const genreElementList = renderGenreListing(movie.genres);
         metaDataElement.append(genreElementList);
 
         return movieCardElement;
     };
 
-    const renderMovieListing = async (movieList) => {
+    const renderMovieListing = (movieList) => {
         const movieCardWrapper = $('<div class="movie-cards-wrapper"></div>');
         DOM.contentPanel.append(movieCardWrapper);
 
         let movieCardList = [];
-        for (const movie of movieList) {
-            const movieCard = await renderMovieCard(movie);
+        movieList.forEach((movie) => {
+            const movieCard = renderMovieCard(movie);
             movieCardList.push(movieCard);
-        }
-
+        });
+        
         movieCardWrapper.append(movieCardList);
         DOM.contentPanel.append(movieCardWrapper);
     };
@@ -163,20 +137,25 @@
 
     const listLatest = () => {
         refreshContentPanel("Nejnovější filmy");
+        showSpinner();
 
         const url = API_STRINGS.BASE + API_STRINGS.NEWEST + API_STRINGS.KEY;
-        // console.log(url);
 
-        axios.get(url).then((response) => {
-            // console.log(response.data);
-            // console.log(response.data.results);
-
-            App.currentMovieList = response.data.results;
+        axios.get(url).then(async (response) => {
             App.currentPage = response.data.page;
+            App.currentMovieList = [];
+
+            let movieList = response.data.results;
+            for (const movie of movieList) {
+                const movieDetails = (await fetchMovieById(movie.id)).data;
+                App.currentMovieList.push(movieDetails);
+            }
 
             renderMovieListing(App.currentMovieList);
+            hideSpinner();
         }).catch((error) => {
             showError(error);
+            hideSpinner();
         });
 
     };
@@ -218,24 +197,21 @@
     const changeRating = (movie, rating) => { };
 
     const showSpinner = () => {
-        // spinner.appendTo("");
+        DOM.spinner.appendTo(DOM.contentPanel);
     };
 
     const hideSpinner = () => {
-        spinner.remove();
+        DOM.spinner.remove();
     };
 
     const showPagination = (movies) => { };
 
     const refreshContentPanel = (title) => {
         // reset fetch error status
-        App.fetchErrors.fetchGenres = "";
         App.fetchErrors.fetchMovieById = "";
 
         // clear content panel
         DOM.contentPanel.empty();
-
-        fetchGenres();
 
         // set new title
         const headingElement = $(`<h2 class="content-panel-heading">${title}</h2>`);
