@@ -1,117 +1,120 @@
+var script = document.createElement('script');
+script.src = 'https://code.jquery.com/jquery-3.6.0.min.js';
+document.getElementsByTagName('head')[0].appendChild(script);
 
 
-//https://api.waifu.im/
+var currentImageIndex;
+let points = 0;
+let currentQuestionNumber = 1;
 
-let btn = document.getElementById("next");
-let div_images = document.getElementById("img")
 
 const startButton = document.getElementById('start_btn');
-startButton.addEventListener('click', startGame);
-
 const nextButton = document.getElementById('next_btn');
-nextButton.addEventListener('click', () => {
-    currentImageIndex++;
-    setNextImage;
-})
 const imageContainer = document.getElementById('image_container');
 const imageElement = document.getElementById('image');
 const asnwerButtonElement = document.getElementById('answers_btns');
-
-
-let shuffledImages, currentImageIndex; 
+const pointsElement = document.getElementById('points');
+const inputElement = document.getElementById('anime_title');
+const starButton2 = document.getElementById('start_btn_by_anime');
+//starButton2.addEventListener('click', startGameByTitle);
+startButton.addEventListener('click', startGame);
 
 function startGame() {
-    console.log('Started');
-    startButton.classList.add('hide');
-    imageContainer.classList.remove('hide');
-    shuffledImages = waifus.sort(() => Math.random() -.5);
+    startButton.classList.add('hide')
     currentImageIndex = 0;
-    setNextImage();
+    imageContainer.classList.remove('hide')
+    loadQuotes();
 }
 
-function setNextImage() {
-    resetState();
-    showImage(shuffledImages[currentImageIndex]);
+function setNextQuestion(array){
+    resetState()
+    showQuestion(array[currentImageIndex])
 }
 
-function showImage(image){
- new_img = new Image;
- new_img.src = image.imageUrl;
- image.answers.forEach(answer => {
-    const button = document.createElement('button');
-    button.innerText = answer.text;
-    button.classList.add('btn');    
-    if(answer.correct){
-        button.dataset.correct = answer.correct;
-    }
-    button.addEventListener('click', selectAnswer);
-    asnwerButtonElement.appendChild(button);
- })
- imageElement.appendChild(new_img);
-
+function showQuestion(question) {
+    imageElement.innerText = question.question;
+    let answers = [];
+    answers.push(...question.incorrectAnswers);
+    answers.push(question.correctAnswer);
+    answers.sort(() => Math.random() - 0.5);
+    answers.forEach(answer => {
+        const button = document.createElement('button')
+        button.innerText = answer;
+        button.classList.add('btn')
+        if (answer === question.correctAnswer) {
+            button.dataset.correct = answer.correct
+        }
+        button.addEventListener('click', selectAnswer);
+        asnwerButtonElement.appendChild(button);
+    })
 }
 
-function resetState(){
-    clearStatusClass(document.body);
-    nextButton.classList.add('hide');
-    while(asnwerButtonElement.firstChild){
+function resetState() {
+    clearStatusClass(document.body)
+    nextButton.classList.add('hide')
+    while (asnwerButtonElement.firstChild) {
         asnwerButtonElement.removeChild(asnwerButtonElement.firstChild)
     }
-
 }
 
 function selectAnswer(e) {
-const selectedButton   = e.target;
-const correct = selectedButton.dataset.correct;
-setStatusClass(document.body, correct);
-Array.from(asnwerButtonElement.children).forEach(button=>{
-    setStatusClass(button, button.dataset.correct);
-})
-if(shuffledImages.length >= currentImageIndex){
-    nextButton.classList.remove('hide');
-}
-else{
-    startButton.innerText = 'Restart';
-    startButton.classList.remove('hide');   
-}
-
-}
-
-function setStatusClass(element, correct){
-    clearStatusClass(element);
-    if(correct){
-        element.classList.add('correct');
+    const selectedButton = e.target
+    const correct = selectedButton.dataset.correct
+    setStatusClass(document.body, correct)
+    Array.from(asnwerButtonElement.children).forEach(button => {
+        setStatusClass(button, button.dataset.correct)
+    })
+    if (20 > currentImageIndex + 1) {
+        nextButton.classList.remove('hide')
+    } else {
+        startButton.innerText = 'Restart'
+        startButton.classList.remove('hide')
     }
-    else{
-        element.classList.add('wrong');
+}
+
+function setStatusClass(element, correct) {
+    clearStatusClass(element)
+    if (correct) {
+        element.classList.add('correct')
+    } else {
+        element.classList.add('wrong')
     }
+}
+
+function clearStatusClass(element) {
+    element.classList.remove('correct')
+    element.classList.remove('wrong')
+}
+
+const url = "https://the-trivia-api.com/api/questions?limit=20&categories=science,history";
+
+
+function loadQuotes() {
+    var array = [];
+    $.ajax({
+        url: url,
+        type: 'get',
+        contentType: false,
+        cache: false,
+        processData: false,
+        error: function (response) {
+            console.log(response['responseText']);
+        },
+        complete: function (response) {
+            $(".priceClear").val("");
+            array = JSON.parse(response['responseText']);
+            console.log(array);
+            setNextQuestion(array);
+            nextButton.addEventListener('click', () => {
+                currentImageIndex++;
+                currentQuestionNumber++;
+                console.log(currentImageIndex);
+                setNextQuestion(array);
+            })
+            
+        }
+    });
+
 
 }
 
-function clearStatusClass(element){
-    element.classList.remove('correct');
-    element.classList.remove('wrong'); 
-}
-
-const waifus = [
-    {
-        imageUrl: 'https://i.waifu.pics/rUfJc7w.jpg',
-        answers: [
-            {text: 'Chika', correct: true},
-            {text: 'Rem', correct: false}
-
-        ]
-        ,
-        
-    },
-    
-    {
-        imageUrl: 'https://cdn.waifu.im/4715.jpeg',
-        answers: [
-            {text: 'Oooga', correct: true},
-            {text: 'Booga', correct: false}
-
-        ] 
-    }
-
-]
