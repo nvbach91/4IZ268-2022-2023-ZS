@@ -60,7 +60,7 @@ main .divPinned .divPinnedTasks {
     margin: 1%;
     background-color: rgb(240, 240, 240);
     border: 1px solid black;
-    border-radius: 2%;
+    border-radius: 30px;
 }
 
 main .divPinned .divSettings {
@@ -105,7 +105,7 @@ main .divTasksCalendar .divTasks {
     height: 94%;
     margin-bottom: 6%;
     border: 1px solid black;
-    border-radius: 3%;
+    border-radius: 30px;
     background-color: rgb(240, 240, 240);
 }
 
@@ -142,16 +142,37 @@ main .divTasksCalendar .divCalendar .divCalendarHeading p{
 
 main .divTasksCalendar .divCalendar .divCalendarBody {
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     width: 100%;
     height: 78.5%;
     margin-top: 2%;
+    padding: 2.5%;
     border: 2px solid black;
-    border-radius: 2%;
+    border-radius: 30px;
     background-color: rgb(240, 240, 240);
+    
+}
+
+
+main .divTasksCalendar .divCalendar .divCalendarBody .days{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: calc(90%/5);
+    height: calc(90%/7);
+    justify-content: center;
+    align-items: center;
+    border: 2px solid black;
+    border-radius: 25% 10%;
+    margin: calc(6%/13) 1%;
+    font-size: 20px;
+    font-weight: bold;
+    
 }
 
 /* Login button */
-.loginWindow{
+.loginWindow, .dayWindow{
 position: absolute; 
 width: 350px;
 height: 450px;
@@ -165,7 +186,7 @@ border: 3px solid #4285F4;
 display: flex;
 flex-direction: column;
 text-align: center;
-border-radius: 3%;
+border-radius: 30px;
 }
 
 .loginText{
@@ -184,4 +205,28 @@ border-radius: 3%;
 .loginRegister{
     color: black;
     size: 10px;
+}
+
+.dayWindow{
+    display: none;
+    width: 550px;
+    border: 2px solid black;
+}
+
+.closeButton{
+    position: absolute;
+    display: flex;
+    top: 8px;
+    right: 8px;
+    height: 25px;
+    width: 25px;
+}
+
+.priorityImg{
+    position: relative;
+    display: flex;
+    height: 22px;
+    width: 20px;
+    margin-left: 7px;
+    margin-bottom: 2px;
 }
