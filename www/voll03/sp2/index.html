@@ -18,60 +18,50 @@
             <h1>The Movie Database</h1>
         </div>
         <form class="movie-searchbar">
-            <h2>Vyhledávání</h2>
+            <h2>Search</h2>
             <div class="movie-searchbar-input-field">
                 <input type="text" id="input-search-title" name="movie-title-input" placeholder="Search for movie...">
                 <button id="btn-search" name="btn-search">Find</button>
             </div>
 
             <div class="movie-searchbar-filters">
-                <h3>Filtry</h3>
+                <h3>Listing filters</h3>
 
                 <div class="filters-container">
                     <div class="filters-rating-wrapper">
-                        <label for="rating">Hodnocení:</label>
+                        <label for="rating">Rating:</label>
                         <select name="rating">
-                            <option value="highest">Od nejlepšího</option>
-                            <option value="lowest">Od nejhoršího</option>
+                            <option value="">--</option>
+                            <option value="highest">From best</option>
+                            <option value="lowest">From worst</option>
                         </select>
                     </div>
 
                     <div class="filters-genre-wrapper">
-                        <label for="genre">Žánr:</label>
+                        <label for="genre">Genre:</label>
                         <select name="genre">
-                            <option value="action">Akční</option>
-                            <option value="sci-fi">Sci-fi</option>
-                            <option value="fantasy">Fantasy</option>
+                            <option value="">--</option>
                             <!-- and more -->
                         </select>
                     </div>
 
                     <div class="filters-year-wrapper">
-                        <label for="year-from">Rok:</label>
+                        <label for="year-from">Years:</label>
                         <select name="year-from">
-                            <option value="">-vše-</option>
-                            <option value="2000">2000</option>
-                            <option value="2001">2001</option>
-                            <option value="2002">2002</option>
+                            <option value="">--</option>
                             <!-- ... -->
                         </select>
-                        <span>až</span>
+                        <span>to</span>
                         <select name="year-to">
-                            <option value="" selected="selected">-vše-</option>
-                            <option value="2000">2000</option>
-                            <option value="2001">2001</option>
-                            <option value="2002">2002</option>
+                            <option value="">--</option>
                             <!-- ... -->
                         </select>
                     </div>
 
                     <div class="filters-origin-wrapper">
-                        <label for="origin">Původ:</label>
+                        <label for="origin">Country:</label>
                         <select name="origin">
-                            <option value="cz">ČR</option>
-                            <option value="usa">USA</option>
-                            <option value="de">Německo</option>
-                            <!-- všechny státy -->
+                            <option value="">--</option>
                         </select>
                     </div>
                 </div>
@@ -95,192 +85,35 @@
         </aside>
 
         <!-- content panel -->
-        <section class="content-panel">
-            <h2 class="content-panel-heading">Vítejte!</h2>
-            <div class="home-text-panel">
-                <p>Právě se nacházíte na stránkách webové aplikace, kterou jsem vytvořil pro účely kurzu 4IZ268 - Webové
-                    Technologie vyučovaném na Fakultě informatiky a statistiky Vysoké školy ekonomické v Praze. Tato
-                    webová aplikace
-                    simuluje filmovou databázi a vychází z již podobných existujících webů tohoto typu (např.
-                    <a href="https://www.csfd.cz">CSFD</a>, <a href="https://www.imdb.com">IMDB</a>,
-                    <a href="https://www.themoviedb.org/">TMDB</a> apod.).
-                </p>
-                <p>Uživatel aplikace může v databázi vyhledávat filmy a zobrazovat si jejich seznamy podle vybraných
-                    kategorií. Každý film si může rozkliknout detailněji a přidat mu vlastní hodnocení, nebo si tento
-                    film může také zařadit do seznamu svých oblíbených filmů.</p>
-                <p>Pro vyhledání libovolného filmu z databáze stačí zadat jeho název do vyhledávače v záhlaví.
-                    Ve vyhledávači je implementováno i jednoduché filtrování. V levé postranní liště jsou rovněž
-                    dostupné základní filtrované seznamy filmů, včetně seznamů uživatelem hodnocených a oblíbených
-                    filmů.</p>
-                <p>Aplikace je napsaná v JavaScriptu s použitím externích knihoven
-                    <a href="https://api.jquery.com/">jQuery</a> a <a
-                        href="https://axios-http.com/docs/intro">Axios</a>. Pro zobrazení obsahu
-                    využívá <a href="https://developers.themoviedb.org/3">The Movie Database API</a>. 
-                    Pro ukládání hodnocení a seznamu oblíbených filmů se využívá pouze localstorage v prohlížeči.
-                </p>
-                <p>Good luck & have fun!</p>
+        <section class="content-wrapper">
+            <div class="content-panel">
+                <h2 class="content-panel-heading">Vítejte!</h2>
+                <div class="home-text-panel">
+                    <p>Právě se nacházíte na stránkách webové aplikace, kterou jsem vytvořil pro účely kurzu 4IZ268 -
+                        Webové
+                        Technologie vyučovaném na Fakultě informatiky a statistiky Vysoké školy ekonomické v Praze. Tato
+                        webová aplikace
+                        simuluje filmovou databázi a vychází z již podobných existujících webů tohoto typu (např.
+                        <a href="https://www.csfd.cz">CSFD</a>, <a href="https://www.imdb.com">IMDB</a>,
+                        <a href="https://www.themoviedb.org/">TMDB</a> apod.).
+                    </p>
+                    <p>Uživatel aplikace může v databázi vyhledávat filmy a zobrazovat si jejich seznamy podle vybraných
+                        kategorií. Každý film si může rozkliknout detailněji a přidat mu vlastní hodnocení, nebo si
+                        tento
+                        film může také zařadit do seznamu svých oblíbených filmů.</p>
+                    <p>Pro vyhledání libovolného filmu z databáze stačí zadat jeho název do vyhledávače v záhlaví.
+                        Ve vyhledávači je implementováno i jednoduché filtrování. V levé postranní liště jsou rovněž
+                        dostupné základní filtrované seznamy filmů, včetně seznamů uživatelem hodnocených a oblíbených
+                        filmů.</p>
+                    <p>Aplikace je napsaná v JavaScriptu s použitím externích knihoven
+                        <a href="https://api.jquery.com/">jQuery</a> a <a
+                            href="https://axios-http.com/docs/intro">Axios</a>. Pro zobrazení obsahu
+                        využívá <a href="https://developers.themoviedb.org/3">The Movie Database API</a>.
+                        Pro ukládání hodnocení a seznamu oblíbených filmů se využívá pouze localstorage v prohlížeči.
+                    </p>
+                    <p>Good luck & have fun!</p>
+                </div>
             </div>
-
-            <!--
-            movie cards 
-            <div class="movie-cards-wrapper">
-
-                <div class="movie-card">
-                    <div class="movie-card-poster">
-                        <img src="./assets/img/test.jpg" alt="test movie poster">
-                    </div>
-                    <div class="movie-card-info">
-                        <h3>Test Movie</h3>
-                        <div class="movie-rating">90 %</div>
-                        <div class="movie-meta-data">
-                            <div class="movie-country">Země</div>
-                            <div class="movie-genre">Žánr</div>
-                            <div class="movie-release-year">2012</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="movie-card">
-                    <div class="movie-card-poster">
-                        <img src="./assets/img/test.jpg" alt="test movie poster">
-                    </div>
-                    <div class="movie-card-info">
-                        <h3>Test Movie</h3>
-                        <div class="movie-rating">90 %</div>
-                        <div class="movie-meta-data">
-                            <div class="movie-country">Země</div>
-                            <div class="movie-genre">Žánr</div>
-                            <div class="movie-release-year">2012</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="movie-card">
-                    <div class="movie-card-poster">
-                        <img src="./assets/img/test.jpg" alt="test movie poster">
-                    </div>
-                    <div class="movie-card-info">
-                        <h3>Test Movie</h3>
-                        <div class="movie-rating">90 %</div>
-                        <div class="movie-meta-data">
-                            <div class="movie-country">Země</div>
-                            <div class="movie-genre">Žánr</div>
-                            <div class="movie-release-year">2012</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="movie-card">
-                    <div class="movie-card-poster">
-                        <img src="./assets/img/test.jpg" alt="test movie poster">
-                    </div>
-                    <div class="movie-card-info">
-                        <h3>Test Movie</h3>
-                        <div class="movie-rating">90 %</div>
-                        <div class="movie-meta-data">
-                            <div class="movie-country">Země</div>
-                            <div class="movie-genre">Žánr</div>
-                            <div class="movie-release-year">2012</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="movie-card">
-                    <div class="movie-card-poster">
-                        <img src="./assets/img/test.jpg" alt="test movie poster">
-                    </div>
-                    <div class="movie-card-info">
-                        <h3>Test Movie</h3>
-                        <div class="movie-rating">90 %</div>
-                        <div class="movie-meta-data">
-                            <div class="movie-country">Země</div>
-                            <div class="movie-genre">Žánr</div>
-                            <div class="movie-release-year">2012</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="movie-card">
-                    <div class="movie-card-poster">
-                        <img src="./assets/img/test.jpg" alt="test movie poster">
-                    </div>
-                    <div class="movie-card-info">
-                        <h3>Test Movie</h3>
-                        <div class="movie-rating">90 %</div>
-                        <div class="movie-meta-data">
-                            <div class="movie-country">Země</div>
-                            <div class="movie-genre">Žánr</div>
-                            <div class="movie-release-year">2012</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="movie-card">
-                    <div class="movie-card-poster">
-                        <img src="./assets/img/test.jpg" alt="test movie poster">
-                    </div>
-                    <div class="movie-card-info">
-                        <h3>Test Movie</h3>
-                        <div class="movie-rating">90 %</div>
-                        <div class="movie-meta-data">
-                            <div class="movie-country">Země</div>
-                            <div class="movie-genre">Žánr</div>
-                            <div class="movie-release-year">2012</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="movie-card">
-                    <div class="movie-card-poster">
-                        <img src="./assets/img/test.jpg" alt="test movie poster">
-                    </div>
-                    <div class="movie-card-info">
-                        <h3>Test Movie</h3>
-                        <div class="movie-rating">90 %</div>
-                        <div class="movie-meta-data">
-                            <div class="movie-country">Země</div>
-                            <div class="movie-genre">Žánr</div>
-                            <div class="movie-release-year">2012</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="movie-card">
-                    <div class="movie-card-poster">
-                        <img src="./assets/img/test.jpg" alt="test movie poster">
-                    </div>
-                    <div class="movie-card-info">
-                        <h3>Test Movie</h3>
-                        <div class="movie-rating">90 %</div>
-                        <div class="movie-meta-data">
-                            <div class="movie-country">Země</div>
-                            <div class="movie-genre">Žánr</div>
-                            <div class="movie-release-year">2012</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="movie-card">
-                    <div class="movie-card-poster">
-                        <img src="./assets/img/test.jpg" alt="test movie poster">
-                    </div>
-                    <div class="movie-card-info">
-                        <h3>Test Movie</h3>
-                        <div class="movie-rating">90 %</div>
-                        <div class="movie-meta-data">
-                            <div class="movie-country">Země</div>
-                            <div class="movie-genre">Žánr</div>
-                            <div class="movie-release-year">2012</div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            pagination 
-            <div class="pagination">
-                <button id="btn-pagination-prev">&lt;&lt;</button>
-                <button id="btn-pagination-first" class="active">1</button>
-                <button>2</button>
-                <button>3</button>
-                <button>4</button>
-                <button>5</button>
-                <span>...</span>
-                <button id="btn-pagination-last">10</button>
-                <button id="btn-pagination-next">&gt;&gt;</button>
-            </div>
-            -->
         </section>
     </main>
 
