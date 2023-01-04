@@ -118,7 +118,7 @@ footer {
   width: 96px;
   height: 96px;
   margin: 20px auto;
-  animation: spin 2s linear infinite;
+  animation: spin 1.5s cubic-bezier(0.69, 0.24, 0.34, 0.89) infinite;
   display: none;
 }
 
