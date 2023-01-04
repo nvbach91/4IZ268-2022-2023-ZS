@@ -9,12 +9,14 @@
     // Hidden elements
     const hiddenDataElement = $('.hidden-data');
     const lastSearchElement = $('.last-search');
+    // Spinner
+    const spinnerElement = $('.spinner');
     // User ID
     let userId = '';
     // Indicates whether the app should end
     let endSearch = false;
     // On load
-    $(document).ready(function(){
+    $(document).ready(function () {
         setupLastSearch();
     });
 
@@ -46,11 +48,15 @@
 
     // On form submit
     $('.input').submit((e) => {
+        spinnerElement.css("display", "block");
         // Prevent reload
         e.preventDefault();
         setup();
         // Get user 
         const user = handleElement.val();
+        // Update last search
+        localStorage.setItem('lastSearch', user);
+        setupLastSearch();
         // Try to fill user
         request(createUserUrl(user), fillUser).catch((r) => {
             endSearch = true;
@@ -62,18 +68,21 @@
             } else if (r.status == 400) {
                 showError(missingUserElement, 'Jméno nesplňuje požadavky twitteru.');
             }
-            
+
         }).then(() => {
             // Exit if error has been thrown
-            if (endSearch) return;
-            // Show user
-            hiddenDataElement.removeClass('hidden');
+            if (endSearch) {
+                spinnerElement.css("display", "none");
+                return
+            }
             // Get tweet
-            request(createLatestTweetUrl(userId), fillLatestTweet);
+            request(createLatestTweetUrl(userId), fillLatestTweet).then(() => {
+                spinnerElement.css("display", "none");
+                // Show user
+                hiddenDataElement.removeClass('hidden');
+            });
         });
-        // Update last search
-        localStorage.setItem('lastSearch', handleElement.val());
-        setupLastSearch();
+
     });
 
     // Create URL for user request
