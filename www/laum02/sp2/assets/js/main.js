@@ -70,9 +70,10 @@
             hiddenDataElement.removeClass('hidden');
             // Get tweet
             request(createLatestTweetUrl(userId), fillLatestTweet);
-            setupLastSearch();
         });
-
+        // Update last search
+        localStorage.setItem('lastSearch', handleElement.val());
+        setupLastSearch();
     });
 
     // Create URL for user request
@@ -109,7 +110,6 @@
 
     // Fill user
     async function fillUser(user) {
-        localStorage.setItem('lastSearch', handleElement.val());
         if (user == '') {
             showError(missingUserElement, 'Uživatel nebyl nalezen');
             endSearch = true;
