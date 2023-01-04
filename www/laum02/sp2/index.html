@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cs">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/style.css">
-    <title>Document</title>
+    <title>Twitter vyhledávač</title>
 </head>
 
 <body>
     <div class="main-wrapper">
         <h1>Vyhledávač twitter uživatelů</h1>
-        <section class="input">
+        <div class="input">
             <img src="assets/imgs/temp-picture.jpg" alt="A cat posing as a temporary profile picture">
             <form>
                 <label for="handle">Napište jméno twitter uživatele</label>
@@ -20,11 +20,11 @@
                 
                 <button type="submit">Prohlédni uživatele</button>
             </form>
-        </section>
+        </div>
 
-        <section class="missing-user hidden-user hidden"></section>
+        <div class="missing-user hidden-user hidden"></div>
 
-        <section class="profile hidden-data hidden">
+        <div class="profile hidden-data hidden">
             <img alt="Profile image of a searched user" class="profile-image">
             <div class="profile-info">
                 <p>Jméno: <span class="name"></span></p>
@@ -33,13 +33,13 @@
                 <p>Uživatel <strong><span class="verified"></span></strong> ověřený (pouze &dollar;5!)</p>
                 <p>Účet vytvořen dne <span class="creation-date"></span> hodin</p>
             </div>
-        </section>
+        </div>
 
-        <section class="description hidden-data hidden">
+        <div class="description hidden-data hidden">
             <p class="profile-desc"></p>
-        </section>
+        </div>
 
-        <section class="stats hidden-data hidden">
+        <div class="stats hidden-data hidden">
             <div class="stat-1 stat">
                 <p class="stat-header">Počet followů</p>
                 <p class="stat-value"></p>
@@ -56,7 +56,7 @@
                 <p class="stat-header">Počet veřejných listů</p>
                 <p class="stat-value"></p>
             </div>
-        </section>
+        </div>
 
         <section class="latest-tweet-wrapper hidden-data hidden">
             <h2>Poslední tweet uživatele</h2>
@@ -71,7 +71,7 @@
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-    <script src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <script src="https://platform.twitter.com/widgets.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
 
