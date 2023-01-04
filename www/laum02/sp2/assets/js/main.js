@@ -37,7 +37,7 @@
         // Clear error message
         missingUserElement.empty();
         // Reset
-        endSearch = false
+        endSearch = false;
     }
 
     // Display error message in a given element
@@ -48,7 +48,7 @@
 
     // On form submit
     $('.input').submit((e) => {
-        spinnerElement.css("display", "block");
+        spinnerElement.css('display', 'block');
         // Prevent reload
         e.preventDefault();
         setup();
@@ -72,12 +72,12 @@
         }).then(() => {
             // Exit if error has been thrown
             if (endSearch) {
-                spinnerElement.css("display", "none");
-                return
+                spinnerElement.css('display', 'none');
+                return;
             }
             // Get tweet
             request(createLatestTweetUrl(userId), fillLatestTweet).then(() => {
-                spinnerElement.css("display", "none");
+                spinnerElement.css('display', 'none');
                 // Show user
                 hiddenDataElement.removeClass('hidden');
             });
