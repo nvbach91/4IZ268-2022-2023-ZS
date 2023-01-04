@@ -103,15 +103,14 @@
                 'Authorization': 'Bearer AAAAAAAAAAAAAAAAAAAAAMabkwEAAAAAt5JAqqCv89bBuMV7hhdjgmPLIy0%3DZb5WLArdIYEPw9rEAUIgiVp4RNVkZxQ7ZWVj1gh2HIx8xtTg3p',
             }
         }).done((resp) => {
-            if (!resp.hasOwnProperty('data')) callback('');
-            else callback(resp.data[0]);
+            callback(resp.hasOwnProperty('data') ? resp.data[0] : '');
         });
     }
 
     // Fill user
     async function fillUser(user) {
         if (user == '') {
-            showError(missingUserElement, 'Uživatel nebyl nalezen');
+            showError(missingUserElement, 'Uživatel nebyl nalezen.');
             endSearch = true;
             return;
         }
