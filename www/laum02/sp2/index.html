@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,20 +8,71 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <title>Document</title>
 </head>
+
 <body>
-    <div id="main-wrapper">
-        <section id="input">
+    <div class="main-wrapper">
+        <h1>Vyhledávač twitter uživatelů</h1>
+        <section class="input">
             <img src="assets/imgs/temp-picture.jpg" alt="A cat posing as a temporary profile picture">
             <form>
                 <label for="handle">Napište jméno twitter uživatele</label>
-                <input type="text" name="handle" id="handle" value="@" draggable="false">
-                <button type='button'>Prohlédni uživatele</button> 
+                <input type="text" name="handle" class="handle" value="@" draggable="false">
+                
+                <button type="submit">Prohlédni uživatele</button>
             </form>
+        </section>
+
+        <section class="missing-user hidden-user hidden"></section>
+
+        <section class="profile hidden-data hidden">
+            <img alt="Profile image of a searched user" class="profile-image">
+            <div class="profile-info">
+                <p>Jméno: <span class="name"></span></p>
+                <p>Přezdívka: <span class="username"></span></p>
+                <p>Lokace: <span class="location"></span></p>
+                <p>Uživatel <strong><span class="verified"></span></strong> ověřený (pouze &dollar;5!)</p>
+                <p>Účet vytvořen dne <span class="creation-date"></span> hodin</p>
+            </div>
+        </section>
+
+        <section class="description hidden-data hidden">
+            <p class="profile-desc"></p>
+        </section>
+
+        <section class="stats hidden-data hidden">
+            <div class="stat-1 stat">
+                <p class="stat-header">Počet followů</p>
+                <p class="stat-value"></p>
+            </div>
+            <div class="stat-2 stat">
+                <p class="stat-header">Počet followerů</p>
+                <p class="stat-value"></p>
+            </div>
+            <div class="stat-3 stat">
+                <p class="stat-header">Počet tweetů</p>
+                <p class="stat-value"></p>
+            </div>
+            <div class="stat-4 stat">
+                <p class="stat-header">Počet veřejných listů</p>
+                <p class="stat-value"></p>
+            </div>
+        </section>
+
+        <section class="latest-tweet-wrapper hidden-data hidden">
+            <h2>Poslední tweet uživatele</h2>
+            <div class="latest-tweet"></div>
+            <div class="missing-tweet hidden"></div>
         </section>
     </div>
 
+    <footer>
+        <p>Michal Lauer, &copy; 2023; This site uses <a href="https://cors-anywhere.herokuapp.com/corsdemo" target="_blank">cors-anywhere</a></p> 
+        
+    </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     <script src="assets/js/main.js"></script>
 </body>
+
 </html>

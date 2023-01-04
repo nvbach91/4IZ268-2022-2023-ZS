@@ -2,35 +2,111 @@
     box-sizing: border-box;
 }
 
+.hidden {
+    display: none;
+    visibility: hidden;
+}
+
 body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+body,
+p,
+h1 {
     margin: 0;
 }
 
-#main-wrapper {
+.main-wrapper {
     margin: 0 auto;
     width: 1024px;
     min-height: 100%;
 }
 
-#input {
+.input {
     display: flex;
     justify-content: center;
     padding: 50px;
+    background-color: rgb(172, 172, 172);
+    border-radius: 5px;
 }
 
-#input img {
+.input input {
+    margin: 5px 0;
+}
+
+.input img {
     width: 192px;
     height: 192px;
     padding: 20px;
 }
 
-#input form {
+.input form {
     display: flex;
     flex-direction: column;
     justify-content: center;
     width: 100%;
 }
 
-#input form {
+.input form {
     width: 25%;
+}
+
+.profile {
+    display: flex;
+    justify-content: center;
+}
+
+.profile-image {
+    width: 196px;
+    height: 196px;
+    margin: 15px;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.profile-info p {
+    margin: 5px 0;
+}
+
+.description {
+    background-color: rgb(172, 172, 172);
+    height: 50px;
+    display: flex;
+    border-radius: 5px;
+    justify-content: center;
+    align-items: center;
+}
+
+.stats {
+    display: flex;
+    margin-top: 20px;
+}
+
+.stat {
+    width: 25%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid grey;
+}
+
+.twitter-tweet {
+    margin: 10px auto;
+}
+
+footer {
+    text-align: center;
+    background-color: black;
+    color: white;
+    margin-top: auto;
+    width: 100%;
 }
