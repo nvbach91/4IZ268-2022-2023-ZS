@@ -1,34 +1,44 @@
 (() => {
 
+    // Handle input
     const handleElement = $('.handle');
+    // Latest tweet
     const tweetElement = $('.latest-tweet');
-
-    const missingTweetElement = $('.missing-tweet');
+    // Error element for not found user
     const missingUserElement = $('.missing-user');
-
+    // Hidden elements
+    const hiddenDataElement = $('.hidden-data');
+    const lastSearchElement = $('.last-search');
+    // User ID
     let userId = '';
-
-    // Have '@' as the first symbol in '#handle' input
-    handleElement.on('keydown', (e) => {
-        const key = e.key;
-        const len = handleElement.val().length;
-        if ((key === 'Backspace' || key === 'Delete')) {
-            if (len == 1) {
-                e.preventDefault();
-            }
-        }
+    // Indicates whether the app should end
+    let endSearch = false;
+    // On load
+    $(document).ready(function(){
+        setupLastSearch();
     });
+
+    function setupLastSearch() {
+        const last = localStorage.getItem('lastSearch');
+        if (last == null) lastSearchElement.empty();
+        else lastSearchElement.text('Poslední vyhledávání: ' + last);
+    }
 
     // Setup DOM before search
     function setup() {
-        // Reset
-        $('.hidden-user').addClass('hidden');
-        $('.hidden-data').addClass('hidden');
+        // Hide all data
+        missingUserElement.addClass('hidden');
+        hiddenDataElement.addClass('hidden');
+        // User has never tweeted, by default
         tweetElement.empty();
+        tweetElement.append($('<p>').text('Uživatel ještě nikdy netweetnul:(.'));
+        // Clear error message
         missingUserElement.empty();
-        missingTweetElement.empty();
+        // Reset
+        endSearch = false
     }
 
+    // Display error message in a given element
     function showError(el, txt) {
         el.append($('<p>').text(txt));
         el.removeClass('hidden');
@@ -40,27 +50,27 @@
         e.preventDefault();
         setup();
         // Get user 
-        const user = handleElement.val().substring(1);
-        let end = false;
+        const user = handleElement.val();
         // Try to fill user
         request(createUserUrl(user), fillUser).catch((r) => {
-            end = true;
+            endSearch = true;
+            console.log(r.responseText);
             if (r.status == 429) {
                 showError(missingUserElement, 'Poslali jste požadavků. Zkuste to prosím znovu za hodinu.');
             } else if (r.status == 403) {
                 showError(missingUserElement, 'Je nutné aktivovat cors-anywhere. Klikněte prosím na odkaz v zápatí stránky.');
             } else if (r.status == 400) {
                 showError(missingUserElement, 'Jméno nesplňuje požadavky twitteru.');
-            } else {
-                console.log(r.responseText);
             }
+            
         }).then(() => {
             // Exit if error has been thrown
-            if (end) return;
+            if (endSearch) return;
             // Show user
-            $('.hidden-data').removeClass('hidden');
+            hiddenDataElement.removeClass('hidden');
             // Get tweet
             request(createLatestTweetUrl(userId), fillLatestTweet);
+            setupLastSearch();
         });
 
     });
@@ -99,6 +109,12 @@
 
     // Fill user
     async function fillUser(user) {
+        localStorage.setItem('lastSearch', handleElement.val());
+        if (user == '') {
+            showError(missingUserElement, 'Uživatel nebyl nalezen');
+            endSearch = true;
+            return;
+        }
         // Profile
         $('.profile-image').attr('src', user.profile_image_url.replace('normal', '400x400'));
         $('.name').text(user.name);
@@ -120,9 +136,8 @@
 
     // Fill tweet
     function fillLatestTweet(tweet) {
-        if (tweet == '') {
-            showError(missingTweetElement, 'Uživatel ještě nikdy netweetnul:(.');
-        } else {
+        if (tweet != '') {
+            tweetElement.empty();
             twttr.widgets.createTweet(
                 tweet.id,
                 tweetElement[0]
