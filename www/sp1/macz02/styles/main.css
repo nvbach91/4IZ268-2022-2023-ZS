@@ -1,0 +1,168 @@
+header {
+  position: fixed;
+  font-family: 'Poppins', sans-serif;
+  width: 100%;
+  color: #d0fc0bea;
+  background-color: #111;
+  display: flex;
+  padding-left: 45% ;
+  flex-shrink: 0;
+  top: 0;
+}
+.images-container {
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 800px;
+  padding-bottom: 50px;
+}
+.content{
+  color: azure;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  background-color: rgb(6, 10, 85);
+  display: flex;
+  flex-wrap: wrap;
+}
+.img {
+  border-radius: 4px;
+  padding: 3px;
+  width: 200px;
+}
+.img:hover {
+  box-shadow: 0 0 2px 2px rgba(252, 1, 1, 0.5);
+}
+.column{
+  float: left;
+  width: 50%;
+  padding: 5px;
+}
+.row:after{
+  content: "";
+  clear: both;
+  display: table;
+}
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: black;
+  padding: 0 2rem;
+}
+div a.active {
+  color: rgba(219, 234, 17, 0.904);
+}
+.vertical-menu {
+  height: 100%;
+  width: 140px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 75px;
+}
+.vertical-menu a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+}
+.vertical-menu a:hover {
+  color: #f1f1f1;
+}
+main {
+  padding: 70px 132px 0;
+  padding-right: 0;
+}
+.short-intro {
+  padding-left: 2%;
+}
+.abilities {
+  padding-left: 2%;
+  font-weight: 800;
+}
+.abilities-list li {
+  font-weight: 600;
+  padding-bottom: 5px;
+}
+.abilities-list img {
+  border: 3px solid black;
+}
+.abilities-list {
+  padding-left: 15px;
+}
+.about-text p {
+  background-color: rgba(100, 95, 95, 0.822);
+  padding: 1rem;
+  flex-basis: 90%;
+  box-sizing: border-box;
+}
+.main-icon {
+  border: 10px solid rgb(169, 11, 11);
+}
+footer {
+  background-color: #3229e0;
+  color: #000000;
+  font-family: 'Poppins', sans-serif;
+  height: 60px;
+  padding-top: 20px;
+  text-align: center;
+  display: block;
+  margin-top: 0;
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+}
+.content-about {
+  color: azure;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  background-color: rgb(6, 10, 85);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.about-h2 {
+  text-align: center;
+  padding-bottom: 20px;
+}
+.about-text div {
+  text-align: center;
+}
+.about-section img {
+  width: 111px;
+  border: 5px solid black;
+  background-color: white;
+}
+.role-icon {
+  border: 10px solid rgb(169, 11, 11);
+  width: 162px;
+  height: 162px;
+  background-color: rgba(63, 202, 8, 0.356);
+}
+.recommended li {
+  font-weight: 600;
+  padding-bottom: 5px;
+}
+.recommended img {
+  border: 3px solid black;
+}
+.recommended {
+  padding-left: 15px;
+}
+.runes {
+  width: 130px;
+}
+.build {
+  height: 80px;
+}
+h2 {
+  font-family: 'Poppins', sans-serif;
+}
+.skins {
+  padding-left: 15px;
+}

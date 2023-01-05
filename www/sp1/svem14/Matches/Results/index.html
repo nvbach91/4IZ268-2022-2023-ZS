@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1. FC Tatran Prešov | Odohrané zápasy</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body class="background">
+    <header>
+        <nav>
+            <a href="../../"><img class="logo" src="../../logo.jpg" alt="Logo"></a>
+            <div class="nav-links" id="navLinks">
+                <i class="fa fa-times" onclick="hideMenu()"></i>
+                <ul>
+                    <li><a href="../../A-team/">A-Tým</a></li>
+                    <li><a href="../../Contacts/">Kontakty</a></li>
+                    <li><a href="../../History/">História</a></li>
+                    <li><a href="../../Matches/">Zápasy</a></li>
+                    <li><a href="../../Sponsors/">Sponzory</a></li>
+                    <li><a href="../../Stadium/">Štadión</a></li>
+                    <li><a href="../../Tickets/">Vstupenky</a></li>
+                </ul>
+            </div>
+            <i class="fa fa-bars" onclick="showMenu()"></i>
+        </nav>
+    </header>
+    <div class="ptable">
+        <h1 class="headin">Výsledky</h1>
+        <table>
+            <tr class="col">
+                <th>#</th>
+                <th>Team H</th>
+                <th>Team A</th>
+                <th>Result</th>
+            </tr>
+            <tr class="loss">
+                <td>1</td>
+                <td>
+                    Komarno</td>
+                <td>Presov</td>
+                <td>3:0</td>
+
+            </tr>
+            <tr class="loss">
+                <td>2</td>
+                <td>Kosice</td>
+                <td>Presov</td>
+                <td>2:1</td>
+            </tr>
+            <tr class="win">
+                <td>3</td>
+                <td>FK Humenne</td>
+                <td>Presov</td>
+                <td>0:3</td>
+
+            </tr>
+            <tr class="loss">
+                <td>4</td>
+                <td>
+                    Samorin</td>
+                <td>Presov</td>
+                <td>3:0</td>
+
+            </tr>
+            <tr class="win">
+                <td>5</td>
+                <td>Presov</td>
+                <td>Petrzalka</td>
+                <td>2:1</td>
+
+            </tr>
+            <tr class="win">
+                <td>6</td>
+                <td>Zilina B </td>
+                <td>Presov</td>
+                <td>0:4</td>
+
+            </tr>
+            <tr class="win">
+                <td>7</td>
+                <td>Presov</td>
+                <td>Trebisov</td>
+                <td>1:0</td>
+
+            </tr>
+            <tr class="win">
+                <td>8</td>
+                <td>Dubnica</td>
+                <td>Presov</td>
+                <td>0:3</td>
+
+            </tr>
+            <tr class="win">
+                <td>9</td>
+                <td>Presov</td>
+                <td>Puchov</td>
+                <td>2:1</td>
+
+            </tr>
+            <tr class="win">
+                <td>10</td>
+                <td>Slovan Bratislava B</td>
+                <td>Presov</td>
+                <td>0:3</td>
+
+            </tr>
+            <tr class="win">
+                <td>11</td>
+                <td>Raca
+                </td>
+                <td>Presov</td>
+                <td>0:2</td>
+
+            </tr>
+            <tr class="win">
+                <td>12</td>
+                <td>Presov</td>
+                <td>Povazska Bystrica</td>
+                <td>1:0</td>
+
+            </tr>
+            <tr class="win">
+                <td>13</td>
+                <td>Presov</td>
+                <td>D. Kubin</td>
+                <td>2:0</td>
+
+            </tr>
+            <tr class="win">
+                <td>14</td>
+                <td>Pohronie</td>
+                <td>Presov</td>
+                <td>0:1</td>
+
+            </tr>
+            <tr class="loss">
+                <td>15</td>
+                <td>
+                    Presov</td>
+                <td>Myjava</td>
+                <td>0:1</td>
+
+            </tr>
+            <tr class="loss">
+                <td>16</td>
+                <td>
+                    Presov</td>
+                <td>Komarno</td>
+                <td>1:2</td>
+
+            </tr>
+            <tr class="win">
+                <td>17</td>
+                <td>
+                    Presov</td>
+                <td>Kosice</td>
+                <td>2:1</td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        var navLinks = document.getElementById("navLinks");
+        function showMenu() {
+            navLinks.style.right = "0";
+        }
+        function hideMenu() {
+            navLinks.style.right = "-200px";
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+nav {
+    display: none;
+}
+
+header {
+    padding: 0px;
+}
+
+.link {
+    display: none;
+}
+.main_image {
+    padding: 0px;
+}
+.main_image h1 {
+    color: black;
+    font-size: 20px;
+ }
+ 
+ .contents {
+    padding: 0px;
+    margin: 0px;
+ }
+ 
+.content {
+    color: black;
+    margin: 0px;
+}
+
+.content h2 {
+    padding: 0px;
+    font-size: 15px;
+    color: black;
+}
+
+.content p {
+    padding: 0px;
+    font-size: 13px;
+    color: black;
+}
+
+.logo {
+    height: 80px;
+}
+
+.no-print {
+    display: none;
+}
+
+.content img {
+    height: 100px;
+}

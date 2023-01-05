@@ -1,0 +1,138 @@
+section {
+    background-color: rgb(221, 221, 221);
+}
+
+section:first-of-type {
+    padding: 20px;
+}
+
+.designers-content-wrapper {
+    padding: 0px 15px 15px 15px;
+}
+
+.designer-selection {
+    display: flex;
+    justify-content: center;
+    gap: 10px 10px;
+    padding: 0px 15px 15px 15px;
+}
+
+@media (max-width: 1024px) {
+    .designer-selection {
+        flex-wrap: wrap;
+    }
+}
+
+.designer-navigation {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 15px;
+}
+
+.btn-back-to-selection {
+    margin: 0px auto;
+}
+
+.designer-container {
+    margin-bottom: 15px;
+}
+
+.designer-container>h2 {
+    text-align: center;
+}
+
+.designer-container h3 {
+    margin: 0px;
+    padding: 0px 0px 0px 15px;
+}
+
+.designer-container:last-child {
+    margin-bottom: 0px;
+}
+
+.designer-profile {
+    display: flex;
+    padding-bottom: 15px;
+}
+
+.designer-profile h3 {
+    padding: 15px 15px 0px 15px;
+    margin: 0px;
+}
+
+.designer-profile ul {
+    padding-top: 15px;
+}
+
+.designer-profile>div {
+    flex-basis: 66%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+}
+
+.designer-profile>figure {
+    flex-basis: 33%;
+    margin: 0px;
+    padding: 15px 0px 0px 15px;
+}
+
+.designer-profile figure>img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+    .designer-profile {
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+
+    .designer-profile>figure {
+        padding: 15px;
+    }
+}
+
+.designer-profile ul {
+    margin: 0px;
+}
+
+.design-gallery {
+    display: flex;
+    gap: 10px 10px;
+    padding: 20px;
+}
+
+.design-gallery>figure {
+    flex-basis: 20%;
+    margin: 0px;
+}
+
+.design-gallery>figure>img {
+    width: 100%;
+}
+
+@media (max-width: 1024px) {
+    .design-gallery {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .design-gallery>figure {
+        flex-basis: 32%;
+    }
+}
+
+@media (max-width: 768px) {
+    .design-gallery>figure {
+        flex-basis: 48%;
+    }
+}
+
+@media (max-width: 480px) {
+    .design-gallery>figure {
+        flex-basis: 100%;
+    }
+}

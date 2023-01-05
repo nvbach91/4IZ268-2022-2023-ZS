@@ -1,0 +1,211 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+}
+
+.about {
+    display: none;
+}
+
+header {
+    background-color: #013495;
+    height: 80px;
+    display: flex;
+    padding: 30px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Button_1,
+.Button_2,
+.Button_3,
+.Button_4 {
+    height: 48px;
+    width: 130px;
+    background-color: #125FA7;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    margin-right: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+ul {
+    list-style-type: none;
+    display: flex;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+}
+
+nav li {
+    transition: background-color 0.5s ease;
+}
+
+nav li:hover {
+    background-color: #56B131;
+    color: white;
+}
+
+.logo img {
+    height: 45px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.hero_image {
+    background-image: url(./img/hero_image.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 600px;
+}
+
+.advantages {
+    margin-top: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.advantages_2 {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.container {
+    margin-left: 14px;
+}
+
+.advantage p {
+    height: 150px;
+    width: 300px;
+}
+
+.advantages img,
+.advantages_2 img {
+    height: 421x;
+    width: 328px;
+}
+
+main {
+    max-width: 1080px;
+    margin: 0 auto;
+}
+
+h2,
+h1 {
+    color: #013495;
+}
+
+h1 {
+    margin-top: 100px;
+    text-align: center;
+}
+
+.laboratory_info {
+    margin-top: 80px;
+    margin-bottom: 200px;
+}
+
+.more_info {
+    color: #013495;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.more_info:hover {
+    color: #56B131;
+    transition: 0.5s ease;
+    cursor: pointer;
+}
+
+footer {
+    background-color: #013495;
+    color: white;
+    padding: 50px 0;
+    text-align: center;
+    align-items: baseline;
+}
+
+footer p {
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
+    margin-top: 40px;
+}
+
+@media screen and (min-width: 600px) {
+
+    .advantages,
+    .advantages_2 {
+        width: calc(100% / 3);
+    }
+}
+
+@media print {
+
+    header,
+    .hero_image,
+    .advantages img,
+    .advantages_2 img,
+    .more_info {
+        display: none;
+    }
+
+    .about {
+        display: grid;
+        margin-top: 2cm;
+        font-size: 14pt;
+    }
+
+    .advantages,
+    .advantages_2 {
+        margin-top: 2cm;
+    }
+
+    .advantages p,
+    .advantages_2 p {
+        height: 1cm;
+        font-size: 12pt;
+    }
+
+    h2,
+    h1 {
+        color: black;
+        font-size: 14pt;
+    }
+
+    .laboratory_info {
+        margin-top: 2cm;
+        margin-bottom: 0cm;
+    }
+
+    footer {
+        margin-top: 0cm;
+        display: flex;
+        color: black;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+
+}

@@ -1,0 +1,205 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+}
+
+header {
+    background-color: #013495;
+    height: 80px;
+    display: flex;
+    padding: 30px;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 100px;
+}
+
+.Button_1,
+.Button_2,
+.Button_3,
+.Button_4 {
+    height: 48px;
+    width: 130px;
+    background-color: #125FA7;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    margin-right: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.Button_1 {
+    background-color: #56B131;
+}
+
+ul {
+    list-style-type: none;
+    display: flex;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+}
+
+nav li {
+    transition: background-color 0.5s ease;
+}
+
+nav li:hover {
+    background-color: #56B131;
+    color: white;
+}
+
+.logo img {
+    height: 45px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+h2,
+h1 {
+    color: #013495;
+}
+
+h1 {
+    margin-top: 100px;
+    margin-bottom: 80px;
+    text-align: center;
+}
+
+
+.intro {
+    width: 1000px;
+    margin-bottom: 100px;
+}
+
+.years_1,
+.years_2,
+.years_3,
+.years_4,
+.years_5,
+.years_6 {
+    display: flex;
+    justify-content: space-between 50px;
+}
+
+.years_1 p,
+.years_3 p,
+.years_5 p,
+.years_2 p,
+.years_4 p,
+.years_6 p {
+    width: 300px;
+    font-size: smaller;
+    margin-left: 30px;
+}
+
+.years_1 h2,
+.years_3 h2,
+.years_5 h2,
+.years_2 h2,
+.years_4 h2,
+.years_6 h2 {
+    margin-left: 30px;
+}
+
+.years_1 img,
+.years_3 img,
+.years_5 img {
+    height: 200px;
+}
+
+.years_2 img,
+.years_4 img,
+.years_6 img {
+    height: 200px;
+    margin-left: 40px;
+}
+
+.years_1_1,
+.years_2_2,
+.years_3_3 {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+main {
+    width: 1080px;
+    margin: 0 auto;
+}
+
+footer {
+    background-color: #013495;
+    color: white;
+    padding: 50px 0;
+    text-align: center;
+    align-items: baseline;
+    margin-top: 110px;
+}
+
+footer p {
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
+    margin-top: 40px;
+}
+
+
+@media print {
+
+    header {
+        display: none;
+    }
+
+    .years_1 img,
+    .years_3 img,
+    .years_5 img,
+    .years_2 img,
+    .years_4 img,
+    .years_6 img {
+        height: 3cm;
+    }
+
+    p {
+        font-size: 12pt;
+    }
+
+    h2,
+    h1 {
+        color: black;
+        font-size: 14pt;
+    }
+
+    .intro {
+        margin: 0cm;
+    }
+
+    .years_1_1,
+    .years_2_2,
+    .years_3_3,
+    .intro {
+        margin-bottom: 1cm;
+    }
+
+    footer {
+        margin-top: 0cm;
+        display: flex;
+        color: black;
+        align-items: center;
+        justify-content: space-between;
+    }
+}

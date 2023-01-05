@@ -1,0 +1,47 @@
+.pin-board {
+  background-color: #485f8a;
+  border-radius: 12px;
+  margin-left: 20px;
+  width: 85%;
+  margin-top: 75px;
+}
+
+.pin-board h3 {
+  color: rgb(254, 255, 255);
+  margin: auto;
+  padding-top: 7px;
+  text-align: center;
+  text-decoration-line: underline;
+  text-decoration-thickness: auto;
+}
+
+.tabDesc {
+  /*border-style: dashed;*/
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+}
+
+.tabDesc>div {
+  background-color: #413c5f;
+  color: white;
+  margin: 10px;
+  padding: 15px;
+  font-size: 30px;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 3px;
+  text-align: center;
+  width: min-content;
+  height: min-content;
+}
+
+.tabDesc>div p {
+  margin: -10px;
+}
+
+.flex-title {
+  width: 100%;
+}

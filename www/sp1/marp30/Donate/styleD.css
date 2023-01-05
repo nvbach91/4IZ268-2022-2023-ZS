@@ -1,0 +1,205 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
+
+*
+{
+    box-sizing: border-box;
+    font-family: 'Quicksand';
+   background-color: rgb(191, 131, 255);
+}
+
+
+body {
+    
+    overflow-x: hidden;
+}
+
+
+.layout {
+    display: flex;
+    max-width: 1366px;
+    margin: 0 auto;
+    flex-wrap:wrap;
+}
+
+
+
+
+.main-header {
+    width: 100%;
+    display: flex;
+    
+    padding: 0px;
+    font-size:1.2ch;
+    
+    text-align: center;
+    order: 0;
+    justify-content: center;
+}
+
+
+
+
+.menu {
+    width: 10%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    
+    text-align: center;
+ 
+    height: fit-content;
+  
+    border-left: 2px black solid ;
+    border-bottom: 2px black solid ;
+    border-top: 2px black solid ;
+    border-right: 2px black solid;
+    
+   
+    
+}
+
+.menu-item:last-child{
+    margin-bottom: 10px;
+}
+
+.menu-item {
+    padding: 3px;
+    margin-top: .5rem;
+    width: 100%;
+    margin-right:40px;
+    cursor: pointer;
+}
+
+.menu-item:hover {
+    color: rgba(255, 255, 255, 0.862);
+    background-color: rgba(255, 60, 154, 0.512);
+    transition: ease .5s;
+}
+
+
+
+
+.main {
+    
+    width: 90%;
+   
+    height:fit-content;
+   
+    border-top: 2px black solid ;
+   
+    
+}
+
+
+
+.kpis {
+    margin-top: 7%;
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    text-align: center;
+   
+   
+    
+}
+
+.kpi-item {
+    width: calc(25% - .375rem);
+    cursor: pointer;
+    
+}
+
+.textak{
+    visibility: hidden;
+    position:relative;
+    
+}
+
+.kpi-item:first-child{
+    margin-left: 20px;
+    
+}
+
+.kpi-item:nth-child(3){
+    margin-top: 7px;
+}
+
+
+
+
+
+.kpi-item:hover{
+    
+   
+    transition: ease .7s;
+    transform: scale(1.1);
+   
+   
+    
+}
+
+.kpi-item:hover .textak{
+    
+    transition: ease .7s;
+    visibility: visible;
+    color: rgba(222, 222, 222, 0.805)
+    
+}
+
+.footer{
+    display: flex;
+      width: 100%;
+      text-align: center;
+      margin-top: 261px;
+      margin-left: 20px;
+     
+  }
+  
+  .inst{
+      margin-left: 100px;
+      margin-right: 125px;
+      cursor: pointer;
+      margin-top: 25px;
+  }
+  
+  
+  
+  .right{
+      margin-left: 225px;
+      margin-right: 225px;
+      margin-top: 5px;
+     
+  }
+  
+  .tg{
+  margin-right: 100px;
+  margin-left: 125px;
+  cursor: pointer;
+  margin-top: 25px;
+  }
+  
+  .twt{
+      cursor: pointer;
+      margin-top: 25px;
+  }
+  .fb{
+      cursor: pointer;
+      margin-top: 25px;
+      margin-right: 20px;
+  }
+
+
+.footer-text::before {
+    content: "Thanks for supporting us!:)";
+    
+}
+
+.footer-text:hover::before {
+    content: "PROMO 20% sale for next buy: ZS2022MP";
+    
+  }
+
+
+
+
+

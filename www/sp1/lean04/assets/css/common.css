@@ -1,0 +1,162 @@
+.highlight {
+    color: #5edeba;
+}
+
+.print-only {
+    display: none;
+}
+
+.width-50-pct {
+    width: 50%;
+}
+
+.padding-right-16px {
+    padding-right: 16px;
+}
+
+.padding-left-16px {
+    padding-left: 16px;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.vertical-spacing-16px > *:not(:last-child) {
+    margin-bottom: 16px;
+}
+
+.vertical-spacing-48px > *:not(:last-child) {
+    margin-bottom: 48px;
+}
+
+.vertical-spacing-64px > *:not(:last-child) {
+    margin-bottom: 64px;
+}
+
+.fade-in-1 {
+    animation: fade-in ease 1s;
+    animation-delay: 0s;
+}
+
+.fade-in-2 {
+    opacity: 0;
+    animation: fade-in ease 1s forwards;
+    animation-delay: 0.5s;
+}
+
+.fade-in-3 {
+    opacity: 0;
+    animation: fade-in ease 1s forwards;
+    animation-delay: 1s;
+}
+
+.fade-in-4 {
+    opacity: 0;
+    animation: fade-in ease 1s forwards;
+    animation-delay: 1.5s;
+}
+
+.fade-in-5 {
+    opacity: 0;
+    animation: fade-in ease 1s forwards;
+    animation-delay: 2s;
+}
+
+.fade-in-6 {
+    opacity: 0;
+    animation: fade-in ease 1s forwards;
+    animation-delay: 2.5s;
+}
+
+.fade-in-7 {
+    opacity: 0;
+    animation: fade-in ease 1s forwards;
+    animation-delay: 3s;
+}
+
+@keyframes fade-in {
+    0% {
+        transform: translate(0px, -25px);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0px, 0px);
+    }
+}
+
+@media print {
+    * {
+        color: black !important;
+    }
+
+    header {
+        display: none;
+    }
+
+    footer {
+        display: none;
+    }
+
+    a {
+        text-decoration: none;
+        font-style: italic;
+    }
+
+    a::after {
+        display: block;
+        content: ' (link: ' attr(href) ') ';
+        font-style: normal;
+    }
+
+    h1::before {
+        content: 'Le Anh Viet Linh - ';
+    }
+
+    .highlight {
+        font-weight: bold;
+    }
+
+    .print-only {
+        display: initial;
+    }
+
+    .video-container {
+        display: none;
+    }
+
+    .fade-in-1 {
+        opacity: 1;
+    }
+
+    .fade-in-2 {
+        opacity: 1;
+    }
+
+    .fade-in-3 {
+        opacity: 1;
+    }
+
+    .fade-in-4 {
+        opacity: 1;
+    }
+
+    .fade-in-5 {
+        opacity: 1;
+    }
+
+    .fade-in-6 {
+        opacity: 1;
+    }
+
+    .fade-in-7 {
+        opacity: 1;
+    }
+}

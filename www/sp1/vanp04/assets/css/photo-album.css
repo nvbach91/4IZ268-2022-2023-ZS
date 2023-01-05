@@ -1,0 +1,19 @@
+.travel-album-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 30px;
+}
+
+a {
+    text-decoration: none;
+    color: rgb(70, 62, 62);
+    ;
+}
+
+@media print {
+    * {
+        color: black;
+        background-color: white;
+    }
+}

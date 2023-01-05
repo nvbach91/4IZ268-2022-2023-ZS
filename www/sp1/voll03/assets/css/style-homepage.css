@@ -1,0 +1,229 @@
+/************************************************/
+/** Header */
+header {
+    background-image: url("../img/header/header-home.jpg");
+    background-size: cover;
+    background-position: 20% 50%;
+}
+
+/************************************************/
+/** Body */
+.flag {
+    float: left;
+    margin: 0 30px 30px 0;
+    border: 1px solid rgba(35, 77, 20, 0.1);
+    box-shadow: 0px 0px 24px -4px rgba(35, 77, 20, 0.25);
+}
+
+.coa {
+    float: right;
+    margin: 0 0 30px 30px;
+}
+
+section {
+    margin-top: 90px;
+    margin-bottom: 90px;
+}
+
+section:nth-child(1) {
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(0,0,0,0), rgba(255, 255, 255, 1)),
+    url("../img/header-news.jpg");
+    margin-top: 40px;
+}
+
+.section-bg-green {
+    /* background: linear-gradient(180deg, rgba(255, 255, 255, 1) 6%,
+    rgba(9, 26, 2, 1) 6%, rgba(9, 26, 2, 1) 94%, rgba(255, 255, 255, 1) 94%);*/
+    margin-top: 120px;
+    background: linear-gradient(180deg,
+            rgba(255, 255, 255, 1) 6%,
+            rgba(9, 26, 2, 1) 6%,
+            rgba(9, 26, 2, 1) 30%,
+            rgba(255, 255, 255, 1)30%,
+            rgba(255, 255, 255, 1) 70%,
+            rgba(9, 26, 2, 1) 70%,
+            rgba(9, 26, 2, 1) 94%,
+            rgba(255, 255, 255, 1) 94%);
+}
+
+.section-stats {
+    margin-top: 60px;
+    margin-bottom: 0;
+    padding: 40px 20px 60px 20px;
+   /* background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(184, 184, 184, 1) 100%);*/
+   background-image:
+   linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(0,0,0,0), rgba(0,0,0,0)),
+   url("../img/homepage/central-park.PNG");
+   background-size: cover;
+   background-position: 20% 40%;
+}
+
+section .wrapper-section {
+    padding: 40px;
+}
+
+section .wrapper-section h2 {
+    margin-top: 10px;
+    margin-bottom: 45px;
+}
+
+.section-stats h2 {
+    text-align: center;
+}
+
+.container-img-boxes {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    justify-content: space-between;
+}
+
+.container-img-boxes .img-box {
+    width: 50%;
+}
+
+.img-box {
+    padding: 20px;
+}
+
+.wrapper-image {
+    width: 100%;
+}
+
+.wrapper-image img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.container-info-boxes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 60px;
+    margin-bottom: 90px;
+}
+
+.info-box {
+    width: 32.5%;
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border-radius: 20px;
+    background-color: rgba(245, 245, 245, 0.75);
+    box-shadow: inset 0px 0px 22px -10px rgba(0, 0, 0, 0.1),
+        13px 22px 22px -14px rgba(0, 0, 0, 0.25);
+}
+
+.info-box h3 {
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.45);
+}
+
+.info-box p {
+    font-size: 15px;
+}
+
+.info-box p,
+.info-box h3 {
+    margin: 10px;
+}
+
+
+/************************************************/
+/** Responsive */
+
+@media screen and (max-width: 980px) {
+    section {
+        margin-bottom: 60px;
+        margin-top: 60px;
+    }
+
+    .wrapper-section {
+        max-width: 700px;
+    }
+
+    .section-stats p {
+        font-size: 14px;
+        text-align: left;
+    }
+}
+
+@media screen and (max-width: 760px) {
+    .wrapper-section {
+        max-width: 560px;
+    }
+
+    .container-img-boxes .img-box {
+        width: 420px;
+        margin: auto;
+    }
+
+    .container-img-boxes .img-box .wrapper-image {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    section {
+        margin-bottom: 30px;
+        margin-top: 30px;
+    }
+
+    .section-stats {
+        margin-top: 30px;
+    }
+
+    .section-stats .container-info-boxes .info-box {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+/************************************************/
+/** Print */
+
+@media print {
+    .coa, .flag {
+        display: none;
+    }
+
+    section .wrapper-section {
+        margin: 0;
+        padding: 0;
+    }
+
+    section .wrapper-section h2 {
+        margin: 0;
+        padding: 0;
+    }
+
+    .section-bg-green, .section-stats {
+        margin-top: 0;
+        padding-top: 20px;
+    }
+
+    .section-bg-green h2 {
+        margin: 0;
+        padding: 0;
+    }
+
+    section {
+        margin: 0;
+        padding: 0;
+    }
+
+
+    .img-box h3 {
+        text-shadow: none;
+    }
+
+    .info-box {
+        box-shadow: none;
+    }
+
+    .info-box h3 {
+        text-shadow: none;
+    }
+}

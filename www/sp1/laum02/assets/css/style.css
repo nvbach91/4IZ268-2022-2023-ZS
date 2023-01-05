@@ -1,0 +1,273 @@
+body {
+    box-sizing: border-box;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Navigation */
+
+header {
+    background-color: rgb(35, 185, 60);
+    height: 50px;
+}
+
+nav {
+    display: flex;
+    height: 100%;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+nav>a {
+    padding: 0 20px;
+    margin: 0 20px;
+    background-color: #04aa3b;
+    border: 1px solid black;
+    border-radius: 2px;
+    text-decoration: none;
+    color: white;
+}
+
+nav>a:hover {
+    background-color: white;
+    color: black;
+}
+
+.active {
+    background-color: #AA0473;
+}
+
+@media screen and (max-width: 1080px) {
+    header {
+        height: 80px;
+    }
+}
+
+/* Main */
+main {
+    max-width: 1280px;
+    min-height: 100%;
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+@media screen and (max-width: 1310px) {
+    main {
+        margin: 0 15px;
+    }
+}
+
+/* Page cover */
+h1 {
+    margin-top: 0;
+    margin-bottom: 8px;
+}
+
+.cover-img {
+    width: 80%;
+    height: 500px;
+    margin-top: 5px;
+    z-index: -1;
+    margin: 0 auto;
+}
+
+.cover-black {
+    background-color: black;
+}
+
+.cover-starladder {
+    width: 50%;
+}
+
+.cover-stockholm {
+    width: 50%;
+}
+
+.cover-description {
+    text-align: center;
+    margin-top: 5px;
+}
+
+@media screen and (max-width: 1310px) {
+    .cover-img {
+        width: 20%;
+        height: 20%;
+    }
+}
+
+/* Winner table */
+.winner-table {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.winner-table-content {
+    display: flex;
+    justify-content: space-around;
+}
+
+.winner-table-content table {
+  border-collapse: collapse;
+  width: 50%;
+}
+
+.winner-table-content td,
+.winner-table-content th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.winner-table-content tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.winner-table-content tr:hover {
+    background-color: #ddd;
+}
+
+.winner-table-content th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04aa3b;
+    color: white;
+}
+
+.winner-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.winner-icon img {
+    max-width: 128px;
+}
+
+@media screen and (max-width: 680px) {
+    .winner-table-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .winner-icon {
+        margin: 0 auto;
+    }
+
+    .winner-table-content table {
+        width: 75%;
+      }
+}
+
+/* video */
+.highlight {
+    display: flex;
+    justify-content: center;
+    margin: 50px 0;
+}
+
+.highlight-video {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+}
+
+.highlight-video iframe {
+    margin: 0 auto;
+}
+
+.highlight-desc {
+    width: 40%;
+}
+
+@media screen and (max-width: 680px) {
+    .highlight {
+        flex-direction: column-reverse;
+    }
+
+    .highlight-video,
+    .highlight-desc {
+        width: 100%;
+    }
+}
+
+/* Map */
+.location {
+    display: flex;
+    justify-content: center;
+}
+
+.location-desc {
+    width: 40%;
+}
+
+.location-map {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+}
+
+.location-map iframe {
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 680px) {
+    .location {
+        flex-direction: column;
+    }
+
+    .location-map,
+    .location-desc {
+        width: 100%;
+    }
+}
+
+/* Footer */
+footer {
+    margin-top: auto;
+    height: 40px;
+    width: 100%;
+    background-color: grey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Intro page */
+.intro-desc {
+    display: flex;
+    flex-direction: column;
+    width: 800px;
+    margin: 0 auto;
+}
+
+/* Printing */
+@media print {
+    * {
+        margin: 0;
+        padding: 0;
+        color: black;
+    }
+
+    header,
+    img,
+    .winner-icon,
+    .highlight-video,
+    .location-map {
+        display: none;
+    }
+
+    .highlight-desc,
+    .location-desc {
+        width: 100%;
+    }
+
+    a {
+        text-decoration: none;
+    }
+}

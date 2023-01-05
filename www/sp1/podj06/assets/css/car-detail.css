@@ -1,0 +1,36 @@
+.detail-photo {
+    flex-basis: calc(66.66% - 5px);
+    margin-right: 5px;
+}
+
+.detail-description {
+    flex-basis: calc(33.33% - 5px);
+    margin-left: 5px;
+}
+
+table {
+    border-spacing: 0;
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+th, td {
+    text-align: center;
+    padding: 0.25em;
+    border: 1px solid black;
+}
+
+th:first-of-type {
+    border: none;
+}
+
+@media screen and (max-width: 850px) {
+    .detail-photo {
+        margin-right: 0;
+        margin-bottom: 5px;
+    }
+
+    .detail-description {
+        margin-left: 0;
+    }
+}

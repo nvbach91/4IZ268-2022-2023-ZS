@@ -1,0 +1,190 @@
+/************************************************/
+/** Header */
+header {
+    background-image: url("../img/header/header-contact.png");
+    background-size: cover;
+    background-position: 10% 50%;
+}
+
+/************************************************/
+/** Body */
+section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 980px;
+    margin: 60px auto;
+}
+
+section:nth-child(1) {
+    margin-top: 40px;
+}
+
+section .brick {
+    margin: 20px;
+    width: 100%;
+    text-align: justify;
+    padding: 20px 40px 20px 40px;
+    text-align: left;
+}
+
+
+section .row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex-grow: 1;
+}
+
+section .row .brick h2 {
+    text-align: left;
+}
+
+section .row .brick:nth-child(1) {
+    width: 30%;
+}
+
+section .row .brick:nth-child(2) {
+    width: 60%;
+}
+
+section .main-info {
+    margin-top: 0;
+}
+
+.main-info .city-hall {
+    float: right;
+    width: 448px;
+    height: 252px;
+}
+
+h2 {
+    font-size: 1.9em;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+h3 {
+    font-size: 1.6em;
+}
+
+p {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.city-office-personnel-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    text-align: left;
+}
+
+.city-office-personnel-container .row {
+    border-top: 1px solid rgb(196, 196, 196);
+    flex-wrap: wrap;
+}
+
+.city-office-personnel-container .row:nth-child(2) {
+    border-bottom: 1px solid rgb(196, 196, 196)
+}
+
+.city-office-person {
+    padding: 10px;
+    width: 33%;
+    min-height: 480px;
+}
+
+.city-office-person .description {
+    margin-top: 30px;
+}
+
+.city-office-person a {
+    font-size: 13px;
+    margin-bottom: 30px;
+}
+
+.row .brick ul {
+    list-style-type: square;
+    padding-left: 20px;
+}
+
+.info-press {
+    margin-top: 30px;
+}
+
+/************************************************/
+/** Responsive */
+
+@media screen and (max-width: 980px) {
+    .main-info .city-hall {
+        width: 368px;
+        height: 207px;
+    }
+
+    .row .city-office-person {
+        width: 50%;
+        min-height: 480px;
+    }
+
+    section .row .brick:nth-child(1), section .row .brick:nth-child(2)  {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 760px) {
+    .main-info .city-hall  {
+        width: 100%;
+        height: fit-content;
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (max-width: 560px) {
+    .row .city-office-person {
+        width: 100%;
+        min-height: 440px;
+    }
+}
+
+/************************************************/
+/** Print */
+
+@media print {
+    h2 {
+        text-shadow: none
+    }
+
+    section {
+        margin: 0;
+        padding: 0;
+    }
+
+    section:nth-child(1) {
+        margin-top: 0;
+    }
+
+    .row .city-office-person {
+        min-height: 396px;
+    }
+
+    .row .city-office-person h4 {
+        margin: 0;
+    }
+
+    .row .city-office-person .description {
+        margin-top: 10px;
+    }
+
+    section .row .brick:nth-child(1) {
+        width: 35%;
+    }
+    
+    section .row .brick:nth-child(2) {
+        width: 55%;
+    }
+    
+
+}

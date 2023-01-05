@@ -1,0 +1,285 @@
+html {
+    background: #eeeeee;
+}
+
+body {
+    height: 100vh;
+}
+
+.body-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 400;
+}
+
+.wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+h1 {
+    font-weight: 600;
+}
+
+a {
+    text-decoration: none;
+    color: #116a91;
+    font-weight: 500;
+}
+
+a:hover {
+    font-weight: 600;
+    color: #054862;
+    text-decoration: underline;
+}
+
+ul {
+    list-style: none;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    padding-inline-start: 0;
+}
+
+li {
+    display: block;
+}
+
+header {
+    background: #222831;
+    padding: 1em 4em;
+}
+
+footer {
+    margin-top: auto;
+    height: 3em;
+    background-color: #68737c;
+    width: 100%;
+    text-align: center;
+    line-height: 3em;
+    color: white;
+}
+
+.logo {
+    font-size: 2em;
+}
+
+.logo a {
+    color: white;
+}
+
+.logo a:hover {
+    color: white;
+    font-weight: 500;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar ul {
+    display: flex;
+}
+
+.navbar li {
+    display: block;
+    padding: 0.5em;
+    background-color: #eeeeee;
+    border-radius: 3px;
+    margin-left: 5px;
+    border: 2px solid transparent;
+    text-align: center;
+}
+
+.navbar li a {
+    font-weight: 400;
+    text-decoration: none;
+    color: black;
+    margin: auto 0;
+}
+
+.navbar li:hover a {
+    text-decoration: none;
+    color: white;
+}
+
+.navbar li.active, .navbar li:hover {
+    background-color: #222831;
+    border: 2px solid white
+}
+
+
+.navbar li.active a {
+    color: white;
+}
+
+.navbar a:hover {
+    text-decoration: none;
+}
+main {
+    padding: 30px 30px 0 30px;
+}
+
+.card {
+    padding: 1em 1.5em 1em 1.5em;
+    border-radius: 8px;
+    background-color: white;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.row {
+    display: flex;
+    margin-top: 1em;
+    flex-wrap: wrap;
+}
+
+.col {
+    flex: 1;
+    margin: 0 0.2em;
+}
+
+.row .col:first-of-type {
+    margin-right: 0.2em;
+}
+
+.row .col:last-of-type {
+    margin-left: 0.2em;
+}
+
+h1, h2, h3 {
+    font-weight: 600;
+}
+
+main > .card:not(:first-of-type) {
+    margin-top: 1em;
+}
+
+.card h1, h2, h3 {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.card p {
+    text-align: justify;
+}
+
+.card p:last-of-type {
+    margin-bottom: 0;
+}
+
+.card img {
+    margin-top: 0.5em;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.bigH2 {
+    margin: 1.5em;
+}
+
+.biggerH2 {
+    margin: 1em;
+}
+
+footer a {
+    color: white;
+}
+
+footer a:hover {
+    text-decoration: none;
+    color: white;
+}
+
+*.nomargin > p {
+    margin: 0;
+}
+
+*.smallmargin > p {
+    margin: 0.3em 0;
+}
+
+.bold {
+    font-weight: 600;
+}
+
+form.form input[type=text], input[type=email], textarea {
+    width: 100%;
+    padding: 0.5em 1em;
+    border-radius: 5px;
+    border: 1px solid #616e81;
+}
+
+form.form label {
+    display: inline-block;
+    margin: 0.5em 0 0.25em 0;
+    font-weight: 500;
+}
+
+form.form button {
+    margin-top: 0.5em;
+    width: 100%;
+    background-color: #222831;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: 600;
+    font-size: larger;
+    cursor: pointer;
+}
+
+a.button {
+    display: block;
+    background: #116a91;
+    text-align: center;
+    color: white;
+}
+
+a.button:hover {
+    text-decoration: none;
+}
+
+a.button.width-100 {
+    width: 100%;
+    padding: 0.5em;
+    border-radius: 5px;
+    margin-top: 0.5em;
+}
+
+@media screen and (max-width: 850px) {
+    header {
+        padding: 1em 2em;
+    }
+
+    .navbar {
+        flex-direction: column;
+    }
+
+    .navbar div:not(:first-child) {
+        margin-top: 1em;
+    }
+
+    .row {
+        flex-direction: column;
+    }
+
+    .col {
+        margin: 0 0 10px 0;
+    }
+}
+
+
+

@@ -1,0 +1,101 @@
+* {
+    box-sizing: border-box;
+}
+
+header {
+    background-color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+nav ul, footer ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+.current_page {
+    background-color: pink;
+}
+
+nav a {
+    text-decoration: none;
+    padding: 10px;
+    transition: background-color 1s ease-in-out;
+    color: black;
+}
+
+nav a:hover {
+    background-color: yellow;
+    color: red;
+}
+
+footer {
+    background-color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.main_image {
+    background-image: url(../images/team_photo.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 200px;
+}
+.main_image h1{
+    color: red;
+    display: flex;
+    justify-content: center;
+    font-size: 80px;
+}
+
+.content p {
+    text-align: center;
+    background-color: red;
+    color: yellow;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    
+}
+
+
+header img, footer img {
+    height: 100px;
+}
+
+@media screen and (max-width: 800px){
+    .main_image {
+        padding: 20;
+    }
+    
+    .main_image h1 {
+        font-size: 50px;
+        text-align: center;
+    }
+    .contents {
+        flex-wrap: wrap;
+    }
+    footer {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+    .link {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+}

@@ -1,0 +1,193 @@
+body{
+    margin: 0;
+    background-color: rgb(250, 253, 255);
+    /* min-width: 800px; */
+}
+
+@media (min-width: 1300px){
+    header{
+        background-color: #231f1a;
+        height: 140px;
+        /* min-width: 800px; */
+        /* padding: auto; */
+        /* text-align: center; */
+    }
+    #webName{
+        font-family:"Lucida Console", monospace;
+        text-decoration: none;
+        color: rgb(246, 246, 238);
+        /* margin:auto; */
+        width: 70%;
+        max-width: 602px;
+        min-width: 560px;
+        margin-top: 27px;
+        /* padding-right: 100px; */
+        padding-left: 17%;
+        font-size: xx-large;
+        /* display: block; */
+        position:absolute;
+    }
+    
+    #navBar{
+        /* width: 25%; */
+        width: 300px;
+        position:fixed;
+        display: block;
+        top: 0;
+        right: 0;
+        padding: 5px;
+        background-color: #231f1a;
+    }
+    .navParentLink + menu.navList.navKeepOpen{
+        display:block;
+    }
+}
+@media (max-width: 1299px){
+    header{
+        background-color: #231f1a;
+        height:140px;
+        min-width: 800px;
+        /* padding: auto; */
+        /* text-align: center; */
+    }
+    #webName{
+        font-family:"Lucida Console", monospace;
+        text-decoration: none;
+        color: rgb(246, 246, 238);
+        /* margin:auto; */
+        width: 55%;
+        max-width: 602px;
+        min-width: 420px;
+        margin-top: 27px;
+        /* padding-right: 100px; */
+        padding-left: 10%;
+        font-size: xx-large;
+        /* display: block; */
+        position:absolute;
+    }
+    #navBar{
+        width: 30%;
+        min-width: 250px;
+        position: absolute;
+        display: inline-block;
+        top: 0;
+        right: 0;
+        padding: 5px;
+        background-color: #231f1a;
+    }
+}
+/* 
+*
+*navigation menu styling
+*
+*/
+menu.navList{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.navLink{
+    display: block;
+    padding: 9px;
+    font-family:"Lucida Console", monospace;
+    text-decoration: none;
+    font-size: larger;
+    color: rgb(246, 246, 238);
+}
+.navParentLink{
+    display: block;
+    margin: 0px;
+    padding: 9px;
+    font-family:"Lucida Console", monospace;
+    text-decoration: none;
+    font-size: larger;
+    color: rgb(246, 246, 238); 
+}
+.navParentLink + menu.navList{
+    display:none;
+}
+
+.navParentLink:hover + menu.navList{
+    display:block;
+}
+menu.navList:hover{
+    display:block;
+}
+#actualNavItem{
+    background-color: #0ca3f5;
+}
+.navLevel1{
+    background-color: #383633;
+}
+.navLevel2{
+    background-color: #585857;
+    display: block;
+}
+.navLevel3{
+    background-color: #908f8e;
+    display: block;
+}
+.navLink:hover{
+    background-color: #3fb8f9;
+    text-decoration: underline;
+}
+.navLink:focus{
+    background-color: #43748e;
+    text-decoration: underline;
+}
+.navParentLink:hover{
+    background-color: #3fb8f9;
+    text-decoration: underline;
+}
+.navParentLink:focus{
+    background-color: #43748e;
+    text-decoration: underline;
+}
+/*
+* 
+*end of navigation menu styling
+*
+*/
+
+.pageLocation{
+    padding-left: 16.2%;
+    padding-right: 20.24%;
+    min-width: 480px;
+    max-width: 734px;
+    margin: auto;
+}
+.pageName{
+    margin-top: 15px;
+    display:block;
+}
+.content{
+    padding-left: 16.2%;
+    padding-right: 20.24%;
+    min-width: 480px;
+    max-width: 734px;
+    margin: auto;
+
+}
+main.content.multiColumn{
+    display: flex;
+    /* width: 1000px; */
+}
+.multiColumn > .sidebar{
+    max-width: 37%;
+    max-width: 300px;
+}
+.multiColumn > .mainContent{
+    /* width: auto; */
+    min-width: 480;
+    padding-right: 7%;
+}
+.caution{
+    color: red;
+}
+img{  
+    max-width: 100%;  
+    height: auto;  
+}  
+#homeNetworkImg{
+    width: 42%;
+}

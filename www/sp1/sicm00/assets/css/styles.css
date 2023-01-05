@@ -1,0 +1,393 @@
+html {
+    height: 100%;
+}
+
+body {
+    margin: 0px;
+    font-family: 'Montserrat', sans-serif;
+    height: 100%;
+    background: white;
+}
+
+header {
+    position: absolute;
+    left: 0;
+    right: 0;
+    background-color: transparent;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    background-image: linear-gradient(#50b6ff, black);
+}
+
+footer {
+    background-color: black;
+}
+
+#primary_header {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+}
+
+#primary_footer {
+    color: white;
+    padding: 20px;
+    margin: auto;
+}
+
+h1 {
+    font-size: 70px;
+    color: white;
+}
+
+h2 {
+    font-size: 50px;
+    color: white;
+}
+
+p {
+    color: white;
+}
+
+a {
+    transition: all .2s linear;
+    text-decoration: none;
+    color: white;
+}
+
+.align {
+    text-align: center;
+    text-transform: uppercase;
+}
+
+a:hover {
+    color: #ff6900;
+}
+
+
+#site_nav>ul {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+}
+
+.layout {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.container_width {
+    max-width: 1200px;
+    margin: auto;
+
+}
+
+.logo {
+    max-width: 60px;
+}
+
+.btn {
+    border-radius: 23px;
+    max-width: 140px;
+    height: 40px;
+    background-color: white;
+    color: black;
+    padding: 7px 32px;
+    margin-top: 30px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all .2s linear;
+
+
+}
+
+.btn:hover {
+    background-color: #ff6900;
+    color: white;
+}
+
+#site_nav>ul {
+    list-style: none;
+}
+
+.menu_link>a {
+    padding: 10px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: white;
+}
+
+.menu_link>a:hover {
+    color: #ff6900;
+    border-bottom-color: #ff6900;
+}
+
+
+.active>a {
+    border-bottom-style: solid;
+}
+
+.highlight {
+    color: #ff6900;
+}
+
+.background {
+    width: 100%;
+    background-image: linear-gradient(black, #ffffff7a), url(https://esotemp.vse.cz/~sicm00/sp1/assets/img/main_2.jpg);
+    padding-top: 300px;
+    padding-bottom: 180px;
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: hard-light;
+    margin-bottom: 40px;
+}
+
+.color {
+    color: white;
+}
+
+.news_events {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 80px;
+}
+
+.news {
+    display: flex;
+    justify-content: space-between;
+}
+
+.post {
+    width: 31%;
+}
+
+.post_img>a>img {
+    width: auto;
+    height: auto;
+    max-height: 100%;
+    max-width: 100%;
+    transition: all .2s linear;
+}
+
+.post_img>a>img:hover {
+    transform: scale(1.1);
+    margin-right: 30px;
+}
+
+.headline>h2 {
+    text-align: center;
+}
+
+.contact_us {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 80px;
+}
+
+.contact_us>div {
+    padding-left: 10px;
+    padding-right: 10px;
+
+}
+
+#news {
+    background-image: linear-gradient(black, #ffffff7a), url(https://esotemp.vse.cz/~sicm00/sp1/assets/img/news_background.png)
+}
+
+
+.blog_post {
+    display: flex;
+    margin-bottom: 40px;
+}
+
+.post_name {
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+#team {
+    background-image: linear-gradient(black, #ffffff7a), url(https://esotemp.vse.cz/~sicm00/sp1/assets/img/lec_1.png)
+}
+
+.squad {
+    display: flex;
+    flex-direction: column;
+}
+
+.player {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 60px;
+}
+
+.name>h3 {
+    color: white;
+}
+
+.photo>img {
+    width: auto;
+    height: auto;
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.role>img {
+    width: auto;
+    height: auto;
+    max-height: 100%;
+    max-width: 100%;
+}
+
+#koi_rogue {
+    background-image: linear-gradient(black, #ffffff7a), url(https://esotemp.vse.cz/~sicm00/sp1/assets/img/koixrogue_big.jpg);
+}
+
+#rogue_win {
+    background-image: linear-gradient(black, #ffffff7a), url(https://esotemp.vse.cz/~sicm00/sp1/assets/img/rogue_win.jpg);
+}
+
+#roster_2022 {
+    background-image: linear-gradient(black, #ffffff7a), url(https://esotemp.vse.cz/~sicm00/sp1/assets/img/lec_2022.jpg);
+    background-position: top;
+}
+
+#events {
+    background-image: linear-gradient(black, #ffffff7a), url(https://esotemp.vse.cz/~sicm00/sp1/assets/img/events.jpeg);
+}
+
+#about {
+    background-image: linear-gradient(black, #ffffff7a), url(https://esotemp.vse.cz/~sicm00/sp1/assets/img/about.jpg);
+}
+
+#contact {
+    background-image: linear-gradient(black, #ffffff7a), url(https://esotemp.vse.cz/~sicm00/sp1/assets/img/contact_us.jpg);
+}
+
+.contact {
+    margin-bottom: 90px;
+}
+
+#responsive_site_nav {
+    display: none;
+    transition: all .2s linear;
+}
+
+#responsive_site_nav>ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+
+
+}
+
+
+.hamburger {
+    height: 26px;
+    width: 32px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.line {
+    display: block;
+    height: 4px;
+    width: 100%;
+    border-radius: 10px;
+    background: white;
+
+}
+
+.burger_wrap:hover>#responsive_site_nav {
+    display: block;
+}
+
+.burger_wrap:hover>.hamburger {
+    display: none;
+}
+
+@media print {
+    * {
+        color: black !important;
+	padding: 0px;
+	margin: 5px;
+    }
+
+    header, footer, .post_img, .contact_us, .photo, .role {
+        display: none;
+    }
+
+    a {
+        text-decoration: none;
+        font-style: italic;
+    }
+    .background{
+	padding: 0px;    
+    }
+    
+}
+
+@media (max-width: 1200px) {
+    .container_width {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .news {
+        flex-direction: column;
+    }
+
+    .post {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .contact_us {
+        flex-direction: column;
+    }
+
+    .blog_post {
+        flex-direction: column;
+        max-width: 450px;
+    }
+
+    #site_nav {
+        display: none;
+    }
+
+    #primary_header {
+        height: 140px;
+    }
+    .post_img > img {
+    width: auto;
+    height: auto;
+    max-height: 100%;
+    max-width: 100%;    
+    }
+
+}
+
+@media (min-width: 1200px) {
+
+    .hamburger,
+    .burger_wrap {
+        display: none;
+    }
+
+
+}

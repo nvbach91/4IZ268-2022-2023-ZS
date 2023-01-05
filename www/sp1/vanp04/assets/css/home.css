@@ -1,0 +1,49 @@
+.greeting {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 87vh;
+}
+
+.down-arrow {
+    width: 100%;
+    max-width: 80px;
+    position: relative;
+    bottom: 0;
+    align-self: center;
+}
+
+.home-page-content {
+    padding-bottom: 30px;
+    width: 40vw;
+    margin: auto;
+    text-align: center;
+    line-height: 2;
+}
+
+.article1 {
+    flex: 1;
+    padding: 5px;
+    border-radius: 8px;
+}
+
+@media screen and (max-width: 800px) {
+    .home-page-content {
+        width: 60vw;
+    }
+}
+
+@media print {
+    * {
+        color: black;
+        background-color: white;
+    }
+
+    .greeting {
+        height: 35vh;
+    }
+
+    .down-arrow {
+        display: none;
+    }
+}

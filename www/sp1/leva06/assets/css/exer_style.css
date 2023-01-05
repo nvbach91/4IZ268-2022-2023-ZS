@@ -1,0 +1,55 @@
+#exercont {
+    margin: 2.5rem 5rem;
+    text-align: center;
+  }
+.exer_text{
+    font-size: 7rem;
+}
+.exer_programs{
+    image-orientation: flip;
+}
+  #exer {
+    display: flex;
+    margin: 30px 10px;
+    justify-content: center;
+  }
+  
+  .exer_programs {
+    width: 40%;
+    margin: 0 1rem;
+  }
+  
+  .featured-products:hover {
+    cursor: pointer;
+  }
+  
+  .featured-products img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  }
+  
+  .text-decor {
+    text-decoration: none;
+    color: black;
+  }
+  
+  .featured-text {
+    margin-top: 1rem;
+  }
+  
+  .featured-text h4 {
+    color: red;
+    font-weight: 700;
+  }
+  
+  .featured-text h5,
+  h4 {
+    font-weight: 100;
+  }
+  
+  .review {
+    color: rgb(233, 164, 45);
+  }
+  
+  

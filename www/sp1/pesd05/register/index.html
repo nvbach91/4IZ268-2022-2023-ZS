@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Daria Pesotckaia">
+    <meta name="description" content="Seminární práce">
+    <meta name="keywords" content="flexbox, css, html, layout, aestetic">
+    <title>Ddance</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/basics.css">
+    <link rel="stylesheet" href="../assets/css/register.css">
+    <link rel="stylesheet" media="print" href="../assets/css/print.css">
+</head>
+
+<body>
+    <div id="header">
+        <div class="logo">
+            <img src="../assets/img/1468387-min.png" alt="logo" class="header-logo">
+            <p>Ddance</p>
+        </div>
+        <nav class="navbar">
+            <a href="../home/">home</a>
+            <a href="../about/">about</a>
+            <a href="../styles/">dance styles</a>
+            <a href="../instructors/">instructors</a>
+            <a href="../contact/">contact</a>
+            <a href="./" class="active">join</a>
+        </nav>
+    </div>
+    <div id="intro-image-register">
+        <div class="intro-text-register">
+            <h1>Join us</h1>
+            <h3>Sign up or log in to start dancing</h3>
+        </div>
+    </div>
+    <main>
+        <div id="register">
+            <div class="signUp">
+                <h3>Sign Up</h3>
+                <p>Fill in this form to create an account.</p>
+            </div>
+            <form class="register-form">
+                <div class="container">
+                    <div class="input-register">
+                        <input type="text" placeholder="Enter Email" name="email" required>
+                        <input type="password" placeholder="Enter Password" name="psw" required>
+                        <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+                    </div>
+                    <div class="buttonS">
+                        <button type="submit" class="signupbtn">Sign Up</button>
+                    </div>
+                    <p>Already have an account?<a href="./login/" style="color:dodgerblue">Log in</a>.</p>
+                </div>
+            </form>
+        </div>
+    </main>
+    <footer id="footer">
+        <div class="footer_container">
+            <h3>Contacts</h3>
+            <p>+420777888222</p>
+            <p>ddance@info.com</p>
+            <p>Slovenská 1182/13 Prague</p>
+        </div>
+        <div class="footer_container">
+            <nav class="footer_navbar">
+                <a href="../home/">home</a>
+                <a href="../about/">about</a>
+                <a href="../styles/">styles</a>
+                <a href="../instructors/">instructors</a>
+                <a href="../contact/">contact</a>
+                <a href="./" class="active">join</a>
+            </nav>
+        </div>
+        <div class="footer_container">
+            <div class="newsletter-text">
+                <h3>Subscribe to our newsletter</h3>
+            </div>
+            <div class="newsletter-form">
+                <input type="email" name="email" placeholder="Your email">
+                <button class="submit">Subscribe</button>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

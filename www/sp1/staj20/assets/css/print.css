@@ -1,0 +1,18 @@
+img{
+    display:none;
+}
+nav.nav-list > *{
+    display: none;
+}
+a{
+    text-decoration: underline !important;
+}
+.bold{
+    font-weight: bold;
+}
+.price{
+    font-weight: bold;
+}
+footer{
+    text-align: center;
+}

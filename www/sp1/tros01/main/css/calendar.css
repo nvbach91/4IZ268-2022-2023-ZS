@@ -1,0 +1,12 @@
+.respFrame {
+    height: 800px;
+    width: 97%;
+    min-width: 600px;
+    padding: 12px;
+    background-color: rgb(60, 109, 148);
+    border-radius: 12px;
+}
+
+.iframe-box {
+    overflow: auto
+}

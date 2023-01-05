@@ -1,0 +1,149 @@
+
+/*MAIN*/
+main {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-top: 100px;
+}
+
+main h1 {
+    margin: 30px;
+}
+
+main h2 {
+    margin: 30px;
+}
+
+main h3 {
+    margin: 35px;
+}
+
+main a {
+    color: black;
+    text-decoration: none;
+}
+
+
+.matches {
+    display: flex;
+    flex-wrap: wrap;
+
+    margin: 20px;
+}
+
+.matches div {
+    margin: 20px;
+}
+
+
+.match:hover{
+    background-color: white;
+    border: white solid 5px;
+    border-radius: 20px;
+}
+
+
+article {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 30px;
+
+}
+
+article:hover {
+    background-color: red;
+    color: white;
+    
+    border: 5px solid red;
+    border-radius: 20px;
+}
+
+.tour-img {
+    height: 170px;
+    width: 170px;
+
+    margin-left: 5px;
+    margin-right: 30px;
+}
+
+.img-div {
+    width: 20%;
+}
+
+.tour-text {
+    width: 80%;
+
+    padding-top: 0px;
+    text-align: left;
+}
+
+.tour-text h3 {
+    text-align: center;
+    
+    border-bottom: 2px solid red;
+}
+
+
+
+.training {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+h5 {
+    margin: 20px;
+    margin-left: 145px;
+}
+
+.shop-item {
+    margin: 5px;
+
+    
+}
+
+.shop-item:hover{
+    background-color: white;
+    border: 5px solid white;
+    border-radius: 5px;
+    
+}
+.shop-item img {
+    width: 320px;
+    height: 320px;
+
+    margin-left: 50px;
+}
+
+
+@media screen and (max-width: 1024px) {
+    main {
+        margin: 0;
+    }
+
+}   
+
+@media screen and (max-width: 1250px) {
+    main {
+        margin: 0;
+    }
+
+    .img-div {
+        display: none;
+    }
+
+} 
+
+/*TODO rewrite to media print*/
+@media print {
+    *{ background-image: none !important;
+    }
+    
+    main {
+        margin: 0;
+        margin-left: 20px;
+    }
+
+    .img-div {
+        display: none;
+    }
+}

@@ -1,0 +1,142 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    font-family: 'Noto Sans', sans-serif;
+    background-color: #13293d;
+
+    color: #d8dbe2;
+    font-size: medium;
+
+    justify-content: space-between;
+    margin: 0;
+}
+
+a {
+    color: #5edeba;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.content-width {
+    margin: 0 auto;
+    max-width: 1140px;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background-color: rgba(19, 41, 61, 0.8);
+    backdrop-filter: blur(2px);
+    box-shadow: 0px 8px 48px 8px rgba(0, 0, 0, 0.16);
+    margin-bottom: 8px;
+}
+
+#header-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#nav-logo {
+    text-decoration: none;
+}
+
+#nav-logo:hover {
+    background-color: #d8dbe20e;
+}
+
+#nav-logo > div {
+    border: 2px solid #5edeba;
+    padding: 8px 16px;
+    border-radius: 4px;
+}
+
+nav > ul {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+}
+
+nav > ul > li {
+    padding: 16px 0px;
+    list-style: none;
+}
+
+.nav-item {
+    font-size: large;
+    padding: 16px 16px;
+    color: inherit;
+    text-decoration: none;
+}
+
+.nav-item:hover {
+    color: #5edeba;
+}
+
+.nav-item-active {
+    background-color: #5edeba;
+    color: #13293d;
+    pointer-events: none;
+}
+
+main > h1 {
+    text-align: center;
+}
+
+footer {
+    background-color: #13293d;
+}
+
+#footer-content {
+    padding: 32px 0;
+}
+
+@media print {
+    main {
+        flex: 1;
+        padding: 0 16px;
+    }
+}
+
+@media screen and (max-width: 1140px) {
+    header,
+    main,
+    footer {
+        padding: 0 16px;
+    }
+}
+
+@media screen and (max-width: 481px) {
+    header {
+        padding-top: 16px;
+    }
+
+    #header-content {
+        flex-direction: column;
+    }
+
+    #nav-logo {
+        margin-bottom: 16px;
+    }
+
+    #nav-section {
+        width: 100%;
+    }
+
+    #nav-section > ul {
+        display: flex;
+        justify-content: space-between;
+    }
+}

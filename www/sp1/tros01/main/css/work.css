@@ -1,0 +1,20 @@
+.img-box img {
+  width: 80%;
+  float: right;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+}
+
+h2 {
+  padding-top: 30px;
+}
+
+.box p {
+  padding: 10px;
+
+}
+
+.img-box {
+  margin: auto;
+}

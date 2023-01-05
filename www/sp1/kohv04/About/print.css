@@ -1,0 +1,21 @@
+body {
+    color: black;
+    background-color: white;
+}
+
+header {
+    display: none;
+}
+
+nav {
+    display: none;
+}
+
+footer {
+    display: none;
+}
+
+form {
+    display: none;
+}
+

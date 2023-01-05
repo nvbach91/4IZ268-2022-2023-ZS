@@ -1,0 +1,115 @@
+* {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+    padding: 20px;
+    margin: 0px;
+}
+
+.header-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(221, 221, 221);
+    margin: 0px;
+}
+
+.suits-img {
+    height: 40px;
+    margin: 15px auto 0px auto;
+}
+
+header h1 {
+    background-color: rgb(0, 0, 0);
+    text-align: center;
+    text-transform: uppercase;
+    padding: 10px;
+    margin: 0px;
+    border-radius: 10px 10px 0px 0px;
+}
+
+nav {
+    margin-top: 15px;
+    padding-bottom: 20px;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    list-style-type: none;
+    gap: 40px 10px;
+    padding: 0px;
+}
+
+footer {
+    background-color: black;
+    font-size: small;
+    text-align: center;
+    padding: 20px;
+    border-radius: 0px 0px 10px 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+footer>p {
+    padding: 15px;
+}
+
+footer>a {
+    margin: 0px auto 20px auto;
+}
+
+.btn {
+    background-color: rgb(161, 0, 0);
+    color: white;
+    text-decoration: none;
+    padding: 15px;
+    text-transform: uppercase;
+    border-radius: 10px;
+    cursor: crosshair;
+    white-space: nowrap;
+}
+
+.btn:hover {
+    background-color: rgba(161, 0, 0, 0.6);
+}
+
+.btn-nav {
+    background-color: rgb(0, 0, 0);
+}
+
+.btn-current-page {
+    background-color: rgb(161, 0, 0);
+}
+
+.btn-current-page:hover {
+    background-color: rgb(161, 0, 0);
+}
+
+.btn-centered {
+    margin: 20px auto 0px auto;
+}
+
+p {
+    margin: 0px;
+    padding: 15px;
+}
+
+.round-corners {
+    border-radius: 10px;
+}
+
+.black-semitransparent-bg {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.article-heading {
+    text-align: center;
+    padding: 15px 0px;
+    margin: 0px;
+    border-bottom: 3px darkgray solid;
+}

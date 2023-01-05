@@ -1,0 +1,147 @@
+/************************************************/
+/** Header */
+header {
+    background-image: url("../img/header/header-history.JPG");
+    background-size: cover;
+    background-position: 20% 60%;
+}
+
+/************************************************/
+/** Body */
+
+.brick {
+    max-width: 950px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+section {
+    margin: 0;
+    padding-top: 90px;
+    padding-bottom: 90px;
+}
+
+section:nth-child(1) {
+    padding-top: 40px;
+}
+
+section:nth-child(2) {
+    background-image:
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(0,0,0,0), rgba(0,0,0,0), rgba(255, 255, 255, 1)),
+    url("../img/history/dalejske-udoli.JPG");
+    background-size: cover;
+    background-position: 10% 30%;
+    padding-top: 120px;
+    padding-bottom: 120px;
+}
+
+section:nth-child(3) {
+    background-image:
+    linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(0,0,0,0), rgba(0,0,0,0), rgba(255, 255, 255, 1)),
+    url("../img/history/luziny-tubus-bg.jpg");
+    background-size: cover;
+}
+
+section .row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.row {
+    margin: 0 auto;
+    max-width: 990px;
+}
+
+.row .wrapper-text {
+    width: 50%;
+}
+
+.row .wrapper-img {
+    width: 50%;
+    padding: 20px;
+}
+
+.wrapper-img .container-images {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.wrapper-img img,
+.wrapper-img .container-images img {
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.container-images img {
+    margin-bottom: 6px;
+}
+
+/************************************************/
+/** Responsive */
+
+@media screen and (max-width: 980px) {
+    section, section:nth-child(2)  {
+        padding-left: 40px;
+        padding-right: 40px;
+        padding: 30px 60px;
+    }
+
+    .row .wrapper-img, .row .wrapper-text {
+        width: 100%;
+    }
+
+    .row .wrapper-text p {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+}
+
+@media screen and (max-width: 760px) {
+    section, section:nth-child(2) {
+        padding: 15px 30px;
+    }
+
+    .wrapper-img, .wrapper-text {
+        width: 100%;
+    }
+}
+
+/************************************************/
+/** Print */
+
+@media print {
+    section {
+        margin: 10px 0;
+        padding: 0;
+    }
+
+    section:nth-child(2) {
+        margin: 10px 0;
+        padding: 0;
+    }
+
+    section:nth-child(4) {
+        margin-top: 200px;
+    }
+
+
+    .brick {
+        padding: 0;
+        margin: 0;
+    }
+
+    .brick h2 {
+        margin: 0;
+    }
+
+    .row .wrapper-text {
+        width: 65%;
+    }
+    
+    .row .wrapper-img {
+        width: 35%;
+    }
+
+}
