@@ -1,0 +1,50 @@
+body {
+    font-family: sans-serif;
+    text-align: center;
+}
+
+#user-profile {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background: #f8f8f8;
+}
+
+#user-profile h2 {
+    font-size: 18px;
+}
+
+#user-profile p {
+    font-size: 14px;
+    font-style: italic;
+}
+
+#user-profile img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+#user-repos {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background: #f8f8f8;
+    list-style: none;
+}
+
+#user-repos li {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+#user-repos li a {
+    text-decoration: none;
+    color: #000;
+}
+
+#user-repos li a:hover {
+    text-decoration: underline;
+}
