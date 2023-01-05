@@ -21,10 +21,10 @@
                     <h2>Připnuté úkoly</h2>
                 </div>
                 <div class="divPinnedSorting">
-                    <img src="./img/pin.png" alt="pin image, click for sorting" height="70px" width="70px">
+                    <img id="filters" src="./img/pin.png" alt="pin image, click for sorting" height="70px" width="70px">
                 </div>
             </div>
-            <div class="divPinnedTasks"></div>
+            <div id="divPinnedTasks" class="divPinnedTasks"></div>
             <div class="divSettings">
                 <img src="./img/settings.png" alt="settings image, click for adjusting settings">
             </div>
@@ -34,15 +34,15 @@
                 <div class="divTasksHeading">
                     <h2>Prošlé úkoly</h2>
                 </div>
-                <div class="divTasks"></div>
+                <div id="divTasksAfter" class="divTasks"></div>
             </div>
             <div class="divCalendar">
                 <div class="divCalendarHeading">
-                    <div id="test" class="divMonth">
-                        <p>Prosinec</p>
+                    <div class="divMonth">
+                        <p id="month"></p>
                     </div>
                     <div class="divYear">
-                        <p>2022</p>
+                        <p id="year"></p>
                     </div>
                 </div>
                 <div class="divCalendarBody" id="divCalendarBody"></div>
@@ -51,7 +51,7 @@
                 <div class="divTasksHeading">
                     <h2>Nadcházející úkoly</h2>
                 </div>
-                <div class="divTasks"></div>
+                <div id="divTasksBefore" class="divTasks"></div>
             </div>
         </div>
     </main>
