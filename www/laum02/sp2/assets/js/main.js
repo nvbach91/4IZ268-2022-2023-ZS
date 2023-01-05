@@ -233,7 +233,14 @@
             twttr.widgets.createTweet(
                 tweet.id,
                 tweetElement[0]
-            );
+            ).then(() => {
+                const tweetJSON = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(tweet));
+                const downloadElement = $("<a>").text("Stáhnout tweet jako JSON");
+                downloadElement.attr("href", tweetJSON);
+                downloadElement.attr("download", "latest-tweet.json");
+                downloadElement.attr("class", "tweet-download");
+                tweetElement.append(downloadElement); 
+            });           
         }
     }
 
