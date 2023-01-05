@@ -126,3 +126,10 @@ footer {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+.saved-users {
+    overflow:auto;
+    margin: auto 25px;
+    width: 120px;
+    height: 100px
+}

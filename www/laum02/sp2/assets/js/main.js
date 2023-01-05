@@ -11,6 +11,9 @@
     const lastSearchElement = $('.last-search');
     // Spinner
     const spinnerElement = $('.spinner');
+    // Saved users select
+    const usersSelectElement = $('.saved-users');
+    const userSaveElement = $('.user-save');
     // User ID
     let userId = '';
     // Indicates whether the app should end
@@ -18,10 +21,29 @@
     // handle regex
     const userRegex = /^[a-zA-Z0-9]{2,16}$/;
 
+    function hideShowFollowed() {
+        usersSelectElement.empty();
+        const followed = localStorage.getItem('followedUsers') ?? "";
+        if (followed == "") {
+            usersSelectElement.css("display", "none");
+        } else {
+            const options = $.map(followed.split(","), (f) => {
+                return $('<option>', {
+                    text: f
+                });
+            });
+            usersSelectElement.append(options);
+            usersSelectElement.css("display", "block");
+        }
+    }
+
     // On load
     $(document).ready(function () {
         setupLastSearch();
+        // Assign regex to input
         handleElement.attr("pattern", userRegex.toString().replace(/^\/|\/$/g, ''));
+        // Hide followed users if empty
+        hideShowFollowed();
     });
 
     function setupLastSearch() {
@@ -29,6 +51,14 @@
         if (last == null) lastSearchElement.empty();
         else lastSearchElement.text('Poslední vyhledávání: ' + last);
     }
+
+    usersSelectElement.click(() => {
+        const selected = usersSelectElement.find(":selected").text();
+        if (selected != '') {
+            handleElement.val(selected);
+            $('.handle-form').submit();
+        }
+    });
 
     // Setup DOM before search
     function setup() {
@@ -50,6 +80,19 @@
         el.removeClass('hidden');
     }
 
+    function setFollowButton(user) {
+        const follows = localStorage.getItem("followedUsers") ?? "";
+        userSaveElement.unbind("click");
+        if (follows.split(",").includes(user)) {
+            userSaveElement.text("SMAZAT uživatele z rychlého vyhledávání.");
+            userSaveElement.click(removeUserFromFollowed);
+        } else {
+            userSaveElement.text("ULOŽIT uživatele do rychlého vyhledávání");
+            userSaveElement.click(addUserToFollowed);
+        }
+
+    }
+
     // On form submit
     $('.input').submit((e) => {
         // Prevent reload and prepare
@@ -62,6 +105,7 @@
             showError(missingUserElement, 'Jméno uživatele nesplňuje požadavky.')
             return;
         }
+        setFollowButton(user);
         // Show spinner
         spinnerElement.css('display', 'block');
         // Update last search
@@ -93,6 +137,37 @@
             });
         });
     });
+
+    // Save user to quick search
+    function addUserToFollowed() {
+        const currUser = localStorage.getItem('lastSearch');
+        // Save to localStorage
+        let followed = localStorage.getItem("followedUsers") ?? "";
+        if (followed.length == 0) {
+            localStorage.setItem("followedUsers", currUser);
+        } else {
+            followed = followed.split(",");
+            followed.push(currUser);
+            followed = followed.sort(function (a, b) {
+                return a.toLowerCase().localeCompare(b.toLowerCase());
+            }).join(",");
+            localStorage.setItem("followedUsers", followed);
+        }
+        // Show if first follow
+        setFollowButton(currUser);
+        hideShowFollowed();
+    };
+
+    function removeUserFromFollowed() {
+        const currUser = localStorage.getItem('lastSearch');
+        let followed = localStorage.getItem("followedUsers").split(",");
+        followed = followed.filter((e) => {
+            return e != currUser
+        });
+        localStorage.setItem("followedUsers", followed.join(","));
+        setFollowButton(currUser);
+        hideShowFollowed();
+    }
 
     // Create URL for user request
     function createUserUrl(user) {
@@ -161,4 +236,5 @@
             );
         }
     }
+
 })();

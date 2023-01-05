@@ -14,12 +14,13 @@
         <h1>Vyhledávač twitter uživatelů</h1>
         <div class="input">
             <img src="assets/imgs/temp-picture.jpg" alt="A cat posing as a temporary profile picture">
-            <form>
+            <form class="handle-form">
                 <label for="handle">Napište jméno twitter uživatele</label>
                 <input type="text" id="handle" class="handle" draggable="false">
-                <button type="submit">Prohlédni uživatele</button>
+                <button type="submit" class="test">Prohlédni uživatele</button>
                 <label class="last-search"></label>
             </form>
+            <select class="saved-users" size="3"></select>
         </div>
 
         <div class="spinner"></div>
@@ -29,6 +30,7 @@
         <div class="profile hidden-data hidden">
             <img alt="Profile image of a searched user" class="profile-image">
             <div class="profile-info">
+                <button class="user-save"></button>
                 <p>Jméno: <span class="name"></span></p>
                 <p>Přezdívka: <span class="username"></span></p>
                 <p>Lokace: <span class="location"></span></p>
@@ -67,8 +69,9 @@
     </section>
 
     <footer>
-        <p>Michal Lauer, &copy; 2023; This site uses <a href="https://cors-anywhere.herokuapp.com/corsdemo" target="_blank">cors-anywhere</a></p> 
-        
+        <p>Michal Lauer, &copy; 2023; This site uses <a href="https://cors-anywhere.herokuapp.com/corsdemo"
+                target="_blank">cors-anywhere</a></p>
+
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
