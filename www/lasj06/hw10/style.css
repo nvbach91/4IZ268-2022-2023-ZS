@@ -1,0 +1,39 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+}
+
+hr{
+    border-style: solid;
+    border-color: #eee;
+}
+
+#pexeso {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #333;
+    color: transparent;
+    width: 20%;
+    height: 150px;
+    cursor: pointer;
+}
+
+.card:hover {
+    background-color: black;
+}
+
+.card.revealed {
+    background-color: white;
+    color: black;
+}
