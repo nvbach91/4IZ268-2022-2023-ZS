@@ -15,9 +15,13 @@
     let userId = '';
     // Indicates whether the app should end
     let endSearch = false;
+    // handle regex
+    const userRegex = /^[a-zA-Z0-9]{2,16}$/;
+
     // On load
     $(document).ready(function () {
         setupLastSearch();
+        handleElement.attr("pattern", userRegex.toString().replace(/^\/|\/$/g, ''));
     });
 
     function setupLastSearch() {
@@ -48,12 +52,18 @@
 
     // On form submit
     $('.input').submit((e) => {
-        spinnerElement.css('display', 'block');
-        // Prevent reload
+        // Prevent reload and prepare
         e.preventDefault();
         setup();
-        // Get user 
-        const user = handleElement.val();
+        // Get user and validate
+        const user = handleElement.val().trim();
+        if (!userRegex.test(user)) {
+            console.log("aa");
+            showError(missingUserElement, 'Jméno uživatele nesplňuje požadavky.')
+            return;
+        }
+        // Show spinner
+        spinnerElement.css('display', 'block');
         // Update last search
         localStorage.setItem('lastSearch', user);
         setupLastSearch();
@@ -82,7 +92,6 @@
                 hiddenDataElement.removeClass('hidden');
             });
         });
-
     });
 
     // Create URL for user request
