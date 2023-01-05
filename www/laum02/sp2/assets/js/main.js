@@ -102,7 +102,7 @@
         const user = handleElement.val().trim();
         if (!userRegex.test(user)) {
             console.log("aa");
-            showError(missingUserElement, 'Jméno uživatele nesplňuje požadavky.')
+            showError(missingUserElement, 'Jméno uživatele nesplňuje požadavky.');
             return;
         }
         setFollowButton(user);
@@ -156,13 +156,13 @@
         // Show if first follow
         setFollowButton(currUser);
         hideShowFollowed();
-    };
+    }
 
     function removeUserFromFollowed() {
         const currUser = localStorage.getItem('lastSearch');
         let followed = localStorage.getItem("followedUsers").split(",");
         followed = followed.filter((e) => {
-            return e != currUser
+            return e != currUser;
         });
         localStorage.setItem("followedUsers", followed.join(","));
         setFollowButton(currUser);
