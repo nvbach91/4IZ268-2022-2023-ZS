@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://platform.twitter.com/widgets.js"></script>
+    <script src="assets/js/main.js"></script>
+    <title>Twitter vyhledávač</title>
+</head>
+
+<body>
+    <section class="main-wrapper">
+        <h1>Vyhledávač twitter uživatelů</h1>
+        <div class="input">
+            <img src="assets/imgs/temp-picture.jpg" alt="A cat posing as a temporary profile picture">
+            <form class="handle-form">
+                <label for="handle">Napište jméno twitter uživatele</label>
+                <input type="text" id="handle" class="handle" draggable="false" required>
+                <button type="submit" class="test">Prohlédni uživatele</button>
+                <label class="last-search"></label>
+            </form>
+            <select class="saved-users" size="3"></select>
+        </div>
+
+        <div class="spinner"></div>
+
+        <div class="missing-user hidden"></div>
+
+        <div class="profile hidden-data hidden">
+            <img alt="Profile image of a searched user" class="profile-image">
+            <div class="profile-info">
+                <button class="user-save"></button>
+                <p>Jméno: <span class="name"></span></p>
+                <p>Přezdívka: <span class="username"></span></p>
+                <p>Lokace: <span class="location"></span></p>
+                <p>Uživatel <strong><span class="verified"></span></strong> ověřený (pouze &dollar;5!)</p>
+                <p>Účet vytvořen dne <span class="creation-date"></span> hodin</p>
+            </div>
+        </div>
+
+        <div class="description hidden-data hidden">
+            <p class="profile-desc"></p>
+        </div>
+
+        <div class="stats hidden-data hidden">
+            <div class="stat-1 stat">
+                <p class="stat-header">Počet followů</p>
+                <p class="stat-value"></p>
+            </div>
+            <div class="stat-2 stat">
+                <p class="stat-header">Počet followerů</p>
+                <p class="stat-value"></p>
+            </div>
+            <div class="stat-3 stat">
+                <p class="stat-header">Počet tweetů</p>
+                <p class="stat-value"></p>
+            </div>
+            <div class="stat-4 stat">
+                <p class="stat-header">Počet veřejných listů</p>
+                <p class="stat-value"></p>
+            </div>
+        </div>
+
+        <section class="latest-tweet-wrapper hidden-data hidden">
+            <h2>Poslední tweety uživatele <span class="tweet-count"></span></h2>
+            <div class="tweet-buttons hidden">
+                <button class="prev-tweet">Předchozí tweet</button>
+                <button class="next-tweet">Další tweet</button>
+            </div>
+            <div class="latest-tweet"></div>
+        </section>
+    </section>
+
+    <footer>
+        <p>Michal Lauer, &copy; 2023; This site uses <a href="https://cors-anywhere.herokuapp.com/corsdemo"
+                target="_blank">cors-anywhere</a></p>
+    </footer>
+
+</body>
+
+</html>
