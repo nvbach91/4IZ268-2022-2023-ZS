@@ -517,6 +517,10 @@ main .divTasksCalendar .divCalendar .divCalendarBody .days {
     width: auto;
 }
 
+.monthMenu {
+    margin-left: 24%;
+}
+
 .monthMenu div {
     justify-content: center;
     font-size: 18px;
@@ -525,4 +529,16 @@ main .divTasksCalendar .divCalendar .divCalendarBody .days {
 .yearMenu div {
     justify-content: center;
     font-size: 18px;
+}
+
+.autoLogginButton{
+    position: absolute;
+    display: none;
+    top: 20%;
+    right: 1%;
+    padding: 0.5%;
+    width: 140px;
+    font-size: 14px;
+    color: white;
+    font-weight: 500;
 }
