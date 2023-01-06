@@ -1,0 +1,44 @@
+/* external CSS */
+
+.article-heading {
+    font-family: Arial, Helvetica, sans-serif;
+    color: purple;
+}
+.section-heading {
+    font-style: italic;
+    background-color: crimson;
+}
+
+
+h1 {
+    text-decoration: underline;
+}
+
+.container {
+
+}
+
+#my-container {
+    /* id selektor */
+    background-color: yellow;
+}
+
+[id="my-container"] {
+    /* attribut selektor */
+}
+
+.products > li {
+    font-weight: bold;
+    color: cyan;
+}
+
+.products li {
+    color: red;
+}
+
+ul.sub-products {
+    background-color: green;
+}
+.sub-products {
+    background-color: orange;
+}

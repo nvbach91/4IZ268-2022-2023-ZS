@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Představení mého projektu LightGallery">
+
+    <link rel="stylesheet" href="../resources/styles/main.css" />
+    <link rel="stylesheet" href="../resources/styles/light-gallery.css" />
+
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="../resources/fav/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../resources/fav/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="../resources/fav/favicon-16x16.png"
+    />
+    <link rel="manifest" href="../resources/fav/site.webmanifest" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
+
+    <title>Matěj Lajtkep - LightGallery</title>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li>
+          <a href="../index.html">O mně</a>
+        </li>
+        <li class="active">
+          <a href="../projects/index.html">Projekty</a>
+          <div class="absolute-wrapper">
+            <ul class="sub-menu">
+              <li class="active">
+                <a href="../projects/lightgallery.html">LightGallery</a>
+              </li>
+              <li>
+                <a href="../projects/wartimes.html">Wartimes</a>
+              </li>
+              <li>
+                <a href="../projects/explozivebet.html">Explozive bet</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li><a href="../favourites/index.html">Oblíbené</a></li>
+      </ul>
+    </nav>
+
+    <header class="image-bg">
+      <h1>LightGallery (2022)</h1>
+    </header>
+
+    <main>
+      <p>
+        LightGallery je jednoduchá galerie, postavená za pomoci čistého PHP a
+        Vue.js.
+      </p>
+
+      <h2>Proč byla vytvořena?</h2>
+      <p>
+        Byla vytvořena z důvodu mé potřeby pro rychlé hledání reakčních obrázků,
+        či specifických postav z filmů/anime. Nepodařilo se mi najít dostupné
+        řešení, které by podporovalo tagy pro usnadnění hledání obrázků.
+      </p>
+
+      <h2>Výsledek projektu</h2>
+      <p>
+        Ačkoli jsem s tímto projektem v rámci možností spokojen a stále ho
+        využívám, tak mě dost mrzí nedodělanost. Za nedodělanost může v současné
+        době hlavně především nedostatek času a nepřehlednost stávajícího kódu.
+        Ta byla především způsobena rychlou implementací první verze a následným
+        "ohýbáním" funkcionalit pro školní projekt. I přes tyto problémy se
+        plánuju k projektu později vrátit a předělat ho pořádně, když už znám
+        většinu úskalí a požadavků.
+      </p>
+      <p>Galerie je dostupná <a href="https://gallery.lajtkep.dev">zde</a></p>
+      <h2>Funkcionality</h2>
+      <ul>
+        <li>Nahrávání (+detekce textu)</li>
+        <li>Přiřazování tagů obrázkům</li>
+        <li>Vyhledávání dle jména a tagů</li>
+        <li>Endpoint na získání náhodného obrázku dle tagu</li>
+      </ul>
+
+      <section class="gallery-section">
+        <h2>Galerie</h2>
+        <div class="gallery">
+          <div class="gallery-item">
+            <img
+              src="../resources/images/light-gallery/search_compressed.png"
+              alt="Hledání obrázku"
+            />
+            <a
+              href="../resources/images/light-gallery/search.png"
+              target="_blank"
+              >Zobrazit celý obrázek</a
+            >
+          </div>
+          <div class="gallery-item">
+            <img
+              src="../resources/images/light-gallery/upload-01_compressed.png"
+              alt="Nahrávání obrázku ukázka 1"
+            />
+            <a
+              href="../resources/images/light-gallery/upload-01.png"
+              target="_blank"
+              >Zobrazit celý obrázek</a
+            >
+          </div>
+          <div class="gallery-item">
+            <img
+              src="../resources/images/light-gallery/upload-02_compressed.png"
+              alt="Nahrávání obrázku ukázka 2"
+            />
+            <a
+              href="../resources/images/light-gallery/upload-02.png"
+              target="_blank"
+              >Zobrazit celý obrázek</a
+            >
+          </div>
+          <div class="gallery-item">
+            <img
+              src="../resources/images/light-gallery/upload-03_compressed.png"
+              alt="Nahrávání obrázku ukázka 3"
+            />
+            <a
+              href="../resources/images/light-gallery/upload-03.png"
+              target="_blank"
+              >Zobrazit celý obrázek</a
+            >
+          </div>
+          <div class="gallery-item">
+            <img
+              src="../resources/images/light-gallery/upload-04_compressed.png"
+              alt="Nahrávání obrázku ukázka 4"
+            />
+            <a
+              href="../resources/images/light-gallery/upload-04.png"
+              target="_blank"
+              >Zobrazit celý obrázek</a
+            >
+          </div>
+          <div class="gallery-item">
+            <img
+              src="../resources/images/light-gallery/upload-05_compressed.png"
+              alt="Nahrávání obrázku ukázka 5"
+            />
+            <a
+              href="../resources/images/light-gallery/upload-05.png"
+              target="_blank"
+              >Zobrazit celý obrázek</a
+            >
+          </div>
+          <div class="gallery-item">
+            <img
+              src="../resources/images/light-gallery/upload-06_compressed.png"
+              alt="Nahrávání obrázku ukázka 6"
+            />
+            <a
+              href="../resources/images/light-gallery/upload-06.png"
+              target="_blank"
+              >Zobrazit celý obrázek</a
+            >
+          </div>
+          <div class="gallery-item">
+            <img
+              src="../resources/images/light-gallery/search_compressed.png"
+              alt="Ukázka hledání"
+            />
+            <a
+              href="../resources/images/light-gallery/search.png"
+              target="_blank"
+              >Zobrazit celý obrázek</a
+            >
+          </div>
+          <div class="gallery-item">
+            <img
+              src="../resources/images/light-gallery/sending-01_compressed.png"
+              alt="Posílání obrázku ukázka 1"
+            />
+            <a
+              href="../resources/images/light-gallery/sending-01.png"
+              target="_blank"
+              >Zobrazit celý obrázek</a
+            >
+          </div>
+          <div class="gallery-item">
+            <img
+              src="../resources/images/light-gallery/sending-02_compressed.png"
+              alt="Posílání obrázku ukázka 2"
+            />
+            <a
+              href="../resources/images/light-gallery/sending-02.png"
+              target="_blank"
+              >Zobrazit celý obrázek</a
+            >
+          </div>
+          <div class="gallery-item">
+            <img
+              src="../resources/images/light-gallery/sending-03_compressed.png"
+              alt="Posílání obrázku ukázka 3"
+            />
+            <a
+              href="../resources/images/light-gallery/sending-03.png"
+              target="_blank"
+              >Zobrazit celý obrázek</a
+            >
+          </div>
+          <div class="gallery-item">
+            <img
+              src="../resources/images/light-gallery/sending-04_compressed.png"
+              alt="Posílání obrázku ukázka 4"
+            />
+            <a
+              href="../resources/images/light-gallery/sending-04.png"
+              target="_blank"
+              >Zobrazit celý obrázek</a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>Made by Matěj Lajtkep</footer>
+  </body>
+</html>

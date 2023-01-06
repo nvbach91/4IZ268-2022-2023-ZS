@@ -1,0 +1,389 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    margin: 0;
+}
+
+header {
+    background-color: purple;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    font-size: 18px;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+header h1 {
+    margin: 0;
+}
+
+header ul {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+header nav a {
+    padding: 20px;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    top: 5px;
+    transition: color 200ms ease-out 100ms;
+}
+
+header nav {
+    display: flex;
+    align-items: center;
+}
+
+header nav a:hover {
+    color: gray;
+}
+
+main {
+    background-color: rgb(236, 236, 236);
+
+}
+
+article {
+    max-width: 800px;
+    margin: 10px;
+    margin-bottom: 10px;
+    background-color: white;
+    text-align: center;
+}
+
+article p {
+    text-align: left;
+    padding: 20px;
+    padding-top: 0;
+}
+
+article h3 {
+    background-color: purple;
+
+    padding: 20px;
+    color: white;
+
+    margin: 0;
+}
+
+article a {
+    text-decoration: underline;
+}
+
+
+footer {
+    background-color: purple;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.intro-image {
+    padding: 150px;
+    background-position: center;
+    color: white;
+
+    background-size: cover;
+    text-align: center;
+    filter: brightness(80%);
+}
+
+#home-intro {
+    background-image: url(../img/intro-image.jpg);
+}
+
+#upcoming-projects-intro {
+    background-image: url(../img/upcoming-projects-intro.jpg);
+}
+
+#news-intro {
+    background-image: url(../img/news-intro.jpg);
+}
+
+#about-intro {
+    background-image: url(../img/about-intro.jpg);
+}
+
+#history-intro {
+    background-image: url(../img/history-intro.jpg);
+}
+
+#studios-intro {
+    background-image: url(../img/studios-rozcestnik.jpg);
+}
+
+#franchises-intro {
+    background-image: url(../img/franchises-rozcestnik.jpg);
+}
+
+.intro-image h1 {
+    font-size: 60px;
+    background-color: rgba(87, 87, 87, 0.237);
+}
+
+.intro-image h3 {
+    background-color: rgba(87, 87, 87, 0.237);
+    font-size: 22px;
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
+}
+
+h2 {
+    font-size: 38 px;
+    text-align: center;
+    padding: 10px;
+    background-color: purple;
+    color: white;
+
+}
+
+.subsites-links h2 {
+    background-color: rgba(87, 87, 87, 0.237);
+}
+
+.news {
+    display: grid;
+    grid-template: ". .";
+}
+
+.article-header a {
+    text-decoration: none;
+}
+
+.article-header h3 {
+    transition: color 200ms ease-out 100ms;
+}
+
+.article-header h3:hover {
+    color: gray;
+}
+
+.news-home h4,
+.news h4 {
+    text-align: left;
+    padding-left: 20px;
+}
+
+.article-content {
+    display: flex;
+    align-items: center;
+}
+
+.news .article-content {
+    display: inline;
+}
+
+.news-home .article-image {
+    padding-left: 20px;
+}
+
+.news .article-image {
+    padding-top: 20px;
+}
+
+.upcoming-games-aside p {
+    text-align: center;
+    margin: 10px;
+}
+
+.upcoming-games-aside img {
+    margin: 10px;
+}
+
+
+.intro p {
+    margin: auto;
+    padding: 30px;
+    margin-bottom: 10px;
+    background-color: white;
+    text-align: center;
+    font-size: 18px;
+    max-width: 1100px;
+}
+
+footer nav a {
+    padding: 20px;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    top: 5px;
+    font-weight: bold;
+}
+
+footer nav {
+    display: flex;
+    justify-content: center;
+}
+
+footer ul {
+    display: flex;
+    list-style-type: none;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+.games {
+    display: grid;
+    grid-template: ". . .";
+
+    justify-content: center;
+}
+
+.game img {
+    padding-top: 20px;
+}
+
+.game p {
+    padding: 25px;
+}
+
+.upcoming-games-aside article p {
+    font-weight: bold;
+}
+
+.news {
+    display: grid;
+    grid-template: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.subsites-links {
+    padding: 40px;
+    background-position: center;
+    color: white;
+    background-color: black;
+    background-size: cover;
+    text-align: center;
+    filter: brightness(80%);
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+#franchises-link {
+    background-image: url(../img/franchises-rozcestnik.jpg);
+    transition: background-color 200ms ease-out 100ms;
+    margin-right: 40px;
+}
+
+#studios-link {
+    background-image: url(../img/studios-rozcestnik.jpg);
+    transition: background-color 200ms ease-out 100ms;
+    margin-left: 40px;
+}
+
+#franchises-link:hover,
+#studios-link:hover {
+    background-image: none;
+    background-color: blueviolet;
+}
+
+#rozcestnik {
+    display: grid;
+    grid-template: " .  . ";
+    justify-content: center;
+}
+
+#studios-list {
+    text-align: left;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+#studios-list ul {
+    padding: 30px;
+    list-style-type: none;
+}
+
+#history-content {
+    display: grid;
+    grid-template: ".";
+    justify-content: center;
+}
+
+#history-content li {
+    padding: 5px;
+}
+
+@media screen and (max-width: 1024px) {
+    .games {
+        grid-template: ". .";
+    }
+
+    .content,
+    .news {
+        display: inline;
+    }
+
+    header nav a {
+        font-size: 15px;
+        padding: 5px;
+    }
+}
+
+@media print {
+    * {
+        box-sizing: border-box;
+        color: black !important;
+        background-color: white !important;
+        text-align: left !important;
+    }
+
+    body * {
+        padding: 0 !important;
+    }
+
+    header nav {
+        display: none;
+    }
+
+    header img {
+        filter: grayscale(100%);
+    }
+
+    main {
+        background-color: white;
+    }
+
+    .intro-image,
+    #franchises-link,
+    #studios-link {
+        background-image: none !important;
+        filter: none;
+    }
+
+    .intro-image h1,
+    .intro-image h3 {
+        text-align: left;
+        color: black;
+    }
+
+    main img,
+    footer img {
+        display: none;
+    }
+
+    .games {
+        display: inline;
+    }
+}

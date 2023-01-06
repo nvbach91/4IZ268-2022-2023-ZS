@@ -1,0 +1,44 @@
+body {
+    background-color: white;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+}
+
+#input {
+    display: grid;
+    margin: 15px;
+    padding: 5px;
+}
+
+#inputText,
+#shiftBy,
+#inputButton {
+    margin: 5px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#inputText {
+    width: 50%;
+    height: 70%;
+    border: 1px solid rgb(163, 53, 53);
+    background-color: rgb(231, 224, 224);
+}
+
+#shiftBy {
+    width: 15%;
+    border: 1px solid rgb(163, 53, 53);
+    background-color: rgb(231, 224, 224);
+}
+
+#inputButton {
+    width: 10%;
+    background-color: rgb(163, 53, 53);
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+#inputButton:hover {
+    background-color: rgb(102, 15, 15);
+    transition: 0.6s;
+}

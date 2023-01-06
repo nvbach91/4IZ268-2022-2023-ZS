@@ -1,0 +1,137 @@
+* {
+    box-sizing: border-box;
+}
+
+/* COMMON */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    padding: 50px 10px;
+    color: white;
+    background-color: rgb(192, 50, 50);
+}
+
+.instructions {
+    max-width: 1280px;
+    padding: 20px;
+    margin: 0 auto 50px;
+}
+
+.instructions .colors {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.instructions .colors > input {
+    flex-basis: 50%;
+    padding: 5px;
+    border: none;
+    font-size: 18px;
+    margin: 0;
+    color: white;
+}
+
+.instructions .colors > input:nth-child(1) {
+    background-color: rgb(223, 114,  75);
+}
+
+.instructions .colors > input:nth-child(2) {
+    background-color: rgb( 47, 108, 136);
+}
+
+.instructions .colors > input:nth-child(3) {
+    background-color: rgb(192,  70,  94);
+}
+
+.instructions .colors > input:nth-child(4) {
+    background-color: rgb( 53, 184, 155);
+}
+
+.instructions .colors > input:nth-child(5) {
+    background-color: rgb( 39,  39,  39);
+}
+
+@media screen and (max-width: 720px) {
+
+}
+
+@media screen and (min-width: 720px) {
+    .instructions .colors > input {
+        padding: 20px;
+        flex-basis: calc(100% / 3);
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .instructions .colors > input {
+        flex-basis: 20%;
+    }
+}
+
+/* WRAPPER */
+
+.wrapper {
+    display: flex;
+    flex-flow: column wrap;
+    max-width: 1280px;
+    padding: 20px;
+    margin: 0 auto;
+    color: white;
+    font-size: 25px;
+}
+
+.wrapper > header {
+    background-color: rgb(223, 114,  75);
+    padding: 25px;
+    text-align: center;
+}
+
+.wrapper > nav {
+    background-color: rgb( 47, 108, 136);
+    padding: 25px;
+    text-align: center;
+}
+
+.wrapper .row {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.wrapper .row > main {
+    flex-grow: 1;
+    flex-shrink: 1;
+    background-color: rgb(192,  70,  94);
+    padding: 25px;
+    text-align: center;
+}
+
+.wrapper .row > aside {
+    flex-basis: 350px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    background-color: rgb( 53, 184, 155);
+    padding: 25px;
+    text-align: center;
+}
+
+.wrapper > footer {
+    background-color: rgb( 39,  39,  39);
+    padding: 25px;
+    text-align: center;
+}
+
+@media screen and (max-width: 720px) {
+    .wrapper .row {
+        flex-flow: column wrap;
+    }
+
+    .wrapper .row > aside {
+        flex-basis: auto;
+    }
+}

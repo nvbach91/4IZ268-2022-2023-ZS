@@ -1,0 +1,38 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.top-panel {
+    background-color: cadetblue;
+    padding: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    background-color: gray;
+    padding: 10px;
+}
+
+.navigation {
+    text-align: center;
+}
+
+h1, h2, h3 {
+    border-bottom: 2px solid black;
+}
+
+h1 {
+    text-align: center;
+}
+
+main, footer {
+    max-width: 800px;
+    margin: auto;
+}
+
+footer {
+    background-color: aquamarine;
+    padding: 20px;
+}
+

@@ -1,0 +1,196 @@
+* {
+    color: #000 !important;
+    box-shadow: none !important;
+    background-color: transparent !important;
+    border: none !important;
+}
+
+header {
+    display: none;
+}
+
+.hero {
+    background-image: none;
+    padding: 0;
+}
+
+.hero h1 {
+    padding: 0;
+}
+
+.hero .a_button {
+    display: none;
+}
+
+.welcome {
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+}
+
+h2::after {
+    display: none;
+}
+
+.breadcrumb {
+    display: none;
+}
+
+section {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.pagination {
+    display: none;
+}
+
+.bi {
+    display: none;
+}
+
+.timeline .container {
+    position: relative;
+    left: 0;
+    text-align: center;
+    width: 100%;
+}
+
+.timeline .left h2,
+.timeline .right h2,
+.timeline .left p {
+    text-align: center;
+}
+
+.timeline::after {
+    display: none;
+}
+
+.timeline .container::after {
+    display: none;
+}
+
+.timeline .content {
+    padding: 0;
+}
+
+/* News & events*/
+.news_events {
+    display: block;
+}
+
+.news,
+.news_details,
+.events {
+    padding: 0;
+    width: 100%;
+    max-width: 100%;
+}
+
+.news_footer,
+.events_footer,
+.faqs_footer {
+    display: none;
+}
+
+.categories_navigation::before {
+    content: 'Kategorie: ';
+}
+
+.categories_navigation {
+    padding: 0;
+}
+
+aside.events {
+    page-break-before: always;
+}
+
+/* Clendar */
+.month {
+    padding: 0;
+}
+
+.event_details,
+.event_details p {
+    margin: 0 !important;
+    padding: 0;
+}
+
+/* FAQs */
+.faqs,
+.faqs_preview {
+    padding: 0;
+}
+
+.faqs {
+    display: block;
+}
+
+.faqs aside {
+    display: flex;
+    align-items: center;
+}
+
+.faqs aside ul {
+    display: flex;
+}
+
+.faqs aside h3::after {
+    content: ': ';
+}
+
+.news_img_container,
+.event_date {
+    display: none;
+}
+
+.representatives h2,
+.important_contacts h2,
+.bank_accounts h2,
+.faqs aside,
+.faqs aside h3,
+.faqs aside ul li,
+.faqs_container,
+.faqs_container h2,
+.faq h3 {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Contacts */
+.box_background,
+.important_contacts,
+.bank_accounts {
+    margin: 0;
+    padding: 0;
+}
+
+.representatives,
+.important_contacts_bank_accounts {
+    margin-top: 2rem !important;
+}
+
+.contact_form {
+    display: none;
+}
+
+.contact_map {
+    display: none;
+}
+
+/* Footer */
+.footer_top {
+    margin: 0;
+    padding: 0;
+}
+
+.footer_col:last-child {
+    display: none;
+}
+
+.footer_col {
+    text-align: center;
+    width: 50%;
+}

@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap');
+
+html,
+body {
+    height: 100%;
+    background-color: white;
+    font-family: 'Roboto Condensed', sans-serif;
+    text-align: center;
+
+}
+
+.hw09 {
+    display: grid;
+    width: 600px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+
+#decrypt {
+    background-color: #681010;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #FFFFFF;
+    margin-top: 10px;
+}
+
+#shift {
+    margin-top: 10px;
+    text-align: center;
+
+}
+
+#text {
+    margin-top: 10px;
+    text-align: center;
+    justify-content: center;
+}
+
+#result {
+    margin-top: 10px;
+    width: inherit;
+}

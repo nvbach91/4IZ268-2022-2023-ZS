@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="author" content="Marek Mikula">
+    <meta name="description" content="4iz268 - hw09">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Long live SPARTA!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./assets/css/main.css"/>
+</head>
+<body>
+    <main>
+        <h1>Long live Sparta!</h1>
+        <div class="box-wrapper">
+            <div class="box">
+                <div>
+                    <label for="cipher-text">Cipher text</label>
+                    <textarea id="cipher-text" rows="10"></textarea>
+                </div>
+                <div>
+                    <label for="cipher-key">Key</label>
+                    <input type="number" min="1" step="1" id="cipher-key">
+                </div>
+                <div>
+                    <button type="button" id="cipher-btn">Cipher!</button>
+                </div>
+                <div>
+                    <label for="cipher-result">Result</label>
+                    <textarea id="cipher-result" cols="30" rows="10"></textarea>
+                </div>
+            </div>
+            <div class="box">
+                <div>
+                    <label for="decipher-text">Ciphered text</label>
+                    <textarea id="decipher-text" rows="10"></textarea>
+                </div>
+                <div>
+                    <label for="decipher-key">Key</label>
+                    <input type="number" min="1" step="1" id="decipher-key">
+                </div>
+                <div>
+                    <button type="button" id="decipher-btn">Decipher!</button>
+                </div>
+                <div>
+                    <label for="decipher-result">Result</label>
+                    <textarea id="decipher-result" rows="10"></textarea>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="./assets/js/main.js"></script>
+</body>
+</html>

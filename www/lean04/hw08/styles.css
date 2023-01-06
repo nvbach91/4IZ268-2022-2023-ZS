@@ -1,0 +1,15 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+div:not(:last-child) {
+    margin-bottom: 16px;
+}
+
+#task-buttons > button:not(:last-child) {
+    margin-right: 8px;
+}

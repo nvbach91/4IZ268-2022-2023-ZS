@@ -1,0 +1,115 @@
+header {
+    margin: 0;
+}
+
+main {
+    display: flex;
+    align-items: center;
+}
+
+#jumbotron {
+    display: flex;
+    font-weight: lighter;
+    justify-content: center;
+    font-size: xx-large;
+}
+
+#jumbotron-greeting > h1 {
+    margin-top: 0;
+    font-weight: lighter;
+}
+
+#jumbotron-greeting > h2 {
+    font-weight: lighter;
+}
+
+#jumbotron-greeting-profession-static {
+    display: none;
+}
+
+#jumbotron-greeting > h2 > #jumbotron-greeting-profession-dynamic::after {
+    content: 'web developer';
+    animation: professions 12s linear infinite;
+    animation-delay: 1s;
+}
+
+@keyframes professions {
+    0% {
+        opacity: 1;
+        content: 'web developer';
+    }
+    12.5% {
+        opacity: 0;
+    }
+    25% {
+        opacity: 1;
+        content: 'mentor';
+    }
+    37.5% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+        content: 'gamer';
+    }
+    62.5% {
+        opacity: 0;
+    }
+    75% {
+        opacity: 1;
+        content: 'geek';
+    }
+    87.5% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+        content: 'web developer';
+    }
+}
+
+@media print {
+    h1::before {
+        content: '';
+    }
+
+    #jumbotron-greeting-profession-static {
+        display: initial;
+    }
+
+    #jumbotron-greeting-profession-dynamic {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    #jumbotron {
+        padding: 0 64px;
+    }
+}
+
+@media screen and (max-width: 660px) {
+    #jumbotron {
+        padding: 0 32px;
+    }
+    #jumbotron-greeting > h1 {
+        font-size: 1.5em;
+    }
+
+    #jumbotron-greeting > h2 {
+        font-size: 1em;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #jumbotron {
+        padding: 0 32px;
+    }
+    #jumbotron-greeting > h1 {
+        font-size: xx-large;
+    }
+
+    #jumbotron-greeting > h2 {
+        font-size: x-large;
+    }
+}

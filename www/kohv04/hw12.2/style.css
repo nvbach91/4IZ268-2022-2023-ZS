@@ -1,0 +1,75 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+}
+hr {
+    border-style: solid;
+    border-color: #eee;
+}
+@keyframes spin {
+    from {
+        transform: rotate(0deg)
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+.loader {
+    border: 5px solid cadetblue;
+    border-top: 5px solid #ccc;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: auto;
+}
+
+footer {
+    background-color: cadetblue;
+    padding: 20px 0;
+}
+
+#app {
+    margin: auto;
+    width: 700px;
+    padding: 20px;
+    background-color: #fafafa;
+    box-shadow: 0 0 10px #ccc;
+}
+
+#user-profile {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#user-profile .user-info {
+    flex: 1;
+    text-align: left;
+    margin-left: 10px;
+}
+
+#user-profile .user-info__avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+#repositories {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#repositories li {
+    padding: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 0 4px #ccc;
+    background-color: #fafafa;
+}
+

@@ -1,0 +1,1041 @@
+/*--------------------------------------------------------------------*/
+/*general*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+body {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 0;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+main {
+  display: block;
+  text-align: center;
+  min-height: 700px;
+}
+
+/*--------------------------------------------------------------------*/
+/*menu*/
+header {
+  width: 100%;
+  justify-content: space-between;
+  display: flex;
+}
+
+.logo {
+  margin: 0;
+  border: 0;
+  height: 63px;
+  display: flex;
+}
+
+nav {
+  width: 100%;
+}
+
+header nav ul {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  background-color: cadetblue;
+  font-weight: bold;
+}
+
+header nav li a {
+  display: block;
+  text-align: center;
+  padding: 18px;
+}
+
+header li a,
+.drp {
+  display: inline-block;
+  color: black;
+  font-size: 18px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: cadetblue;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.drop {
+  cursor: pointer;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: gray;
+  color: white;
+}
+
+.drp:hover .dropdown-content {
+  display: block;
+}
+
+header li a:hover,
+.dropdown:hover .drop {
+  background-color: gray;
+  color: white;
+}
+
+.active {
+  background-color: rgb(15, 100, 134);
+}
+
+/*----------------------------------------------------*/
+/*galerie*/
+.show {
+  display: flex;
+  flex-direction: column;
+}
+
+div.gallery:hover {
+  transform: scale(1.1);
+}
+
+.row {
+  display: flex;
+}
+
+div.gallery img {
+  width: 250px;
+  height: 220px;
+  object-fit: cover;
+  padding: 10px;
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/*--------------------------------------------------------------------*/
+/*Kontakt*/
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'left left middle middle right right'
+    'sponsors sponsors sponsors sponsors sponsors sponsors';
+  grid-row-gap: 100px;
+
+}
+
+.left {
+  grid-area: left;
+  width: 100%;
+  text-align: center;
+}
+
+.middle {
+  grid-area: middle;
+  width: 100%;
+  justify-content: center;
+  text-align: justify;
+  padding-left: 30px;
+}
+
+.right {
+  grid-area: right;
+  width: 100%;
+  text-align: left;
+  justify-content: center;
+  padding-left: 30px;
+  margin-left: 20%;
+}
+
+.sponsors {
+  display: flex;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+
+.sponsors div {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.sponsors img {
+  float: left;
+  width: 100px;
+  height: 100px;
+  padding-top: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.map {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.schedule {
+  background-color: lightgoldenrodyellow;
+}
+
+.left div {
+  background-color: lightgoldenrodyellow;
+  margin-left: 5%;
+}
+
+/*-----------------------------------------------------------------------*/
+/*Trenéři*/
+.coaches {
+  display: flex;
+  flex-direction: column;
+}
+
+.coaches h2 {
+  text-align: left;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.line {
+  display: flex;
+  text-align: center;
+}
+
+.line p {
+  width: 100%;
+}
+
+.line a {
+  text-decoration: none;
+  color: white;
+  background-color: darkslategrey;
+  padding: 8px;
+}
+
+.line a:active {
+  zoom: 120%;
+}
+
+.line img {
+  width: 90%;
+  height: 320px;
+  padding: 10px;
+}
+
+/*-----------------------------------------------------------------------*/
+/*profil trenéra*/
+.coach1 {
+  display: flex;
+  justify-content: center;
+}
+
+.coach1 img {
+  float: left;
+  padding-left: 30px;
+  padding-top: 20px;
+  width: 400px;
+  height: 600px;
+}
+
+.coach1 article {
+  width: 45%;
+  text-align: left;
+  padding-left: 30px;
+
+}
+
+/*-----------------------------------------------------------------------*/
+/*O nás + aktuality*/
+.about aside {
+  float: left;
+  width: 30%;
+  height: 100%;
+  position: fixed;
+  top: 15%;
+}
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.aboutSpace {
+  margin-top: 25px;
+}
+
+.aboutMain hr {
+  background-color: black;
+  height: 1px;
+  border: 1px solid black;
+}
+
+.about aside ul {
+  list-style-type: none;
+}
+
+.about aside ul li {
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+  padding-right: 40px;
+}
+
+.about aside ul li a {
+  color: black;
+  text-decoration: none;
+  background-color: cadetblue;
+  padding: 20px;
+  font-weight: bold;
+}
+
+.about aside ul li a:active {
+  transform: scale(1.1);
+}
+
+.aboutMain {
+  width: 70%;
+  float: right;
+  background-color: lightgoldenrodyellow;
+}
+
+.aboutMain section {
+  width: 100%;
+  text-align: left;
+  float: left;
+}
+
+.womens {
+  width: 50%;
+  float: left;
+}
+
+.mens {
+  float: right;
+  width: 50%;
+}
+
+.aboutMain article p {
+  text-align: left;
+}
+
+.intro {
+  width: 70%;
+  float: right;
+  text-align: left;
+  background-color: lightgoldenrodyellow;
+  font-size: 20px;
+}
+
+/*-------------------------------------------------------------------*/
+/*Služby*/
+.service {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.headerLeft div ul,
+.headerRight div ul {
+  list-style-position: inside;
+  text-align: left;
+}
+
+.headerLeft div {
+  text-align: center;
+  padding-top: 30px;
+  width: 400px;
+}
+
+.headerLeft img {
+  width: 400px;
+  height: 250px;
+}
+
+.headerLeft {
+  display: flex;
+}
+
+.headerRight div {
+  text-align: center;
+  padding-top: 30px;
+  width: 400px;
+}
+
+.headerRight img {
+  width: 400px;
+  height: 250px;
+}
+
+.headerRight {
+  display: flex;
+}
+
+.service a {
+  margin: 10px;
+  padding: 16px;
+  background-color: cadetblue;
+  text-decoration: none;
+  width: 760px;
+  color: black;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.service a:hover {
+  background-color: rgb(15, 100, 134);
+  zoom: 110%;
+  transition-duration: 1s;
+  transition-timing-function: ease-out;
+}
+
+/*-------------------------------------------------------------------*/
+/*Ceník*/
+.price {
+  display: flex;
+  text-align: left;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 120px;
+}
+
+.price div table tr th {
+  padding-right: 40px;
+}
+
+.price .window {
+  max-width: 350px;
+  height: 200px;
+  padding: 50px;
+  padding-top: 0px;
+  margin-left: 30px;
+}
+
+.verticalLine {
+  height: 650px;
+  border-left: 3px solid black;
+  position: absolute;
+  left: 50%;
+  top: 18%;
+}
+
+
+/*----------------------------------------------------------------------*/
+/*Domovská stránka*/
+.background {
+  height: 400px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  position: relative;
+}
+
+.background::before {
+  background-image: url(../ODYSEA73-min.jpg);
+  content: "";
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0.5;
+}
+
+.home h1 {
+  background-color: cadetblue;
+  padding-top: 0;
+  margin-top: 0;
+  position: relative;
+  padding: 3px;
+  border-radius: 10px;
+}
+
+.home h3 hr {
+  width: 10%;
+}
+
+.welcome {
+  background-color: lightgoldenrodyellow;
+  width: 80%;
+  text-align: center;
+  margin-left: 10%;
+}
+
+.home video {
+  width: 80%;
+}
+
+.divide {
+  width: 80%;
+  display: flex;
+  margin-left: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: lightgoldenrodyellow;
+}
+
+.divide p {
+  width: 80%;
+  padding-right: 30px;
+  text-align: left;
+}
+
+.divide a {
+  background-color: cadetblue;
+  padding: 10px;
+  width: 20%;
+  border-radius: 3px;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+.divide a:hover {
+  zoom: 110%;
+  background-color: rgb(15, 100, 134);
+  transition-duration: 1s;
+  transition-timing-function: ease-out;
+}
+
+.documents {
+  display: flex;
+  width: 80%;
+  margin-left: 10%;
+  align-items: center;
+  justify-content: center;
+}
+
+.documents div {
+  margin: 20px;
+  background-color: lightgoldenrodyellow;
+}
+
+.documents div a {
+  text-decoration: none;
+}
+
+.headerLine {
+  width: 80px;
+}
+
+/*-----------------------------------------------------------------------*/
+/*footer*/
+footer {
+  background-color: cadetblue;
+  width: 100%;
+  bottom: 0px;
+  margin-top: 20px;
+}
+
+footer p {
+  text-align: center;
+  padding-right: 40px;
+}
+
+.layout {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.layout img {
+  width: 100px;
+  margin-top: 20px;
+}
+
+/*-----------------------------------------------------------------------*/
+/*responzivní design*/
+@media screen and (max-width: 1350px) {
+  .right {
+    margin-left: 5%;
+  }
+}
+
+@media screen and (max-width: 1060px) {
+
+  /*kontakt*/
+  .right {
+    width: 80%;
+  }
+
+  .map {
+    max-height: 450px;
+  }
+
+  .sponsors {
+    flex-direction: column;
+  }
+
+  .sponsors div {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .sponsors img {
+    padding-top: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /*trenér*/
+  .coach1 article {
+    width: 55%;
+  }
+
+  .coach1 img {
+    height: 500px;
+    width: 350px;
+  }
+}
+
+@media screen and (max-width: 840px) {
+
+  /*menu*/
+  header nav ul li a {
+    height: 35px;
+    padding-top: 30px;
+  }
+
+  .logo {
+    height: 83px;
+  }
+
+  /*kontakt*/
+  .grid-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    grid-row-gap: 0px;
+  }
+
+  .middle {
+    width: 80%;
+  }
+
+  .left {
+    width: 80%;
+    margin-left: 0;
+  }
+
+  .right {
+    padding-left: 0;
+  }
+
+  .map {
+    height: 400px;
+  }
+
+  .schedule {
+    width: 100%;
+  }
+
+  .schedule {
+    text-align: center;
+  }
+
+  .right h2 {
+    text-align: center
+  }
+
+  /*galerie*/
+  div.gallery img {
+    width: 180px;
+    height: 160px;
+    object-fit: cover;
+    padding: 10px;
+  }
+
+  /*trenéři*/
+  .line {
+    flex-direction: column;
+  }
+
+  /*trenér*/
+  /*
+  .coach1 img {
+    width: 250px;
+    height: 330px;
+  }
+
+  .coach1 article {
+    width: 65%;
+  }
+
+  /*služby*/
+  .headerLeft {
+    width: 80%;
+  }
+
+  .headerLeft img {
+    width: 50%;
+    height: 200px;
+  }
+
+  .headerRight {
+    width: 80%;
+  }
+
+  .headerRight img {
+    width: 50%;
+    height: 200px;
+  }
+
+  .headerLeft div,
+  .headerRight div {
+    padding-top: 0px;
+    margin-top: 0;
+  }
+
+  /*ceník*/
+  .price {
+    flex-direction: column;
+  }
+
+  .verticalLine {
+    display: none;
+  }
+
+  .price .window {
+    height: auto;
+    padding: 0px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+
+  /*menu*/
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  nav ul li {
+    width: 100%;
+  }
+
+  .logo {
+    margin-left: 42.5%;
+  }
+
+  .dropdown-content {
+    position: relative;
+  }
+
+  .dropdown-content a {
+    text-align: center;
+  }
+
+  /*kontakt*/
+  .sponsors {
+    width: 80%;
+    padding: 0;
+    align-items: center;
+    margin-left: 10%;
+  }
+
+  .prokat {
+    width: 80%;
+  }
+
+  .map {
+    height: 300px;
+  }
+
+  /*galerie*/
+  .row {
+    flex-direction: column;
+  }
+
+  div.gallery img {
+    width: 270px;
+    height: 200px;
+    object-fit: cover;
+    padding: 10px;
+  }
+
+  /*trenér*/
+  .coach1 {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .coach1 img {
+    width: 300px;
+    height: 450px;
+  }
+
+  .coach1 article {
+    padding-left: 0;
+  }
+
+  /*aktuality + o nás*/
+  .about aside {
+    position: relative;
+    width: 100%;
+  }
+
+  .aboutMain {
+    width: 100%;
+  }
+
+  .intro {
+    width: 100%;
+  }
+
+  /*služby*/
+  .headerLeft {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .headerRight {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+}
+
+/*-----------------------------------------------------------------------*/
+/*verze pro tisk*/
+@media print {
+
+  /*obecné*/
+  * {
+    background-image: none !important;
+    background-color: white;
+    padding: 0;
+    margin: 0;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: left;
+  }
+
+  header {
+    border: none;
+  }
+
+  footer {
+    display: none;
+  }
+
+  nav {
+    display: none;
+  }
+
+  /*domovská stránka*/
+  .background {
+    height: auto;
+    text-align: left;
+  }
+
+  .headerLine {
+    display: none;
+  }
+
+  .divide a {
+    display: none;
+  }
+
+  .divide {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .divide p {
+    width: 100%;
+    margin-left: 0;
+    padding-left: 0;
+    padding-top: 10px;
+  }
+
+  .welcome {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .home {
+    text-align: left;
+    display: unset;
+    margin-left: 0;
+  }
+
+  .home video {
+    display: none;
+  }
+
+  .home a {
+    text-decoration: none;
+    color: black;
+  }
+
+  /*aktuality*/
+  .about aside {
+    display: none;
+  }
+
+  .about a {
+    color: black;
+    text-decoration: none;
+  }
+
+  .about hr {
+    visibility: hidden;
+  }
+
+  .intro {
+    width: 100%;
+  }
+
+  .wrap div {
+    width: 100%;
+  }
+
+  /*kontakt*/
+  .grid-container a {
+    text-decoration: none;
+    color: black;
+  }
+
+  .grid-container {
+    display: flex;
+  }
+
+  .right {
+    margin-left: 0px;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .sponsors {
+    display: none;
+  }
+
+  .prokat {
+    display: none;
+  }
+
+  /*galerie*/
+  .show h1 {
+    margin-left: 5%;
+  }
+
+  /*o nás*/
+  .aboutMain {
+    width: 100%;
+  }
+
+  .womens {
+    width: 50%;
+    float: left;
+  }
+
+  .mens {
+    width: 50%;
+    float: right;
+  }
+
+  /*služby*/
+  .service img {
+    display: none;
+  }
+
+  .service a {
+    display: none;
+  }
+
+  .service ul {
+    list-style-type: none;
+  }
+
+  .service {
+    align-items: flex-start;
+  }
+
+  /*ceník*/
+  .price hr {
+    display: none;
+  }
+
+  .verticalLine {
+    display: none;
+  }
+
+  .price {
+    flex-direction: column;
+    justify-items: flex-start;
+    align-items: flex-start;
+  }
+
+  .price .window {
+    width: 100%;
+    height: auto;
+    padding: 0px;
+    padding-top: 10px;
+    margin-left: 0px;
+  }
+
+  /*trenéři*/
+  .wrapper {
+    text-align: left;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  .coaches img {
+    display: none;
+  }
+
+  .coaches h2 {
+    padding-bottom: 20px;
+    padding-top: 10px;
+  }
+
+  .coaches p a {
+    font-weight: bold;
+    color: black;
+  }
+
+  /*trenér*/
+  .coach1 article {
+    width: 80%;
+    text-align: left;
+    padding-left: 30px;
+
+  }
+
+  .coach1 img {
+    width: 100px;
+    height: 150px;
+    padding-left: 0px;
+  }
+
+}

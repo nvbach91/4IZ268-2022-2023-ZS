@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Marek Mikula">
+    <meta name="description" content="Homework for 12th class of 4IZ268">
+    <meta name="keywords" content="homework, 4IZ268, hw12">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>mikm25 / HW12</title>
+    <link rel="stylesheet" href="./assets/css/main.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+            crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/02d976799b.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <main class="container-lg my-2">
+        <div class="row mb-2">
+            <div class="col">
+                <div class="card border-0 bg-light">
+                    <div class="card-body">
+                        <form action="#" id="search-form" class="row gx-3">
+                            <div class="col-8">
+                                <label class="visually-hidden" for="search-input">Github username</label>
+                                <div class="input-group">
+                                    <div class="input-group-text">@</div>
+                                    <input type="search" name="search" class="form-control" id="search-input"
+                                           placeholder="github-username" required>
+                                </div>
+                            </div>
+                            <div class="col-4 d-grid">
+                                <button type="submit" class="btn btn-primary">
+                                    <span class="btn-text">Search</span>
+                                    <span class="btn-loader">
+                                        <i class="fa-solid fa-circle-notch fa-spin"></i>
+                                    </span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div id="result" class="d-none">
+                    <div class="row gx-2">
+                        <div class="col-12 col-md-4 mb-2 mb-md-0">
+                            <div class="card border-0 bg-light sticky-top">
+                                <div class="card-body">
+                                    <div class="mb-2">
+                                        <img id="user-image" class="img-fluid rounded w-100" src="#" alt="User GitHub avatar">
+                                    </div>
+                                    <div class="mb-2">
+                                        <strong>Name:</strong>
+                                        <span id="user-name"></span>
+                                    </div>
+                                    <div class="mb-2">
+                                        <strong>Username:</strong>
+                                        <span id="user-username"></span>
+                                    </div>
+                                    <div class="mb-2">
+                                        <strong>Email:</strong>
+                                        <span id="user-email"></span>
+                                    </div>
+                                    <div class="mb-2">
+                                        <strong>Bio:</strong>
+                                        <span id="user-bio"></span>
+                                    </div>
+                                    <div class="mb-2">
+                                        <strong>Location:</strong>
+                                        <span id="user-location"></span>
+                                    </div>
+                                    <div>
+                                        <a id="user-url" class="btn btn-sm btn-primary" target="_blank" href="#">Detail</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-8">
+                            <div class="card border-0 bg-light">
+                                <div class="card-body">
+                                    <h2>User repositories</h2>
+                                    <table class="table table-bordered mb-0" id="user-repositories">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Name</th>
+                                                <th>Detail</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="./assets/js/main.js" type="text/javascript"></script>
+</body>
+</html>

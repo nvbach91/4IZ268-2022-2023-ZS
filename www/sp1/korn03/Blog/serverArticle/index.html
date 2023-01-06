@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nikita Korotov - How I made my own local server</title>
+    <link rel="stylesheet" type="text/css" href="../../style.css" />
+    <link rel="icon" type="image/x-icon" href="../../assets/logo.png">
+</head>
+
+<body class="article-page">
+    <header>
+        <a id="logo" href="../../"></a>
+        <nav>
+            <ul>
+                <li><a href="../../Projects/">Projects</a></li>
+                <li><a href="../../Blog/">Blog</a></li>
+                <li><a href="../../Contacts/">Contacts</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="wrapper centered">
+        <div class="article-page-intro">
+            <h1 class="centered">How I made my own local server</h1>
+        </div>
+        <article>
+            <p>This work describes the process of creating your own web server on a virtual box, setting it up and
+                its practical use.
+                The main point of that work is to make a server on virtual machine that will have access to global
+                internet. If it is not possible to connect server to global internet due to any factors, make a working
+                local server for the LAN group.
+                The scheme of the server is going to be an installed caprover on docker, that scheme gives almost
+                uncountable range of server usage options since any code is possible to launch with caprover (or just
+                choose already existing apps).</p>
+
+            <h4>List of used software</h4>
+            <ul>
+                <li><a
+                        href="https://learn.microsoft.com/en-us/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v">Hyper-v</a>
+                </li>
+                <li><a href="https://ubuntu.com/download/server">Ubuntu Server 22.04</a></li>
+                <li><a href="https://www.docker.com/">Docker</a></li>
+                <li><a href="https://www.putty.org/">PuTTY</a></li>
+                <li><a href="https://caprover.com/">Caprover</a></li>
+            </ul>
+            <h4>Virtual box configuration</h4>
+            <p>First of all, it is required to enable Hyper-V in Windows (only available in PRO and Education
+                versions). It can be turned on in “Turn Windows features on or off” [1]. The box named "Hyper-V"
+                must be checked and after that computer must be restarted (It is also necessary to enable
+                Virtualization in BIOS). After the computer reboot, it is necessary to create a new external Virtual
+                Switch. In the creation setting tab in the field "Connection Type" needs to be chosen main network
+                adapter.</p>
+
+            <a id="read-more"
+                href="https://drive.google.com/file/d/1DlT5Mq7sVc29M2fR1EtDJyZgbLe0aixO/view?usp=sharing">Read full
+                article at Google Docs</a>
+            <p id="read-more-print">Read more at:
+                shorturl.at/dKRV6
+            </p>
+        </article>
+    </div>
+    <footer>
+        <img src="../../assets/logo.png" alt="my logo">
+        <p>2022 | Made with &#60;3 by Nikita Korotov</p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+body {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+#interface-container {
+  border: none;
+  height: 60vh;
+  width: 50%;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 2%;
+  background-color: #cf9fff;
+}
+
+#interface-container input::placeholder {
+  color: rgb(220, 215, 215);
+}
+
+#interface-container input:nth-of-type(1) {
+  height: 25%;
+  width: 75%;
+  border: none;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  text-align: center;
+  background-color: #5d3fd3;
+  color: white;
+  font-weight: 600;
+}
+
+#interface-container input:nth-of-type(2) {
+  height: 10%;
+  width: 75%;
+  border: none;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  text-align: center;
+  background-color: #5d3fd3;
+  color: white;
+  font-weight: 600;
+}
+
+#decipheredtext {
+  border: none;
+  width: 70%;
+  height: 30%;
+  text-align: center;
+  background-color: #5d3fd3;
+  color: white;
+  padding: 1rem;
+  text-align: left;
+  border-radius: 10px;
+}
+
+#cipherbutton {
+  border-radius: 15px;
+  height: 3rem;
+  margin-bottom: 1rem;
+  color: white;
+  background-color: #5d3fd3;
+  border: none;
+}
+
+#cipherbutton:hover {
+  background-color: #6f59ca;
+  transition: 0.3s;
+  border: 2px solid #5d3fd3;
+  cursor: pointer;
+}

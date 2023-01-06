@@ -1,0 +1,156 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: monospace;
+}
+
+header,
+footer {
+    text-align: center;
+}
+
+main,
+header,
+footer {
+    max-width: 860px;
+    margin: 10px auto 10px auto;
+}
+
+form {
+    margin: 10px auto 10px auto;
+}
+
+input {
+    width: 50%;
+    padding: 10px;
+}
+
+button {
+    width: 10%;
+    padding: 12px;
+}
+
+.app {
+    min-height: 100vh;
+    height: calc(100% + 24px);
+}
+
+main h1 {
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: center;
+    background-color: #D2D2D2;
+    padding: 5px;
+}
+
+li {
+    background-color: #D2D2D2;
+    padding: 10px;
+}
+
+.line {
+    display: grid;
+    grid-template-columns: 40% auto;
+}
+
+.user-grid {
+    display: grid;
+    grid-template-columns: 40% auto;
+}
+
+.avatar img {
+    max-width: 100%;
+}
+
+.avatar {
+    text-align: center;
+}
+
+.avatar,
+.user-info {
+    padding: 10px;
+    ;
+}
+
+h2 {
+    margin-left: 5px;
+}
+
+ul {
+    list-style-type: none;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+li {
+    margin: 5px;
+}
+
+.hidden {
+    display: none;
+}
+
+.view-profile {
+    padding: 10px;
+    margin-top: 5px;
+    text-align: center;
+    background-color: #D2D2D2;
+    border: 1px solid;
+}
+
+.spinner {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin: 0 auto;
+    border: 5px solid transparent;
+    border-top-color: black;
+    border-bottom-color: black;
+    animation: spinning 2s linear infinite;
+    transition: border-color 0.2s ease;
+}
+
+.error {
+    width: 100%;
+    border: 1px solid red;
+    background-color: rgb(255, 184, 184);
+    color: red;
+    padding: 10px;
+    text-align: center;
+}
+
+@keyframes spinning {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media screen and (max-width: 720px) {
+    .user-grid {
+        display: inline-block;
+    }
+
+    .avatar img {
+        max-width: 50%;
+        border-radius: 50%;
+        border: 1px solid;
+        margin: 10px;
+    }
+
+    input {
+        width: 80%;
+        margin-left: 30px;
+        margin-right: 30px;
+        margin-bottom: 10px;
+        padding: 10px;
+    }
+
+    button {
+        width: 50%;
+        padding: 10px;
+    }
+}

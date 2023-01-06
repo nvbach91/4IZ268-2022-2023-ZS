@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Ilja Surovikin" />
+    <meta
+      name="description"
+      content="Seminární práce 1 na e-commerce stránku"
+    />
+    <meta
+      name="keywords"
+      content="flexbox, css, html, layout, diffuser, arofire"
+    />
+    <title>AROFIRE - Essential Oils</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    />
+    <link rel="icon" type="image/x-icon" href="../assets/img/favicon.ico" />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/oils-style.css" />
+    <link rel="stylesheet" media="print" href="../assets/css/print-oils.css" />
+  </head>
+  <body>
+    <div id="header">
+      <a href="../home/index.html"
+        ><img src="../assets/img/logo.png" alt="logo" class="header-logo"
+      /></a>
+      <nav class="navbar">
+        <a href="../home/index.html">Home</a>
+        <a href="../shop/index.html">Produkty</a>
+        <a href="../aboutus/index.html">O nás</a>
+        <a href="../contact/index.html">Kontakt</a>
+        <a href="../cart/index.html"
+          ><i class="fa-solid fa-bag-shopping"></i
+        ></a>
+      </nav>
+    </div>
+
+    <div id="product">
+      <div class="product-image">
+        <img src="../assets/img/essential-oil.jpg" alt="essential oil" />
+      </div>
+      <div class="product-text">
+        <span>MAYJAM</span>
+        <h2>Essential Oils</h2>
+        <div class="review">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fa-solid fa-star-half-stroke"></i>
+          <h5>5 recenzí</h5>
+        </div>
+        <h3>99,00 Kč</h3>
+        <label>Druh</label>
+        <select name="type">
+          <option value="L">Lavender</option>
+          <option value="J">Jasmine</option>
+          <option value="E">Lemon Eucalyptus</option>
+          <option value="V">Vanilla</option>
+          <option value="P">Spearmint</option>
+          <option value="R">Rosemary</option>
+        </select>
+        <div class="product-specification">
+          <img src="../assets/img/lavender.jpg" alt="oils" />
+          <img src="../assets/img/jasmine.jpg" alt="oils" />
+          <img src="../assets/img/lemoneuca.jpg" alt="oils" />
+          <img src="../assets/img/vanilla.jpg" alt="oils" />
+          <img src="../assets/img/spearmin.jpg" alt="oils" />
+          <img src="../assets/img/rosemary.jpg" alt="oils" />
+        </div>
+        <label>Počet</label>
+        <input type="number" value="1" />
+        <button class="normal">Přidat do košíku</button>
+        <img src="../assets/img/oils.jpg" alt="oils" />
+        <h3>O eseciálních olejích MAYJAM:</h3>
+        <p>
+          Žádné přísady, žádná plniva, pouze čistý esenciální olej. Neochvějný
+          závazek k produktům nejvyšší kvality. 100 ml čistého rostlinného
+          extraktu esenciálních olejů pro armaterapii.
+        </p>
+        <br />
+        <p>
+          Perfektní sada esenciálních olejů sloužící do difuzérů, zvlhčovacích
+          přístrojů, olejových hořáků, lázní nebo čističky vzduchu.
+        </p>
+        <br />
+        <p>
+          Každý esenciální olej je dodáván se 100 ml jantarově hnědými
+          lahvičkami. To udrží oleje čerstvé a pomůže proti degradaci světlem.
+          Také skvělá možnost dárkové sady esenciálních olejů, která je
+          dostatečně módní a bylo by skvělé ji poslat rodině nebo přátelům
+        </p>
+        <h3>Výhody difuze esenciálních olejů:</h3>
+        <p>
+          Čistí vzduch od prachu a bakterií. Otevírá dýchací cesty. Ovlivňuje
+          náladu. Snadno se vstřebává tělem.
+        </p>
+      </div>
+    </div>
+
+    <div id="newsletter">
+      <div class="newstext">
+        <h4>Přihlašte Se Pro Více Informací</h4>
+        <p>
+          Budete dostávat e-mail notifikace o nejnovějších slevách a
+          <span>speciálních nabídkách.</span>
+        </p>
+      </div>
+      <div class="form">
+        <input
+          type="text"
+          placeholder="E-mailová adresa"
+          class="classic-input"
+        />
+        <button class="classic">Zaregistrovat se</button>
+      </div>
+    </div>
+
+    <footer id="footer">
+      <div class="footer-div first-div">
+        <h4>Navigace</h4>
+        <a href="../home/index.html">Home</a>
+        <a href="../shop/index.html">Produkty</a>
+        <a href="../aboutus/index.html">O nás</a>
+        <a href="../contact/index.html">Kontakt</a>
+        <a href="../cart/index.html">Košík</a>
+      </div>
+      <div class="footer-div">
+        <img src="../assets/img/logo.png" alt="arofire logo" />
+      </div>
+      <div class="footer-div">
+        <h4>Follow us</h4>
+        <div class="icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/arofireofficial/"
+            ><i class="fab fa-instagram"></i
+          ></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

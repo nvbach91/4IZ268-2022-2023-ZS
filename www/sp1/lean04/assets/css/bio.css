@@ -1,0 +1,129 @@
+#timeline {
+    height: 100%;
+    background-image: linear-gradient(#ccd1d9, #ccd1d9);
+    background-size: 2px 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.timeline-section-right {
+    display: flex;
+    justify-content: end;
+}
+
+.timeline-section-left {
+    display: flex;
+    justify-content: start;
+    text-align: right;
+}
+
+.timeline-block-left {
+    display: flex;
+    justify-content: start;
+}
+
+.timeline-block {
+    width: calc(50% + 8px);
+    animation: fade-in ease 1s;
+    display: flex;
+    align-items: center;
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+        transform: translate(0px, -25px);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0px, 0px);
+    }
+}
+
+.timeline-block-left {
+    float: left;
+    direction: rtl;
+}
+
+.timeline-block-left > .timeline-content {
+    direction: ltr;
+    text-align: end;
+}
+
+.marker {
+    min-width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 1px solid #f5f7fa;
+    background-color: #5edeba;
+    z-index: 2;
+}
+
+.timeline-content {
+    padding: 0 24px;
+}
+
+.timeline-content > h2 {
+    margin: 0;
+}
+
+.timeline-content > h3 {
+    color: #5edeba;
+}
+
+@media print {
+    #timeline {
+        background-image: none;
+    }
+
+    .vertical-spacing-64px > *:not(:last-child) {
+        margin-bottom: 16px;
+    }
+
+    .timeline-section-right {
+        display: block;
+    }
+
+    .timeline-section-left {
+        display: block;
+        text-align: left;
+    }
+
+    .timeline-block {
+        width: 100%;
+    }
+    .marker {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .vertical-spacing-64px > *:not(:last-child) {
+        margin-bottom: 32px;
+    }
+
+    #timeline {
+        background-image: none;
+    }
+
+    .timeline-section-right {
+        display: flex;
+        justify-content: start;
+    }
+
+    .timeline-section-left {
+        text-align: start;
+    }
+
+    .timeline-block {
+        width: 100%;
+    }
+
+    .timeline-content {
+        padding: 0;
+    }
+
+    .marker {
+        display: none;
+    }
+}

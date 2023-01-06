@@ -1,0 +1,60 @@
+main {
+    margin: 0 auto;    
+    padding-top: 100px; 
+    background-color: black;
+    color: white; 
+}
+
+main a {
+    color: white;
+    text-decoration: none;
+}
+
+main h1 {
+    margin: 50px;
+    margin-bottom: 10px;
+}
+
+main p {
+    margin-left: 50px;
+    margin-right: 50px;
+
+    font-size: large;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+main h2 {
+    margin: 50px;
+    margin-top: 70px;
+    margin-bottom: 10px;
+}
+
+.four {
+    display: flex;
+    flex-wrap: wrap;
+
+    margin: 10px;
+    margin-bottom: 0;
+}
+
+.four img {
+    height: 300px;
+    width: 300px;
+
+    margin: 20px;
+}
+
+@media print {
+    *{ background-image: none !important;
+    }
+
+    main {
+        margin: 0;
+        margin-left: 20px;
+    } 
+
+    body {
+        background-color: white;
+        color: black;
+    }
+}

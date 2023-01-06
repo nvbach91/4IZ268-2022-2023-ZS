@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
+    <title>GTD - about/development</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+
+<body>
+    <header>
+        <section>
+            <h2 class="logo">Getting<span>Things</span>Done</h2>
+            <label for="toggle-1" class="toggle-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+            <input type="checkbox" id="toggle-1">
+            <nav>
+                <ul>
+                    <li><a href="../homepage.html"><i class="icon-home"></i>Home</a></li>
+                    <li>
+                        <div class="dropdown">
+                            <a href="./about.html" class="dropbtn">O aplikaci</a>
+                            <div class="dropdown-content">
+                                <a href="./development.html">O vývoji</a>
+                                <a href="./news.html">Novinky</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="../support.html"><i class="icon-thumbs-up-alt"></i>Podpora</a></li>
+                    <li><a href="../download.html"><i class="icon-gear"></i>Ke stažení</a></li>
+                </ul>
+            </nav>
+        </section>
+    </header>
+
+    <main class="main-about">
+        <h1>O vývoji</h1>
+
+        <section class="content-home">
+            <h2>Počátek</h2>
+            <p>Aplikace vznikla původně jako semestrální práce 3 studentů VŠE. Po odevzdání viděl z
+                nich v aplikaci až příliš potencionálu na to, aby ji nechal v podobě, ve které byla, a tak se dal do
+                díla, přičemž se rozhodl, že se z aplikace stane i bakalářská práce.
+            </p>
+        </section>
+
+        <section class="content-home">
+            <h2>Proč To-Do List?</h2>
+            <p>Práce, škola, domácí práce... Občas toho každý z nás má nad hlavu a ztratit přehled o
+                tom co udělat dřív nebo zapomenout
+                co vůbec jsem měl udělat se stává denním chlebem. Proto je vhodné využít každou pomoc co se nabízí,
+                avšak zapisovat si úkoly
+                na papír nebo do zápisníku se v téhle době zdá už trochu neefiktivní a aplikace bývají často složité a
+                nepřehledné. Proto jsme
+                se rozhodli vytvořit aplikaci, se kterou bude plnění úkolů daleko jednodušší.
+            </p>
+        </section>
+
+        <section class="content-home">
+            <h2>Metoda vývoje:</h2>
+            <ul><li>Pro skupinové diskuzi jsme se shodli, že naše forma vývoje bude přikloněna k waterfall modelu. K přijetí tohoto rozhodnutí nám pomohla diskuze s vyučujícím, který nám naznačil, že by se k tomuto modelu přikláněl. Předpokládáme, že všechny požadavky specifikujeme na začátku projektu. Z důvodu, že tento projekt je rozdělen na pomyslné dvě části - obhajoba návrhu a následně obhajoba aplikace, shodli jsem se, že by nebylo rozumné aplikovat iterativní vývoj. Zvažovali jsme i metodiku RUP v malém, která se ale blíží vývoji v iteracích, co by pro nás, vzhledem k tomu, že projekt je rozdělen na dvě velké části, nebylo vhodné.</li> 
+                <li>Je možné, že při vývoji budeme využít některých vlastností Extremního programování (XP): např.: párové programování - progrmaování ve dvojici, malé verze - přirůstkový vývoj.</li> 
+                <li>Jakmile bude návrh hotový, a my začneme s programováním, rád bychom využili každodenní cca 15 minutové stand-up meetingy, kde bychom si rozdělili práci na následující den a zároveň zjistili, co je aktuálně potřeba řešit - obdobně jako u metodiky Scrum. Dá se říct, že aplikace bude vyvíjena v rámci jednoho (několikadenního) sprintu.</li> 
+                <li>Shrunutí metodiky vývoje: Bude používat kombiraci různých metodik/přístupů (Waterfall, XP, Scrum) za účelem dosažení nejlepších výsledků v co nejmenším časovém horizontu, respketive z každého přístupu si vypůjčímejeho část např. (Scrum - stane-upy, XP - párové programování).</li> 
+                <li>Hlavním plánovací nástrojem bude GitLab. Za tímto účelem jsme zde vytvořili label (např. front/back-end, prioritu,...). Jednotlivé úkoly jsou přiřazeny k řešitelům. Každý člen týmu si může přehledně zobrazit, co je jeho aktuální úkol. Nezapomenout nesmí i na milníky, kdy každý úkol je součástí jednoho.</li> 
+                <li>Větve: Při přípravě prostředí GitLab jsem si vytvořil přidali další větev - dev, kde bude probíhat hlavní vývoj. Je možné, že v průběhu tvorby projektu, budeme další větve přidávát.</li> 
+                <li>Merge Issue: Každý větší update projektu bude musí být schválen vedoucím projektu, přes MergeRequest. Před každým MergeRequestem se nová verze otestuje.</li> 
+                <li>CI/CD: Integrační script plánujeme využít, a to zejména pro snadnou a  správě verzí + jednodušší sdílení pro případně testery.</li> 
+                <li>Pro lepší přehlednost jsem vytvořili boards.</li> 
+                <li>Při tvorbě návrhu aplikace bylo postupováno v souladu s kontrolními seznamy.</li> 
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>Bohuslav Bachna ZS-2022</p>
+    </footer>
+    <script src="./assets/homepage.js"></script>
+</body>
+
+</html>

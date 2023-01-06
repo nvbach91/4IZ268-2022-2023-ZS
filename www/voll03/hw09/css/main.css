@@ -1,0 +1,113 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Verdana', sans-serif;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+}
+
+
+section {
+    margin: 30px auto 30px auto;
+    max-width: 600px;
+    text-align: center;
+    padding: 20px;
+    background-color: rgb(27, 27, 27);
+    border-radius: 16px;
+}
+
+#inputForm {
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+}
+
+#inputForm .form-row {
+    margin: 10px;
+    display: flex;
+    flex-grow: 1;
+    flex-direction: row;
+    justify-content: space-between;
+    min-width: 386px;
+}
+
+#inputForm .form-row textarea, #inputForm .form-row input[name="used-key"] {
+    border: none;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+h1 {
+    color: white;
+    font-size: 24px;
+}
+
+h2 {
+    text-align: center;
+}
+
+#btnDecipher {
+    font-family: 'Verdana', sans-serif;
+    padding: 10px 20px;
+    color: rgb(221, 221, 221);
+    background-color: rgb(35, 130, 255);
+    border: none;
+    border-radius: 8px;
+}
+
+#btnDecipher:hover {
+    cursor: pointer;
+}
+
+.result {
+    border: 2px solid black;
+    border-radius: 12px;
+    padding: 10px 20px;
+    margin: 0 auto;
+    width: 720px;
+    min-height: 100px;
+}
+
+.result p {
+    font-weight: bold;
+}
+
+@media screen and (max-width: 980px) {
+    .result {
+        width: 600px;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .result {
+        width: 460px;
+        min-height: 120px;
+    }
+
+    section {
+        max-width: 460px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .result {
+        width: 360px;
+        min-height: 120px;
+    }
+
+    section {
+        max-width: 360px;
+    }
+
+    #inputForm .form-row {
+        margin: 10px;
+        min-width: 320px;
+    }
+
+    #inputForm .form-row textarea {
+        width: 320px;
+    }
+}

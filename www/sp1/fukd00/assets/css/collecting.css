@@ -1,0 +1,79 @@
+.pad-10 {
+    padding: 10px;
+}
+
+.pad-20 {
+    padding: 20px;
+}
+
+article {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.portfolio52-section {
+    background-image: url("../img/portfolio52_bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.intro {
+    background-image: url("../img/collection.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: 20px;
+}
+
+.collecting-content-wrapper {
+    background-color: rgb(221, 221, 221);
+    padding: 0px 15px 15px 15px;
+}
+
+.community-section {
+    display: flex;
+    gap: 10px 10px;
+    padding: 10px;
+}
+
+.community-section>article {
+    flex-basis: 50%;
+    justify-content: space-between;
+    padding-bottom: 15px;
+}
+
+@media (max-width: 768px) {
+    .community-section {
+        flex-wrap: wrap;
+    }
+
+    .community-section>article {
+        flex-basis: 100%;
+    }
+}
+
+.article-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.article-content h2 {
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.logo-crop {
+    max-width: 100px;
+    max-height: 100px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.logo {
+    display: inline;
+    margin: 0px auto;
+    height: 100%;
+    width: auto;
+}

@@ -1,0 +1,309 @@
+
+
+
+.intro-image {
+    background-image: url(Old_TraffordImg.webp);
+    padding: 120px;
+    padding-bottom: 90px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.intro-image h1, .intro-image h3 {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 40px;
+    
+
+    color: white;
+    text-align: center;
+    max-width: 1024px;
+    margin: 0 auto;
+}
+
+.intro-image h1 {
+    font-size: 30px;
+    
+    padding-bottom: 20px;
+    word-spacing: 2px;
+}    
+
+.intro-image h3 {
+    font-size: 20px;
+    padding-top: 20px;
+}
+
+
+
+
+
+main {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.article-head {
+    margin-top: 40px;
+    margin-left: 30px;
+
+    font-size: 32px;
+}
+
+main a {
+    color: black;
+    text-decoration: none;
+}
+
+.news-article {
+    display: flex;
+    flex-wrap: wrap;
+
+    margin: 30px;
+}
+
+.news-article:hover {
+    background-color: red;
+    color: white;
+
+    border: 5px solid red;
+    border-radius: 20px;
+}
+
+
+.article-img {
+    height: 200px;
+    width: 200px;
+
+    margin-left: 5px;
+    margin-right: 30px;
+}
+
+.img-div {
+    width: 20%;
+}
+
+.article-text {
+    width: 80%;
+    padding-top: 0px;
+    text-align: left;
+    
+}
+
+.article-text h2 {
+    text-align: center;
+    border-bottom: 2px solid red;
+}
+
+
+
+
+.videos  {
+    display: flex;
+    flex-wrap: wrap;
+
+    margin-bottom: 50px;
+}
+
+.vid1 {
+    margin-left: 100px;
+}
+
+.video {
+    width: 540px;
+    height: 315px;
+}
+
+.buy  {
+    display: flex;
+    flex-wrap: wrap;
+
+    margin-bottom: 100px;
+}
+
+.pic1 {
+    margin-left: 70px;
+
+    text-decoration: none;
+    color: black;
+}
+
+.buy-link{
+    color: black;
+    transition: text-decoration 1s ease;
+    margin-left: 30px;
+}
+
+.buy-link:hover{
+    text-decoration: underline;
+}
+
+.buy-image {
+    width: 300px;
+    height: 300px;
+}
+
+
+@media screen and (max-width: 640px) { 
+    .intro-image h1 {
+        font-size: 15px;
+        padding-bottom: 5px;
+        word-spacing: 2px;
+    }    
+    
+    .intro-image h3 {
+        font-size: 8px;
+        padding-top: 5px;
+    }
+
+    .intro-image h1, .intro-image h3 {
+        padding: 10px;
+    }
+}
+
+
+@media screen and (max-width: 1024px) {
+    .intro-image h1 {
+        font-size: 20px;
+        padding-bottom: 15px;
+        word-spacing: 2px;
+    }    
+    
+    .intro-image h3 {
+        font-size: 15px;
+        padding-top: 15px;
+    }
+
+    main {
+        margin: 0;
+    }
+
+    .article-head {
+        margin-top: 10px;
+        margin-left: 10px;
+        font-size: 32px;
+    }
+
+    .news-article {
+        margin: 10px; 
+    }
+
+}    
+
+@media screen and (max-width: 1200px) {
+      .article-img {
+        display: none;
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+
+    .img-div {
+        width: 0;
+    }
+    
+    .article-text p{
+        width: 100%;
+        font-size: small;
+    }
+
+    .article-text h2 {
+        font-size: medium;
+    }
+    
+    .videos  {
+        margin-bottom: 5px;
+    }
+    
+    .vid1 {
+        margin-left: 20px;
+    }
+    
+    .video {
+        width: 540px;
+        height: 315px;
+    }
+
+    .buy  {
+        margin-bottom: 50px;
+    }
+}
+
+
+/*TODO rewrite to media print*/
+@media print {
+    .intro-image h1, .intro-image h3 {
+        padding: 0;
+        background-color: white;
+
+        color: black;
+        text-align: left;
+        margin: 0;
+    }
+    
+    .intro-image h1 {
+        font-size: 15px;
+        padding-bottom: 5px;
+        word-spacing: 1px;
+    }    
+    
+    .intro-image h3 {
+        font-size: 10px;
+        padding-top: 5px;
+    }
+
+    .article-head {
+        margin-top: 0px;
+        margin-left: 10px;
+        font-size: 20px;
+    }
+    
+    main {
+        margin: 0;
+        margin-left: 20px;
+    }
+    
+    .news-article {
+        margin: 10px;
+    }
+    
+    .article-img {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+    
+    .img-div {
+        display: none;
+    }
+    
+    .article-text {
+        width: 80%;
+        font-size: 12px;
+        text-align: left;
+    }
+    
+    .article-text h2 {
+        text-align: center;
+    }
+
+    .videos  {
+        margin-bottom: 0px;
+        display: none;
+    }
+    
+
+    .vid1 {
+        margin-left: 20px;
+    }
+    
+    .buy  {
+        margin-bottom: 0px;
+    }
+    
+    .pic1 {
+        margin-left: 20px;
+    }
+    
+    .buy-link{
+        margin-left: 0px;
+    }  
+    
+}

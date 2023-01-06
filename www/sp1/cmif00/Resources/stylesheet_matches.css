@@ -1,0 +1,268 @@
+* {
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    color: black;
+}
+
+main p {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+header {
+    width: 100%;
+    background-image: radial-gradient(red, rgb(220, 8, 8));
+    height: 80px;
+    position: fixed;
+
+    padding: 10px;
+    margin: 0px;
+    margin-bottom: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logolink {
+    display: flex;
+}
+
+.logo {
+    margin-left: 20px;
+    height: 60px;
+    width: 60px;
+    background-image: url(./manUtd_favicon.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    text-indent: 100px;
+    font-size: 32px;
+
+    color: white;
+    align-items: center;
+}
+
+.name {
+    margin-left: 10px;
+    padding: 18px;
+
+    color: white;
+    font-size: 28px;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+
+    padding: 0;
+    margin: 0; 
+    margin-right: 20px;
+}
+
+.link{
+    color: white;
+    text-decoration: none;
+
+    padding: 10px;
+    transition: text-decoration ease-in 1s;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+
+/*MAIN*/
+main {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-top: 100px;
+}
+
+main h1 {
+    margin: 30px;
+}
+main h2 {
+    margin: 30px;
+}
+
+.prem {
+    display: flex;
+    flex-wrap: wrap;
+
+    margin-bottom: 100px;
+    
+}
+
+.prem-img {
+    width: 50%;
+    height: auto;
+    
+    margin-right: 20px;
+    margin-bottom: 50px;
+}
+
+.matches {
+    width: 40%;
+    height: auto;
+    margin-bottom: 50px;
+    
+    
+    margin-left: 50px;
+}
+
+.matches h4 {
+    margin: 30px;
+    margin-top: 40px;
+    
+}
+
+.euro-matches{
+   margin-bottom: 100px;
+}
+
+.euro-matches h4{
+    margin: 30px;
+    margin-top: 40px;
+}
+
+.efl-matches h4 {
+    margin: 30px;
+    margin-top: 40px;
+}
+
+
+
+footer {
+    margin-top: 30px;
+    height: 120px;
+    width: 100%;
+    background-color: rgb(60, 60, 60);
+    color: white;
+    text-decoration: none;
+
+    padding: 0px;
+    justify-content: center;
+   position: sticky;
+}
+
+.socials {
+    padding: 10px;
+    margin: 0px;
+}
+
+.socials ul{
+    list-style-type: none;
+    display: flex;
+
+    margin-right: 50px;
+    justify-content: center;
+}
+
+.social {
+    color: white;
+    text-decoration: none;
+
+    padding: 10px;
+    margin-left: 30px;
+    transition: text-decoration 1s ease;
+}
+
+.social img {
+    height: 15px;
+    width: 15px;  
+}
+
+.social:hover{
+    text-decoration: underline;
+}
+
+.copyrights {
+    margin-top: 0px;
+    
+    text-align: center;
+    align-items: center;
+}
+
+@media screen and (max-width: 1024px) {
+    .logo {      
+        display: none;
+    }
+    
+    .name {
+        margin-left: 10px;
+        padding: 18px;
+        font-size: 16px;
+    }
+
+    main {
+        margin: 0;
+    }
+
+}    
+
+@media screen and (max-width: 1200px) {
+    
+
+       
+    .socials {
+        padding: 5px;
+        margin: 0px;
+    }
+       
+    .socials ul{
+        margin-right: 50px;
+    
+    }
+    
+    .social {
+        padding: 0px;
+        margin-left: 10px; 
+    }
+    
+    .copyrights {
+        font-size: small;
+    }
+   
+}
+
+@media screen and (max-width: 1500px) {
+    .prem {
+        display: inline;
+    }
+
+    .matches {
+        margin-left: 0;
+    }
+   
+}
+
+
+/*TODO rewrite to media print*/
+@media print {
+    *{ background-image: none !important;
+    }
+
+    header {
+       display: none;
+    }
+
+    main {
+        margin: 0;
+        margin-left: 20px;
+    }
+    
+    footer {
+       display: none;  
+    }
+    
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework 8</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div id="tasks">
+        <h3>Buttons</h3>
+        <button id="task-1" onclick="sayHello('Supp world')">Uloha 1 (Hello world)</button>
+        <button id="task-2" onclick="printPepeAge(42)">Uloha 2 (Pepe's age)</button>
+        <button id="task-3" onclick="calculateTemperature(20)">Uloha 3 (Celsium Fahrenheit)</button>
+        
+        <p>
+            <button id="task-4" onclick="division(10.451,45.51321)">Uloha 4 (Division)</button>
+            <button id="task-5" onclick="isBigger(5,-6)">Uloha 5 (whole numbers)</button>
+            <button id="task-5-decimals" onclick="isBigger(10.451,45.51321)">Uloha 5 (decimals)</button>
+            <button id="task-5-fraction" onclick="isBigger(10/45,56/45)">Uloha 5 (fraction)</button>
+        </p>
+        <p>
+            <button id="task-6" onclick="makeCycle()">Uloha 6</button>
+            <button id="task-7" onclick="calculateArea(10)">Uloha 7</button>
+            <button id="task-8" onclick="calculateVolume(10, 5)">Uloha 8</button>
+            <!-- <button id="task-9" onclick="isTriangle(10, 10, 10)">Uloha 9</button> -->
+        </p>
+    </div>
+
+    
+    <div class="results">
+        <h3>Results</h3>
+        <div id="task-4-result"> Task 4 result: 
+            <span id="error"></span>
+            <span id="result"></span>
+        </div>
+        <div id="task-5-result"> Task 5 result:
+            <span id="result5"></span>
+        </div>
+        <div id="task-6-result"> Task 6 result:
+            <span id="multiples"></span>
+        </div>
+        <div id="task-7-result"> Task 7 result:
+            <span id="content"></span>
+        </div>
+        <div id="task-8-result"> Task 8 result:
+            <span id="volume"></span>
+        </div>
+        <div id="task-9-result"> Task 9 result:
+            <span id="triangle"></span>
+        </div>
+        <div id="task-10-result"> Task 10 result:
+            <span id="heron"></span>
+        </div>
+    </div>
+    
+    <script src="./homework.js"></script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Git The Hub</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+  </head>
+
+  <body>
+    <div id="app">
+      <header>
+        <h1>Git The Hub</h1>
+        <p>Enter a username to search for an user on GitHub</p>
+      </header>
+      <main>
+        <form id="search-form">
+          <input name="username" placeholder="Search by name" /> 
+          <button>Find</button>
+        </form>
+
+        <div id="user-profile">
+          <div class="loader" id="loader"></div>
+          <div class="user-info" id="user-info">
+            <div class="user-info__avatar" id="avatar"></div>
+            <h2 id="username"></h2>
+            <p id="bio"></p>
+            <p id="location"></p>
+            <p id="description"></p>
+            <p id="email"></p>
+            <p id="followers"></p>
+            <p id="registered"></p>
+          </div>
+        </div>
+        
+        <h2>Repositories</h2>
+        <ul id="repositories"></ul>
+      </main>
+      <footer>2022 &copy; Vít Kohout</footer>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.2/axios.min.js"></script>
+    <script src="./main.js"></script>
+  </body>
+</html>

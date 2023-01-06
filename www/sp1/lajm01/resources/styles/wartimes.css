@@ -1,0 +1,54 @@
+header {
+  background-image: url(../images/wartimes/main-banner.png);
+}
+
+section p {
+  text-align: justify;
+}
+
+section.normal-section {
+  display: grid;
+  grid-template-areas: "title title" "description image";
+  grid-template-columns: 60fr 40fr;
+  gap: 1vw;
+}
+
+section > h2 {
+  grid-area: title;
+}
+
+section > p {
+  grid-area: description;
+}
+
+section > img {
+  grid-area: image;
+}
+
+section img {
+  width: 25vw;
+}
+
+.image-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.cutscenes_wrapper {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.cutscenes_wrapper li {
+  flex-shrink: 0;
+  flex: 0 1 calc(50% - 10px);
+}
+
+.cutscenes_wrapper video {
+  width: 100%;
+}

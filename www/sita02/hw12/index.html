@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+
+<body>
+    <div class="app" id="app">
+        <header>
+            <h1>GitHub username lookup</h1>
+            <p>Enter a username to search for an user on GitHub</p>
+            <form id="search-form">
+                <input id="username" name="username" placeholder="Search by name" />
+                <button id="lookup">Find</button>
+            </form>
+        </header>
+        <hr>
+        <main id="user-profile" class="hidden">
+            <div class="error hidden" id="error"></div>
+            <h1 id="user" class="hidden"></h1>
+            <div id="kpi" class="kpi"></div>
+            <div class="user-grid">
+                <div class="avatar" id="avatar">
+                    <img id="avatar-img">
+                    <div class="view-profile">
+                        <a id="view-profile" class="hidden">View Profile</a>
+                    </div>
+                </div>
+                <div class="user-info" id="user-info">
+                    <h2>User information</h2>
+                    <ul>
+                        <li><div class="line">
+                            <div>Login</div>
+                            <div id="login"></div>
+                        </div></li>
+                        <li><div class="line">
+                            <div>Bio</div>
+                            <div id="bio"></div>
+                        </div></li>
+                        <li><div class="line">
+                            <div>Location</div>
+                            <div id="location"></div>
+                        </div></li>
+                        <li><div class="line">
+                            <div>Company</div>
+                            <div id="company"></div>
+                        </div></li>
+                        <li><div class="line">
+                            <div>Email</div>
+                            <div id="email"></div>
+                        </div></li>
+                        <li><div class="line">
+                            <div>Followers</div>
+                            <div id="followers"></div>
+                        </div></li>
+                        <li><div class="line">
+                            <div>Registered</div>
+                            <div id="registered"></div>
+                        </div></li>
+                        <li id="link"></li>
+                    </ul>
+
+                    <h2>Repositories</h2>
+                    <p id="public_repos"></p>
+                    <ul id="repositories">
+                    </ul>
+
+                </div>
+            </div>
+        </main>
+    </div>
+    <hr>
+    <footer>
+        <div>2022 &copy; <a href="https://github.com/asitanc">asitanc</a></div>
+    </footer>
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>

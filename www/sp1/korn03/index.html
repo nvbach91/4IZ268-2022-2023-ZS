@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Nick Korotov - developer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <link rel="icon" type="image/x-icon" href="./assets/logo.png">
+</head>
+<!--
+- chybi meta informace
+- pro stylovane uprednostnujeme CSS tridy, nikoliv id
+- HTML entity nejsou pouzity u specialnich znaku na nekterych mistech
+- chybi zvyrazneni aktivni polozky menu
+- emailovy odkaz, telefonni odkaz
+- externi odkaz, _blank
+- pro hlavni obsah stranky pouzijte semanticky tag <main>
+- na verzi pro tisk zmensete velikosti pisma u nadpisu
+-->
+<body>
+    <header>
+        <a id="logo" href="./"></a>
+        <nav>
+            <ul>
+                <li><a href="./Projects/">Projects</a></li>
+                <li><a href="./Blog/">Blog</a></li>
+                <li><a href="./Contacts/">Contacts</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="full_body">
+        <div class="intro">
+            <div>
+                <h1 id="name">Nikita Korotov</h1>
+                <h2 id="sub_name">Frontend & Backend Developer</h2>
+                <!--CSS ANIMATION IMG-->
+            </div>
+            <div class="aboutme">
+                <h2>Hi, I'm Nick.</h2>
+                <h3>Since beginning my journey as a developer 2 years ago, I've
+                    collaborated a lot with talented people to create products
+                    for consumer use. I'm naturally curious, and
+                    working on improving myself constantly.</h3>
+            </div>
+        </div>
+        <div class="mycolumns">
+            <div class="content">
+                <div id="column_1">
+                    <img id="frontlogo" src="./assets/front_end_ico.png" alt="frontend icon" height="100">
+                    <h3>Frontend</h3>
+                    <p class="column_text">I like to make both stunning and simple web sites</p>
+                    <h4>Languages I use:</h4>
+                    <p>CSS, HTML, JS</p>
+                    <h4>Tools:</h4>
+                    <ul>
+                        <li>GitHub/GitLab</li>
+                        <li>VS Code</li>
+                        <li>Figma</li>
+                        <li>Adobe Photoshop</li>
+                    </ul>
+                </div>
+                <div id="column_2">
+                    <img id="backlogo" src="./assets/backend_ico.png" alt="backend icon" height="100">
+                    <h3>Backend</h3>
+                    <p class="column_text">I enjoy making cool ideas into real life by coding</p>
+                    <h4>Languages I use:</h4>
+                    <p>Java, SQL</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <img src="./assets/logo.png" alt="my logo">
+        <p>2022 | Made with &#60;3 by Nikita Korotov</p>
+    </footer>
+</body>
+
+</html>

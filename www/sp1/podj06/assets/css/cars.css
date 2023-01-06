@@ -1,0 +1,41 @@
+.cars {
+    margin-top: 1em;
+}
+
+.car {
+    flex: calc(50% - 10px);
+    margin-bottom: 1em;
+    margin-left: 5px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-end;
+}
+
+.car img {
+    border-radius: 10px;
+}
+
+.car > div {
+    flex: 50%;
+}
+
+.car > div:nth-of-type(2) {
+    padding: 1em;
+}
+
+.car-details {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 850px) {
+    .car {
+        margin-left: 0;
+        margin-bottom: 5px;
+    }
+
+    .car > div {
+        flex: 100%;
+    }
+}
