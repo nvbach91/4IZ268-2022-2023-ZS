@@ -1,0 +1,83 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif, monospace;
+}
+
+body {
+    height: 100%;
+}
+
+header,
+footer {
+    padding: 10px;
+}
+
+footer {
+    padding-bottom: 0px;
+}
+
+aside {
+    min-height: 100vh;
+    width: 8%;
+    min-width: 5rem;
+    float: left;
+    border-right: 1px solid;
+    text-align: center;
+}
+
+main {
+    max-width: 100%;
+    height: 80%;
+    display: grid;
+    grid-template-columns: 65% 35%;
+}
+
+ul {
+    list-style-type: none;
+}
+
+li {
+    margin: 5px;
+    padding: 10px;
+    border: 1px solid;
+}
+
+h2 {
+    padding: 10px;
+}
+
+footer {
+    height: 28px;
+    padding-bottom: 0px;
+}
+
+.app-wrapper {
+
+}
+
+.tweet {
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid;
+}
+
+.tweets {
+    border: 1px solid;
+    margin: 10px;
+    overflow-y: auto;
+    height: 80vh;
+}
+
+.user {
+    border: 1px solid;
+    margin: 10px;
+}
+
+.center {
+    text-align: center;
+}
+
+.separator {
+    background-color: black;
+}
