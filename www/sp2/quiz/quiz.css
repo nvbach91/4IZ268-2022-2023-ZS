@@ -1,0 +1,35 @@
+.options {
+    background-color: white;
+    font-size: 1.8rem;
+    color: #1a2a3b;
+    border: 0.3rem solid rgb(26, 42, 59, 0.8);
+    border-radius: 5px;
+    width: 100%;
+    display: flex;
+    margin-bottom: 1rem;
+}
+
+.options:hover p{
+    background-color: #1a2a3b;
+    color: white;
+    cursor: pointer;
+}
+
+.options:hover  {
+    color: white;
+    cursor: pointer;
+    background-color: rgb(26, 42, 59);
+    transform: translateY(-0.1rem);
+}
+
+.option-number {
+    color: #1a2a3b;
+    border-radius: 5px;
+    padding: 1.5rem 2.5rem;
+    font-weight: 700;
+}
+
+.option-text {
+    padding: 1.5rem;
+}
+
