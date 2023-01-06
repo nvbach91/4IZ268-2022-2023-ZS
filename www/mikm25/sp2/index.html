@@ -25,13 +25,20 @@
             <div class="card-body d-flex flex-column">
                 <form action="#" method="get" id="form">
                     <div class="row g-3 mb-3">
-                        <div class="col-sm-12 col-md-6">
+                        <div class="col-sm-12 col-md-4">
                             <label for="fiat-currency" class="form-label">Fiat currency</label>
                             <select name="fiatCurrency" id="fiat-currency" class="form-control" required></select>
                         </div>
-                        <div class="col-sm-12 col-md-6">
+                        <div class="col-sm-12 col-md-4">
                             <label for="crypto-currency" class="form-label">Cryptocurrency</label>
                             <select name="cryptoCurrency" id="crypto-currency" class="form-control" required></select>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <label for="chart-type" class="form-label">Chart Type</label>
+                            <select name="chartType" id="chart-type" class="form-control" required>
+                                <option value="bar">Bar chart</option>
+                                <option value="line">Line chart</option>
+                            </select>
                         </div>
                     </div>
                     <div class="row">
@@ -50,7 +57,7 @@
                 </form>
                 <div id="chart-container" class="mt-3 rounded d-none flex-grow-1">
                     <div class="alert alert-info mb-3" role="alert">
-                        Graph is showing data 1 month back by 12 hours. You can either use your mouse wheel or drag to zoom.
+                        Graph is showing data 1 month back by 8 hours. You can either use your mouse wheel or drag to zoom.
                     </div>
                     <canvas id="chart" class="w-100"></canvas>
                 </div>

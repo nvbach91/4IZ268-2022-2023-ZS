@@ -1,4 +1,9 @@
 (() => {
+  const CHART_TYPE =  {
+    bar: 'bar',
+    line: 'line'
+  }
+
   const CONFIG = {
     testMode: false, // if true, the API won't be called and test data will be used
     language: navigator?.language ?? 'en-US', // default language for dates and currencies
@@ -38,6 +43,7 @@
       autoApply: false // default value for auto-apply checkbox
     },
     chart: {
+      type: CHART_TYPE.line, // default chart type
       lineColor: '#0d6efd',
       tension: 0.4,
       dragBgColor: 'rgba(13, 109, 253, 0.2)'
@@ -82,7 +88,8 @@
         return {
           fiat: CONFIG.currencies.fiat.default,
           crypto: CONFIG.currencies.crypto.default,
-          autoApply: CONFIG.form.autoApply
+          autoApply: CONFIG.form.autoApply,
+          chartType: CONFIG.chart.type,
         }
       }
 
@@ -94,19 +101,21 @@
         return {
           fiat: CONFIG.currencies.fiat.default,
           crypto: CONFIG.currencies.crypto.default,
-          autoApply: CONFIG.form.autoApply
+          autoApply: CONFIG.form.autoApply,
+          chartType: CONFIG.chart.type,
         }
       }
 
       return {
         fiat: normalizeFiat(json.fiat ?? null),
         crypto: normalizeCrypto(json.crypto ?? null),
-        autoApply: !!(json.autoApply ?? CONFIG.form.autoApply)
+        autoApply: !!(json.autoApply ?? CONFIG.form.autoApply),
+        chartType: normalizeChartType(json.chartType ?? null),
       }
     },
 
-    set(fiat, crypto, autoApply) {
-      localStorage.setItem(CONFIG.storage.key, JSON.stringify({ fiat, crypto, autoApply }))
+    set(fiat, crypto, autoApply, chartType) {
+      localStorage.setItem(CONFIG.storage.key, JSON.stringify({ fiat, crypto, autoApply, chartType }))
     }
   }
 
@@ -119,7 +128,18 @@
     autoApply: document.getElementById('automatic-apply'),
     formSubmit: document.getElementById('submit-btn'),
     cryptoSelect: document.getElementById('crypto-currency'),
-    fiatSelect: document.getElementById('fiat-currency')
+    fiatSelect: document.getElementById('fiat-currency'),
+    chartTypeSelect: document.getElementById('chart-type')
+  }
+
+  const normalizeChartType = val => {
+    if (val && Object.keys(CHART_TYPE).includes(val.toLowerCase())) {
+      return val.toLowerCase()
+    }
+
+    console.log("lmao")
+
+    return CONFIG.chart.type
   }
 
   const normalizeFiat = val => {
@@ -162,7 +182,7 @@
     }
   }
 
-  const createChart = (data, fiatCurrency) => {
+  const createChart = (data, fiatCurrency, type) => {
     const context = elements.chart.getContext('2d')
 
     // create formatter for labels
@@ -171,8 +191,36 @@
       currency: fiatCurrency.toUpperCase()
     })
 
+    let minYScale = null
+    let maxYScale = null
+
+    // set manually min and max for bar chart, otherwise it looks awful
+    if (type === CHART_TYPE.bar) {
+      // find mix & max
+      const [min, max] = data.datasets[0].data.reduce((reducer, item) => {
+        let min = reducer[0]
+        let max = reducer[1]
+
+        if (min === null || min > item) {
+          min = item
+        }
+
+        if (max === null || max < item) {
+          max = item
+        }
+
+        return [min, max]
+      }, [null, null])
+
+      // calculate the range which will be added to max and min value
+      const range = (max - min) / 10
+
+      minYScale = min - range <= 0 ? 0 : min - range
+      maxYScale = max + range
+    }
+
     return new Chart(context, {
-      type: 'line',
+      type: type,
       data,
       options: {
         scales: {
@@ -189,7 +237,9 @@
               callback: function (value) {
                 return formatter.format(value)
               }
-            }
+            },
+            min: minYScale,
+            max: maxYScale
           }
         },
         plugins: {
@@ -255,12 +305,21 @@
 
       elements.form.dispatchEvent(new Event('submit'))
     })
+
+    elements.chartTypeSelect.addEventListener('change', event => {
+      // autoApply is not turned off
+      if (! elements.autoApply.checked) {
+        return
+      }
+
+      elements.form.dispatchEvent(new Event('submit'))
+    })
   }
 
   const persistAutoApplyValue = (value) => {
-    const { fiat, crypto } = STORAGE.get()
+    const { fiat, crypto, chartType } = STORAGE.get()
 
-    STORAGE.set(fiat, crypto, value)
+    STORAGE.set(fiat, crypto, value, chartType)
   }
 
   const initAutoApplyEvent = () => {
@@ -283,12 +342,17 @@
 
       const fiat = elements.fiatSelect.value
       const crypto = elements.cryptoSelect.value
+      const chartType = elements.chartTypeSelect.value
       const autoApply = elements.autoApply.checked
 
-      await updateChart(normalizeFiat(fiat), normalizeCrypto(crypto))
+      await updateChart(
+        normalizeFiat(fiat),
+        normalizeCrypto(crypto),
+        normalizeChartType(chartType)
+      )
 
       // set values on update to locale storage
-      STORAGE.set(fiat, crypto, autoApply)
+      STORAGE.set(fiat, crypto, autoApply, chartType)
     })
   }
 
@@ -331,10 +395,11 @@
   // retrieves data from local storage and sets them
   // to form inputs
   const initDefaultValues = () => {
-    let { fiat, crypto, autoApply } = STORAGE.get()
+    let { fiat, crypto, autoApply, chartType } = STORAGE.get()
 
     elements.fiatSelect.value = fiat
     elements.cryptoSelect.value = crypto
+    elements.chartTypeSelect.value = chartType
     elements.autoApply.checked = autoApply
   }
 
@@ -342,6 +407,7 @@
   const toggleForm = state => {
     elements.cryptoSelect.disabled = !state
     elements.fiatSelect.disabled = !state
+    elements.chartTypeSelect.disabled = !state
     elements.autoApply.disabled = !state
 
     if (!state && elements.formSubmit.disabled) {
@@ -429,7 +495,7 @@
     elements.chartError.classList.remove('d-none')
   }
 
-  const updateChart = async (fiat, crypto) => {
+  const updateChart = async (fiat, crypto, type) => {
     // hide chart
     toggleChart(false)
 
@@ -445,7 +511,7 @@
     try {
       const { data } = await REPOSITORY.getTimeSeriesData(fiat, crypto)
 
-      chart = createChart(transformData(data), fiat)
+      chart = createChart(transformData(data), fiat, type)
 
       toggleLoader(false)
 
