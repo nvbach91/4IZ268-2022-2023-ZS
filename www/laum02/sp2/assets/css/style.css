@@ -1,4 +1,5 @@
 * {
+    font-family: 'Open Sans', 'Times New Roman', Times, serif;
     box-sizing: border-box;
 }
 
@@ -140,5 +141,18 @@ footer {
     width: 200px;
     height: 30px;
     margin-bottom: 25px;
-    font-size: 18px;
+    font-size: 16px;
+}
+
+.tweet-buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.tweet-buttons button {
+    margin: 0 5px;
+}
+
+.latest-tweet-wrapper {
+    min-height: 700px;
 }

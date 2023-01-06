@@ -6,6 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://platform.twitter.com/widgets.js"></script>
+    <script src="assets/js/main.js"></script>
     <title>Twitter vyhledávač</title>
 </head>
 
@@ -16,7 +20,7 @@
             <img src="assets/imgs/temp-picture.jpg" alt="A cat posing as a temporary profile picture">
             <form class="handle-form">
                 <label for="handle">Napište jméno twitter uživatele</label>
-                <input type="text" id="handle" class="handle" draggable="false">
+                <input type="text" id="handle" class="handle" draggable="false" required>
                 <button type="submit" class="test">Prohlédni uživatele</button>
                 <label class="last-search"></label>
             </form>
@@ -63,7 +67,11 @@
         </div>
 
         <section class="latest-tweet-wrapper hidden-data hidden">
-            <h2>Poslední tweet uživatele</h2>
+            <h2>Poslední tweety uživatele <span class="tweet-count"></span></h2>
+            <div class="tweet-buttons hidden">
+                <button class="prev-tweet">Předchozí tweet</button>
+                <button class="next-tweet">Další tweet</button>
+            </div>
             <div class="latest-tweet"></div>
         </section>
     </section>
@@ -73,9 +81,6 @@
                 target="_blank">cors-anywhere</a></p>
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-    <script src="https://platform.twitter.com/widgets.js"></script>
-    <script src="assets/js/main.js"></script>
 </body>
 
 </html>

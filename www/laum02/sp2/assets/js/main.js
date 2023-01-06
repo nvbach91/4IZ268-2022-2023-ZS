@@ -1,4 +1,4 @@
-(() => {
+$(document).ready(function () {
 
     // Handle input
     const handleElement = $('.handle');
@@ -20,6 +20,13 @@
     let endSearch = false;
     // handle regex
     const userRegex = /^[a-zA-Z0-9]{2,16}$/;
+    // Tweets
+    let userTweets = [];
+    let userTweetSelected = 0;
+    const prevTweetElement = $('.prev-tweet');
+    const nextTweetElement = $('.next-tweet');
+    const tweetButtonsElement = $('.tweet-buttons');
+    const tweetTextElement = $('.tweet-count');
 
     function hideShowFollowed() {
         usersSelectElement.empty();
@@ -36,15 +43,6 @@
             usersSelectElement.css("display", "block");
         }
     }
-
-    // On load
-    $(document).ready(function () {
-        setupLastSearch();
-        // Assign regex to input
-        handleElement.attr("pattern", userRegex.toString().replace(/^\/|\/$/g, ''));
-        // Hide followed users if empty
-        hideShowFollowed();
-    });
 
     function setupLastSearch() {
         const last = localStorage.getItem('lastSearch');
@@ -65,6 +63,8 @@
         // Hide all data
         missingUserElement.addClass('hidden');
         hiddenDataElement.addClass('hidden');
+        tweetButtonsElement.addClass('hidden');
+        tweetTextElement.empty();
         // User has never tweeted, by default
         tweetElement.empty();
         tweetElement.append($('<p>').text('Uživatel ještě nikdy netweetnul:(.'));
@@ -187,6 +187,7 @@
 
     // Create request
     async function request(url, callback) {
+        console.log(url);
         await $.ajax({
             dataType: 'json',
             type: 'GET',
@@ -196,12 +197,13 @@
                 'Authorization': 'Bearer AAAAAAAAAAAAAAAAAAAAAMabkwEAAAAAt5JAqqCv89bBuMV7hhdjgmPLIy0%3DZb5WLArdIYEPw9rEAUIgiVp4RNVkZxQ7ZWVj1gh2HIx8xtTg3p',
             }
         }).done((resp) => {
-            callback(resp.hasOwnProperty('data') ? resp.data[0] : '');
+            callback(resp.hasOwnProperty('data') ? resp.data : []);
         });
     }
 
     // Fill user
     async function fillUser(user) {
+        user = user[0];
         if (user == '') {
             showError(missingUserElement, 'Uživatel nebyl nalezen.');
             endSearch = true;
@@ -227,21 +229,48 @@
     }
 
     // Fill tweet
-    function fillLatestTweet(tweet) {
-        if (tweet != '') {
-            tweetElement.empty();
-            twttr.widgets.createTweet(
-                tweet.id,
-                tweetElement[0]
-            ).then(() => {
-                const tweetJSON = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(tweet));
-                const downloadElement = $("<a>").text("Stáhnout tweet jako JSON");
-                downloadElement.attr("href", tweetJSON);
-                downloadElement.attr("download", "latest-tweet.json");
-                downloadElement.attr("class", "tweet-download");
-                tweetElement.append(downloadElement); 
-            });           
+    function fillLatestTweet(tweets) {
+        if (tweets.length != 0) {
+            userTweets = tweets
+            $('.tweet-buttons').removeClass('hidden');
+            displayTweet(0);
         }
     }
 
-})();
+    function displayTweet(id) {
+        const tweet = userTweets[id];
+        tweetTextElement.text(`(${id + 1}/${userTweets.length})`);
+        tweetElement.empty();
+        twttr.widgets.createTweet(
+            tweet.id,
+            tweetElement[0]
+        ).then(() => {
+            const tweetJSON = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(tweet));
+            const downloadElement = $("<a>").text("Stáhnout tweet jako JSON");
+            downloadElement.attr("href", tweetJSON);
+            downloadElement.attr("download", "latest-tweet.json");
+            downloadElement.attr("class", "tweet-download");
+            tweetElement.append(downloadElement); 
+        });
+        if (id === 0) prevTweetElement.prop("disabled", true);
+        else prevTweetElement.prop("disabled", false);
+        if (id === userTweets.length - 1) nextTweetElement.prop("disabled", true);
+        else nextTweetElement.prop("disabled", false);
+    }
+
+    prevTweetElement.click(() => {
+        userTweetSelected -= 1;
+        displayTweet(userTweetSelected);
+    });
+
+    nextTweetElement.click(() => {
+        userTweetSelected += 1;
+        displayTweet(userTweetSelected);
+    });
+
+    setupLastSearch();
+    // Assign regex to input
+    handleElement.attr("pattern", userRegex.toString().replace(/^\/|\/$/g, ''));
+    // Hide followed users if empty
+    hideShowFollowed();
+});
