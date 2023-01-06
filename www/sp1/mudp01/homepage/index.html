@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Petr Mudra">
+    <meta name="keywords" content="Data Visualization, Raw text, Tables, Graphs, Maps">
+    <meta name="description" content="Data Visualization tutorial.">
+    <title>Data vizualizace</title>
+    <link rel="icon" type="image/x-icon" href="../assets/img/favicon.ico">
+    <link href="../assets/css/template.css" rel="stylesheet">
+</head>
+<!--
+- css hover efekt by nemelo ovlivnit pozice ostatnich prvku na strance
+- tabulky by mely obsahovat thead a tbody
+- zkuste zaembedovat google maps do stranky kontakt
+- doladit verzi pro tisk, resp. zacit ladit verzi pro tisk
+- stranky greenflags a redflags nemusi byt nizsim urovni nez ostatni stranky
+- vsude zarovnavat text na stred je staromodni a neni pro ctenare moc privetive, zkuste najit kompromis
+- homepage by nemel byt /homepage, ale pouze /
+- zvyknete se psat nazvy CSS trid s pomlckami, protoze vetsina lidi to tak pise a nebudou se jim (Vasim kolegum) libit, kdyz nebudete dodrzet spolecna pravidla psani kodu
+-->
+<body>
+    <header>
+        <div>
+            <nav>
+                <div class="home">
+                    <a class="currentPage" href=".">Homepage</a>
+                </div>
+                <div class="content">
+                    <a href="../raw_text/">Čistý text</a>
+                    <a href="../tables/">Tabulky</a>
+                    <a href="../graphs/">Grafy</a>
+                    <a href="../maps/">Mapy</a>
+                    <a href="../DoDont/GreenFlags/">Co dělat</a>
+                    <a href="../DoDont/RedFlags/">Co nedělat</a>
+                </div>
+                <div class="contact">
+                    <a href="../contact/">Kontakt</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="divIntro">
+            <h1>Data vizualizace</h1>
+            <p>V dnešní době &bdquo;datové&#8223; se už pravděpodobně každý někdy setkal s pojmem data vizualizace
+                (v anglickém originálu Data Visualization). Ne každý však tento pojem dokáže vysvětlit, a to i
+                přesto, že se s ním setkává na denní bázi.</p>
+        </div>
+        <div class="divRow">
+            <div class="divTwoCol">
+                <h2>Co znamená pojem vizualizace dat?</h2>
+                <p>
+                    Vizualizace dat není nic jiného než jejich grafická reprezentace. Mezi základní, ale zároveň
+                    nejčastější &bdquo;formy&#8223; patří: čistě textová vizualizace, vizualizace s využitím tabulek,
+                    grafů a map. To jakou &bdquo;formu&#8223; je vhodné využít je dáno zejména typem dat, se kterými se
+                    pracuje.
+                </p>
+                <iframe src="https://www.youtube-nocookie.com/embed/EC7EBJ1Bn-c" title="YouTube video player"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
+            <div class="divTwoCol">
+                <h2>Proč je vizualizace dat důležitá?</h2>
+                <p>Barvy a vzory v lidech přirozeně budí pozornost. Umožňují rychle se zorientovat, pomáhají v pochopení
+                    předávané informace a umožňují rozpoznat trendy v datech. Sami rozhodněte, na níže uvedených
+                    příkladech, jak velký je rozdíl mezi využitím a nevyužitím vizualizace dat. </p>
+                <iframe src="https://www.youtube-nocookie.com/embed/j3-AvE0ndmg" title="YouTube video player"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div class="divBasic">
+            <h2>Porovnání prezentace dat bez vizualizace a s vizualizací</h2>
+            <p>Níže prezentuje autor celkem pětkrát identická data. Jediné v čem se liší je způsob jejich zobrazení.
+                Sami
+                rozhodněte, ve které prezentaci se nejrychleji zorientujete a pochopíte myšlenku.</p>
+        </div>
+
+        <div class="divBasic">
+            <h2>Prezentace dat bez využití vizualizace.</h2>
+            <p>Firma Slunce s.r.o. se rozhodla provést analýzu svých poboček za rok 2021 pomocí porovnání jejich výnosů
+                a nákladů. První porovnávanou pobočkou byla Plzeňská. Její výnosy činili celkem 560 tisíc Kč a náklady
+                400 tisíc kč. Manažerův komentář k výsledkům byl následující: Výsledky vyšli přesně dle prognózy. Další
+                pobočkou byla Zlínská, její celkové výnosy byly 320 tisíc Kč a náklady 220
+                tisíc Kč. Manažerův komentář k výsledkům byl následující: Výsledky nakonec dopadly lépe než byly
+                prognózovány. Poslední byla porovnávána pobočka v Mostě, celkové výnosy zde činily 60 tisíc Kč a náklady
+                190
+                tisíc Kč. Manažer se rozhodl výsledky nekomentovat. </p>
+        </div>
+
+        <div class="headingAlone">
+            <h2>Prezentace dat s využitím vizualizace</h2>
+        </div>
+
+        <div class="divRow">
+            <div class="divTwoCol">
+                <h3>Vizualizace pomocí čistého textu</h3>
+                <p>Firma Slunce s.r.o. se rozhodla provést analýzu svých poboček za rok
+                    2021 pomocí porovnání jejich výnosů a nákladů. První porovnávanou pobočkou byla <span
+                        class="highlight">Plzeňská</span>. Její <span class="highlight">výnosy</span> činili celkem
+                    <span class="highlight">560 tisíc Kč</span> a <span class="highlight">náklady 400 tisíc kč</span>.
+                    Manažerův komentář k výsledkům byl následující: <span class="highlight">Výsledky vyšly přesně dle
+                        prognózy</span>. Další pobočkou byla <span class="highlight">Zlínská</span>, její celkové <span
+                        class="highlight">výnosy</span> byly <span class="highlight">320 tisíc Kč</span> a <span
+                        class="highlight">náklady 220 tisíc Kč</span>. Manažerův komentář k výsledkům byl následující:
+                    Výsledky nakonec dopadly lépe než byly prognózovány. Poslední byla porovnávána pobočka v <span
+                        class="highlight">Mostě</span>, celkové <span class="highlight">výnosy</span> zde činily <span
+                        class="highlight">60 tisíc Kč</span> a <span class="highlight">náklady 190 tisíc Kč</span>.
+                    Manažer se rozhodl výsledky nekomentovat.
+                </p>
+            </div>
+
+            <div class="divTwoCol">
+                <h3>Vizualizace pomocí tabulky</h3>
+                <table>
+                    <caption>Analýza poboček za rok 2021</caption>
+                    <tr>
+                        <th class="tableThNames"></th>
+                        <th>Plzeň</th>
+                        <th>Zlín</th>
+                        <th>Most</th>
+                    </tr>
+                    <tr>
+                        <td>Celkové výnosy v tis. Kč</td>
+                        <td>560</td>
+                        <td>320</td>
+                        <td>60</td>
+                    </tr>
+                    <tr>
+                        <td>Celkové náklady v tis. Kč</td>
+                        <td>400</td>
+                        <td>220</td>
+                        <td>190</td>
+                    </tr>
+                    <tr>
+                        <td>Komentář manažera</td>
+                        <td>Výsledky vyšly přesně dle prognózy.</td>
+                        <td>Výsledky
+                            dopadly lépe než byly
+                            prognózovány.</td>
+                        <td>Bez komentáře.</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="divTwoCol">
+                <h3>Vizualizace pomocí grafu</h3>
+                <img id="graph-noJS-picture" src="../assets/img/homepage_graph.png"
+                    alt="Graph analysing financial results of three company branches">
+            </div>
+
+
+            <div class="divTwoCol">
+                <h3>Vizualizace pomocí mapy</h3>
+                <img id="map-noJS-picture" src="../assets/img/homepage_map.png"
+                    alt="Map displaying financial results of three company branches">
+            </div>
+        </div>
+
+
+    </main>
+    <footer>
+        <div>
+            <nav>
+                <a href=".">Homepage</a>
+                <a href="../contact/">Kontakt</a>
+            </nav>
+        </div>
+    </footer>
+
+
+</body>
+
+</html>

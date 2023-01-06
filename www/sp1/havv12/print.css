@@ -1,0 +1,197 @@
+tml,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+/*navigation section*/
+nav {
+    
+    display: none;
+}
+
+
+nav ul {
+   
+    visibility: hidden;
+    
+   
+    list-style: none;}
+   
+
+nav ul li {
+    
+    visibility: hidden;
+    height: 100%;
+    padding: 0 15px 0 15px;
+}
+
+
+
+
+
+/*end of nav section*/
+
+/* hero section*/
+#hero {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    background-image: url("img/hero.jpg");
+    z-index: -1;
+    position: relative;
+    box-shadow: 3px 0px 29px 15px rgba(0, 0, 0, 0.75) inset;
+
+}
+
+#hero h1 {
+    width: auto;
+    color: WHITE;
+    opacity: 1;
+}
+
+#hero img {
+    display: none;
+    height: 60%;
+    width: auto;
+}
+
+#hero-minor {
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100vw;
+    flex-direction: column;
+    height: 30vh;
+    background-image: url("img/hero.jpg");
+    background-size: cover;
+    z-index: -1;
+    position: relative;
+    box-shadow: 3px 0px 29px 15px rgba(0, 0, 0, 0.75) inset;
+}
+
+#hero-minor img {
+    height: 60%;
+}
+
+/*end of hero section*/
+
+/*content*/
+.content {
+    margin: 50px 15vw 50px 15vw;
+    background-color: #50AA8D;
+    padding: 20px;
+    border-radius: 6px;
+    font-size: 1.6em;
+    text-align: justify;
+    line-height: 1.5em;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.content h1 {
+    text-align: center;
+}
+
+/*end content*/
+
+/*services section*/
+#services {
+    font-size: medium;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+   
+}
+
+#services div {
+    margin: 0;
+    text-align: center;
+    flex-basis: 0;
+    flex-grow: 1;
+    flex-shrink: 1;
+    box-shadow: none;
+
+}
+
+#services div ul {
+    list-style: none;
+    padding: 0;
+}
+
+/* end of services section*/
+
+/*contacts*/
+#contacts iframe{
+    display: none;
+    width: auto;
+}
+#contacts {
+    display: flex;
+    flex-direction: row;
+
+    justify-content: space-evenly;
+
+}
+
+/*end contacts*/
+
+/* helper classes*/
+.center {
+    text-align: center;
+}
+
+.row {
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 40px auto 40px auto;
+}
+
+.list-fix {
+    line-height: 2em;
+    list-style: none;
+}
+
+
+@media only screen and (max-width: 768px) {
+    .content {
+        margin: 50px 0 50px 0;
+        font-size: 1em;
+    }
+    nav ul li a{
+        font-size: 0.5em;
+    }
+    nav ul {
+        margin: 0;
+        padding: 0;
+    }
+    #hero img {
+        max-width: 60%;
+        height: auto;
+    }
+    #contacts{
+        flex-direction: column;
+    }
+    #contacts iframe{
+        width: 100%;
+        height: 50vh;
+    }
+    #services{
+        flex-direction: column;
+    }
+}

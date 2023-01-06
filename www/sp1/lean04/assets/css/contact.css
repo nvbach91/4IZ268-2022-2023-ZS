@@ -1,0 +1,61 @@
+#contacts {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.contact {
+    text-align: center;
+    border: 1px solid;
+    border-radius: 8px;
+    padding: 32px;
+    width: calc(25% - ((32px * 3) / 4));
+}
+
+@media print {
+    #contacts {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .contact {
+        text-align: center;
+        border: 0;
+        border-radius: 8px;
+        padding: 32px;
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 481px) and (max-width: 1024px) {
+    .contact:nth-child(-n + 2) {
+        margin-bottom: 32px;
+    }
+
+    .contact:nth-child(odd) {
+        margin-right: 32px;
+    }
+
+    .contact:nth-child(even) {
+        margin-right: 0;
+    }
+
+    .contact {
+        width: calc(50% - ((32px * 1) / 2));
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #contacts {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .contact {
+        width: 100%;
+    }
+
+    .contact:not(:last-child) {
+        margin-bottom: 32px;
+    }
+}

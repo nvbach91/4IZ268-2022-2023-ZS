@@ -1,0 +1,284 @@
+body {
+  font-family: "Roboto Mono", monospace;
+  background-color: rgb(0, 0, 0);
+  color: white;
+}
+
+.menu {
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo {
+  margin-left: 100px;
+  margin-top: 20px;
+  width: 100px;
+}
+
+.menu-right {
+  display: flex;
+  justify-content: right;
+  margin-top: 40px;
+  margin-right: 100px;
+}
+
+.menu-item {
+  color: rgb(224, 224, 224);
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 14px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin: 8px;
+  border: solid;
+  border-color: rgb(0, 0, 0);
+  border-width: 2px;
+  border-radius: 20px;
+}
+
+.menu-item:hover {
+  background-color: rgb(255, 255, 255);
+  color: rgb(24, 21, 0);
+  transition: 0.5s;
+}
+
+.menu-item-active {
+  background-color: rgb(255, 255, 255);
+  color: rgb(24, 21, 0);
+}
+
+.footer {
+  font-size: 12px;
+  text-align: center;
+  margin: auto;
+  margin-top: 50px;
+  bottom: 20px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 1fr 100px 1fr;
+}
+
+.left-part {
+  display: grid;
+}
+
+h1,
+h3,
+.intro {
+  text-align: right;
+}
+
+h1 {
+  text-transform: uppercase;
+  font-size: 42px;
+  margin-bottom: 8px;
+}
+
+h3 {
+  margin-top: 0px;
+  font-weight: 100;
+  font-size: 22px;
+}
+
+.intro {
+  font-weight: 100;
+  font-size: 14px;
+  width: 320px;
+  margin-left: auto;
+}
+
+.line {
+  width: 60px;
+  margin-right: 0px;
+}
+
+.intro-collage {
+  width: 20%;
+  position: absolute;
+  left: 50%;
+}
+
+.intro-poster {
+  width: 300px;
+  position: absolute;
+  right: 12%;
+  top: 400px;
+}
+
+.intro-3dimage {
+  transform: scaleX(-1);
+  width: 300px;
+  position: absolute;
+  right: 18%;
+  left: 68%;
+  top: 180px;
+}
+
+.programs {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.programs > img {
+  width: 60px;
+  margin-left: 10px;
+}
+
+.my-photo {
+  width: 80%;
+  margin-top: 160px;
+  max-width: 340px;
+}
+
+.project-photo > img {
+  width: 100%;
+  max-width: 340px;
+  margin-left: auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.project-photo {
+  margin-left: auto;
+}
+
+.project-info > h6 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.project-info > p {
+  font-size: 14px;
+  margin-bottom: 60px;
+  width: 320px;
+  margin-right: auto;
+}
+
+.space {
+  margin-top: 200px;
+}
+
+.line-right {
+  width: 60px;
+  margin-left: 0;
+}
+
+.project-space {
+  height: 64px;
+}
+
+.project-decription {
+  margin-top: 40px;
+}
+
+.project-images {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.project-image {
+  width: 80%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+@media screen and (max-width: 460px) {
+  .logo {
+    margin-left: 20px;
+    width: 50px;
+  }
+
+  .menu-item {
+    font-size: 12px;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+  }
+
+  .menu-right {
+    flex-direction: column;
+    text-align: right;
+    margin-top: 18px;
+    margin-right: 16px;
+  }
+}
+
+@media screen and (min-width: 460px) and (max-width: 760px) {
+  .logo {
+    margin-left: 20px;
+    width: 50px;
+  }
+
+  .menu-item {
+    font-size: 12px;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .menu-right {
+    margin-right: 16px;
+  }
+
+  h1 {
+    font-size: 30px;
+  }
+
+  h3 {
+    font-size: 14px;
+  }
+
+  .main {
+    grid-template-columns: 1fr 40px 1fr;
+  }
+}
+
+@media screen and (min-width: 760px) and (max-width: 1000px) {
+  .logo {
+    margin-left: 30px;
+  }
+
+  .menu-right {
+    margin-right: 20px;
+  }
+}
+
+@media print {
+  body {
+    background-color: white;
+    color: black;
+  }
+
+  .logo {
+    margin-left: 20px;
+    width: 50px;
+    filter: invert(100%);
+  }
+
+  .space {
+    margin-top: 280px;
+  }
+
+  .icon {
+    filter: invert(48%);
+  }
+
+  .menu-item {
+    color: black;
+    font-size: 12px;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .menu-right {
+    margin-right: 16px;
+  }
+}

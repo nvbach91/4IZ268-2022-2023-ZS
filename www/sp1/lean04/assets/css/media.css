@@ -1,0 +1,94 @@
+section:not(:last-child) {
+    padding: 0 0 32px 0;
+    border-bottom: 1px solid;
+}
+
+dd {
+    margin-left: 0;
+}
+
+#interviews > dd {
+    margin-bottom: 24px;
+}
+
+#videos {
+    display: flex;
+    flex-direction: column;
+}
+
+#videos > .video-block:not(:last-child) {
+    margin-bottom: 32px;
+}
+
+.video-block {
+    display: flex;
+}
+
+.video-block > *:not(:last-child) {
+    margin-right: 32px;
+}
+
+.video-description {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.video-description > h3 {
+    margin: 0;
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 29.25%;
+    flex: 1;
+}
+
+.yt-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+}
+
+@media print {
+    #interviews > dt {
+        float: unset;
+        width: unset;
+    }
+
+    #interviews > dd {
+        margin-bottom: 24px;
+    }
+}
+
+@media print {
+    section:not(:last-child) {
+        padding: 0;
+        border-bottom: 0;
+    }
+
+    .video-block {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .video-container {
+        padding-bottom: 56.25%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .video-block {
+        width: 100%;
+        flex-direction: column-reverse;
+    }
+
+    .video-container {
+        padding-bottom: 56.25%;
+    }
+}

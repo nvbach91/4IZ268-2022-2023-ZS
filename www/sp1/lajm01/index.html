@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Moje osobní stránka.">
+
+    <link rel="stylesheet" href="resources/styles/main.css" />
+
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./resources/fav/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./resources/fav/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./resources/fav/favicon-16x16.png"
+    />
+    <link rel="manifest" href="./resources/fav/site.webmanifest" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
+
+    <title>Matěj Lajtkep - úvod</title>
+  </head>
+  <!--
+  - navigacni prvni vhodnym zpusobem zvyraznete on hover a take je rozsirte tak aby se na ne dalo lepe klikat
+  - schovejte pozadi footer a header na verzi pro tisk
+  - pridejte meta keywords, author, ...
+  - kazda stranka musi byt jeden soubor s nazvem index.html, nazev stranky je nazev obsahujici slozky, nikoliv nazev souboru
+  - odkazy v elementech <a> nesmi obsahovat cast index.html ...
+  - zajistete aby navigace zustala na stejnem miste napric vsemi strankami
+  -->
+  <body>
+    <nav>
+      <ul>
+        <li class="active">
+          <a href="index.html">O mně</a>
+        </li>
+        <li>
+          <a href="./projects/index.html">Projekty</a>
+          <div class="absolute-wrapper">
+            <ul>
+              <li>
+                <a href="projects/lightgallery.html">LightGallery</a>
+              </li>
+              <li>
+                <a href="projects/wartimes.html">Wartimes</a>
+              </li>
+              <li>
+                <a href="projects/explozivebet.html">Explozive bet</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li><a href="./favourites/index.html">Oblíbené</a></li>
+      </ul>
+    </nav>
+
+    <header>
+      <h1>O mně</h1>
+    </header>
+
+    <main>
+      <div class="short-intro">
+        <img
+          src="./resources/images/lajtkep_compressed.png"
+          alt="Profilova fotka"
+        />
+        <p>
+          Zdravím, <br />
+          jmenuji se Matěj Lajtkep, jsem programátor a v současné době pracuji
+          hlavně jako FrontEnd vývojář pro společnost XDENT™. Ve volném čase
+          běhám radiový orientační běh.
+        </p>
+      </div>
+
+      <section>
+        <h2>Vzdělání</h2>
+        <ul>
+          <li>SPSUL</li>
+          <li>VŠE</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Oblíbené technologie</h2>
+        <ul>
+          <li>javascript, Vue.js</li>
+          <li>.NET, C#</li>
+          <li>css, less</li>
+        </ul>
+      </section>
+
+      <section id="projects">
+        <h2>Projekty</h2>
+        <ul>
+          <li>LightGallery</li>
+          <li>Wartimes</li>
+          <li>Explozive bet</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>Made by Matěj Lajtkep</footer>
+  </body>
+</html>

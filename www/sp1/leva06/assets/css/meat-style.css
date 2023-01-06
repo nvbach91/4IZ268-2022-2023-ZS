@@ -1,0 +1,111 @@
+.review {
+    display: flex;
+    color: rgb(233, 164, 45);
+  }
+  
+  .review h5 {
+    color: black;
+    margin-left: 0.5rem;
+  }
+  
+  #meateat {
+    display: flex;
+    margin-top: 2rem;
+  }
+  
+  .meateat-image {
+    width: 60%;
+  }
+  
+  .meateat-image img {
+    width: 100%;
+    position: sticky;
+    top: 100px;
+  }
+  
+  .meateat-text {
+    padding: 5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+  }
+  .meateat-text h1{
+    font-size: 3.5rem;
+  }
+  
+  .meateat-text h2 {
+    font-size: 4rem;
+    margin: 1rem 0;
+    margin-top: 3rem;
+  }
+  .meateat-text h3 {
+    font-size: 3rem;
+    margin: 1rem 0;
+    margin-top: 1rem;
+  }
+  
+  .meateat-text p {
+    margin: 0.5rem 0;
+    font-weight: 500;
+    font-size: 2rem;
+  }
+  
+  .meateat-text select,
+  .meateat-text input {
+    width: 25%;
+    padding: 1rem 1.25rem;
+    border: none;
+    border-radius: 1.5rem;
+    background-color: #f1f1f1;
+  }
+  
+  .meateat-text select {
+    margin-bottom: 1rem;
+  }
+  
+  .meateat-text label {
+    padding-left: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .normal {
+    background-color: #bc6c25;
+    color: white;
+    white-space: nowrap;
+    height: 3rem;
+    border: none;
+    padding: 1rem;
+    margin-top: 1rem;
+    border-radius: 1.5rem;
+    width: 75%;
+    height: 3.5rem;
+  }
+  
+  .normal:hover {
+    cursor: pointer;
+  }
+  
+  .meateat-specification img {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    width: 70%;
+    margin-left: 2rem;
+    border-radius: 0rem;
+  }
+  
+  @media (max-width: 800px) {
+    #meateat {
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .meateat-image {
+      width: 100%;
+    }
+  
+    .meateat-text {
+      width: 100%;
+    }
+  }
+  
+

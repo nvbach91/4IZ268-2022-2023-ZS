@@ -1,0 +1,24 @@
+.review {
+    flex: calc(33.3% - 10px);
+    margin-bottom: 1em;
+    margin-left: 5px;
+}
+
+.review:first-of-type, .review:nth-of-type(4) {
+    margin-left: 0;
+}
+
+.review p {
+    text-align: justify;
+}
+
+.reviews {
+    margin-top: 2em;
+}
+
+@media screen and (max-width: 850px) {
+    .review {
+        margin-left: 0;
+        margin-bottom: 5px;
+    }
+}

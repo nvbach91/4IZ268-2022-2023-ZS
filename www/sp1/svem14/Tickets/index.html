@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1. FC Tatran Prešov | Vstupenky</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body class="background">
+    <header>
+        <nav>
+            <a href="../"><img class="logo" src="../logo.jpg" alt="Logo"></a>
+            <div class="nav-links" id="navLinks">
+                <i class="fa fa-times" onclick="hideMenu()"></i>
+                <ul>
+                    <li><a href="../A-team/">A-Tým</a></li>
+                    <li><a href="../Contacts/">Kontakty</a></li>
+                    <li><a href="../History/">História</a></li>
+                    <li><a href="../Matches/">Zápasy</a></li>
+                    <li><a href="../Sponsors/">Sponzory</a></li>
+                    <li><a href="../Stadium/">Štadión</a></li>
+                    <li><a href="../Tickets/">Vstupenky</a></li>
+                </ul>
+            </div>
+            <i class="fa fa-bars" onclick="showMenu()"></i>
+        </nav>
+    </header>
+    <section>
+        <h1>Vstupenky</h1>
+        <article class="article-style">
+            <h2>Cena:</h2>
+            <table class="tab">
+                <tr>
+                    <td>0-6 rokov</td>
+                    <td>&nbsp;Zadarmo</td>
+                </tr>
+                <tr>
+                    <td>6-15 rokov</td>
+                    <td> &nbsp;3 eurá</td>
+                </tr>
+                <tr>
+                    <td>18+ rokov</td>
+                    <td>&nbsp;5 eur</td>
+                </tr>
+            </table>
+        </article>
+    </section>
+    <script>
+        var navLinks = document.getElementById("navLinks");
+        function showMenu() {
+            navLinks.style.right = "0";
+        }
+        function hideMenu() {
+            navLinks.style.right = "-200px";
+        }
+    </script>
+</body>
+
+</html>

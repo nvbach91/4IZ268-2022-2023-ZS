@@ -1,0 +1,47 @@
+#nutri-container {
+    margin: 2.5rem 5rem;
+    text-align: center;
+    font-size: 3.5rem;
+  }
+  
+  #nutri {
+    display: flex;
+    margin: 30px 10px;
+    justify-content: center;
+  }
+  
+  .nutri-var {
+    width: 40%;
+    margin: 0 1rem;
+  }
+  
+  .nutri-var:hover {
+    cursor: pointer;
+  }
+  
+  .nutri-var img {
+    width: 100%;
+    border-radius: 0px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  }
+  
+  .text-decor {
+    text-decoration: none;
+    color: black;
+  }
+  
+  .nutri-text {
+    margin-top: 1rem;
+    font-size: medium;
+  }
+  
+
+  
+  .nutri-text span,
+  h4 {
+    font-weight: 100;
+    font-size: 5rem;
+  }
+  
+  
+  

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ochrana obvodu | Web o bezpečnosti domacích bezdratových sítí</title>
+    <link rel="stylesheet" href="./../../../assets/css/main.css" media="screen">
+    <link rel="stylesheet" href="./../../../assets/css/print.css" media="print">
+    <link rel="icon" type="image/png" href="./../../../assets/img/favicon.png">
+</head>
+<body>
+    <header>
+        <a id="webName" href="./../../..">Web o bezpečnosti domacích bezdratových sítí</a>
+    </header>
+    <div id="navBar">
+        <menu class="navList">
+            <li><a class="navLevel1 navLink" href="./../../../uvod">Úvod</a></li>
+            <li><a class="navLevel1 navLink" href="./../../../zakladni-uzivatelska-prirucka">Uživatelská příručka</a></li>
+            <li><a class="navLevel1 navParentLink" href="./../../../znalostni-baze">Ználostní báze</a>
+                <menu class="navList navKeepOpen">
+                    <li><a class="navLevel2 navLink" href="./../../../znalostni-baze/struktura-a-topologie">Struktura a topologie</a></li>
+                    <li><a class="navLevel2 navLink" href="./../../../znalostni-baze/potencialni-hrozby">Potenciální hrozby</a></li>
+                    <li><a class="navLevel2 navParentLink" href="./../../../znalostni-baze/metody-zabezpeceni">Metody zabezpečení</a>
+                        <menu class="navList navKeepOpen">
+                            <li><a id="actualNavItem" class="navLevel3 navLink" href="./../../../znalostni-baze/metody-zabezpeceni/ochrana-obvodu">Ochrana obvodu</a></li>
+                            <li><a class="navLevel3 navLink" href="./../../../znalostni-baze/metody-zabezpeceni/zabezpeceni-bezdratove-site">Zabezpečení bezdrátové sítě</a></li>
+                            <li><a class="navLevel3 navLink" href="./../../../znalostni-baze/metody-zabezpeceni/zabezpeceni-uvnitr-site">Zabezpečení uvnitř sítě</a></li>
+                        </menu>
+                    </li>
+                </menu>
+            </li>
+        </menu>
+    </div>
+    <div class="pageLocation">
+        <a href="./../../..">.</a>/<a href="./../..">znalostni-baze</a>/<a href="./..">metody-zabezpeceni</a>/<a href=".">ochrana-obvodu</a>
+    </div>
+    <main class="content">
+        <h1 class="pageName">Ochrana obvodu</h1>
+        <img src="./../../../assets/img/firewall.png" alt="Znázornění práce firewallu">
+        <p>Ochrana hranic sítě je jedním z nejdůležitějších prvků bezpečnostního komplexu. V rámci domácí sítí tuto funkci vykonává směrovač.  Chrání hranici lokální a globální sítě pomoci firewallu. Podle nastavení filtruje potenciálně nebezpečná data, nebo propouští pouze povolená data. Firewall rozhoduje na základě ip adres a portů, čili na základě původu a cílové destinaci dát.</p>
+        <p><em>Pro dosažení vysoké míry bezpečností je třeba mít poslední verzi programového vybavení.</em> To platí nejenom pro směrovače, ale také pro každý jiný prvek sítě. S časem se v kódu objevují stále nové bezpečnostní trhliny, a výrobci zařízení se snaží co nejrychleji na to reagovat. Ve skutečnosti ale výrobci často přestávají udržovat starší modely zařízení. </p>
+        <p><em>Zároveň je rozhodující správné nastavení routeru a firewallu.</em> Router se dá nastavit podle manuálu, který se vyhledává podle modelu na internetu (http://setuprouter.com).  Často v původním nastavení jsou automatický zapnuté potenciálně nebezpečné funkce pro pohodlnější použití sítě, třeba UPnP. Pro minimalizace rizik je dobře vypnout všechny služby, které nepotřebujete, a povolit ve Firewallu pouze porty, které využíváte. Také je důležité změnit přednastavené heslo a login.</p>
+            Další možností zvýšení míry bezpečnosti pomoci nastavení směrovače, je volba alternativního serveru DNS. Níže jsou uvedené adresy některých z nich.
+            <table style="margin-left: 16px; margin-top:10px;">
+                <tr>
+                    <td>Comodo Secure DNS</td>
+                    <td>8.26.56.26 a 8.20.247.20</td>
+                </tr>
+                <tr>
+                    <td>Norton ConnectSafe</td>
+                    <td>199.85.126.10, 199.85.127.10</td>
+                </tr>
+                <tr>
+                    <td>Google Public DNS (pro IPv6)</td>
+                    <td>8.8.8.8, 2001:4860:4860:8888</td>
+                </tr>
+                <tr>
+                    <td>OpenDNS</td>
+                    <td>208.67.222.222, 208.67.220.220</td>
+                </tr>
+            </table>
+            Všechny uvedené servery blokuji nakažené a fishingové stránky.
+    </main>
+</body>
+</html>

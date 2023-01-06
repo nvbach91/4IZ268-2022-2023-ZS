@@ -1,0 +1,152 @@
+
+
+main {
+    max-width: 1000px;
+    margin: 0 auto;    
+    padding-top: 100px;  
+}
+
+main h1 {
+    margin: 50px;
+    margin-bottom: 10px;
+}
+
+main p {
+    margin-left: 50px;
+    margin-right: 50px;
+
+    font-size: large;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.undertitle
+{
+    margin: 50px;
+    margin-bottom: 10px;
+}
+
+.article-img {
+    height: 400px;
+    width: 400px;
+    margin-left: 50px;
+}
+
+.carrington-img {
+    height: 400px;
+    width: 600px;
+    margin-left: 50px;
+}
+
+.article-video {
+    height: 400px;
+    width: 400px;
+
+    margin-left: 50px;
+}
+
+.back-ref {
+    color: black;
+    display: flex;
+    flex-wrap: wrap;
+
+    font-size: 24px;
+    margin-bottom: 20px;
+    margin-top: 50px;
+    margin-left: 20px;
+}
+
+.back-ref:hover {
+    text-decoration: underline;
+}
+
+.back {
+    width: 25px;
+    height: 25px;
+}
+
+
+@media screen and (max-width: 640px) {
+    main p {
+        font-size: small;
+    }
+
+    h1 {
+        font-size: large;
+    }
+}
+
+
+@media screen and (max-width: 1024px) {
+    main {
+        margin: 0;
+    }
+
+    .article-head {
+        margin-top: 10px;
+        margin-left: 10px;
+        font-size: 32px;
+    }
+
+    .news-article {
+        margin: 10px; 
+    }
+
+}    
+
+@media screen and (max-width: 1200px) {
+      .article-img {
+        display: none;
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+
+    .article-video {
+        display: none;
+    }
+
+    .img-div {
+        width: 0;
+    }
+
+   
+}
+
+
+/*TODO rewrite to media print*/
+@media print {
+    *{ background-image: none !important;
+    }
+
+    h1 {
+        font-size: large;
+    }
+
+    main p {
+        font-size: small;
+    }
+
+    .article-img {
+        display: none;
+    }
+
+    .article-video {
+        display: none;
+    }
+    main {
+        margin: 0;
+        margin-left: 20px;
+        padding-top: 30px;
+    }
+ 
+    
+    .article-img {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+    
+    .article-video {
+        width: 0;
+        height: 0;
+    }
+
+}

@@ -1,0 +1,142 @@
+@media print {
+    .hero-text a,
+    #header,
+    #footer,
+    #newsletter,
+    .label-container img {
+      display: none;
+    }
+  
+    .label-text {
+      box-shadow: none;
+      width: 80%;
+      padding-bottom: 0;
+    }
+  
+    .label-container {
+      margin-bottom: 0;
+    }
+  
+    .label-container-first {
+      page-break-before: always;
+    }
+  }
+  
+  @media print {
+    #featured {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .featured-products {
+      width: 60%;
+    }
+  
+    .featured-products:nth-of-type(2) img {
+      margin-top: 2rem;
+    }
+  }
+  
+  @media print {
+    #aboutus {
+      margin: 2.5rem 2.5rem;
+    }
+  
+    .aboutus-container img {
+      width: 100%;
+      border-radius: 15px;
+      margin-right: 0;
+    }
+  }
+  
+  @media print {
+    .send-comment {
+      display: none;
+    }
+  
+    #contact {
+      margin: 5rem 2.5rem;
+    }
+  
+    .contact-form textarea {
+      height: 15rem;
+    }
+  
+    input::placeholder {
+      text-align: right;
+      font-size: 0.7rem;
+    }
+  
+    textarea::placeholder {
+      text-align: right;
+      font-size: 0.7rem;
+    }
+  
+    .contact-form {
+      width: 100%;
+    }
+  }
+  
+  @media print {
+    .cart-coupon {
+      display: none;
+    }
+  
+    .cart-subtotal button {
+      display: none;
+    }
+  
+    .cart-subtotal {
+      width: 80%;
+    }
+  
+    #cart-container {
+      display: flex;
+      justify-content: center;
+    }
+  
+    #cart table thead tr td:nth-of-type(1) {
+      display: none;
+    }
+  
+    #cart tbody tr:nth-of-type(2) td:nth-of-type(1),
+    #cart tbody tr:nth-of-type(1) td:nth-of-type(1) {
+      display: none;
+    }
+  }
+  
+  @media print {
+    .product-specification img,
+    .product-text button {
+      display: none;
+    }
+  
+    .product-specification {
+      margin-top: 15rem;
+    }
+  
+    .product-text select[name="color"] {
+      display: none;
+    }
+  
+    .product-text label:nth-of-type(1)::after {
+      content: ": " "Bílá" " " "Černá";
+    }
+  
+    .product-text input[value="1"] {
+      display: none;
+    }
+  
+    .product-text label:nth-of-type(2)::after {
+      content: ":";
+    }
+  }
+  
+  @media print {
+    .product-text img {
+      display: none;
+    }
+  }
+  
+  

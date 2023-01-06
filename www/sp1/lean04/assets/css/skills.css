@@ -1,0 +1,199 @@
+.skill {
+    margin: 16px 0;
+    width: 50%;
+}
+
+.skill:nth-child(odd) {
+    padding-right: 32px;
+}
+
+.skill:nth-child(even) {
+    padding-left: 32px;
+}
+
+.details {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.details > * {
+    font-size: medium;
+    font-weight: normal;
+}
+
+.details > h3 {
+    margin: 0;
+}
+
+.bar {
+    background-color: #d8dbe2;
+    border-radius: 4px;
+    height: 8px;
+}
+
+.bar > div {
+    position: relative;
+    width: 0;
+    height: 8px;
+    border-radius: 4px;
+}
+
+/* Web development */
+
+#html-bar {
+    background-color: #e34c26;
+    animation: html-fill 2s forwards;
+}
+@keyframes html-fill {
+    100% {
+        width: 79%;
+    }
+}
+
+#css-bar {
+    background-color: #264de4;
+    animation: css-fill 2s forwards;
+}
+
+@keyframes css-fill {
+    100% {
+        width: 75%;
+    }
+}
+
+#js-bar {
+    background-color: #f0db4f;
+    animation: js-fill 2s forwards;
+}
+@keyframes js-fill {
+    100% {
+        width: 83%;
+    }
+}
+
+#ts-bar {
+    background-color: #007acc;
+    animation: ts-fill 2s forwards;
+}
+@keyframes ts-fill {
+    100% {
+        width: 89%;
+    }
+}
+
+#react-bar {
+    background-color: rgb(20 158 202);
+    animation: ts-fill 2s forwards;
+}
+@keyframes react-fill {
+    100% {
+        width: 87%;
+    }
+}
+
+#redux-bar {
+    background-color: #764abc;
+    animation: ts-fill 2s forwards;
+}
+@keyframes redux-fill {
+    100% {
+        width: 86%;
+    }
+}
+
+/* Gaming */
+
+#d2-bar {
+    background-color: #232c2f;
+    animation: d2-fill 2s forwards;
+}
+@keyframes d2-fill {
+    100% {
+        width: 66%;
+    }
+}
+
+#ffxiv-bar {
+    background-color: #2d3a80;
+    animation: ffxiv-fill 2s forwards;
+}
+@keyframes ffxiv-fill {
+    100% {
+        width: 75%;
+    }
+}
+
+#mk8-bar {
+    background-color: #014187;
+    animation: mk8-fill 2s forwards;
+}
+@keyframes mk8-fill {
+    100% {
+        width: 48%;
+    }
+}
+
+#amogus-bar {
+    background-color: #c51111;
+    animation: amogus-fill 2s forwards;
+}
+@keyframes amogus-fill {
+    100% {
+        width: 12%;
+    }
+}
+
+/* Other */
+
+#mentoring-bar {
+    background-color: #088f80;
+    animation: mentoring-fill 2s forwards;
+}
+@keyframes mentoring-fill {
+    100% {
+        width: 74%;
+    }
+}
+
+#presentation-bar {
+    background-color: #088f80;
+    animation: presentation-fill 2s forwards;
+}
+@keyframes presentation-fill {
+    100% {
+        width: 71%;
+    }
+}
+
+#cooking-bar {
+    background-color: #088f80;
+    animation: cooking-fill 2s forwards;
+}
+@keyframes cooking-fill {
+    100% {
+        width: 79%;
+    }
+}
+
+@media print {
+    .skill {
+        margin: 4px 0;
+        width: 50%;
+    }
+
+    .bar {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .details > h3 {
+        font-size: medium;
+    }
+
+    .details > span {
+        font-size: medium;
+    }
+}

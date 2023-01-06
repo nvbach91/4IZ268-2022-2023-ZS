@@ -1,0 +1,213 @@
+/************************************************/
+/** Header */
+header {
+    background-image: url("../../assets/img/header/header-news.jpg");
+    background-size: cover;
+    background-position: 10% 50%;
+}
+
+/************************************************/
+/** Body */
+
+main {
+    background: linear-gradient(90deg, rgba(255,255,255,1) 70%, rgba(219,219,219,1) 70%);
+}
+
+.container {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 950px;
+    /*background-color: rgba(255, 192, 203, 0.582);*/
+}
+
+section {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 20px 20px 20px 10px;
+    width: 70%;
+    min-height: 1000px;
+}
+
+aside {
+    width: 30%;
+    background-color: rgb(238, 238, 238);
+    padding: 20px 20px 20px 20px;
+    min-height: 1000px;
+}
+
+article {
+    padding: 20px;
+}
+
+.article-img img {
+    width: 100%;
+    height: fit-content;
+}   
+
+.calendar {
+    display: flex;
+    flex-direction: column;
+}
+
+.calendar-year, .calendar-months {
+    width: 100%;
+}
+
+.calendar-year {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.calendar-year > * {
+    margin: 10px;
+}
+
+.calendar-year h2 {
+    font-size: 24px;
+}
+
+.calendar-year button {
+    padding: 5px 15px;
+    background-color: #193b0c;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+}
+
+.calendar-year button:hover, .pagination button:hover {
+    cursor: pointer;
+    background-color: #234d14; 
+}
+
+.calendar-months ul li {
+    margin-top: 4px;
+}
+
+.calendar-months ul li a {
+    text-decoration: none;
+    margin-left: 10px;
+    color: #193b0c;
+}
+
+.calendar-months ul li a:hover {
+    text-decoration: underline;
+    color: #234d14;
+}
+
+.aside-info {
+    font-size: 14px;
+}
+
+.aside-nav-info {
+    font-size: 18px;
+}
+
+.top-nav-info {
+    font-size: 18px;
+}
+
+.top-nav-info a {
+    color: #000;
+}
+
+section img {
+    display: block;
+    margin: 0 auto;
+}
+
+.back-to-news {
+    margin-top: 40px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.back-to-news a {
+    color: #0e1f08;
+    text-decoration: none;
+}
+
+.back-to-news a:hover {
+    color: #193b0c;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.author-info {
+    text-align: right;
+}
+
+.article-author {
+    color: #234d14;;
+    text-decoration: none;
+}
+
+/************************************************/
+/** Responsive */
+
+@media screen and (max-width: 760px) {
+    main {
+        background: rgba(255,255,255,1);
+    }
+
+    section, aside {
+        width: 100%;
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+
+    section {
+        min-height: 400px;
+    }
+
+    aside {
+        min-height: 400px;
+    }
+
+    .calendar-months ul li {
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 560px) {
+    section, aside {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
+/************************************************/
+/** Print */
+
+@media print {
+    aside {
+        display: none;
+    }
+
+    section {
+        width: 100%;
+    }
+
+    article {
+        padding-top: 0;
+    }
+
+    hr {
+        display: none;
+    }
+
+    .article-img img {
+        display: none;
+    }   
+
+    .author-info a {
+        color: #000;
+    }
+
+    .back-to-news {
+        display: none;
+    }
+}

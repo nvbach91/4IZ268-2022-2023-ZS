@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Ilja Surovikin" />
+    <meta
+      name="description"
+      content="Seminární práce 1 na e-commerce stránku"
+    />
+    <meta
+      name="keywords"
+      content="flexbox, css, html, layout, diffuser, arofire, cart, coupon"
+    />
+    <title>AROFIRE - Košík</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    />
+    <link rel="icon" type="image/x-icon" href="../assets/img/favicon.ico" />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/cart-style.css" />
+    <link rel="stylesheet" media="print" href="../assets/css/print.css" />
+  </head>
+  <body>
+    <div id="header">
+      <a href="../home/"
+        ><img src="../assets/img/logo.png" alt="logo" class="header-logo"
+      /></a>
+      <nav class="navbar">
+        <a href="../home/">Home</a>
+        <a href="../shop/">Produkty</a>
+        <a href="../aboutus/">O nás</a>
+        <a href="../contact/">Kontakt</a>
+        <a href="./" class="active"><i class="fa-solid fa-bag-shopping"></i></a>
+      </nav>
+    </div>
+
+    <h1>KOŠÍK</h1>
+
+    <div id="cart">
+      <table>
+        <thead>
+          <tr>
+            <td>Odstranit</td>
+            <td>Obrázek</td>
+            <td>Produkt</td>
+            <td>Cena</td>
+            <td>Počet</td>
+            <td>Součet</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href="#"><i class="far fa-times-circle"></i></a>
+            </td>
+            <td>
+              <img src="../assets/img/img-diffuser.png" alt="diffuser" />
+            </td>
+            <td>Arofire Flame Diffuser</td>
+            <td>999 Kč</td>
+            <td><input type="number" value="1" /></td>
+            <td>999 Kč</td>
+          </tr>
+          <tr>
+            <td>
+              <a href="#"><i class="far fa-times-circle"></i></a>
+            </td>
+            <td>
+              <img src="../assets/img/essential-oil.jpg" alt="essential oils" />
+            </td>
+            <td>Mayjam Essential Oil - ROSEMARY</td>
+            <td>99 Kč</td>
+            <td><input type="number" value="2" /></td>
+            <td>198 Kč</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div id="cart-container">
+      <div class="cart-coupon">
+        <h3>Slevový kupón</h3>
+        <div>
+          <input
+            type="text"
+            placeholder="Vložte slevový kupón"
+            class="classic-input"
+          />
+          <button class="classic">Použít</button>
+        </div>
+      </div>
+
+      <div class="cart-subtotal">
+        <h3>Součet košíku</h3>
+        <table>
+          <tr>
+            <td>Mezisoučet</td>
+            <td>1197 Kč</td>
+          </tr>
+          <tr>
+            <td>Dodání</td>
+            <td>Zdarma</td>
+          </tr>
+          <tr>
+            <td><strong>Celková cena</strong></td>
+            <td><strong>1197 Kč</strong></td>
+          </tr>
+        </table>
+        <button class="classic">Přejít k pokladně</button>
+      </div>
+    </div>
+
+    <div id="newsletter">
+      <div class="newstext">
+        <h4>Přihlašte Se Pro Více Informací</h4>
+        <p>
+          Budete dostávat e-mail notifikace o nejnovějších slevách a
+          <span>speciálních nabídkách.</span>
+        </p>
+      </div>
+      <div class="form">
+        <input
+          type="text"
+          placeholder="E-mailová adresa"
+          class="classic-input"
+        />
+        <button class="classic">Zaregistrovat se</button>
+      </div>
+    </div>
+
+    <footer id="footer">
+      <div class="footer-div first-div">
+        <h4>Navigace</h4>
+        <a href="../home/">Home</a>
+        <a href="../shop/">Produkty</a>
+        <a href="../aboutus/">O nás</a>
+        <a href="../contact/">Kontakt</a>
+        <a href="./">Košík</a>
+      </div>
+      <div class="footer-div">
+        <img src="../assets/img/logo.png" alt="arofire logo" />
+      </div>
+      <div class="footer-div">
+        <h4>Follow us</h4>
+        <div class="icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/arofireofficial/"
+            ><i class="fab fa-instagram"></i
+          ></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+header{
+    height: 100px;
+}
+#webName, #webName:visited{
+    font-family:"Lucida Console", monospace;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    margin: 0;
+    font-size: xx-large;
+    display: inline-block;
+    position:absolute;
+}
+#navBar{
+    display: none;
+}
+.pageLocation{
+    display: none;
+}
+.pageName{
+    margin-top: 15px;
+}
+.content{
+    /* padding-left: 14.14%;
+    padding-right: 14.14%; */
+}
+.content.multiColumn{
+    display: flex;
+}
+.multiColumn > .sidebar{
+    width: 37%;
+}
+.multiColumn > .mainContent{
+    width: 63%;
+    padding-right: 7%;
+}
+img{
+    max-width: 100%;
+}

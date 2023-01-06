@@ -1,0 +1,26 @@
+
+
+
+#obrazek_1 {
+    height: 100px;
+    
+
+}
+
+
+.footer{
+    display: none;
+
+}
+
+.navbar{
+    display: none;
+}
+
+
+
+
+.container_first > i {
+    font-size: 100px;
+
+}

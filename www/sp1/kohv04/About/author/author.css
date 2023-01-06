@@ -1,0 +1,38 @@
+main {
+    text-align: center;
+    background-color: #333;
+    flex-direction: column;
+    color: whitesmoke;
+    padding: 10px;
+    padding-top: 0;
+    margin-bottom: 5px;
+}
+h2 {
+    text-align: left;
+}
+
+h2 {
+    font-size:xx-large;
+}
+
+#author_header {
+    display: flex;
+    flex-direction: row;
+    vertical-align: middle;
+    line-height: 150px;
+    justify-content: center;
+}
+
+#author_photo {
+    margin: 20px;
+    border: solid black 5px;
+}
+
+p {
+    margin: 5px;
+}
+.wtpd {
+    background-image: url(../img/wattpad_icon.jpg);
+    background-size: contain;
+  }
+  

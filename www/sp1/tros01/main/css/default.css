@@ -1,0 +1,18 @@
+  /* Set a background color */
+  body {
+    background-color: #2b273f;
+    font-family: Helvetica, sans-serif;
+  }
+
+  .intro {
+    /*background-color: #48445e;*/
+    color: white;
+    border-radius: 10px;
+    padding: 12px;
+    /*border-style: solid;
+    border-width: 1px;*/
+  }
+
+  .hiden {
+    display: none
+  }

@@ -1,0 +1,201 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
+
+*
+{
+    box-sizing: border-box;
+    font-family: 'Quicksand';
+    background-color: rgb(191, 131, 255);
+   
+}
+
+body {
+    
+    overflow-x: hidden;
+}
+
+
+.layout {
+    display: flex;
+    max-width: 1366px;
+    margin: 0 auto;
+    flex-wrap:wrap;
+    
+}
+
+
+
+.main-header {
+    width: 100%;
+    display: flex;
+    border-bottom: 2px black solid ;
+    padding: 0px;
+    font-size:1.2ch;
+   
+    text-align: center;
+    order: 0;
+    justify-content: center;
+}
+
+
+
+.menu {
+    width: 10%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    
+    text-align: center;
+  
+    height: fit-content;
+ 
+    border-left: 2px black solid ;
+    border-bottom: 2px black solid ;
+  
+    border-right: 2px black solid ;
+    
+   
+    
+}
+
+.menu-item:last-child{
+    margin-bottom: 10px;
+}
+
+.menu-item {
+    padding: 3px;
+    margin-top: .5rem;
+    width: 100%;
+    cursor: pointer;
+}
+
+.menu-item:hover {
+    color: #fff;
+    background-color: rgba(255, 60, 154, 0.512);
+    transition: ease .5s;
+}
+
+.main {
+    
+    width: 88%;
+    margin-top: 0px;
+ 
+    height:fit-content;
+    
+    
+}
+
+.header1{
+    margin-top: 20px;
+    text-align: center;
+    margin-bottom: 30px;
+    
+}
+.nana{
+    margin-top: 20px;
+  
+    width: 102%;
+}
+
+.napln{
+    text-align: center;
+  
+    
+}
+.napln01{
+    text-align: center;
+    margin-right: 50px;
+}
+
+.napln1{
+    
+    
+    padding-left: 41.4%;
+}
+.napln2{
+    
+    
+
+    width: fit-content;
+    margin-left: 32%;
+    color: crimson;
+    background-color: black;
+    
+}
+.container {
+    position: relative;
+    text-align: center;
+    color: white;
+    
+}
+
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    background: rgba(0, 0, 0, 0);
+    
+}
+
+.cent1{
+    
+    
+    top: 50%;
+    left: 50%;
+   
+    color: white;
+    background: rgba(0, 0, 0, 0);
+}
+.cent2{
+    
+    
+    top: 50%;
+    left: 50%;
+   
+    color: white;
+    background: rgba(0, 0, 0, 0);
+}
+
+
+
+
+ .footer{
+   display: flex;
+    position: absolute;
+    bottom: 0;
+    left: 60;
+}
+  
+  .inst{
+      margin-left: 100px;
+      margin-right: 125px;
+      cursor: pointer;
+      margin-top: 25px;
+  }
+  
+  
+  
+  .right{
+      margin-left: 225px;
+      margin-right: 225px;
+      margin-top: 5px;
+     
+  }
+  
+  .tg{
+  margin-right: 100px;
+  margin-left: 125px;
+  cursor: pointer;
+  margin-top: 25px;
+  }
+  
+  .twt{
+      cursor: pointer;
+      margin-top: 25px;
+  }
+  .fb{
+      cursor: pointer;
+      margin-top: 25px;
+      margin-right: 20px;
+  }

@@ -1,0 +1,196 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: beige;
+    margin: 0 auto;
+}
+
+header {
+    background-color: lightblue;
+    border-radius: 5px;
+    color: black;
+    display: flex;
+    align-items: center;
+
+}
+
+main :nth-child(n) {
+    margin: 5px;
+}
+
+footer {
+    color: black;
+    background-color: lightblue;
+    border-radius: 5px;
+    gap: 3px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    align-self: flex-end;
+}
+
+main a {
+    font-weight: bolder;
+    color: black;
+}
+
+nav {
+    border-radius: 5px;
+    height: 100%;
+    background-color: lightblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    gap: 5px;
+}
+
+nav :nth-child(1) {
+    background-color: grey;
+}
+
+nav a {
+    border-radius: 5px;
+    background-color: darkgrey;
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+    margin: 5px;
+    margin-bottom: 0px;
+    text-align: center;
+    font-size: 18px;
+}
+
+nav :hover {
+    background-color: grey;
+    transition: 0.5s ease;
+}
+
+@media screen and (min-width: 1024px) {
+    body {
+        max-width: 1024px;
+        display: grid;
+        grid-template-areas:
+            'header header header'
+            'aside main main'
+            'aside footer footer';
+        gap: 5px;
+    }
+
+    header {
+        grid-area: header;
+        height: 100px;
+    }
+
+    aside {
+        grid-area: aside;
+        height: 100%;
+        min-height: 255px;
+        width: 185px;
+    }
+
+    main {
+        width: 847px;
+        grid-area: main;
+        height: 80%;
+    }
+
+    footer {
+        grid-area: footer;
+        height: 100px;
+    }
+}
+
+@media screen and (min-width: 500px) and (max-width: 1024px) {
+    body {
+        max-width: 100%;
+        display: grid;
+        grid-template-areas:
+            'header header'
+            'aside main'
+            'aside footer';
+        gap: 5px;
+    }
+
+    header {
+        grid-area: header;
+        height: 100px;
+    }
+
+    aside {
+        grid-area: aside;
+        height: 100%;
+        min-height: 297px;
+    }
+
+    main {
+        grid-area: main;
+        height: 80%;
+    }
+
+    footer {
+        grid-area: footer;
+        height: 100px;
+    }
+}
+
+@media screen and (min-width: 300px) and (max-width: 500px) {
+    body {
+        max-width: 100%;
+        display: grid;
+        grid-template-areas:
+            'header'
+            'aside'
+            'main'
+            'footer';
+        gap: 5px;
+    }
+
+    header {
+        grid-area: header;
+        height: 100px;
+    }
+
+    aside {
+        grid-area: aside;
+        height: 100%;
+        min-height: 255px;
+    }
+
+    main {
+        width: 100%;
+        grid-area: main;
+
+    }
+
+    footer {
+        grid-area: footer;
+        height: 100px;
+    }
+}
+
+@media print {
+
+    body,
+    main,
+    aside,
+    footer,
+    nav {
+        background-color: white;
+        color: black;
+    }
+
+    nav {
+        flex-direction: row;
+    }
+
+    main {
+        margin-bottom: 10px;
+    }
+
+}
