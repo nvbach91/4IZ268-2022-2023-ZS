@@ -19,10 +19,22 @@ body {
 }
 
 @media print {
-    body {
-        background-color: #fff;
+    @page {
+        size: A4;
+        margin: 0;
+        font-size: 10pt;
     }
-
+    html, body {
+        width: 210mm;
+        height: 282mm;
+        font-size: 10pt;
+        background: #FFF;
+        overflow:visible;
+    }
+    body {
+        padding: 0;
+        margin: 0;
+    }
     header nav, header .logo {
         display: none;
     }
@@ -31,12 +43,29 @@ body {
         display: none;
     }
 
+    .category-header p, .category-body h2 {
+        font-size: 18px !important;
+    }
+
+    .category-body {
+        margin-top: 12px !important;
+    }
+
     .get-to-know {
-        gap: 10px;
+        margin-top: 10px !important;
+        gap: 10px !important;
     }
 
     .social-media {
-        gap: 10px;
+        gap: 10px !important;
+    }
+
+    .social-media-links {
+        gap: 10px !important;
+    }
+
+    hr {
+        display: none;
     }
 }
 
