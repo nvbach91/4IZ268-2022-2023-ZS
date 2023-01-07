@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Petr Mudra">
+    <meta name="keywords" content="Task manager, tasks, calendar">
+    <meta name="description" content="Task manager for scheduling tasks on dates.">
+    <title>Manažer úkolů</title>
+    <link rel="icon" type="image/x-icon" href="./img/favicon.ico">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <main>
+        <div class="divPinned">
+            <div class="divPinnedSort">
+                <div class="divPinnedHeading">
+                    <h2>Připnuté úkoly</h2>
+                </div>
+                <div class="divPinnedSorting">
+                    <img id="filters" src="./img/pin.png" alt="pin image, click for sorting" height="70px" width="70px">
+                </div>
+            </div>
+            <div id="divPinnedTasks" class="divPinnedTasks"></div>
+            <div class="divSettings">
+                <img class="divSettingsImg" src="./img/settings.png" alt="settings image, click for adjusting settings">
+            </div>
+        </div>
+        <div class="divTasksCalendar">
+            <div class="divAfterDate">
+                <div class="divTasksHeading">
+                    <h2>Prošlé úkoly</h2>
+                </div>
+                <div id="divTasksAfter" class="divTasks"></div>
+            </div>
+            <div class="divCalendar">
+                <div class="divCalendarHeading">
+                    <div class="divMonth">
+                        <p id="month"></p>
+                    </div>
+                    <div class="divYear">
+                        <p id="year"></p>
+                    </div>
+                </div>
+                <div class="divCalendarBody" id="divCalendarBody"></div>
+            </div>  
+            <div class="divBeforeDate">
+                <div class="divTasksHeading">
+                    <h2>Nadcházející úkoly</h2>
+                </div>
+                <div id="divTasksBefore" class="divTasks"></div>
+            </div>
+        </div>
+    </main>
+    <script id="gapi" async defer src="https://apis.google.com/js/api.js" ></script>
+    <script id="gis" async defer src="https://accounts.google.com/gsi/client" ></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
