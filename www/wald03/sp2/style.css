@@ -1,0 +1,134 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+:root {
+    --hue-neutral: 200;
+    --hue-wrong: 0;
+    --hue-correct: 145;
+  }
+  
+  body {
+    --hue: var(--hue-neutral);
+    padding: 0;
+    margin: 0;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: hsl(var(--hue), 100%, 20%);
+  }
+  
+  body.correct {
+    --hue: var(--hue-correct);
+  }
+  
+  body.wrong {
+    --hue: var(--hue-wrong);
+  }
+
+.header {
+    top: 10px;
+    left: 10px;
+    padding: 30px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.menu_nav_item {
+    color: #f2f2f2;
+    text-align: center;
+    padding: 10px 13px;
+    text-decoration: none;
+    font-size: 18px;
+    border-width: 100%;
+}
+
+.menu_nav_item:hover {
+    background-color: #ddd;
+    color: green;
+}
+
+.menu_nav_item:active {
+    background-color: lightgray;
+    color: black;
+}
+
+h1 {
+    padding: 0;
+    margin: 0;
+}
+
+img{
+    width: 400px ;
+}
+
+.hide{
+    display: none;  
+}
+
+
+  
+  .btn-grid {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 10px;
+    margin: 20px 0;
+  }
+  
+  .btn {
+    --hue: var(--hue-neutral);
+    border: 1px solid hsl(var(--hue), 100%, 30%);
+    background-color: hsl(var(--hue), 100%, 50%);
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: white;
+    outline: none;
+  }
+  
+  .btn:hover {
+    border-color: black;
+  }
+  
+  .btn.correct {
+    --hue: var(--hue-correct);
+    color: black;
+  }
+  
+  .btn.wrong {
+    --hue: var(--hue-wrong);
+  }
+  
+  .start_btn, .next_btn {
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 10px 20px;
+  }
+  
+  .controls {
+    display: flex;
+  }
+
+  h3{
+    display: flex;
+  }
+
+  .points{
+    top: 20px;
+  }
+
+  .image{
+    color: #ddd;
+    font-size: larger;
+    margin: 100px;
+    padding: 10px;
+  }
