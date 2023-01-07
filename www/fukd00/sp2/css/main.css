@@ -1,0 +1,89 @@
+body {
+    background-color: rgb(50, 50, 50 );
+}
+
+footer {
+    background-color: black;
+    color: lightgray;
+    padding: 30px 0px;
+    text-align: center;
+}
+
+h1 {
+    color: white;
+    text-align: center;
+    margin-top: 15px;
+    text-transform: uppercase;
+    font-weight: bolder;
+}
+
+.hidden {
+    display: none !important;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    background-color: black;
+}
+
+header > figure {
+    flex-basis: 33%;
+    margin: 0px;
+    padding: 15px;
+}
+
+header > nav {
+    flex-basis: 66%;
+    display: flex;
+    justify-content: end;
+    gap: 25px;
+    background-color: black;
+    margin-right: 40px;
+}
+
+nav > .btn-nav {
+    text-transform: uppercase;
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin: auto 0px;
+    padding: 15px;
+}
+
+.logo {
+    width: 100%;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    margin: 25px;
+    padding: 15px;
+    background-color: rgb(24, 24, 24);
+    border-radius: 10px;
+}
+
+/*TODO temp*/
+.container p {
+    color: white;
+    text-align: center;
+}
+
+#categoryContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px 20px;
+    padding: 30px;
+}
+
+#categoryContainer > button {
+    text-transform: uppercase;
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin: auto 0px;
+    padding: 15px;
+}
