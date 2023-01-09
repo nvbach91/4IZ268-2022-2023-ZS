@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@200;400&family=Carter+One&family=Kaushan+Script&family=Montserrat:ital,wght@0,100;0,700;1,200;1,400&family=Pompiere&family=Satisfy&display=swap');
+
+.header {
+  background-color: darkgray;
+  color: tomato;
+  opacity: 0.9;
+  padding: 1em;
+}
+
+h1 {
+  font-family: 'Carter One', cursive;
+  font-weight: bolder;
+  font-size: 48px;
+  letter-spacing: 2px;
+}
+
+h2 {
+  font-family: 'Assistant', sans-serif;
+  color: darkcyan;
+  letter-spacing: 3px;
+}
+
+h3 {
+  font-family: 'Assistant', sans-serif;
+  color: darkcyan;
+  letter-spacing: 3px;
+  padding: 20px;
+}
+
+.recipe-results {
+  flex-wrap: wrap;
+  display: flex;
+  font-family: 'Assistant', sans-serif;
+  overflow-wrap: wrap;
+}
+
+.recipe-results div {
+  padding: 10px;
+  margin: 7px;
+}
+
+a {
+  font-family: 'Assistant', sans-serif;
+  font-size: 15px;
+  font-weight: bolder;
+  word-wrap: break-word;
+}
+
+header {
+  text-align: center;
+}
+
+* {
+  box-sizing: 0px;
+  font-family: 'Assistant', sans-serif;
+}
+
+#ingredient-search-history li {
+  list-style: none;
+  font-family: 'Assistant', sans-serif;
+}
+
+.alternatives {
+  font-size: 13px;
+  word-wrap: break-word;
+}
