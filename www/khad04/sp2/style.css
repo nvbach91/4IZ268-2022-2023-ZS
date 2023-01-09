@@ -1,0 +1,95 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+    align-items: center;
+    display: flex;
+    height: 100px;
+}
+
+.logo img {
+    height: 70px;
+    padding: 20px;
+}
+
+hr {
+    height: 2px;
+    background-color: #f06331;
+    border: none;
+}
+
+h1 {
+    font-weight: 600;
+    padding: 20px;
+}
+
+button {
+    border: 1px solid transparent;
+    height: 42px;
+    width: 80px;
+    padding: 0 20px;
+    cursor: pointer;
+    background-color: #f06331;
+    color: white;
+}
+
+button:hover {
+    background-color: #c64118;
+}
+
+.form-row {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 20px 0;
+    background-color: #eee;
+}
+
+input {
+    height: 42px;
+    padding: 0 10px;
+    border: 1px solid transparent;
+}
+
+#dogs-list {
+    list-style-type: none;
+    padding: 0;
+    min-height: 400px;
+    display: flex;
+    margin: 0 auto;
+    max-width: 1366px;
+}
+
+.dog {
+    text-align: left;
+    width: 100%;
+    border: 10px solid transparent;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 2px 0;
+}
+
+.breed-name {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-weight: 500;
+}
+
+.breed-photo img {
+    width: 50%;
+    height: 150px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    grid-column: 1/5;
+    grid-row: 1/4;
+    margin-bottom: 20px;
+}
+
+main,
+footer {
+    padding-top: 30px;
+    margin: 0 auto;
+    text-align: center;
+}
