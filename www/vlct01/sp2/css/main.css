@@ -1,0 +1,9 @@
+.card-header {
+    min-height: 200px;
+    text-align: center;
+    font-weight: 1000;
+}
+
+.card-img-top {
+    max-height: 200px;
+}
