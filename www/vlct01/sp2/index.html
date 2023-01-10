@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vyhledávač článků | Semestrální práce 2</title>
+
+    <title>Vyhledávač článků - Semestrální práce 2</title>
     <!-- Bootstrap -->
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -22,7 +23,7 @@
         integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 
     <link href="./css/main.css" rel="stylesheet">
-    <script src="./js/main.js"></script>
+
 
 </head>
 
@@ -56,18 +57,18 @@
                 </div>
                 <div class="col-md-3">
                     <label for="resultsFromInput" class="form-label">Výsledky od</label>
-                    <input type="datetime-local" id="resultsFromInput" class="form-control" value="2022-12-23T15:47">
+                    <input type="date" id="resultsFromInput" class="form-control">
                 </div>
                 <div class="col-md-3">
                     <label for="resultsToInput" class="form-label">Výsledky do</label>
-                    <input type="datetime-local" id="resultsToInput" class="form-control">
+                    <input type="date" id="resultsToInput" class="form-control">
                 </div>
                 <div class="col-md-3 mb-2">
                     <label for="sortBySelect" class="form-label">Seřadit podle</label>
                     <select id="sortBySelect" class="form-select">
-                        <option value="relevancy">Relevance</option>
-                        <option value="popularity">Popularity</option>
-                        <option value="publishedAt">Data publikace</option>
+                        <option value="newest">Od nejnovějších</option>
+                        <option value="oldest">Od nejstarších</option>
+                        <option value="relevance">Relevance</option>
                     </select>
                 </div>
                 <div class="col">
@@ -88,9 +89,10 @@
         <p class="text-center text-muted mb-0">© 2022 Created by <a href="https://github.com/tomas-vlcek">Tomáš
                 Vlček</a></p>
         <p class="text-center text-muted">
-            Powered by <a href="https://newsapi.org/" target="_blank">NewsAPI</a>
+            Powered by <a href="https://open-platform.theguardian.com/" target="_blank">The Guardian API</a>
         </p>
     </footer>
+    <script src="./js/main.js"></script>
 </body>
 
 </html>

@@ -1,8 +1,9 @@
 $(document).ready(() => {
     (() => {
         //API
-        const baseApiUrl = 'https://newsapi.org/v2/everything';
-        const apiKey = 'ec488c4adab74fa99a4e069ae76f6973';
+        const baseSearchApiUrl = 'https://content.guardianapis.com/search';
+        const baseSingleItemApiUrl = 'https://content.guardianapis.com/';
+        const apiKey = 'test';
 
         //Request form
         const keywordInput = $('#keywordInput');
@@ -28,51 +29,55 @@ $(document).ready(() => {
 
         //Build dates for form inputs and default values for API request.
         const dateTime = new Date();
-        const now = dateTime.getFullYear() + '-' +
-            formatNumber((dateTime.getMonth() + 1)) + '-' +
-            formatNumber(dateTime.getDate()) + 'T' +
-            formatNumber(dateTime.getHours()) + ':' +
-            formatNumber(dateTime.getMinutes());
+        const now = `${dateTime.getFullYear()}-${formatNumber(dateTime.getMonth() + 1)}-${formatNumber(dateTime.getDate())}`;
 
-        const yesterday = dateTime.getFullYear() + '-' +
-            formatNumber((dateTime.getMonth()) + 1) + '-' +
-            formatNumber((dateTime.getDate()) - 1) + 'T' +
-            formatNumber(dateTime.getHours()) + ':' +
-            formatNumber(dateTime.getMinutes());
+        const weekBack = `${dateTime.getFullYear()}-${formatNumber(dateTime.getMonth() + 1)}-${formatNumber(dateTime.getDate() - 7)}`;
 
         //Set default values of form inputs.
-        resultsFromInput.val(yesterday);
+        resultsFromInput.val(weekBack);
         resultsToInput.val(now);
 
         let articlesToAppend = [];
 
         //Renders article.
         const renderArticle = (article, savedArticles = false) => {
-            articlesToAppend.push($(`<article class="col-md-4" data-title="${article.title}" data-url="${article.url}" data-urlToImage="${article.urlToImage}" data-publishedAt="${article.publishedAt}"></article>`).html(`
+            articlesToAppend.push($(`<article class="col-md-4" data-id="${article.id}"></article>`).html(`
                 <div class="card border-0 h-100">
                     <div class="card-header d-flex align-items-center justify-content-center p-0"> 
-                        ${article.urlToImage !== null ? '<img src="' + article.urlToImage + '" class="card-img-top" alt="news_img"">' : '😞 Obrázek nedostupný 😞'}
+                        ${article.fields.thumbnail != null ? `<img src="${article.fields.thumbnail}" class="card-img-top" alt="news_img">` : '😞 Obrázek nedostupný 😞'}
                     </div>
                     <div class="card-body px-0">
                         <h3 class="fs-5 card-title">
-                            <a href="${article.url}" class="text-decoration-none" target="_blank">${article.title}</a>
+                            <a href="${article.webUrl}" class="text-decoration-none" target="_blank">${article.webTitle}</a>
                         </h3>
-                        <small class="text-muted" >${article.publishedAt}</small>
-                        <p class="card-text mt-2">${article.description || ''}</p>
+                        <small class="text-muted" >${article.webPublicationDate}</small>
+                        <p class="card-text mt-2">${article.fields.trailText || ''}</p>
                     </div>
                     <div class="card-footer px-0 bg-white d-flex justify-content-between">
-                        <a href="${article.url}" target="_blank" class="btn btn-sm btn-primary">Číst více</a>
+                        <a href="${article.webUrl}" target="_blank" class="btn btn-sm btn-primary">Číst více</a>
                         <button class="${!savedArticles ? 'read-later' : 'delete'} btn btn-sm btn-outline-${!savedArticles ? 'warning' : 'danger'}"><i class="${!savedArticles ? 'bi bi-star' : 'bi bi-trash'}"></i></button>
                     </div>
                 </div>
         `));
         }
 
-        const fetch = (requestUrl) => {
-            $.getJSON(requestUrl, function (data) {
-                $.each(data.articles, function (index, article) {
-                    renderArticle(article);
-                });
+        const fetch = (requestUrl, savedArticle = false) => {
+            requestUrl = `${requestUrl}${savedArticle ? '?' : '&'}show-fields=thumbnail,trailText&page-size=200&api-key=${apiKey}`
+
+            $.getJSON(requestUrl, function (result) {
+                if (savedArticle) {
+                    renderArticle(result.response.content, savedArticle);
+                }
+                else {
+                    if (result.response.results.length < 1) {
+                        articlesElement.empty().append('<div class="alert alert-info">Vámi zadanému klíčovému slovu neodpovídá žádný článek.</div>');
+                        return;
+                    }
+
+                    $.each(result.response.results, function (i, article) {
+                        renderArticle(article, savedArticle);
+                    });
+                }
 
                 articlesElement.empty().append(articlesToAppend);
             }).fail(() => {
@@ -84,94 +89,111 @@ $(document).ready(() => {
         $('form').submit((e) => {
             e.preventDefault();
             articlesToAppend = [];
-            //TODO změnit URL adresu (přidat parametry hledání)
+
             articlesElement.empty();
             const keyWord = keywordInput.val().trim();
 
             if (keyWord.length < 1) {
                 articlesElement.append($('<div class="alert alert-danger">Pro vyhledání článků je třeba zadat alespoň 1 klíčové slovo.</div>'));
                 toastBody.text('Pro vyhledání článků je třeba zadat alespoň 1 klíčové slovo.');
-                toastElement.toast("show");
+                toastElement.toast('show');
                 return;
             }
 
             articlesElement.append(spinner);
 
             const resultsFrom = resultsFromInput.val() || now;
-            const resultsTo = resultsToInput.val() || yesterday;
+            const resultsTo = resultsToInput.val() || weekBack;
             const sortBy = sortBySelect.val();
 
-            const requestParameters = `?q=${keyWord}&language=cs&from=${resultsFrom + ':00'}&to=${resultsTo + ':00'}&sortBy=${sortBy}&apiKey=${apiKey}`;
+            const requestParameters = `?q=${keyWord}&from-date=${resultsFrom}&to-date=${resultsTo}&order-by=${sortBy}`;
 
-            fetch(baseApiUrl + requestParameters);
+            window.history.pushState(null, '', requestParameters);
+
+            fetch(baseSearchApiUrl + requestParameters);
         });
 
         //Gets articles from local storage and return them as an array.
-        const getArticlesFromStorage = () => {
+        const getArticleIdsFromStorage = () => {
             return $.parseJSON(localStorage.getItem('articles'));
         }
 
         //Checks if at least 1 article is stored in local storage. 
         const isStorageEmpty = () => {
-            return getArticlesFromStorage() === null
+            return getArticleIdsFromStorage() === null || getArticleIdsFromStorage().length === 0;
         }
 
         //Checks if article is not already stored and if not, the article is stored.
-        const storeArticle = (articleToStore) => {
-            let articlesToCheck = [];
+        const storeArticle = (articleId) => {
+            let articleIdsToCheck = [];
 
             if (!isStorageEmpty()) {
-                articlesToCheck = getArticlesFromStorage();
+                articleIdsToCheck = getArticleIdsFromStorage();
             }
 
-            if (!articlesToCheck.some(item => item.url == articleToStore['url'])) {
-                articlesToCheck.push(articleToStore);
-                localStorage.setItem('articles', JSON.stringify(articlesToCheck));
+            if (!articleIdsToCheck.includes(articleId)) {
+                articleIdsToCheck.push(articleId);
+                localStorage.setItem('articles', JSON.stringify(articleIdsToCheck));
                 toastBody.text('Článek uložen.');
-                toastElement.toast("show");
             }
             else {
                 toastBody.text('Tento článek byl již dříve uložen.');
-                toastElement.toast("show");
             }
+            toastElement.toast('show');
         }
 
         //Removes selected article from local storage.
-        const removeArticle = (articleToRemoveUrl) => {
-            var remainingArticles = $.grep(getArticlesFromStorage(), function (e) {
-                return e.url != articleToRemoveUrl;
+        const removeArticle = (articleToRemoveId) => {
+            const remainingArticles = $.grep(getArticleIdsFromStorage(), function (e) {
+                return e != articleToRemoveId;
             });
 
             localStorage.setItem('articles', JSON.stringify(remainingArticles));
-            toastBody.text('Článek úsěšně odstraněn.');
-            toastElement.toast("show");
+            toastBody.text('Článek úspěšně odstraněn.');
+            toastElement.toast('show');
+        }
+
+        //Fluhes URL parameters
+        const flushParameters = () => {
+            window.history.pushState(null, '', window.location.pathname);
         }
 
         //Renders saved articles "page".
-        savedArticlesLink.click(() => {
+        const renderSavedArticles = () => {
             homeLink.removeClass('active');
-            $(this).addClass('active');
+            savedArticlesLink.addClass('active');
 
+            articlesElement.empty().append(spinner);
             filtersSection.hide();
             articlesToAppend = [];
-            const savedArticles = getArticlesFromStorage();
 
             if (isStorageEmpty()) {
                 articlesElement.empty().append($('<div class="alert alert-info">Zatím nebyl uložen žádný článek.</div>'));
                 return;
             }
 
+            const savedArticles = getArticleIdsFromStorage();
             savedArticles.forEach(savedArticle => {
-                renderArticle(savedArticle, true);
+                fetch(baseSingleItemApiUrl + savedArticle, true);
             });
+        }
 
-            articlesElement.empty().append(articlesToAppend);
+        //Handels saved articles "page" click.
+        savedArticlesLink.click((e) => {
+            e.preventDefault();
+
+            window.history.pushState(null, '', '?type=saved');
+
+            renderSavedArticles();
         });
 
         //Renders home "page".
-        homeLink.click(() => {
+        homeLink.click((e) => {
+            e.preventDefault();
             savedArticlesLink.removeClass('active');
-            $(this).addClass('active');
+            homeLink.addClass('active');
+
+            flushParameters();
 
             filtersSection.show();
             articlesElement.empty().append($('<div class="alert alert-info">Pro vyhledání článků použijte formulář výše.</div>'));
@@ -181,24 +203,53 @@ $(document).ready(() => {
         $(document).on('click', 'button.read-later', function () {
             const articleElement = $(this).parents('article');
 
-            const articleToStore = {
-                'title': articleElement.data('title'),
-                'url': articleElement.data('url'),
-                'urlToImage': articleElement.data('urltoimage'),
-                'publishedAt': articleElement.data('publishedat'),
-            }
-
-            storeArticle(articleToStore);
+            storeArticle(articleElement.data('id'));
         });
 
         //Handels article delete request.
         $(document).on('click', 'button.delete', function () {
             const articleElement = $(this).parents('article');
 
-            const articleToRemoveUrl = articleElement.data('url');
-
-            removeArticle(articleToRemoveUrl);
+            const articleToRemoveId = articleElement.data('id');
+            removeArticle(articleToRemoveId);
             articleElement.remove();
+
+            if (isStorageEmpty()) {
+                articlesElement.empty().append($('<div class="alert alert-info">Zatím nebyl uložen žádný článek.</div>'));
+            }
         });
+
+        //Checks if site is entered with URL parameters
+        const checkUrlParameters = () => {
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+
+            articlesElement.empty();
+
+            if (urlParams.get('q') != null) {
+                keywordInput.val(urlParams.get('q'));
+                resultsFromInput.val(urlParams.get('from-date') || weekBack);
+                resultsToInput.val(urlParams.get('to-date') || now);
+                sortBySelect.val(urlParams.get('order-by') || sortBySelect.first().val());
+
+                articlesElement.empty().append(spinner);
+
+                fetch(baseSearchApiUrl + queryString);
+            }
+            else if (urlParams.get('type') != null && urlParams.get('type') == 'saved') {
+                renderSavedArticles();
+            }
+            else {
+                articlesElement.empty().append($('<div class="alert alert-info">Pro vyhledání článků použijte formulář výše.</div>'));
+            }
+        }
+
+        //Handeles URL change
+        $(window).on('popstate', () => {
+            checkUrlParameters();
+        });
+
+        //Call method that checks parameters on entry
+        checkUrlParameters();
     })();
 });
