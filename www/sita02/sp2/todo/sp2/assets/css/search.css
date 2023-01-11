@@ -1,0 +1,30 @@
+input,
+button {
+    font-size: 1.25em;
+}
+
+form {
+    display: grid;
+    grid-template-columns: 80% 20%;
+    margin: 5px;
+    padding-bottom: 0px;
+}
+
+input {
+    border: 0;
+    border: 1px solid;
+    width: 100%;
+    padding-left: 10px;
+    border-radius: 50px 0px 0px 50px;
+}
+
+form>button {
+    all: unset;
+    text-decoration: none;
+    padding: 10px;
+    padding-left: 0px;
+    border: 1px solid;
+    border-left: 0px;
+    border-radius: 0px 50px 50px 0px;
+    text-align: center;
+}

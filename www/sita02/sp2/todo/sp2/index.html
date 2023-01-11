@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitter monitoring</title>
+    <meta name="description" content="Twitter monitoring tool">
+    <meta name="keywords" content="Twitter, monitoring, tool">
+    <meta name="author" content="Adam Sitanc">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/icon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/icon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/icon/favicon-16x16.png">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/search.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="body-wrapper">
+        <header>
+            <div class="page-title">
+                <h1>Twitter monitoring tool</h1>
+            </div>
+            <form>
+                <input placeholder="keywords" id="keywords">
+                <button id="search">Search</button>
+            </form>
+            <div class="menu">
+                <div class="menu-item"><a href="todo/"><i class="fa fa-list-ul" aria-hidden="true"></i> TODO</a></div>
+                <div class="menu-item"><a href="https://github.com/asitanc/sp2" target="_blank"><i class="fa fa-code" aria-hidden="true"></i> Source code</a></div>
+                <div class="menu-item"><a href="docs/"><i class="fa fa-book" aria-hidden="true"></i> Documentation</a></div>
+                <div class="menu-item"><a href="https://github.com/nvbach91/4IZ268-2022-2023-ZS" target="_blank"><i class="fa fa-bug" aria-hidden="true"></i> Bug Report</a></div>
+                <div class="menu-item"><a href="https://github.com/asitanc/twitter-next-backend" target="_blank"><i class="fa fa-server" aria-hidden="true"></i> Backend</a></div>
+            </div>
+        </header>
+        <div class="error hidden"></div>
+        <div class="note">
+            <p>Search for tweets containing keywords. You can use multiple keywords separated by a space. For more information, see the <a href="docs/">documentation</a>.</p>
+            <p>Currently, search is limited to only 15 tweets in response.</p>
+        </div>
+        <div class="tweets-note hidden">
+            <p>Click on the tweet to see more details.</p>
+        </div>
+        <div class="spinner hidden"></div>
+        <main>
+        </main>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/oauth-io/0.6.2/oauth.min.js" integrity="sha512-7vvcd3FgS/LUBJakuT2J5LsNx4FbBN0sJvqIpZlMhQZlbCuQrAHPwP99ksbr01eFHwfnHJxxjCDjXVbNlD7FSg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>

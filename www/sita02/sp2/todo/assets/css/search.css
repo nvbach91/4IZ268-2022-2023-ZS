@@ -1,0 +1,35 @@
+input,
+button {
+    font-size: 14pt;
+}
+
+form {
+    display: grid;
+    grid-template-columns: 80% 20%;
+    width: 80%;
+    min-width: 300px;
+    margin: auto;
+    padding: 15px;
+    padding-bottom: 0px;
+}
+
+input {
+    border: 0;
+    border: 1px solid;
+    width: 100%;
+    padding-left: 10px;
+    border-radius: 10px 0px 0px 10px;
+}
+
+button {
+    all: unset;
+    width: 90%;
+    text-decoration: none;
+    padding: 10px;
+    padding-left: 0px;
+    border: 1px solid;
+    border-left: 0px;
+    border-radius: 0px 10px 10px 0px;
+    margin-left: 10px;
+    text-align: center;
+}
