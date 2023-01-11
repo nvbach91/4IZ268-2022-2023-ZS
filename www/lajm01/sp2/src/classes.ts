@@ -1,3 +1,18 @@
+type SerializedTest = {
+	testName: string,
+	questions: Question[],
+	answeredRight: number,
+	answeredWrong: number,
+	testSettings: TestSettings,
+	idTest: number
+}
+
+type TestSettings = {
+	isTest: boolean,
+	numberOfQuestions?: number
+	questions: Question[]
+}
+
 class Question {
   public id: number;
   public body: string;
@@ -52,4 +67,9 @@ class TestRequest {
   }
 }
 
-export { Answer, Question, Response, TestRequest, Test };
+type TestResult = {
+	testName: string;
+	successRate: number;
+}
+
+export { Answer, Question, Response, TestRequest, Test, TestResult, TestSettings, SerializedTest };

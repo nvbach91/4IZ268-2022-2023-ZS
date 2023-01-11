@@ -1,4 +1,4 @@
-# wea-sem
+# wea-sp-2
 
 ## Project setup
 ```
