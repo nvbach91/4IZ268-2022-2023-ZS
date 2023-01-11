@@ -1,6 +1,6 @@
 * {
-    font-family: sans-serif;
     color: #232;
+    font-family: sans-serif;
 }
 .white {
     color: #fff;
@@ -12,55 +12,112 @@
     display: flex;
     flex-wrap: wrap;
 }
+.hide{
+    display: none; 
+}
 .page {
-    width: 1000px;
     margin: 0 auto;
+    width: 1000px;
 }
 header {
     background-color: #7b6;
 }
 .header {
-    margin: 0 auto;
+    margin: 0 auto 6px;
 }
 .header img {
-    width: 60px;
-    height: 60px;
+    height: 45px;
+    margin: auto 16px;
+    width: 45px;
 }
 .main-xxx {
-    border-right: 2px solid #7b6;
     border-left: 2px solid #7b6;
+    border-right: 2px solid #7b6;
+}
+.search-block {
+    align-content: center;
+    border-bottom: 4px solid #7b6;
+    height: 100px;
+}
+.search-block input:hover{
+    border-bottom: 2px dashed #232;
 }
 .search {
-    height: 80px;
-    margin-top: 40px;
-    border-bottom: 4px solid #7b6;
-}
-.search input {
-    display: block;
-    margin: 0 auto;
-    width: 600px;
-    height: 32px;
-    font-size: 24px;
     border: none;
+    display: block;
+    font-size: 24px;
+    height: 32px;
+    margin: auto 20px;
     padding: 8px 50px;
+    width: 600px;
 }
-.search input:hover{
-    border-bottom: 2px dashed #232;
+.right-to-search {
+    width: 30%;
+}
+#pastryChkBox{
+    width: 20px;
+}
+.div-chkBox {
+    margin: auto;
+}
+.div-chkBox label {
+    display: flex;
+    font-size: 11px;
+    text-align: center;
+    width: 160px;
+}
+.div-chkBox label:hover {
+    cursor: pointer;
+    text-shadow: #232 0 0 1px;
+}
+.btn-add-ingr {
+    background-color: #7b6;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 24px;
+    height: 36px;
+    width: 90px;
+}
+.btn-add-ingr:hover {
+    box-shadow: #242 0 0 5px;
+    cursor: pointer;
+}
+.btn-add-ingr:focus {
+    box-shadow: #242 0 0 5px;
+    outline: none;
 }
 input:focus {
     outline: none;
 }
 .ingredients {
-    width: 28%;
     background-color: #ded;
     height: fit-content;
+    width: 28%;
 }
-.ingredients h2 {
-    margin: 15px 20px;
+.ingredients > h2 {
+    margin: 0 auto;
+    margin-bottom: 15px;
+}
+.btn-recipe-search {
+    background-color: #ded;
+    border: none;
+    font-size: 22px;
+    font-weight: bold;
+    margin: 0 auto;
+    margin-top: 15px;
+}
+.btn-recipe-search:hover {
+    cursor: pointer;
+    text-decoration: underline dashed;
+}
+.btn-recipe-search:focus{
+    outline: none;
+    text-decoration: underline dashed;
 }
 .recipes {
-    width: 70%;
     margin-left: 2%;
+    width: 70%;
 }
 .wid100{
     width: 100%;
@@ -70,10 +127,84 @@ input:focus {
     flex-direction: column;
 }
 .ingr {
-    margin: 4px auto 4px 20px;
+    margin: 4px auto;
+    width: 260px;
 }
+.red-dot-div {
+    background-color: #B55;
+    border-radius: 12px;
+    color: white;
+    display: none;
+    font-size: 10px;
+    height: 14px;
+    left: -13.6rem;
+    margin: auto;
+    padding: 0px 4px;
+    position: relative;
+}
+.btn-ingr {
+    background-color: #ded;
+    border: none;
+    border-bottom: #ded 1px solid;
+    margin: 0 auto 0 50px;
+    min-width: 160px;
+    padding: 4px 0;
+    text-align: left;
+}
+.btn-ingr:hover + .red-dot-div {
+    display: block;
+}
+.btn-ingr:hover {
+    border-bottom: #232 1px solid;
+    cursor: pointer;
+}
+.btn-ingr:focus{
+    outline: none;
+}
+.checkBox {
+    background: #7b6;
+    display: block;
+    font-size: 14px;
+    height: 18px;
+    margin: auto;
+    width: 30px;
+}
+.checkBox > p {
+    color: white;
+    margin: -1px -1px 0 0;
+    padding: 0;
+}
+.checkBox + p {
+    margin: auto;
+    user-select: none;
+}
+
 .dish {
     border-bottom: 2px solid #232;
-    height: 60px;
     margin-top: 20px;
+}
+.dish > img {
+    box-shadow: #242 0 0 5px;
+    float: left;
+    height: 140px;
+    margin: 0 20px 20px 0;
+    max-width: 180px;
+}
+.dish > h3 {
+    margin-bottom: 3px;
+}
+.dish > p {
+    display: inline;
+    font-size: 12px;
+}
+.dish > p > * {
+    margin: 0;
+}
+.dish > a {
+    color: #484;
+    font-size: 12px;
+    text-decoration: none;
+}
+.dish > a:hover {
+    color: #232;
 }
