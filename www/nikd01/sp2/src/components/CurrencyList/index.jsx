@@ -1,33 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { CURRENCY_LIST } from '../../core/utils/constants';
 
 const CurrencyList = ({ activeId, handleActiveId }) => {
-    const currencyList = [
-        {
-            id: 1,
-            name: 'USD',
-        },
-        {
-            id: 2,
-            name: 'EUR',
-        },
-        {
-            id: 3,
-            name: 'GBP',
-        },
-        {
-            id: 4,
-            name: 'AED',
-        },
-        {
-            id: 5,
-            name: 'CZK',
-        },
-        {
-            id: 6,
-            name: 'PLN',
-        },
-    ];
+    const currencyList = CURRENCY_LIST;
 
     return (
         <div className="flex flex-row gap-7 align-middle">
@@ -35,7 +11,9 @@ const CurrencyList = ({ activeId, handleActiveId }) => {
                 {currencyList.slice(0, 3).map(item => (
                     <li
                         key={item.id}
-                        className={`cursor-pointer ${activeId === item.id ? 'text-red-400 text-2xl' : ''}`}
+                        className={`cursor-pointer ${
+                            activeId === item.id ? 'text-red-400 text-2xl' : ''
+                        } hover:text-red-300`}
                         onClick={() => handleActiveId(item.id)}
                     >
                         {item.name}
@@ -46,7 +24,9 @@ const CurrencyList = ({ activeId, handleActiveId }) => {
                 {currencyList.slice(3, 6).map(item => (
                     <li
                         key={item.id}
-                        className={`cursor-pointer ${activeId === item.id ? 'text-red-400 text-2xl' : ''}`}
+                        className={`cursor-pointer ${
+                            activeId === item.id ? 'text-red-400 text-2xl' : ''
+                        } hover:text-red-300`}
                         onClick={() => handleActiveId(item.id)}
                     >
                         {item.name}

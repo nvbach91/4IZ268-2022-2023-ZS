@@ -7,9 +7,13 @@ body {
 }
 
 h1 {
-    @apply text-2xl font-extrabold;
+    @apply text-3xl font-extrabold;
 }
 
 input[type="text"] {
     @apply text-black focus:outline-none;
+}
+
+main {
+  min-height: calc(100vh - 3rem);
 }
