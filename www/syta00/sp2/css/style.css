@@ -207,11 +207,11 @@ header {
     text-align: center;
 }
 .recipe-history > h3 {
+    border-top: 1px solid #232;
+    font-size: 14px;
     margin: 0 auto;
     padding: 4px 0 8px;
     text-align: center;
-    font-size: 14px;
-    border-top: 1px solid #232;
 }
 .recipe-history > button {
     background-color: #ded;
