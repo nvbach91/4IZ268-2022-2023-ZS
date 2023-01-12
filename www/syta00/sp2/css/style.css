@@ -2,6 +2,9 @@
     color: #232;
     font-family: sans-serif;
 }
+*:focus {
+    outline: none;
+}
 .white {
     color: #fff;
 }
@@ -39,7 +42,7 @@ header {
     border-bottom: 4px solid #7b6;
     height: 100px;
 }
-.search-block input:hover{
+.search-block input:hover, .search-block input:focus{
     border-bottom: 2px dashed #232;
 }
 .search {
@@ -85,10 +88,6 @@ header {
 }
 .btn-add-ingr:focus {
     box-shadow: #242 0 0 5px;
-    outline: none;
-}
-input:focus {
-    outline: none;
 }
 .ingredients {
     background-color: #ded;
@@ -112,7 +111,6 @@ input:focus {
     text-decoration: underline dashed;
 }
 .btn-recipe-search:focus{
-    outline: none;
     text-decoration: underline dashed;
 }
 .recipes {
@@ -149,7 +147,6 @@ input:focus {
     margin: 0 auto 0 50px;
     min-width: 160px;
     padding: 4px 0;
-    text-align: left;
 }
 .btn-ingr:hover + .red-dot-div {
     display: block;
@@ -157,9 +154,6 @@ input:focus {
 .btn-ingr:hover {
     border-bottom: #232 1px solid;
     cursor: pointer;
-}
-.btn-ingr:focus{
-    outline: none;
 }
 .checkBox {
     background: #7b6;
@@ -207,4 +201,27 @@ input:focus {
 }
 .dish > a:hover {
     color: #232;
+}
+.recipe-history {
+    margin: 30px auto 10px;
+    text-align: center;
+}
+.recipe-history > h3 {
+    margin: 0 auto;
+    padding: 4px 0 8px;
+    text-align: center;
+    font-size: 14px;
+    border-top: 1px solid #232;
+}
+.recipe-history > button {
+    background-color: #ded;
+    border: none;
+    border-bottom: #ded 1px solid;
+    margin: 0 auto;
+    min-width: 160px;
+    padding: 3px 0;
+}
+.recipe-history > button:hover {
+    border-bottom: #232 1px solid;
+    cursor: pointer;
 }

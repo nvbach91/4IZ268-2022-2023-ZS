@@ -1,12 +1,13 @@
 const App = {
-    ingrList : new Array(),
-    ingrListElement : document.getElementById('ingredients'),
-    recipeList : document.getElementById('recipes'),
-    searchInput : document.getElementById('search'),
-    recipesByIngr : null,
-    recipeData : null,
-    //apikey : 'apiKey=980924e981b04a65879a20b9603eb3ca'
-    apikey : 'apiKey=a89fda2c8e3946829e0796d67619b10b'
+    ingrList: new Array(),
+    ingrListElement: document.getElementById('ingredients'),
+    recipeList: document.getElementById('recipes'),
+    searchInput: document.getElementById('search'),
+    recipesByIngr: null,
+    recipeData: null,
+    //apikey: 'apiKey=980924e981b04a65879a20b9603eb3ca',
+    //apikey: 'apiKey=a89fda2c8e3946829e0796d67619b10b',
+    apikey: 'apiKey=34d9ed8b98114154b0bfaecaa5eca37e',
 }
 
 App.searchInput.addEventListener('keypress', function (event) {
@@ -18,6 +19,14 @@ App.searchInput.addEventListener('keypress', function (event) {
 
 const toggleCheck = () => {
     document.getElementById('check').classList.toggle('hide');
+}
+
+const addRecipeCount = () => {
+    if(sessionStorage.recipeId){
+        sessionStorage.recipeId = Number(sessionStorage.recipeId) + 10;
+    } else {
+        sessionStorage.recipeId = 1;
+    }
 }
 
 //#region RecipesList
@@ -42,10 +51,9 @@ const searchRecipe = () => {
         clearRecipeList();
         App.recipesByIngr = JSON.parse(xhr.responseText);
         App.recipesByIngr.forEach(recipe => {
-            for (var key in recipe) {
-                if (key === 'id') findRecipeWithInstruction(recipe[key]);
-            }
+            findRecipeWithInstruction(recipe.id);
         });
+        /*if(sessionStorage.recipeId > 91)*/ updateRecipeHistory();
     });
     xhr.addEventListener('error', function (e) {
         console.error('XHR error', e);
@@ -68,6 +76,7 @@ const findRecipeWithInstruction = (recipeId) => {
     xhr2.addEventListener('load', function () {
         App.recipeData = JSON.parse(xhr2.responseText);
         addRecipe(App.recipeData);
+        saveRecipe(App.recipeData);
     });
     xhr2.addEventListener('error', function (e) {
         console.error('XHR error', e);
@@ -120,9 +129,10 @@ const addIngrToList = () => {
     var newIngr = document.getElementById('search').value;
     if (!newIngr || newIngr == '' || newIngr.replace(/\s+/g, '') == ''
         || newIngr.length > 25) return;
-        App.ingrList.push(newIngr);
+    App.ingrList.push(newIngr);
     document.getElementById('search').value = null;
     updateIngrList();
+    updateRecipeHistory();
 }
 
 const deleteIngrFromList = (ingrName) => {
@@ -156,5 +166,53 @@ const updateIngrList = () => {
     if (App.ingrList.length != 0) {
         document.getElementById('btnRecipeSearch').classList.remove('hide');
     } else { document.getElementById('btnRecipeSearch').classList.add('hide'); }
+}
+//#endregion
+
+//#region SessionRecipeHistory
+const updateRecipeHistory = () => {
+    const recipeHistoryList = document.createElement('div');
+    recipeHistoryList.classList.add('recipe-history');
+    const h2HL = document.createElement('h3');
+    h2HL.innerText = "Previous recipe searches:"
+    recipeHistoryList.appendChild(h2HL);
+    for (var i = 1; i <= sessionStorage.recipeId; i += 100) {
+        const rcpHist = document.createElement('button');
+        var searchText = sessionStorage.getItem(i).slice(0,24) + '..'
+        rcpHist.innerText = searchText;
+        addOnClickToLoadSessionRecipes(rcpHist, i);
+        //rcpHist.onclick = () => { loadSessionRecipes(i); }; //JS does a lil trolling
+        recipeHistoryList.appendChild(rcpHist);
+    }
+    var ingrClmn = document.getElementById('ingredientsColumn');
+    ingrClmn.removeChild(ingrClmn.lastChild);
+    ingrClmn.appendChild(recipeHistoryList);
+
+}
+
+const saveRecipe = (recipeDetail) => {
+    addRecipeCount();
+    sessionStorage.setItem(sessionStorage.recipeId, recipeDetail.title);
+    sessionStorage.setItem(Number(sessionStorage.recipeId) + 1, recipeDetail.image);
+    sessionStorage.setItem(Number(sessionStorage.recipeId) + 2, recipeDetail.instructions);
+    sessionStorage.setItem(Number(sessionStorage.recipeId) + 3, recipeDetail.spoonacularSourceUrl);
+}
+
+const loadSessionRecipes = (recipesId) => {
+    clearRecipeList();
+    for (var i = recipesId; i < recipesId + 100; i += 10) {
+        var recipe = {
+            id: sessionStorage.key(i),
+            title: sessionStorage.getItem(i),
+            image: sessionStorage.getItem(i+1),
+            instructions: sessionStorage.getItem(i+2),
+            spoonacularSourceUrl: sessionStorage.getItem(i+3),
+        }
+        addRecipe(recipe);
+    }
+}
+
+const addOnClickToLoadSessionRecipes = (element, recipeId) => {
+    element.onclick = () => { loadSessionRecipes(recipeId); };
 }
 //#endregion
