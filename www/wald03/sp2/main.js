@@ -90,7 +90,7 @@
         answers.forEach(answer => {
             const button = document.createElement('button')
             button.innerText = answer;
-            button.classList.add('btn')
+            button.classList.add('btns_trivia');
             if (answer === question.correctAnswer) {
                 button.dataset.correct = answer.correct
             }

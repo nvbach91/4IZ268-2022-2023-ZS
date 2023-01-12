@@ -29,8 +29,8 @@ body.wrong {
   padding: 0;
   margin: 0;
   display: flex;
-  width: 90vw;
-  height: 90vh;
+  width: 95vw;
+  height: 60vh;
   justify-content: center;
   align-items: center;
 }
@@ -177,4 +177,26 @@ footer {
   text-align: right;
   bottom: 0;
   width: 100%;
+}
+
+.btns_trivia {
+  border: 1px solid hsl(var(--hue), 100%, 30%);
+  background-color: hsl(var(--hue), 100%, 50%);
+  padding: 10px;
+  color: white;
+  width: calc(100%/4);
+  height: 55px;
+}
+
+.btns_trivia:hover {
+  border-color: black;
+}
+
+.btns_trivia.correct {
+  --hue: var(--hue-correct);
+  color: black;
+}
+
+.btns_trivia.wrong {
+  --hue: var(--hue-wrong);
 }
