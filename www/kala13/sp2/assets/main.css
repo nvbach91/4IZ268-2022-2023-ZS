@@ -1,21 +1,24 @@
 body {
     font-family: 'Roboto Condensed', sans-serif;
     background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
+    min-height: 100vh;
 }
 
 h1 {
     font-size: xx-large;
     box-shadow: 20px 20px 60px #220f7970,
         -20px -20px 60px #e10dda70;
-    line-height: 80px;
+    line-height: 50px;
+    margin: 5px 5px;
 }
 
 h2 {
     font-size: x-large;
     box-shadow: 20px 20px 60px #220f7970,
         -20px -20px 60px #f5a8f270;
-    line-height: 50px;
+    line-height: 30px;
     font-style: italic;
+    margin: 5px 5px;
 }
 
 button {
@@ -39,40 +42,28 @@ button:hover {
     display: flexbox;
     justify-content: center;
     text-align: center;
-    align-items: top;
+    align-items: center;
     height: 100%;
     padding: 0px;
+    margin: 0 auto;
 }
 
 .headingsContainer {
-    padding-top: 20px;
-    padding-bottom: 20px;
-
-    width: 100%;
-    line-height: 50px;
-
+    padding: 5px 5px;
 }
 
 .categoriesContainer {
+    margin-top: 10px;
     display: grid;
-    grid-gap: 20px;
+    grid-gap: 15px;
     text-align: center;
     grid-template-columns: repeat(6, auto);
     justify-content: center;
-    box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
-
 }
 
 .category {
-    background: rgb(5, 6, 45);
-    border-radius: 17px;
-    font-size: x-large;
-    padding: 20px;
-    margin-top: 20px;
     width: 200px;
     height: 250px;
-    color: rgb(239, 239, 239);
-    box-shadow: rgba(179, 112, 255, 0.2) 0 15px 30px -5px;
 }
 
 .category:hover {
@@ -107,8 +98,6 @@ button:hover {
     text-align: center;
     grid-template-columns: repeat(6, auto);
     justify-content: center;
-    box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
-
 }
 
 .answer {
@@ -124,6 +113,6 @@ button:hover {
 }
 
 .scoreButton {
-    margin: 50px;
-    width: 1300px;
+    margin: 10px 10px;
+    width: 1275px;
 }
