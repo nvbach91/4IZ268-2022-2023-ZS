@@ -46,7 +46,7 @@ ul {
   margin: 0;
   padding: 0;
   display: flex;
-} 
+}
 
 .menu_nav_item {
   color: #f2f2f2;
@@ -147,4 +147,34 @@ h3 {
 
 .loading {
   border-radius: 50%;
+}
+
+.home_address {
+  color: #f2f2f2;
+  text-align: center;
+  font-size: 30px;
+  width: 90vw;
+  border: 10px;
+}
+
+.home_address:hover {
+  color: green;
+}
+
+.home_address li.active {
+  font-weight: 650;
+  background-color: #ddd;
+}
+
+a {
+  color: #ddd;
+}
+
+footer {
+  padding: 15px;
+  color: white;
+  position: fixed;
+  text-align: right;
+  bottom: 0;
+  width: 100%;
 }
