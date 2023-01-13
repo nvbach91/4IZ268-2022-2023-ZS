@@ -19,39 +19,34 @@
 				{{ answer.body }}
 			</button>
 		</div>
-		<button
-			v-if="!showRight"
-			@click="$emit('answersSelected', selectedAnswers)"
-			class="btn"
-		>
-			Odpovědět
-		</button>
+		<button v-if="!showRight" @click="$emit('answersSelected', selectedAnswers)" class="btn select-answer absolute-btn">Odpovědět</button>
 	</div>
 </template>
 
 <script lang="ts">
-import { Answer, Question } from "@/classes";
-import { defineComponent } from "vue";
+import { Answer, Question } from '@/classes';
+import { shuffle, copy } from '@/common';
+import { defineComponent } from 'vue';
 
 export default defineComponent({
 	props: {
-		question:{
+		question: {
 			type: Question,
 			required: true,
 		},
 		showRight: {
-			type: Boolean
-		}
+			type: Boolean,
+		},
 	},
-	data(){
+	data() {
 		return {
-			selectedAnswers: [] as number[]
-		}
+			selectedAnswers: [] as number[],
+		};
 	},
-	mounted(){
-		this.$watch("question", () => {
+	mounted() {
+		this.$watch('question', () => {
 			this.selectedAnswers = [];
-		})
+		});
 	},
 	methods: {
 		selectAnswer(id: number) {
@@ -61,19 +56,20 @@ export default defineComponent({
 				this.selectedAnswers.push(id);
 			}
 		},
-		isAnswerRight(answer: Answer){
-			const shouldBeSelected = this.question.answers.find(x => x.id == answer.id)?.isRight;
+		isAnswerRight(answer: Answer) {
+			const shouldBeSelected = this.question.answers.find((x) => x.id == answer.id)?.isRight;
 			const isSelected = this.selectedAnswers.includes(answer.id);
 			return shouldBeSelected == isSelected;
-		}
-	}
-})
+		},
+	},
+});
 </script>
 
 <style scoped lang="less">
 .test-img {
-	max-height: 40vh;
+	height: 30vh;
 }
+
 .answers {
 	display: flex;
 	justify-content: center;
@@ -101,4 +97,3 @@ export default defineComponent({
 	}
 }
 </style>
-

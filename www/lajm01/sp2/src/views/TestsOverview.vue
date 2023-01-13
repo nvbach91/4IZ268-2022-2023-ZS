@@ -2,9 +2,9 @@
 	<div v-if="error !== null">Nastala chyba při načítání</div>
 	<LoaderComponent v-else-if="tests === null"></LoaderComponent>
 	<div v-else class="test-wrapper">
-		<a :href="'/test/select/' + test.url" v-for="test in tests" class="test" :key="test.url" :style="{ 'background-image': `url('${test.img}')` }">
+		<router-link :to="'/test/select/' + test.url" v-for="test in tests" class="test" :key="test.url" :style="{ 'background-image': `url('${test.img}')` }">
 			{{ test.name }}
-		</a>
+		</router-link>
 	</div>
 </template>
 
@@ -12,7 +12,7 @@
 import { Test, TestSettings } from '@/classes';
 import { defineComponent } from 'vue';
 import LoaderComponent from '@/components/LoaderComponent.vue';
-import { sleep, get } from '../common';
+import { sleep, get, formatSeconds } from '../common';
 
 export default defineComponent({
 	data() {
