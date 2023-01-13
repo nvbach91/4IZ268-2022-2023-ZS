@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="50" viewBox="0 0 200 50">
+  <defs>
+    <style>
+      .cls-1 {
+        font-size: 32px;
+        font-family: Roboto;
+        font-weight: 500;
+      }
+
+      .cls-2 {
+        font-weight: 800;
+      }
+    </style>
+  </defs>
+  <text id="Bar_Scout" data-name="Bar///Scout" class="cls-1" x="-2" y="50.218">Bar<tspan class="cls-2">///</tspan>Scout</text>
+</svg>
