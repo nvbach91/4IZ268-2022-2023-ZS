@@ -1,0 +1,128 @@
+body {
+    font-family: 'Roboto Condensed', sans-serif;
+    background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
+    min-height: 100vh;
+}
+
+#loader img {
+    min-height: 100vh;
+    min-width: 100;
+    width: 100%;
+}
+
+.hintsContainer {
+    height: 50px;
+}
+
+h1 {
+    font-size: xx-large;
+    box-shadow: 20px 20px 60px #220f7970,
+        -20px -20px 60px #e10dda70;
+    line-height: 50px;
+    margin: 5px 5px;
+}
+
+h2 {
+    font-size: x-large;
+    box-shadow: 20px 20px 60px #220f7970,
+        -20px -20px 60px #f5a8f270;
+    line-height: 30px;
+    font-style: italic;
+    margin: 5px 5px;
+}
+
+button {
+    background: rgb(5, 6, 45);
+    border-radius: 17px;
+    font-size: x-large;
+    font-style: italic;
+    padding: 10px;
+    height: 50px;
+    color: rgb(239, 239, 239);
+    box-shadow: rgba(179, 112, 255, 0.2) 0 15px 30px -5px;
+}
+
+button:hover {
+    cursor: pointer;
+    box-shadow: inset 20px 20px 60px #220f7970,
+        inset -20px -20px 60px #e10dda70;
+}
+
+#mainContainer {
+    display: flexbox;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    height: 100%;
+    padding: 0px;
+    margin: 0 auto;
+}
+
+.headingsContainer {
+    padding: 5px 5px;
+}
+
+.categoriesContainer {
+    margin-top: 10px;
+    display: grid;
+    grid-gap: 15px;
+    text-align: center;
+    grid-template-columns: repeat(6, auto);
+    justify-content: center;
+}
+
+.category {
+    width: 200px;
+    height: 250px;
+}
+
+.category:hover {
+    cursor: pointer;
+    box-shadow: inset 20px 20px 60px #220f7970,
+        inset -20px -20px 60px #e10dda70;
+}
+
+.pictureContainer {
+    height: 402px;
+}
+
+.unclickable {
+    pointer-events: none;
+}
+
+.correct {
+    background-color: green
+}
+
+.incorrect {
+    background-color: rgb(128, 0, 0)
+}
+
+.finished {
+    pointer-events: none;
+}
+
+.answersContainer {
+    display: grid;
+    grid-gap: 20px;
+    text-align: center;
+    grid-template-columns: repeat(6, auto);
+    justify-content: center;
+}
+
+.answer {
+    font-size: x-large;
+    width: 400px;
+    height: 100px;
+}
+
+.questionsContainer {
+    display: grid;
+    grid-gap: 20px;
+    text-align: center;
+}
+
+.scoreButton {
+    margin: 10px 10px;
+    width: 1275px;
+}
