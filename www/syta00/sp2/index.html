@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Search recipes with your ingredient list">
+    <meta name="keywords" content="Recipes, Ingredients, Meal, Food, Nutrients">
+    <meta name="author" content="Artur Sytnyk">
+    <title>Quick Recipes</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="img/icon.ico">
+</head>
+
+<body class="flex m0">
+    <div class="page">
+        <header class="flex">
+            <div class="header flex">
+                <img src="img/logo.png" alt="logo">
+                <div class="header-text">
+                    <h1 class="wid100 m0 white">Quick Recipes</h1>
+                    <p class="title-text m0 white">Find recipes by your ingredients!</p>
+                </div>
+            </div>
+        </header>
+        <div class="main flex">
+            <div id="ingredientSearch flex" class="search-block wid100 flex">
+                <input id="search" type="search" placeholder="Search ingredients.." class="search" tabindex="1">
+                <button id="btnAdd" onclick="addIngrToList()" class="btn-add-ingr" tabindex="2">Add</button>
+                <div class="flex div-chkBox">
+                    <input type="checkbox" name="checkbox" id="pantryChkBox" checked class="hide">
+                    <label for="pantryChkBox" onclick="toggleCheck()">
+                        <div class="checkBox">
+                            <p id="check">&#10004;</p>
+                        </div>
+                        <p>Automatically ignore pantry (Like water, salt or flour)</p>
+                    </label>
+                </div>
+            </div>
+            <div id="ingredientsColumn" class="ingredients flex">
+                <h2>Ingredient list</h2>
+                <div id="ingredients" class="ingr-list wid100"></div>
+                <button id="btnRecipeSearch" onclick="searchRecipe()" class="btn-recipe-search hide" tabindex="3">
+                    &#9656; Recipy It! &#9666;
+                </button>
+            </div>
+            <div id="recipes" class="recipes flex"></div>
+        </div>
+    </div>
+
+    <script src="scripts/main.js"></script>
+</body>
+
+</html>
