@@ -1,64 +1,64 @@
-function removeElementsOnPage() {
-    var scripts = [];
-    while (document.body.firstChild) {
-        if (document.body.firstChild.localName == 'script') {
-            scripts.push(document.body.firstChild);
-        }
-        document.body.removeChild(document.body.firstChild);
-    }
-
-    scripts.forEach(script => {
-        document.body.appendChild(script);
-    });
+App.removeElementsOnPage = function () {
+    App.MAIN_DIV.innerHTML = ""
 }
-
-function createElementsForHomePage() {
+App.createElementsForHomePage = function () {
     //Making sure page is empty
-    removeElementsOnPage();
+    App.removeElementsOnPage();
 
-    var mainDiv = document.createElement('div');
     var headingsDiv = document.createElement('div');
     var h1 = document.createElement('h1');
     var h2 = document.createElement('h2');
     var categoryDiv = document.createElement('div');
     var scoreBoard = document.createElement('button');
     scoreBoard.addEventListener('click', () => {
-        loadScoreBoard();
+        App.loadScoreBoard();
     });
     scoreBoard.innerText = 'Score Board'
 
     h1.innerHTML = 'Anime Guessing Game';
     h2.innerHTML = 'Choose category';
 
-    mainDiv.classList.add('mainContainer');
     headingsDiv.classList.add('headingsContainer');
     categoryDiv.classList.add('categoriesContainer');
     scoreBoard.classList.add('scoreButton');
 
-    var categories = Global.CATEGORIES.map(({ name }) => name)
+    var categories = App.CATEGORIES.map(({ name }) => name)
     categories.forEach(category => {
         var categoryButton = document.createElement('button');
         categoryButton.classList.add('category');
         categoryButton.innerText = category.charAt(0).toUpperCase() + category.slice(1);;
         categoryButton.addEventListener('click', () => {
-            selectCategory(category);
+            App.selectCategory(category);
         });
         categoryDiv.appendChild(categoryButton);
     })
 
-    document.body.appendChild(mainDiv);
-    mainDiv.append(headingsDiv, categoryDiv, scoreBoard);
+    App.MAIN_DIV.append(headingsDiv, categoryDiv, scoreBoard);
     headingsDiv.append(h1, h2)
 }
 
-async function createElemntsForGuessing(category) {
+App.createElemntsForGuessing = function (category) {
     //Making sure page is empty
-    removeElementsOnPage();
+    App.removeElementsOnPage();
 
     // Creating elements
-    var mainDiv = document.createElement('div');
     var backHome = document.createElement('button');
     var h1 = document.createElement('h1');
+
+    var hintsDiv = document.createElement('div');
+
+    var showHits = document.createElement('button');
+    showHits.innerText = 'Show hints'
+    showHits.addEventListener('click', () => {
+        App.showHints();
+    });
+    var hintOne = document.createElement('p');
+    hintOne.style.visibility = "hidden";
+    var hintTwo = document.createElement('p');
+    hintTwo.style.visibility = "hidden";
+    var hintThree = document.createElement('p');
+    hintThree.style.visibility = "hidden";
+
     var questionDiv = document.createElement('div')
     var pictureDiv = document.createElement('div');
     var img = document.createElement('img');
@@ -66,15 +66,15 @@ async function createElemntsForGuessing(category) {
 
     var optionOne = document.createElement('button');
     optionOne.addEventListener('click', () => {
-        checkAnswer(category, 'one');
+        App.checkAnswer(category, 'one');
     });
     var optionTwo = document.createElement('button');
     optionTwo.addEventListener('click', () => {
-        checkAnswer(category, 'two');
+        App.checkAnswer(category, 'two');
     });
     var optionThree = document.createElement('button');
     optionThree.addEventListener('click', () => {
-        checkAnswer(category, 'three');
+        App.checkAnswer(category, 'three');
     });
 
     var nextQuestion = document.createElement('button');
@@ -83,16 +83,16 @@ async function createElemntsForGuessing(category) {
     h1.innerHTML = 'Category ' + category;
     backHome.innerText = 'Return to main menu';
     backHome.addEventListener('click', () => {
-        createElementsForHomePage();
+        App.createElementsForHomePage();
     });
     nextQuestion.innerText = 'Next question';
     nextQuestion.addEventListener('click', () => {
-        showNextQuestion(category);
+        App.showNextQuestion(category);
     });
 
     // Adding classes
-    mainDiv.classList.add('mainContainer');
-    questionDiv.classList.add('questionsContainer')
+    hintsDiv.classList.add('hintsContainer');
+    questionDiv.classList.add('questionsContainer');
     pictureDiv.classList.add('pictureContainer');
     answersDiv.classList.add('answersContainer');
     optionOne.classList.add('answer');
@@ -106,33 +106,35 @@ async function createElemntsForGuessing(category) {
     img.id = 'poster'
 
     // Appending to document
-    document.body.appendChild(mainDiv);
-    mainDiv.append(backHome, h1, questionDiv);
-    questionDiv.append(pictureDiv, answersDiv, nextQuestion)
-    pictureDiv.appendChild(img)
+    App.MAIN_DIV.append(backHome, h1, questionDiv);
+    hintsDiv.append(showHits, hintOne, hintTwo, hintThree);
+    questionDiv.append(hintsDiv, pictureDiv, answersDiv, nextQuestion);
+    pictureDiv.appendChild(img);
     answersDiv.append(optionOne, optionTwo, optionThree);
 
-    showNextQuestion(category);
+    App.IMG = document.getElementById('poster');
+    App.ANSWERS = document.querySelector(".answersContainer");
+    App.HINTS = document.querySelector(".hintsContainer");
+
+    App.showNextQuestion(category);
 }
 
-function loadScoreBoard() {
+App.loadScoreBoard = function () {
     //Making sure page is empty
-    removeElementsOnPage();
+    App.removeElementsOnPage();
 
-    var mainDiv = document.createElement('div');
     var backHome = document.createElement('button')
     backHome.innerText = 'Return to main menu';
     backHome.addEventListener('click', () => {
-        createElementsForHomePage();
+        App.createElementsForHomePage();
     });
 
     var h1 = document.createElement('h1');
     h1.innerHTML = 'Score in categories'
 
-    mainDiv.classList.add('mainContainer');
-    mainDiv.append(backHome, h1);
+    App.MAIN_DIV.append(backHome, h1);
 
-    Global.CATEGORIES.forEach(category => {
+    App.CATEGORIES.forEach(category => {
         var categoryDiv = document.createElement('div');
         categoryDiv.classList.add('categoryDivScore')
 
@@ -148,10 +150,8 @@ function loadScoreBoard() {
         var incorrect = document.createElement('h3');
         incorrect.innerHTML = 'Incorrect: ' + category.incorrect;
 
-        mainDiv.appendChild(categoryDiv);
+        App.MAIN_DIV.appendChild(categoryDiv);
         categoryDiv.append(h2, info);
         info.append(reached, correct, incorrect)
     })
-
-    document.body.appendChild(mainDiv);
 }
