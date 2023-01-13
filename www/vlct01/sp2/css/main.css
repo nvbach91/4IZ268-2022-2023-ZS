@@ -1,3 +1,12 @@
+iframe {
+    height: 100%;
+    width: 100%;
+}
+
+.modal-body {
+    height: 80vh;
+}
+
 .card-header {
     min-height: 200px;
     text-align: center;

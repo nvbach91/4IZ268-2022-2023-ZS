@@ -22,9 +22,10 @@
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
         integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 
+    <!-- Moment -->
+    <script src="https://momentjs.com/downloads/moment-with-locales.js"></script>
+
     <link href="./css/main.css" rel="stylesheet">
-
-
 </head>
 
 <body class="bg-light">
@@ -35,6 +36,19 @@
                 <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
             </div>
             <div class="toast-body" id="toastBody"></div>
+        </div>
+    </div>
+    <div class="modal fade" tabindex="-1" id="modal">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Detail článku</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <iframe id="articlePreviewIframe"></iframe>
+                </div>
+            </div>
         </div>
     </div>
     <main class="container card shadow mt-4 p-4">
@@ -50,7 +64,7 @@
         </ul>
         <section id="filtersSection" class="my-4">
             <h2>Filtr vyhledávání</h2>
-            <form class="row" role="search">
+            <form class="row" role="search" id="searchForm">
                 <div class="col-md-3">
                     <label for="keywordInput" class="form-label">Klíčová slova</label>
                     <input class="form-control me-2" type="search" placeholder="Klíčová slova..." id="keywordInput">
@@ -83,6 +97,10 @@
                     Pro vyhledání článků použijte formulář výše.
                 </div>
             </div>
+
+            <nav aria-label="page navigation">
+                <ul class="pagination justify-content-end" id="paginationUl"></ul>
+            </nav>
         </section>
     </main>
     <footer class="container py-4 mt-5 border-top">

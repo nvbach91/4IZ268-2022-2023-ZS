@@ -1,11 +1,15 @@
 $(document).ready(() => {
     (() => {
+        moment.locale(window.navigator.userLanguage || window.navigator.language);
+
         //API
         const baseSearchApiUrl = 'https://content.guardianapis.com/search';
         const baseSingleItemApiUrl = 'https://content.guardianapis.com/';
+        let requestedUrl;
         const apiKey = 'test';
 
         //Request form
+        const searchForm = $('#searchForm');
         const keywordInput = $('#keywordInput');
         const resultsFromInput = $('#resultsFromInput');
         const resultsToInput = $('#resultsToInput');
@@ -21,6 +25,12 @@ $(document).ready(() => {
         const spinner = $('<div class="d-flex justify-content-center align-items-center"><strong> Loading...</strong ><div class="spinner-border spinner-border-sm text-primary ms-2" role="status" aria-hidden="true"></div></div>');
         const toastElement = $('#toastElement');
         const toastBody = $('#toastBody');
+
+        const modal = $('#modal');
+
+        const articlePreviewIframe = $('#articlePreviewIframe');
+
+        const paginationUl = $('#paginationUl');
 
         //Prepends 0(s) to number if the number is not long enough.
         const formatNumber = (number, totalLength = 2) => {
@@ -50,19 +60,32 @@ $(document).ready(() => {
                         <h3 class="fs-5 card-title">
                             <a href="${article.webUrl}" class="text-decoration-none" target="_blank">${article.webTitle}</a>
                         </h3>
-                        <small class="text-muted" >${article.webPublicationDate}</small>
+                        <small class="text-muted" >${moment().format('LLL', article.webPublicationDate)}</small>
                         <p class="card-text mt-2">${article.fields.trailText || ''}</p>
                     </div>
                     <div class="card-footer px-0 bg-white d-flex justify-content-between">
-                        <a href="${article.webUrl}" target="_blank" class="btn btn-sm btn-primary">Číst více</a>
+                        <button type="button" class="btn btn-primary detail" data-url="${article.webUrl}">Číst více</button>
                         <button class="${!savedArticles ? 'read-later' : 'delete'} btn btn-sm btn-outline-${!savedArticles ? 'warning' : 'danger'}"><i class="${!savedArticles ? 'bi bi-star' : 'bi bi-trash'}"></i></button>
                     </div>
                 </div>
         `));
         }
 
+        const renderPagination = (pageCount) => {
+            let pagination = [];
+
+            for (let i = 1; i <= parseInt(pageCount); i++) {
+                pagination.push($(`<li class= "page-item"><button class="page-link" data-page="${i}">${i}</button></li>`));
+            }
+
+            paginationUl.empty().append(pagination);
+        }
+
         const fetch = (requestUrl, savedArticle = false) => {
-            requestUrl = `${requestUrl}${savedArticle ? '?' : '&'}show-fields=thumbnail,trailText&page-size=200&api-key=${apiKey}`
+            requestUrl = `${requestUrl}${savedArticle ? '?' : '&'}show-fields=thumbnail,trailText&api-key=${apiKey}`
+
+            articlesElement.empty().append(spinner);
+            articlesToAppend = [];
 
             $.getJSON(requestUrl, function (result) {
                 if (savedArticle) {
@@ -73,6 +96,8 @@ $(document).ready(() => {
                         articlesElement.empty().append('<div class="alert alert-info">Vámi zadanému klíčovému slovu neodpovídá žádný článek.</div>');
                         return;
                     }
+
+                    renderPagination(result.response.pages);
 
                     $.each(result.response.results, function (i, article) {
                         renderArticle(article, savedArticle);
@@ -88,7 +113,6 @@ $(document).ready(() => {
         //Event that handels form submission.
         $('form').submit((e) => {
             e.preventDefault();
-            articlesToAppend = [];
 
             articlesElement.empty();
             const keyWord = keywordInput.val().trim();
@@ -100,8 +124,6 @@ $(document).ready(() => {
                 return;
             }
 
-            articlesElement.append(spinner);
-
             const resultsFrom = resultsFromInput.val() || now;
             const resultsTo = resultsToInput.val() || weekBack;
             const sortBy = sortBySelect.val();
@@ -110,7 +132,11 @@ $(document).ready(() => {
 
             window.history.pushState(null, '', requestParameters);
 
-            fetch(baseSearchApiUrl + requestParameters);
+            requestedUrl = baseSearchApiUrl + requestParameters;
+
+            localStorage.setItem('url', JSON.stringify(requestedUrl));
+
+            fetch(requestedUrl);
         });
 
         //Gets articles from local storage and return them as an array.
@@ -163,9 +189,7 @@ $(document).ready(() => {
             homeLink.removeClass('active');
             savedArticlesLink.addClass('active');
 
-            articlesElement.empty().append(spinner);
             filtersSection.hide();
-            articlesToAppend = [];
 
             if (isStorageEmpty()) {
                 articlesElement.empty().append($('<div class="alert alert-info">Zatím nebyl uložen žádný článek.</div>'));
@@ -183,6 +207,7 @@ $(document).ready(() => {
             e.preventDefault();
 
             window.history.pushState(null, '', '?type=saved');
+            paginationUl.hide();
 
             renderSavedArticles();
         });
@@ -193,10 +218,19 @@ $(document).ready(() => {
             savedArticlesLink.removeClass('active');
             homeLink.addClass('active');
 
+            filtersSection.show();
+            paginationUl.show();
+
             flushParameters();
 
-            filtersSection.show();
-            articlesElement.empty().append($('<div class="alert alert-info">Pro vyhledání článků použijte formulář výše.</div>'));
+
+            const lastUrl = $.parseJSON(localStorage.getItem('url'));
+            if (lastUrl) {
+                fetch(lastUrl);
+                return;
+            }
+
+            articlesElement.articlesElement.empty().append($('<div class="alert alert-info">Pro vyhledání článků použijte formulář výše.</div>'));
         });
 
         //Handels article save request.
@@ -225,6 +259,7 @@ $(document).ready(() => {
             const urlParams = new URLSearchParams(queryString);
 
             articlesElement.empty();
+            const lastUrl = $.parseJSON(localStorage.getItem('url'));
 
             if (urlParams.get('q') != null) {
                 keywordInput.val(urlParams.get('q'));
@@ -232,15 +267,20 @@ $(document).ready(() => {
                 resultsToInput.val(urlParams.get('to-date') || now);
                 sortBySelect.val(urlParams.get('order-by') || sortBySelect.first().val());
 
-                articlesElement.empty().append(spinner);
-
                 fetch(baseSearchApiUrl + queryString);
+                return;
+            }
+            else if (lastUrl) {
+                fetch(lastUrl);
+                return;
             }
             else if (urlParams.get('type') != null && urlParams.get('type') == 'saved') {
                 renderSavedArticles();
+                return;
             }
             else {
                 articlesElement.empty().append($('<div class="alert alert-info">Pro vyhledání článků použijte formulář výše.</div>'));
+                return;
             }
         }
 
@@ -251,5 +291,21 @@ $(document).ready(() => {
 
         //Call method that checks parameters on entry
         checkUrlParameters();
+
+        //Show iframe as article detail
+        $(document).on('click', 'button.detail', function (event) {
+            modal.modal('show');
+            const clickedButton = $(event.target);
+            articlePreviewIframe.attr('src', clickedButton.data('url'));
+        });
+
+
+        $(document).on('click', 'button.page-link', function (event) {
+            const clickedButton = $(event.target);
+            clickedButton.parent().find('li').removeClass("active");
+            clickedButton.addClass('active');
+
+            fetch(`${requestedUrl || $.parseJSON(localStorage.getItem('url'))}&page=${clickedButton.data('page')}`);
+        });
     })();
 });
