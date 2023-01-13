@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Maven+Pro:wght@500&family=Work+Sans&display=swap"
         rel="stylesheet">
-    <script defer src="main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Quiz App</title>
 </head>
 
@@ -21,14 +21,28 @@
     <header class="header">
         <nav>
             <ul class="menu_nav">
-                <li class="home_address"><a href="./">Home</a> </li>
+                <li class="home_address"><a id="home" href="./">Home</a> </li>
             </ul>
         </nav>
     </header>
 
-
     <div class="quiz">
-        <div class="header">
+        <div id="trivia_categories_div">
+            <h3>Trivia Categories</h3>
+            <input type="number" id="limit">Limit
+            <ul class="categories" id="categories">
+                <li><input type="checkbox">Arts_and_Literature</li>
+                <li><input type="checkbox">Film_and_TV</li>
+                <li><input type="checkbox">Food_and_Drink</li>
+                <li><input type="checkbox">Geography</li>
+                <li><input type="checkbox">History</li>
+                <li><input type="checkbox">Music</li>
+                <li><input type="checkbox">Science</li>
+                <li><input type="checkbox">Society_and_Culture</li>
+                <li><input type="checkbox">Sport_and_Leisure</li>
+            </ul>
+        </div>
+        <div class="header">    
             <nav>
                 <ul class="menu_nav" id="menu_nav">
                     <li class="menu_nav_item" id="trivia">Trivia</li>
@@ -46,11 +60,13 @@
                 <div id="answers_btns" class="btn_grid">
                 </div>
             </div>
-            
+
             <div class="controls">
                 <button id="start_btn" class="start_btn hide">Start</button>
                 <button id="waifus_btn" class="start_btn hide">Start</button>
-                <button id="next_btn" class="next_btn hide">Next</button>   
+                <button id="prev_btn" class="prev_btn hide">Previous</button>
+                <button id="next_btn" class="next_btn hide">Next</button>
+
             </div>
         </div>
     </div>
@@ -62,6 +78,7 @@
     <footer>
         David Waller 2022
     </footer>
+    <script defer src="main.js"></script>
 </body>
 
 </html>

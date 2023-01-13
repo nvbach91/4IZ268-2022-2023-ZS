@@ -1,10 +1,7 @@
-(() => {
-    var script = document.createElement('script');
-    script.src = 'https://code.jquery.com/jquery-3.6.0.min.js';
-    document.getElementsByTagName('head')[0].appendChild(script);
+window.onload = (() => {
 
     var point_round;
-    var array;
+    var questions_array;
     var url = 0;
     var points = 0;
     var currentImageIndex;
@@ -24,26 +21,69 @@
     const waifusStartButton = document.getElementById('waifus_btn');
     waifusStartButton.addEventListener('click', startWaifus);
     startButton.addEventListener('click', startGame);
+    const triviaCategoryElement = document.getElementById("trivia_category");
+    const categoriesElement = document.getElementById("categories");
+    const limitElement = document.getElementById("limit");
+    const quizElement = document.getElementById("quiz");
+    const homeElement = document.getElementById("home");
+    homeElement.addEventListener('click', reset());
+    const triviaCategoriesDivElement = document.getElementById('trivia_categories_div');
+
+    const prevBtn = document.getElementById('prev_btn');
+
+    var previous_answer = null;
+    var tempStorage;
+
+
+    function reset() {
+        // ??
+    }
+
+    function getTriviaCategoryList() {
+        var categoryList;
+        var first = true;
+        Array.from(categoriesElement.children).forEach(e => {
+            if (e.firstChild.checked) {
+                if (first) {
+                    categoryList = e.innerText;
+                    first = false;
+                }
+                else {
+                    categoryList = categoryList + ',' + e.innerText;
+                }
+            }
+        });
+        return categoryList;
+    }
 
     function chooseTrivia() {
-        url = "https://the-trivia-api.com/api/questions?limit=20&categories=science,history";
+        tempStorage = [];
+        const category = getTriviaCategoryList();
+        console.log(category);
+        var limit = limitElement.value;
+        if (limitElement.value === "") {
+            limit = 10;
+        }
+        url = `https://the-trivia-api.com/api/questions?limit=${limit}&categories=${category}`
+        console.log(url);
         Array.from(navigationElement.children).forEach(e => {
             e.classList.add('hide');
         })
+        triviaCategoriesDivElement.classList.add('hide');
         startGame()
     }
 
     function startGame() {
+        prevBtn.classList.remove('hide');
         startButton.classList.add('hide')
         points = 0;
         currentImageIndex = 0;
         currentQuestionNumber = 1;
-        point_round = true;
         loadQuotes();
     }
 
     function loadQuotes() {
-        array = [];
+        questions_array = [];
         loading.classList.remove('hide');
         imageContainer.classList.add('hide');
         asnwerButtonElement.classList.add('hide');
@@ -57,22 +97,33 @@
                 loading.classList.add('hide');
                 imageContainer.classList.remove('hide');
                 asnwerButtonElement.classList.remove('hide');
-                array = JSON.parse(response['responseText']);
-                console.log(array);
-                setNextQuestion(array);
+                questions_array = JSON.parse(response['responseText']);
+                console.log(questions_array);
+                setNextQuestion(questions_array);
                 pointsElement.innerText = `Points: ${points} / ${currentQuestionNumber}`;
                 imageContainer.classList.remove('hide');
                 if (startButton.innerText !== 'Restart') {
                     nextButton.addEventListener('click', () => {
-                        point_round = true;
                         currentImageIndex = currentImageIndex + 1;
-                        currentQuestionNumber = currentQuestionNumber + 1;
+                        if (currentQuestionNumber < currentImageIndex + 1) {
+                            currentQuestionNumber = currentQuestionNumber + 1;
+                        }
                         pointsElement.innerText = `Points:  ${points} / ${currentQuestionNumber}`;
                         console.log(currentImageIndex);
-                        setNextQuestion(array);
+                        setNextQuestion(questions_array);
+                    })
+                    prevBtn.addEventListener('click', () => {
+                        if (currentImageIndex > 0) {
+                            currentImageIndex = currentImageIndex - 1;
+                        }
+                        previous_answer = null;
+                        pointsElement.innerText = `Points:  ${points} / ${currentQuestionNumber}`;
+                        console.log(currentImageIndex);
+                        setNextQuestion(questions_array);
                     })
                 }
             }
+
         });
     }
 
@@ -92,7 +143,16 @@
             button.innerText = answer;
             button.classList.add('btns_trivia');
             if (answer === question.correctAnswer) {
-                button.dataset.correct = answer.correct
+                console.log(answer + " " + question.correctAnswer)
+                button.dataset.correct = answer.correct;
+            }
+            if (tempStorage[currentImageIndex] !== undefined) {
+                if(button.innerText === tempStorage[currentImageIndex]){
+                    button.classList.add('orange');
+                }
+                else{
+                    setStatusClass(button,button.dataset.correct);
+                }
             }
             button.addEventListener('click', selectAnswer);
             asnwerButtonElement.appendChild(button);
@@ -101,17 +161,17 @@
 
     function resetState() {
         clearStatusClass(document.body)
-        nextButton.classList.add('hide')
-        while (asnwerButtonElement.firstChild) {
-            asnwerButtonElement.removeChild(asnwerButtonElement.firstChild)
-        }
+        asnwerButtonElement.innerHTML = "";
     }
+
 
     function selectAnswer(e) {
         const selectedButton = e.target
         const correct = selectedButton.dataset.correct
-        if (point_round) {
-            point_round = false;
+        if (tempStorage[currentImageIndex] === undefined) {
+            console.log(tempStorage[currentImageIndex]);
+            tempStorage[currentImageIndex] = selectedButton.innerText;
+            console.log(tempStorage);
             if (correct) {
                 points = points + 1;
             }
@@ -119,8 +179,19 @@
             Array.from(asnwerButtonElement.children).forEach(button => {
                 setStatusClass(button, button.dataset.correct)
             })
-            if (array.length > currentImageIndex + 1) {
+            console.log(questions_array.length + " " + currentImageIndex);
+            if (questions_array.length > currentImageIndex + 1) {
                 nextButton.classList.remove('hide')
+                if (currentImageIndex === 0) {
+                    prevBtn.classList.add('hide');
+                }
+                if (currentImageIndex === 9) {
+                    nextButton.classList.add('hide');
+                }
+                else {
+                    prevBtn.classList.remove('hide');
+                }
+                prevBtn.classList.remove('hide');
             } else if (waifu_game) {
                 waifusStartButton.innerText = 'Restart'
                 waifusStartButton.classList.remove('hide')
@@ -128,6 +199,8 @@
             else {
                 startButton.innerText = 'Restart'
                 startButton.classList.remove('hide')
+                nextButton.classList.add('hide');
+                prevBtn.classList.add('hide')
             }
             pointsElement.innerText = `Points:  ${points} / ${currentQuestionNumber}`;
         }
@@ -155,6 +228,7 @@
         Array.from(navigationElement.children).forEach(e => {
             e.classList.add('hide');
         })
+        triviaCategoriesDivElement.classList.add('hide');
         startWaifus();
     }
 
@@ -164,12 +238,11 @@
         points = 0;
         currentImageIndex = 0;
         currentQuestionNumber = 1;
-        point_round = true;
         loadWaifus();
     }
 
     function loadWaifus() {
-        array = [];
+        questions_array = [];
         loading.classList.remove('hide');
         imageContainer.classList.add('hide');
         asnwerButtonElement.classList.add('hide');
@@ -183,20 +256,19 @@
                 asnwerButtonElement.classList.remove('hide');
                 imageContainer.classList.remove('hide');
                 loading.classList.add('hide');
-                array = JSON.parse(response['responseText']);
-                console.log(array);
-                setNextWaifu(array);
+                questions_array = JSON.parse(response['responseText']);
+                console.log(questions_array);
+                setNextWaifu(questions_array);
                 pointsElement.innerText = `Points: ${points} / ${currentQuestionNumber}`;
                 imageContainer.classList.remove('hide');
-                showProgress(array);
+                showProgress(questions_array);
                 if (waifusStartButton.innerText !== 'Restart') {
                     nextButton.addEventListener('click', () => {
-                        point_round = true;
                         currentImageIndex = currentImageIndex + 1;
                         currentQuestionNumber = currentQuestionNumber + 1;
                         pointsElement.innerText = `Points:  ${points} / ${currentQuestionNumber}`;
                         console.log(currentImageIndex);
-                        setNextWaifu(array);
+                        setNextWaifu(questions_array);
                     })
                 }
             }
@@ -234,10 +306,10 @@
 
     const progrresElement = document.getElementById('progress');
     function showProgress(array) {
-        array.forEach(element => {
-            const div = document.createElement('div');
-            div.classList.add('square');
-            progrresElement.appendChild(div);
+        array.forEach(e => {
+            const button = document.createElement('button');
+            button.classList.add('square');
+            progrresElement.appendChild(button);
         });
     }
 })();

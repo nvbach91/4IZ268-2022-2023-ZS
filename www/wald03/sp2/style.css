@@ -116,11 +116,12 @@ img {
 }
 
 .start_btn,
-.next_btn {
+.next_btn,
+.prev_btn {
   font-size: larger;
   font-weight: bold;
   padding: 10px 20px;
-  width: 100%;
+  width: 50%;
 }
 
 .controls {
@@ -199,4 +200,18 @@ footer {
 
 .btns_trivia.wrong {
   --hue: var(--hue-wrong);
+}
+
+.categories {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  margin: 6px;
+}
+
+.orange{
+  background-color: white;
+  color: black;
 }
