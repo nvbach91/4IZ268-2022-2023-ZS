@@ -1,6 +1,6 @@
 (() => {
     const date = new Date();
-    let day = ("0" + (date.getDate()+1  )).slice(-2);
+    let day = ("0" + (date.getDate())).slice(-2);
     let month = ("0" + (date.getMonth() + 1)).slice(-2);
 
     let year = date.getFullYear();
