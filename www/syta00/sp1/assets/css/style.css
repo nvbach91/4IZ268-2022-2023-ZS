@@ -1,0 +1,447 @@
+* {
+    color: #222;
+    font-family: Verdana, Arial, sans-serif;
+}
+
+.justify {
+    text-align: justify;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+p {
+    font-size: 14px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    color: #ffcc33;
+}
+
+.header {
+    height: 40px;
+}
+
+.header h1 {
+    float: left;
+    font-size: 25px;
+    font-weight: lighter;
+    margin: 0;
+}
+
+.header img {
+    float: right;
+}
+
+.ul-nav {
+    background-color: #00414B;
+    margin: 0;
+    margin-bottom: 40px;
+    padding: 0;
+    position: relative;
+    width: auto;
+}
+
+.ul-nav>li {
+    border-left: #fff 1px solid;
+    color: #ffcc33;
+    display: inline-block;
+    margin-right: 1.2em;
+    padding: 8px 5px;
+    position: relative;
+}
+
+.ul-nav>li:last-child {
+    border-right: #fff 1px solid;
+    padding-right: 20px;
+}
+
+.ul-nav li.selected>a {
+    color: #ffcc33;
+}
+
+.ul-nav a {
+    color: #fff;
+    margin-left: 4px;
+}
+
+.ul-nav a:hover {
+    color: #ffcc33;
+}
+
+.ul-nav li:hover .ul-sub {
+    display: inline;
+}
+
+.ul-sub {
+    background-color: #00414B;
+    border-top: #fff 1px solid;
+    box-shadow: #222 0 2px 3px;
+    display: none;
+    left: 0;
+    padding: 4px;
+    position: absolute;
+    top: 100%;
+    z-index: 10;
+}
+
+.ul-sub li {
+    border-top: #ffcc33 2px solid;
+    display: block;
+    padding: 10px 4px;
+}
+
+.ul-sub li:first-child {
+    border: none;
+}
+
+.ul-sub a {
+    margin: 0;
+}
+
+.div-footer {
+    border-top: #00414B 1px solid;
+    height: 50px;
+    margin-top: 50px;
+    padding-top: 30px;
+}
+
+.div-footer a {
+    float: left;
+    padding: 10px;
+}
+
+.div-footer a:hover {
+    color: #ffcc33;
+}
+
+.div-footer p {
+    float: right;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+    padding: 8px 10px 0 0;
+}
+
+.copyrow {
+    background-color: #00414B;
+    color: #fff;
+    display: block;
+    height: 24px;
+}
+
+.copyrow p {
+    color: #fff;
+    font-size: 12px;
+    margin: 0 auto;
+    padding: 4px;
+    width: fit-content;
+}
+
+.flex {
+    display: flex;
+}
+
+.main {
+    flex-wrap: wrap;
+    padding: 10px;
+    width: fit-content;
+}
+
+.main img {
+    display: block;
+    height: auto;
+    width: 560px;
+}
+
+.tri-column {
+    margin-top: 20px;
+    width: calc(100%/3);
+}
+
+.tri-column img {
+    height: 70px;
+    width: 90%;
+}
+
+.tri-column p {
+    margin: 0;
+    padding: 8px 18px 8px 0;
+}
+
+.ul-content {
+    margin: 0;
+    padding: 0;
+}
+
+.ul-content li {
+    display: flex;
+    font-size: 14px;
+    margin-bottom: 6px;
+}
+
+.ul-content li>p {
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+}
+
+.tria-large li>p {
+    font-size: 12px;
+    padding-right: 3px;
+}
+
+a.flex>p {
+    margin: 0;
+    padding-right: 5px;
+    padding-top: 1px;
+}
+
+.side-column {
+    border-left: #00414B 2px solid;
+    height: fit-content;
+    margin-top: 6px;
+    padding: 0 1em 5em 6px;
+    width: 30%;
+}
+
+.side-column h3 {
+    margin: 0;
+    margin-bottom: 1em;
+}
+
+.side-column>a {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 1em;
+}
+
+.nav-scroll {
+    border-left: none;
+    margin-left: 67px;
+    margin-top: 3em;
+    position: sticky;
+    top: 197px;
+    width: 20%;
+}
+
+.nav-scroll li {
+    border-bottom: #00414B 2px solid;
+    display: flex;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+.nav-scroll li:first-child {
+    border-top: #00414B 2px solid;
+}
+
+.nav-scroll a {
+    padding: 10px 0;
+    width: 147px;
+}
+
+.nav-scroll a:hover, .nav-scroll a:hover>p {
+    color: #ffcc33;
+}
+
+.li-top a {
+    text-align: center;
+}
+
+.contentBlock {
+    margin-bottom: 6em;
+}
+
+.contentBlock:last-child {
+    margin-bottom: 1em;
+}
+
+.contentBlock h1 {
+    border-bottom: #ccc 2px solid;
+    color: #00414B;
+    margin-top: 0;
+    padding-bottom: 5px;
+}
+
+.div-article h3, .div-article p {
+    font-size: 14px;
+    margin: 2px;
+}
+
+.div-article h3 {
+    margin-top: 16px;
+}
+
+.contentBlock img, .contentBlock h1 {
+    width: 100%;
+}
+
+.contentBlock p {
+    text-align: justify;
+}
+
+.contentBlock h3 {
+    font-size: 14px;
+}
+
+.div-text-box {
+    background-color: #ccc;
+    font-size: 14px;
+    padding: 12px;
+}
+
+.compens h4 {
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+.compens h2 {
+    border-top: #00414B 2px solid;
+    font-size: 18px;
+    margin-top: 40px;
+    padding-top: 5px;
+}
+
+figure {
+    margin: 0;
+}
+
+figcaption {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.apply-now {
+    background-color: #ffcc33;
+    border: none;
+    border-bottom: #222 2px solid;
+    border-radius: 4px;
+    border-right: #222 2px solid;
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 25px;
+    padding: 16px;
+    text-align: center;
+    width: 100%;
+}
+
+.apply-now:hover {
+    border-bottom: #00414B 2px solid;
+    border-right: #00414B 2px solid;
+    color: #00414B;
+    cursor: pointer;
+}
+
+.contacts {
+    width: 80%;
+}
+
+.contacts a {
+    color: #00414B;
+}
+
+.contacts a:hover {
+    text-decoration: underline;
+}
+
+.contacts h4 {
+    margin: 0;
+}
+
+.contact-box {
+    border: #ffcc33 1px solid;
+    font-size: 14px;
+    padding: 5px;
+}
+
+.p-mail {
+    margin-top: 30px;
+}
+
+body {
+    margin: 0 auto;
+    min-width: 670px;
+    padding: 20px 10px 0;
+}
+
+@media screen and (min-width: 1024px) {
+    body {
+        margin: 0 auto;
+        width: 1024px;
+    }
+
+    .main img {
+        width: 720px;
+    }
+
+    .tri-column img {
+        height: 90px;
+        width: 90%;
+    }
+
+    .contentBlock img, .contentBlock h1 {
+        width: 100%;
+    }
+
+    .nav-scroll {
+        top: 185px;
+    }
+}
+
+@media print {
+    * { 
+        background: transparent !important; 
+        color: black !important; 
+        text-shadow: none !important; 
+    }
+
+    @page { 
+        margin: 1.5cm; 
+    }
+
+    .main > a > img {
+        display: inline !important;
+        width: 100%;
+    }
+
+    img, figure { 
+        display: none !important;
+    }
+
+    button {
+        display: none !important;
+    }
+
+    h1, h2, h3, h4 { 
+        page-break-after: avoid !important; 
+    }
+
+    .contentBlock{
+        margin-bottom: 20px !important;
+    }
+
+    .side-column {
+        display: none;
+    }
+
+    .div-footer {
+        height: none;
+        padding: 0;
+    }
+    .div-footer a {
+        display: none;
+    }
+    .div-footer p {
+        float: none;
+        margin: 0 auto;
+        padding: 0;
+        width: 219px;
+    }
+}
