@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Quiz App">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="./favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Maven+Pro:wght@500&family=Work+Sans&display=swap"
+        rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Quiz App</title>
+</head>
+
+<body>
+
+    <header class="header">
+        <nav>
+            <ul class="menu_nav">
+                <li class="home_address"><a id="home" href="./">Home</a> </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="quiz">
+        <div id="trivia_categories_div">
+            <h3>Trivia Categories</h3>
+            <input type="number" id="limit">Limit
+            <ul class="categories" id="categories">
+                <li><input type="checkbox">Arts_and_Literature</li>
+                <li><input type="checkbox">Film_and_TV</li>
+                <li><input type="checkbox">Food_and_Drink</li>
+                <li><input type="checkbox">Geography</li>
+                <li><input type="checkbox">History</li>
+                <li><input type="checkbox">Music</li>
+                <li><input type="checkbox">Science</li>
+                <li><input type="checkbox">Society_and_Culture</li>
+                <li><input type="checkbox">Sport_and_Leisure</li>
+            </ul>
+        </div>
+        <div class="header">    
+            <nav>
+                <ul class="menu_nav" id="menu_nav">
+                    <li class="menu_nav_item" id="trivia">Trivia</li>
+                    <li class="menu_nav_item" id="waifus">Waifus</li>
+                </ul>
+            </nav>
+        </div>
+
+        <img id="loading" class="loading hide" src="https://media.tenor.com/53TqyXtn6ikAAAAC/rem-re-zero.gif" alt="">
+
+        <div id="container" class="container">
+            <div id="image_container" class="hide">
+                <h3 id="points" class="points"></h3>
+                <div id="image" class="image"></div>
+                <div id="answers_btns" class="btn_grid">
+                </div>
+            </div>
+
+            <div class="controls">
+                <button id="start_btn" class="start_btn hide">Start</button>
+                <button id="waifus_btn" class="start_btn hide">Start</button>
+                <button id="prev_btn" class="prev_btn hide">Previous</button>
+                <button id="next_btn" class="next_btn hide">Next</button>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="progress" class="progress">
+
+    </div>
+
+    <footer>
+        David Waller 2022
+    </footer>
+    <script defer src="main.js"></script>
+</body>
+
+</html>
