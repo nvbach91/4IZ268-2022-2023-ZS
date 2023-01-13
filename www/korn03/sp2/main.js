@@ -1,6 +1,6 @@
 (() => {
     const date = new Date();
-    let day = ("0" + (date.getDate())).slice(-2);
+    let day = ("0" + (date.getDate()+1  )).slice(-2);
     let month = ("0" + (date.getMonth() + 1)).slice(-2);
 
     let year = date.getFullYear();
@@ -28,6 +28,16 @@
     const noProductsGuide = $("<p id='noProductsGuide'>Hmm... You still haven't searched for any product! Let's fix that. Enter any barcode in search above! <br><br> 8715700421360, for example.</p>");
     const searchDiv = $('<div class="searchDiv"></div>');
 
+    //// obhajoba
+    const checkCustomAttr = $('<div class="checkCustomAttr"></div>');
+    
+    const quantityCheckbox = $('<input type="checkbox" id="quantityCheckbox" name="quantityCheckbox" value="true" /><label for="quantityCheckbox">Quantity?</label>');
+    const nutrimentsCheckbox = $('<input type="checkbox" id="nutrimentsCheckbox" name="nutrimentsCheckbox" value="true" /><label for="nutrimentsCheckbox">Nutriments?</label>');
+    
+
+
+    ////
+
 
 
     const footer = $('<footer></footer>');
@@ -43,6 +53,13 @@
     sortAndDateDiv.append(sortButton);
     sortAndDateDiv.append(dateInput);
     searchDiv.append(sortAndDateDiv);
+
+    /// obhajova
+    checkCustomAttr.append(quantityCheckbox);
+    checkCustomAttr.append(nutrimentsCheckbox);
+
+    searchDiv.append(checkCustomAttr);
+    ///
 
     appContainer.append(searchDiv);
     appContainer.append(productsDiv);
@@ -151,22 +168,6 @@
             );
             const productCardStats = $('<ul class="productCardStats"></ul>');
             const productCardQuanity = $(`<li>Quantity: ${product.quantity || "no info"}</li>`);
-            const productCardEnergy = $(
-                `<li>Energy: ${product.nutriments.energy || "no info"} ${product.nutriments.energy_unit || ""}</li>`
-            );
-            const productCardCarbonhydrates = $(
-                `<li>Carbonhydrates: ${product.nutriments.carbohydrates || "no info"} ${product.nutriments.carbohydrates_unit || ""}</li>`
-            );
-            const productCardFat = $(
-                `<li>Fats: ${product.nutriments.fat || "no info"} ${product.nutriments.fat_unit || ""}</li>`
-            );
-            //const productCardFiber = $(`<li>${product.nutriments.fiber}</li>`);
-            const productCardProteins = $(
-                `<li>Protein: ${product.nutriments.proteins || "no info"} ${product.nutriments.proteins_unit || ""}</li>`
-            );
-            const productCardSugars = $(
-                `<li>Sugars: ${product.nutriments.sugars || "no info"} ${product.nutriments.sugars_unit || ""}</li>`
-            );
             const productCardRating = $(
                 `<h2 class="productCardRating">${product.nutriscore_grade || "?"}</h2>`
             );
@@ -180,13 +181,33 @@
             productCard.append(productCardInfo);
             productCardInfo.append(productCardTitle);
             productCardInfo.append(productCardStats);
-            productCardStats.append(productCardQuanity);
+            console.log("HasOwnProperty?"+product.hasOwnProperty('nutriments'));
+            if(product.hasOwnProperty('nutriments')){
+                const productCardEnergy = $(
+                    `<li>Energy: ${product.nutriments.energy || "no info"} ${product.nutriments.energy_unit || ""}</li>`
+                );
+                const productCardCarbonhydrates = $(
+                    `<li>Carbonhydrates: ${product.nutriments.carbohydrates || "no info"} ${product.nutriments.carbohydrates_unit || ""}</li>`
+                );
+                const productCardFat = $(
+                    `<li>Fats: ${product.nutriments.fat || "no info"} ${product.nutriments.fat_unit || ""}</li>`
+                );
+                //const productCardFiber = $(`<li>${product.nutriments.fiber}</li>`);
+                const productCardProteins = $(
+                    `<li>Protein: ${product.nutriments.proteins || "no info"} ${product.nutriments.proteins_unit || ""}</li>`
+                );
+                const productCardSugars = $(
+                    `<li>Sugars: ${product.nutriments.sugars || "no info"} ${product.nutriments.sugars_unit || ""}</li>`
+                );
             productCardStats.append(productCardEnergy);
             productCardStats.append(productCardCarbonhydrates);
             productCardStats.append(productCardFat);
             //productCardStats.append(productCardFiber);
             productCardStats.append(productCardProteins);
             productCardStats.append(productCardSugars);
+            }
+            productCardStats.append(productCardQuanity);
+            
             productCard.append(productCardRating);
 
             productCard.append(productCardDeleteButton);
@@ -221,6 +242,15 @@
         console.log("Init " + currentDate);
         console.log("test products: 8715700421360,8593807234713,5900020018403");
         retrieveItemsFromLocalStorage()
+
+        //obh
+
+        /*
+        quantityCheckbox.on('change', function () {
+            $('input[type=hidden]').val($(this).is(':checked'));
+        });
+        */
+        //
 
 
 
@@ -334,7 +364,12 @@
                         //jsonList.entries.push({ date: currentDate, products: [] });
                         localStorage.setItem("entries", JSON.stringify(jsonList));
                     }
-                    const url = `https://world.openfoodfacts.org/api/v2/search?code=${barInput.val()}&fields=code,product_name,generic_name,quantity,image_small_url,nutriments,nutriments_data,nutriscore_grade`;
+                    //const url = `https://world.openfoodfacts.org/api/v2/search?code=${barInput.val()}&fields=code,product_name,generic_name,quantity,image_small_url,nutriments,nutriments_data,nutriscore_grade`;
+                    ///obhajoba
+                    const url = `https://world.openfoodfacts.org/api/v2/search?code=${barInput.val()}&fields=code,product_name,generic_name,image_small_url,nutriscore_grade,${$("#quantityCheckbox").is(':checked') && ",quantity"},${$("#nutrimentsCheckbox").is(':checked') && ",nutriments"}`; //
+                    console.log(quantityCheckbox.val());
+                    console.log(url);
+                    //
                     barInput.removeClass("error");
                     barInput.val('');
                     barInput.attr("placeholder", "🔎︎ Search by barcode");

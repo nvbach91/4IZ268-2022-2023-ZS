@@ -505,3 +505,9 @@ footer {
         width: 10%;
     }
 }
+
+/* obh*/
+.checkCustomAttr{
+    display: flex;
+    flex-direction: row;
+}
