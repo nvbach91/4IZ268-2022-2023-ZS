@@ -18,8 +18,62 @@ body {
     background-color: #fff;
 }
 
+@media print {
+    @page {
+        size: A4;
+        margin: 0;
+        font-size: 10pt;
+    }
+    html, body {
+        width: 210mm;
+        height: 282mm;
+        font-size: 10pt;
+        background: #FFF;
+        overflow:visible;
+    }
+    body {
+        padding: 0;
+        margin: 0;
+    }
+    header nav, header .logo {
+        display: none;
+    }
+
+    footer p {
+        display: none;
+    }
+
+    .category-header p, .category-body h2 {
+        font-size: 18px !important;
+    }
+
+    .category-body {
+        margin-top: 12px !important;
+    }
+
+    .get-to-know {
+        margin-top: 10px !important;
+        gap: 10px !important;
+    }
+
+    .social-media {
+        gap: 10px !important;
+    }
+
+    .social-media-links {
+        gap: 10px !important;
+    }
+
+    hr {
+        display: none;
+    }
+}
+
 /* header & navbar styles */
 header {
+    position: fixed;
+    top: 0;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -50,6 +104,11 @@ header > nav > ul > li > a:hover {
     text-decoration-color: #7724FF;
 }
 
+.active {
+    color: #6116dc;
+    font-weight: 600;
+}
+
 /* main section styles */
 
 .content {
@@ -57,6 +116,7 @@ header > nav > ul > li > a:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 30px;
     padding: 100px 60px 40px 60px;
 }
 
@@ -125,6 +185,7 @@ header > nav > ul > li > a:hover {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
 .get-to-know > .links > a:first-child:hover {
     background: linear-gradient(90deg, #88a8e5 0%, #a67cf1 104.88%);
     -webkit-background-clip: text;
@@ -136,8 +197,21 @@ header > nav > ul > li > a:hover {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
 .get-to-know > .links > a:nth-child(2):hover {
     background: linear-gradient(90deg, #de59cc 0%, #e36f6f 104.88%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.get-to-know > .links > a:nth-child(3) {
+    background: linear-gradient(90deg, #3448d7 0%, #4887ec 104.88%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.get-to-know > .links > a:nth-child(3):hover {
+    background: linear-gradient(90deg, #5b6cd9 0%, #5880c5 104.88%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -239,11 +313,20 @@ hr {
     text-align: center;
 }
 
+.tech-list span {
+    font-weight: 600;
+    font-size: 16px;
+    text-align: center;
+    color: #3a6cbe;
+    margin-top: -18px;
+}
+
 .tech-list a:first-child {
     background: linear-gradient(90deg, #5B9DFF 0%, #7724FF 104.88%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
 .tech-list a:first-child:hover {
     background: linear-gradient(90deg, #8cb9ff 0%, #9a62ff 104.88%);
     -webkit-background-clip: text;
@@ -255,6 +338,7 @@ hr {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
 .tech-list a:nth-child(2):hover {
     background: linear-gradient(90deg, #63d7cb 0%, #5b58fa 104.88%);
     -webkit-background-clip: text;
@@ -266,6 +350,7 @@ hr {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
 .tech-list a:nth-child(3):hover {
     background: linear-gradient(90deg, #fa54ff 33.94%, #a44bee 71.47%);
     -webkit-background-clip: text;
@@ -277,7 +362,20 @@ hr {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
 .tech-list a:nth-child(4):hover {
+    background: linear-gradient(90deg, #de63d1 0%, #da7676 104.88%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.tech-list a:nth-child(5) {
+    background: linear-gradient(90deg, #D61CC3 0%, #F85454 104.88%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.tech-list a:nth-child(5):hover {
     background: linear-gradient(90deg, #de63d1 0%, #da7676 104.88%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;

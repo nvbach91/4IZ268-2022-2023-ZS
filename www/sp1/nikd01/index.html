@@ -9,18 +9,18 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="ie=edge" http-equiv="X-UA-Compatible">
     <title>Modern Web Technologies</title>
-    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon.png">
-    <link rel="apple-touch-icon" sizes="32x32" href="./assets/favicon/favicon.png"/>
+    <link href="./assets/favicon/favicon.png" rel="icon" sizes="32x32" type="image/png">
+    <link href="./assets/favicon/favicon.png" rel="apple-touch-icon" sizes="32x32"/>
     <link href="./assets/css/main.css" rel="stylesheet">
 </head>
 <body>
 <!--
-- html entity >
-- zvyrazneni aktivni polozky menu
-- externi odkaz _blank
-- odkaz na github bez uzivatele
-- chybi cela jedna stranka (minimalni pocet stranek je 5)
-- chybi verze pro tisk
+- html entity > (opraveno pomoci &gt;)
+- zvyrazneni aktivni polozky menu (opraveno)
+- externi odkaz _blank (opraveno)
+- odkaz na github bez uzivatele (opraveno)
+- chybi cela jedna stranka (minimalni pocet stranek je 5) (opraveno - pridana stranka full stack)
+- chybi verze pro tisk (opraveno, ale bohuzel nejde ve verzi pro tisk zobrazovat gradient)
 -->
 <header>
     <div class="logo">
@@ -30,6 +30,7 @@
         <ul>
             <li><a href="pages/front-end/">Front-End</a></li>
             <li><a href="pages/back-end/">Back-End</a></li>
+            <li><a href="pages/full-stack/">Full Stack</a></li>
             <li><a href="pages/contact/">Contact</a></li>
         </ul>
     </nav>
@@ -41,17 +42,20 @@
             <span>Here is a great place to start!</span>
         </div>
         <div class="right">
-            <img class="homepage-image" alt="main" src="assets/images/homepage-image.png">
+            <img alt="main" class="homepage-image" src="assets/images/homepage-image.png">
         </div>
     </section>
     <section class="get-to-know">
         <h2>Get to know about everything you were curious about!</h2>
         <div class="links">
-            <a href="pages/front-end/" class="link">
-                > FRONT-END STACK
+            <a class="link" href="pages/front-end/">
+                &gt; FRONT-END STACK
             </a>
-            <a href="pages/back-end/" class="link">
-                > BACK-END STACK
+            <a class="link" href="pages/back-end/">
+                &gt; BACK-END STACK
+            </a>
+            <a class="link" href="pages/full-stack/">
+                &gt; FULL STACK
             </a>
         </div>
     </section>
@@ -60,7 +64,7 @@
         <h2>Any questions?</h2>
         <div class="social-media-links">
             Contact me on GitHub 🙌
-            <a href="https://github.com" class="social-media-link">
+            <a class="social-media-link" href="https://github.com/dmitrynikolaev08" target="_blank">
                 <img alt="github" src="assets/images/github.svg">
                 dmitrynikolaev08
             </a>
