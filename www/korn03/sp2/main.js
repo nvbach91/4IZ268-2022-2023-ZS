@@ -30,10 +30,10 @@
 
     //// obhajoba
     const checkCustomAttr = $('<div class="checkCustomAttr"></div>');
-    
+
     const quantityCheckbox = $('<input type="checkbox" id="quantityCheckbox" name="quantityCheckbox" value="true" /><label for="quantityCheckbox">Quantity?</label>');
     const nutrimentsCheckbox = $('<input type="checkbox" id="nutrimentsCheckbox" name="nutrimentsCheckbox" value="true" /><label for="nutrimentsCheckbox">Nutriments?</label>');
-    
+
 
 
     ////
@@ -181,8 +181,8 @@
             productCard.append(productCardInfo);
             productCardInfo.append(productCardTitle);
             productCardInfo.append(productCardStats);
-            console.log("HasOwnProperty?"+product.hasOwnProperty('nutriments'));
-            if(product.hasOwnProperty('nutriments')){
+            console.log("HasOwnProperty?" + product.hasOwnProperty('nutriments'));
+            if (product.hasOwnProperty('nutriments')) {
                 const productCardEnergy = $(
                     `<li>Energy: ${product.nutriments.energy || "no info"} ${product.nutriments.energy_unit || ""}</li>`
                 );
@@ -199,15 +199,15 @@
                 const productCardSugars = $(
                     `<li>Sugars: ${product.nutriments.sugars || "no info"} ${product.nutriments.sugars_unit || ""}</li>`
                 );
-            productCardStats.append(productCardEnergy);
-            productCardStats.append(productCardCarbonhydrates);
-            productCardStats.append(productCardFat);
-            //productCardStats.append(productCardFiber);
-            productCardStats.append(productCardProteins);
-            productCardStats.append(productCardSugars);
+                productCardStats.append(productCardEnergy);
+                productCardStats.append(productCardCarbonhydrates);
+                productCardStats.append(productCardFat);
+                //productCardStats.append(productCardFiber);
+                productCardStats.append(productCardProteins);
+                productCardStats.append(productCardSugars);
             }
             productCardStats.append(productCardQuanity);
-            
+
             productCard.append(productCardRating);
 
             productCard.append(productCardDeleteButton);

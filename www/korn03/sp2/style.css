@@ -507,7 +507,7 @@ footer {
 }
 
 /* obh*/
-.checkCustomAttr{
+.checkCustomAttr {
     display: flex;
     flex-direction: row;
 }
