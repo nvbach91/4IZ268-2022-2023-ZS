@@ -6,7 +6,7 @@
     let year = date.getFullYear();
     let currentDate = `${year}-${month}-${day}`;
 
-    let nutrRatingAvg = "?";
+    let nutrRatingAvg = "";
 
 
 
@@ -109,6 +109,8 @@
                 case "d":
                     lettersToDigitsArr.push(2);
                     break;
+                case "e":
+                    lettersToDigitsArr.push(1);
             }
         });
         return lettersToDigitsArr;
@@ -121,7 +123,8 @@
     };
     const translateScoreToGrade = (score) => {
         let grade;
-        if (score < 2.3) grade = "D";
+        if (score < 2) grade = "E";
+        if (score >= 2 && score < 2.3) grade = "D";
         if (score >= 2.3 && score < 2.5) grade = "D+";
         if (score >= 2.5 && score < 3) grade = "C-";
         if (score >= 3 && score < 3.3) grade = "C";
@@ -140,32 +143,32 @@
                 `<div class="productCard" id="${entry.date}_${index}"></div>`
             );
             const productCardPicture = $(
-                `<img class="productCardPicture" src="${product.image_small_url}" alt="${product.product_name}+ photo"></img>`
+                `<img class="productCardPicture" src="${product.image_small_url || "./noPhotoImg.png"}" alt="${product.product_name}+ photo"></img>`
             );
             const productCardInfo = $(`<div class="productCardInfo"></div`);
             const productCardTitle = $(
-                `<h3 class="productCardTitle">${product.product_name}</h3>`
+                `<h3 class="productCardTitle">${product.product_name || "no info"}</h3>`
             );
             const productCardStats = $('<ul class="productCardStats"></ul>');
-            const productCardQuanity = $(`<li>Quantity: ${product.quantity}</li>`);
+            const productCardQuanity = $(`<li>Quantity: ${product.quantity || "no info"}</li>`);
             const productCardEnergy = $(
-                `<li>Energy: ${product.nutriments.energy} kJ</li>`
+                `<li>Energy: ${product.nutriments.energy || "no info"} ${product.nutriments.energy_unit || ""}</li>`
             );
             const productCardCarbonhydrates = $(
-                `<li>Carbonhydrates: ${product.nutriments.carbohydrates} ${product.nutriments.carbohydrates_unit}</li>`
+                `<li>Carbonhydrates: ${product.nutriments.carbohydrates || "no info"} ${product.nutriments.carbohydrates_unit || ""}</li>`
             );
             const productCardFat = $(
-                `<li>Fats: ${product.nutriments.fat} ${product.nutriments.fat_unit}</li>`
+                `<li>Fats: ${product.nutriments.fat || "no info"} ${product.nutriments.fat_unit || ""}</li>`
             );
             //const productCardFiber = $(`<li>${product.nutriments.fiber}</li>`);
             const productCardProteins = $(
-                `<li>Protein: ${product.nutriments.proteins} ${product.nutriments.proteins_unit}</li>`
+                `<li>Protein: ${product.nutriments.proteins || "no info"} ${product.nutriments.proteins_unit || ""}</li>`
             );
             const productCardSugars = $(
-                `<li>Sugars: ${product.nutriments.sugars} ${product.nutriments.sugars_unit}</li>`
+                `<li>Sugars: ${product.nutriments.sugars || "no info"} ${product.nutriments.sugars_unit || ""}</li>`
             );
             const productCardRating = $(
-                `<h2 class="productCardRating">${product.nutriscore_grade}</h2>`
+                `<h2 class="productCardRating">${product.nutriscore_grade || "?"}</h2>`
             );
 
             //delete button
@@ -205,6 +208,13 @@
 
     const removeSpinner = () => {
         $(".loadSpinnerContainer").remove();
+    }
+
+    function findIndexOfDate(list) {
+        const index = list.entries.findIndex(
+            (element) => element.date === currentDate
+        );
+        return index;
     }
 
     $(document).ready(function () {
@@ -299,12 +309,7 @@
             }
         });
 
-        function findIndexOfDate(list) {
-            const index = list.entries.findIndex(
-                (element) => element.date === currentDate
-            );
-            return index;
-        }
+
 
 
         /* Finding a product on enter*/
