@@ -23,6 +23,21 @@ const CountYourBudget = () => {
     });
     const { activeId, incomes, expenses } = state;
 
+    useEffect(() => {
+        const activeId = localStorage.getItem('activeId');
+        const incomes = localStorage.getItem('incomes');
+        const expenses = localStorage.getItem('expenses');
+        if (activeId) {
+            setState({ activeId: Number(activeId) });
+        }
+        if (incomes) {
+            setState({ incomes: JSON.parse(incomes) });
+        }
+        if (expenses) {
+            setState({ expenses: JSON.parse(expenses) });
+        }
+    }, []);
+
     const getCurrencyById = id => {
         return CURRENCY_LIST.find(item => item.id === id).name;
     };
@@ -32,6 +47,7 @@ const CountYourBudget = () => {
         const newIncomes = [...incomes];
         newIncomes[index].source = value;
         setState({ incomes: newIncomes });
+        localStorage.setItem('incomes', JSON.stringify(newIncomes));
     };
 
     const handleIncomesAmountChange = (e, index) => {
@@ -39,6 +55,7 @@ const CountYourBudget = () => {
         const newIncomes = [...incomes];
         newIncomes[index].amount = normalizeNumber(value);
         setState({ incomes: newIncomes });
+        localStorage.setItem('incomes', JSON.stringify(newIncomes));
     };
 
     const handleExpensesSourceChange = (e, index) => {
@@ -46,6 +63,7 @@ const CountYourBudget = () => {
         const newExpenses = [...expenses];
         newExpenses[index].source = value;
         setState({ expenses: newExpenses });
+        localStorage.setItem('expenses', JSON.stringify(newExpenses));
     };
 
     const handleExpensesAmountChange = (e, index) => {
@@ -53,6 +71,7 @@ const CountYourBudget = () => {
         const newExpenses = [...expenses];
         newExpenses[index].amount = normalizeNumber(value);
         setState({ expenses: newExpenses });
+        localStorage.setItem('expenses', JSON.stringify(newExpenses));
     };
 
     const getTotalIncome = () => {
@@ -80,11 +99,13 @@ const CountYourBudget = () => {
                 amount: '',
             });
             setState({ incomes: newIncomes });
+            localStorage.setItem('incomes', JSON.stringify(newIncomes));
         };
         const removeIncome = () => {
             const newIncomes = [...incomes];
             newIncomes.pop();
             setState({ incomes: newIncomes });
+            localStorage.setItem('incomes', JSON.stringify(newIncomes));
         };
         const getLastIncome = () => {
             return incomes[incomes.length - 1];
@@ -115,11 +136,13 @@ const CountYourBudget = () => {
                 amount: '',
             });
             setState({ expenses: newExpenses });
+            localStorage.setItem('expenses', JSON.stringify(newExpenses));
         };
         const removeExpense = () => {
             const newExpenses = [...expenses];
             newExpenses.pop();
             setState({ expenses: newExpenses });
+            localStorage.setItem('expenses', JSON.stringify(newExpenses));
         };
         const getLastExpense = () => {
             return expenses[expenses.length - 1];
@@ -154,7 +177,10 @@ const CountYourBudget = () => {
                                 className={`cursor-pointer ${
                                     activeId === item.id ? 'text-red-400 text-xl font-bold pb-0.5' : ''
                                 } hover:text-red-300`}
-                                onClick={() => setState({ activeId: item.id })}
+                                onClick={() => {
+                                    setState({ activeId: item.id });
+                                    localStorage.setItem('activeId', item.id);
+                                }}
                             >
                                 {item.name}
                             </li>
