@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    @apply bg-zinc-800 text-white font-inter;
+}
+
+h1 {
+    @apply text-3xl font-extrabold;
+}
+
+input[type="text"] {
+    @apply text-black focus:outline-none;
+}
+
+main {
+  min-height: calc(100vh - 3rem);
+}
