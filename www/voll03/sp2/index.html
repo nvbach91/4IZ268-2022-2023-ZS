@@ -31,7 +31,7 @@
                 <div class="filters-container">
                     <div class="filters-rating-wrapper">
                         <label for="rating">Rating:</label>
-                        <select name="rating">
+                        <select id="rating">
                             <option value="">--</option>
                             <option value="highest">From best</option>
                             <option value="lowest">From worst</option>
@@ -40,7 +40,7 @@
 
                     <div class="filters-genre-wrapper">
                         <label for="genre">Genre:</label>
-                        <select name="genre">
+                        <select id="genre">
                             <option value="">--</option>
                             <!-- and more -->
                         </select>
@@ -48,12 +48,12 @@
 
                     <div class="filters-year-wrapper">
                         <label for="year-from">Years:</label>
-                        <select name="year-from">
+                        <select id="year-from">
                             <option value="">--</option>
                             <!-- ... -->
                         </select>
                         <span>to</span>
-                        <select name="year-to">
+                        <select id="year-to">
                             <option value="">--</option>
                             <!-- ... -->
                         </select>
@@ -61,7 +61,7 @@
 
                     <div class="filters-origin-wrapper">
                         <label for="origin">Country:</label>
-                        <select name="origin">
+                        <select id="origin">
                             <option value="">--</option>
                         </select>
                     </div>
@@ -78,7 +78,6 @@
                 <ul>
                     <li><button id="btn-list-new">New Releases</button></li>
                     <li><button id="btn-list-popular">Most Popular</button></li>
-                    <hr>
                     <li><button id="btn-list-rated">Rated</button></li>
                     <li><button id="btn-list-favourites">Favourites</button></li>
                 </ul>

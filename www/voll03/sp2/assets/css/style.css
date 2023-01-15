@@ -407,10 +407,12 @@ footer p a {
 .movie-details-rating-panel i {
     font-size: 24px;
     color: #999;
+    padding-left: 1px;
+    padding-right: 1px;
 }
 
-.movie-details-rating-panel i .active {
-    color: #ffe600;
+.movie-details-rating-panel .active {
+    color: #e7bd00;
 }
 
 .movie-details-favourites>div i {

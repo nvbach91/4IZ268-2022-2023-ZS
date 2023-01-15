@@ -61,11 +61,11 @@
             btnMostPopular: $('#btn-list-popular')
         },
         Filters: {
-            selectRating: $('select[name="rating"]'),
-            selectGenre: $('select[name="genre"]'),
-            selectYearFrom: $('select[name="year-from"]'),
-            selectYearTo: $('select[name="year-to"]'),
-            selectCountry: $('select[name="origin"]')
+            selectRating: $('select[id="rating"]'),
+            selectGenre: $('select[id="genre"]'),
+            selectYearFrom: $('select[id="year-from"]'),
+            selectYearTo: $('select[id="year-to"]'),
+            selectCountry: $('select[id="origin"]')
         },
         searchForm: $('.movie-searchbar'),
         contentWrapper: $('.content-wrapper'),
@@ -523,6 +523,7 @@
         movieDetailsInfo.append(movieOverview);
 
         // genres
+        movieDetailsInfo.append($('<hr><h3>Genres</h3>'));
         const movieDetailsGenres = renderMovieGenres(movie);
         movieDetailsInfo.append(movieDetailsGenres);
         movieDetailsInfo.append($('<hr><h3>Details</h3>'));
@@ -573,11 +574,6 @@
     }
 
     const renderMovieGenres = (movie) => {
-        const resultElement = $(`
-        <hr>
-        <h3>Genres</h3>
-        `);
-
         const movieGenresElement = $('<div class="movie-details-genres"></div>');
         let genreElementList = [];
         movie.genres.forEach((genre) => {
@@ -586,8 +582,7 @@
         });
 
         movieGenresElement.append(genreElementList);
-        resultElement.append(movieGenresElement);
-        return resultElement;
+        return movieGenresElement;
     }
 
     const renderMovieMetadata = (movie) => {
@@ -598,7 +593,7 @@
             countryList.push(country.iso_3166_1);
         });
 
-        const countriesElement = $(`<p class="movie-details-origin">Production countries: ${countryList.join(', ')}</p>`);
+        const countriesElement = $(`<p class="movie-details-origin"><strong>Production countries:</strong> ${countryList.join(', ')}</p>`);
         movieMetadataElement.append(countriesElement);
 
         // language list
@@ -607,10 +602,10 @@
             languagesList.push(language.english_name);
         });
 
-        const languagesElement = $(`<p class="movie-details-languages">Languages: ${languagesList.join(', ')}</p>`);
+        const languagesElement = $(`<p class="movie-details-languages"><strong>Languages:</strong> ${languagesList.join(', ')}</p>`);
         movieMetadataElement.append(languagesElement);
 
-        const runtimeElement = $(` <p class="movie-details-runtime">Length: ${movie.runtime} minutes</p>`);
+        const runtimeElement = $(` <p class="movie-details-runtime"><strong>Length:</strong> ${movie.runtime} minutes</p>`);
         movieMetadataElement.append(runtimeElement);
         return movieMetadataElement;
     }
@@ -652,28 +647,29 @@
             actorList.push(person.name);
         });
 
+        console.log(composerList, actorList);
         if (directorsList !== undefined && directorsList.length > 0) {
-            const directorsElement = $(`<p class="movie-details-directors">Directors: ${directorsList.join(', ')}</p>`);
+            const directorsElement = $(`<p class="movie-details-directors"><strong>Directors:</strong> ${directorsList.join(', ')}</p>`);
             resultElement.append(directorsElement);
         }
 
         if (writersList !== undefined && writersList.length > 0) {
-            const writersElement = $(`<p class="movie-details-writers">Writers: ${writersList.join(', ')}</p>`);
+            const writersElement = $(`<p class="movie-details-writers"><strong>Writers:</strong> ${writersList.join(', ')}</p>`);
             resultElement.append(writersElement);
         }
 
         if (cameraList !== undefined && cameraList.length > 0) {
-            const cameraElement = $(`<p class="movie-details-camera">Camera: ${cameraList.join(', ')}</p>`);
+            const cameraElement = $(`<p class="movie-details-camera"><strong>Camera:</strong> ${cameraList.join(', ')}</p>`);
             resultElement.append(cameraElement);
         }
 
-        if (composerList !== undefined && composerList > 0) {
-            const composersElement = $(`<p class="movie-details-music">Music: ${composerList.join(', ')}</p>`);
+        if (composerList !== undefined && composerList.length > 0) {
+            const composersElement = $(`<p class="movie-details-music"><strong>Music:</strong> ${composerList.join(', ')}</p>`);
             resultElement.append(composersElement);
         }
 
-        if (actorList !== undefined && actorList > 0) {
-            const actorsElement = $(`<p class="movie-details-actors">Actors: ${cameraList.join(', ')}</p>`);
+        if (actorList !== undefined && actorList.length > 0) {
+            const actorsElement = $(`<p class="movie-details-actors"><strong>Actors:</strong> ${actorList.join(', ')}</p>`);
             resultElement.append(actorsElement);
         }
 
