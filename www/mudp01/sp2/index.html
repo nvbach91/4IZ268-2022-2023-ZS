@@ -26,7 +26,7 @@
             </div>
             <div id="divPinnedTasks" class="divPinnedTasks"></div>
             <div class="divSettings">
-                <img class="divSettingsImg" src="./img/settings.png" alt="settings image, click for adjusting settings">
+                <img id='logoutImg' class="divSettingsImg" src="./img/settings.png" alt="settings image, click for adjusting settings">
             </div>
         </div>
         <div class="divTasksCalendar">
@@ -38,11 +38,8 @@
             </div>
             <div class="divCalendar">
                 <div class="divCalendarHeading">
-                    <div class="divMonth">
-                        <p id="month"></p>
-                    </div>
-                    <div class="divYear">
-                        <p id="year"></p>
+                    <div class="dateDiv">
+                        <input id="date" type="month">
                     </div>
                 </div>
                 <div class="divCalendarBody" id="divCalendarBody"></div>
@@ -57,7 +54,8 @@
     </main>
     <script id="gapi" async defer src="https://apis.google.com/js/api.js" ></script>
     <script id="gis" async defer src="https://accounts.google.com/gsi/client" ></script>
-    <script src="js/script.js"></script>
+    <script id="jQuery" src="https://code.jquery.com/jquery-3.6.3.js" ></script>
+    <script src="js/newScript.js"></script>
 </body>
 
 </html>
