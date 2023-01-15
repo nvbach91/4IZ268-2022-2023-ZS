@@ -18,10 +18,12 @@
         },
         genreList: [],
         currentMovieList: [],
+        currentListing: null,
         fetchErrors: {
             fetchGenres: null,
             fetchCountries: null,
-            fetchMovieById: null
+            fetchMovieById: null,
+            fetchMovieCredits: null
         },
         init: () => {
             DOM.searchForm.submit((e) => {
@@ -29,13 +31,23 @@
             });
 
             DOM.Aside.btnNewReleases.click(() => {
-                App.Pagination.isRendered = false;
-                listLatest();
+                if (App.currentListing !== "Recently released") {
+                    App.Pagination.isRendered = false;
+                    App.currentListing = null;
+                    listLatest();
+                } else {
+                    renderMovieListing(App.currentMovieList);
+                }
             });
 
             DOM.Aside.btnMostPopular.click(() => {
-                App.Pagination.isRendered = false;
-                listMostPopular();
+                if (App.currentListing !== "Most popular") {
+                    App.Pagination.isRendered = false;
+                    App.currentListing = null;
+                    listMostPopular();
+                } else {
+                    renderMovieListing(App.currentMovieList);
+                }
             });
 
             setFilters();
@@ -178,6 +190,9 @@
         const genreElementList = renderGenreListing(movie.genres);
         metaDataElement.append(genreElementList);
 
+        // show details
+        movieCardElement.click(() => showDetails(App.currentMovieList[movie.index]));
+
         return movieCardElement;
     };
 
@@ -253,7 +268,7 @@
             // render btnFirst if first visible page is 3 or higher
             if (firstPage > 2) {
                 const btnFirstElement = $(`<button value="1">1</button>`);
-                btnFirstElement.click(()=> {
+                btnFirstElement.click(() => {
                     // list this page of movies from api
                     App.Pagination.currentPage = 1;
                     callback.apply();
@@ -337,6 +352,17 @@
         });
     }
 
+    const fetchMovieCredits = async (movie_id) => {
+        const url = API_STRINGS.BASE + `/movie/${movie_id}/credits` + API_STRINGS.KEY + "&sort=popularity";
+
+        return await axios.get(url).then((response) => {
+            return response.data;
+        }).catch((error) => {
+            App.fetchErrors.fetchMovieCredits = error;
+            return false;
+        });
+    }
+
     const showError = (error) => {
         DOM.contentPanel.empty();
 
@@ -360,13 +386,18 @@
         axios.get(url).then(async (response) => {
             App.Pagination.currentPage = response.data.page;
             App.currentMovieList = [];
+            App.currentListing = "Recently released"
 
             let movieList = response.data.results;
+            let movieIndex = 0;
             for (const movie of movieList) {
                 const movieDetails = await fetchMovieById(movie.id);
                 if (!movieDetails) {
                     break;
                 }
+
+                movieDetails.index = movieIndex;
+                movieIndex++;
 
                 App.currentMovieList.push(movieDetails);
             }
@@ -396,15 +427,20 @@
 
         axios.get(url).then(async (response) => {
             App.currentMovieList = [];
+            App.currentListing = "Most popular"
             // App.Pagination.maxPages = response.data.total_pages;
             App.Pagination.maxPages = 5;
 
             let movieList = response.data.results;
+            let movieIndex = 0;
             for (const movie of movieList) {
                 const movieDetails = await fetchMovieById(movie.id);
                 if (!movieDetails) {
                     break;
                 }
+
+                movieDetails.index = movieIndex;
+                movieIndex++;
 
                 App.currentMovieList.push(movieDetails);
             }
@@ -427,7 +463,222 @@
 
     const listRated = () => { };
 
-    const showDetails = (movie) => { };
+    const showDetails = async (movie) => {
+        DOM.contentPanel.empty();
+        DOM.pagination.remove();
+        App.Pagination.isRendered = false;
+
+        refreshErrorStatus();
+
+        // back to listing button
+        const btnBackToListing = $(`<button class="back-to-listing"><i class="fa fa-reply-all"></i>Back to movie listing</button>`);
+        btnBackToListing.click(() => {
+            refreshContentPanel(App.currentListing);
+            renderMovieListing(App.currentMovieList);
+
+            if (App.currentListing === "Most popular") {
+                renderPagination(listMostPopular);
+            }
+        });
+
+
+        // movie details container & info panel
+        const movieDetailsContainer = $('<div class="movie-details-container"></div>');
+        const movieDetailsInfo = $('<div class="movie-details-info"></div>');
+        movieDetailsInfo.html(`
+            <h2>${movie.title}</h2>
+            <hr>
+            <div class="movie-details-original-title-wrapper">
+                <p class="movie-details-original-title">${movie.original_title}</p>
+                <p class="movie-details-release-date">Released: ${(movie.release_date).substring(0, 4)}</p>
+            </div>
+        `);
+
+        // todo - rating in percentages
+        const movieDetailsRatingRowElement = $('<div class="movie-details-row"></div>');
+        movieDetailsRatingRowElement.html(`
+        <div class="movie-details-rating">
+            <div class="rating-high">${(parseFloat(movie.vote_average)).toFixed(2)}</div>
+            <p>Viewer rating</p>
+        </div>
+        `);
+
+        const starPanel = renderRatingPanel();
+        movieDetailsRatingRowElement.append(starPanel);
+
+        // todo check if movie is in favourites
+        const addToFavouritesElement = $(`
+        <div class="movie-details-favourites">
+            <div><i class="fa fa-heart"></i></div>
+        </div>`);
+        movieDetailsRatingRowElement.append(addToFavouritesElement);
+        movieDetailsInfo.append(movieDetailsRatingRowElement);
+
+        // overview
+        const movieOverview = $(`
+        <div class="movie-details-overview">
+            <h3>Overview</h3>
+            <p>${movie.overview}</p>
+        </div>`);
+        movieDetailsInfo.append(movieOverview);
+
+        // genres
+        const movieDetailsGenres = renderMovieGenres(movie);
+        movieDetailsInfo.append(movieDetailsGenres);
+        movieDetailsInfo.append($('<hr><h3>Details</h3>'));
+
+        // details & cast
+        const movieDetailsMeta = renderMovieMetadata(movie);
+        const movieDetailsCredits = await renderMovieCredits(movie);
+        movieDetailsInfo.append(movieDetailsMeta, movieDetailsCredits);
+
+        // image
+        const movieDetailsImage = $(`
+        <div class="movie-details-img">
+            <img src="${API_STRINGS.BASE_MOVIE_POSTER + movie.poster_path}" alt="Poster for the movie titled &quot;${movie.title}&quot;">
+        </div>`);
+
+        movieDetailsContainer.append(movieDetailsInfo, movieDetailsImage);
+        DOM.contentPanel.append(btnBackToListing, movieDetailsContainer);
+    };
+
+    const renderRatingPanel = () => {
+        const ratingContainer = $('<div class="movie-details-user-rating"></div>');
+        const ratingPanelElement = $('<div class="movie-details-rating-panel"></div>');
+
+        let starList = [];
+        for (let i = 0; i < 5; i++) {
+            const star = $('<i class="fa fa-star"></i>');
+            starList.push(star);
+        }
+
+        // todo check if movie is already rated
+
+        // star rating click event
+        starList.forEach((star, index) => {
+            star.click(() => {
+                // todo zapsat si hodnotu ratingu filmu a pak s ni dal pracovat
+                let userStarsRating = index + 1;
+
+                starList.forEach((star, index2) => {
+                    index >= index2 ? star.addClass("active") : star.removeClass("active");
+                });
+            });
+        });
+
+        ratingPanelElement.append(starList);
+        ratingContainer.append(ratingPanelElement);
+
+        return ratingContainer;
+    }
+
+    const renderMovieGenres = (movie) => {
+        const resultElement = $(`
+        <hr>
+        <h3>Genres</h3>
+        `);
+
+        const movieGenresElement = $('<div class="movie-details-genres"></div>');
+        let genreElementList = [];
+        movie.genres.forEach((genre) => {
+            const genreItemElement = $(`<div class="movie-details-genre">${genre.name}</div>`);
+            genreElementList.push(genreItemElement);
+        });
+
+        movieGenresElement.append(genreElementList);
+        resultElement.append(movieGenresElement);
+        return resultElement;
+    }
+
+    const renderMovieMetadata = (movie) => {
+        // production countries
+        const movieMetadataElement = $('<div class="movie-details-metadata">');
+        let countryList = [];
+        movie.production_countries.forEach((country) => {
+            countryList.push(country.iso_3166_1);
+        });
+
+        const countriesElement = $(`<p class="movie-details-origin">Production countries: ${countryList.join(', ')}</p>`);
+        movieMetadataElement.append(countriesElement);
+
+        // language list
+        let languagesList = [];
+        movie.spoken_languages.forEach((language) => {
+            languagesList.push(language.english_name);
+        });
+
+        const languagesElement = $(`<p class="movie-details-languages">Languages: ${languagesList.join(', ')}</p>`);
+        movieMetadataElement.append(languagesElement);
+
+        const runtimeElement = $(` <p class="movie-details-runtime">Length: ${movie.runtime} minutes</p>`);
+        movieMetadataElement.append(runtimeElement);
+        return movieMetadataElement;
+    }
+
+    const renderMovieCredits = async (movie) => {
+        const resultElement = $('<div class="movie-details-authors">');
+
+        const credits = await fetchMovieCredits(movie.id)
+        if (!credits) {
+            // todo error handling
+            console.log(App.fetchErrors.fetchMovieById);
+        }
+
+        let directorsList = [];
+        let writersList = [];
+        let cameraList = [];
+        let composerList = [];
+        let actorList = [];
+
+        credits.crew.forEach((person) => {
+            if (person.department === "Directing") {
+                directorsList.push(person.name);
+            }
+
+            if (person.department === "Writing") {
+                writersList.push(person.name);
+            }
+
+            if (person.department === "Camera") {
+                cameraList.push(person.name);
+            }
+
+            if (person.job === "Original Music Composer" && person.department === "Sound") {
+                composerList.push(person.name);
+            }
+        });
+
+        credits.cast.forEach((person) => {
+            actorList.push(person.name);
+        });
+
+        if (directorsList !== undefined && directorsList.length > 0) {
+            const directorsElement = $(`<p class="movie-details-directors">Directors: ${directorsList.join(', ')}</p>`);
+            resultElement.append(directorsElement);
+        }
+
+        if (writersList !== undefined && writersList.length > 0) {
+            const writersElement = $(`<p class="movie-details-writers">Writers: ${writersList.join(', ')}</p>`);
+            resultElement.append(writersElement);
+        }
+
+        if (cameraList !== undefined && cameraList.length > 0) {
+            const cameraElement = $(`<p class="movie-details-camera">Camera: ${cameraList.join(', ')}</p>`);
+            resultElement.append(cameraElement);
+        }
+
+        if (composerList !== undefined && composerList > 0) {
+            const composersElement = $(`<p class="movie-details-music">Music: ${composerList.join(', ')}</p>`);
+            resultElement.append(composersElement);
+        }
+
+        if (actorList !== undefined && actorList > 0) {
+            const actorsElement = $(`<p class="movie-details-actors">Actors: ${cameraList.join(', ')}</p>`);
+            resultElement.append(actorsElement);
+        }
+
+        return resultElement;
+    };
 
     const rateMovie = (rating) => { };
 
@@ -455,9 +706,14 @@
 
     const showPagination = (movies) => { };
 
+    const refreshErrorStatus = () => {
+        App.fetchErrors.fetchMovieById = null;
+        App.fetchErrors.fetchMovieCredits = null;
+    }
+
     const refreshContentPanel = (title) => {
         // reset fetch error status
-        App.fetchErrors.fetchMovieById = null;
+        refreshErrorStatus();
 
         // clear content panel
         DOM.contentPanel.empty();
