@@ -74,18 +74,33 @@ header {
     margin-left: 10px;
 }
 
-.movie-searchbar-filters {
+.movie-listing-filters {
     padding: 0 30px 20px 30px;
     background-color: rgb(42, 42, 42);
     border-radius: 16px;
 }
 
-.movie-searchbar-filters .filters-container {
+.movie-listing-filters .filters-container {
     display: flex;
     flex-direction: row;
     gap: 32px;
     flex-wrap: wrap;
 }
+
+.filters-container .filters-rating-wrapper select,
+.filters-container .filters-genre-wrapper select,
+.filters-container .filters-year-wrapper select,
+.filters-container .filters-country-wrapper select {
+   padding: 8px; 
+   max-width: 120px;
+   border-radius: 0px;
+   border: none;
+}
+
+.filters-container .filters-country-wrapper select {
+    max-width: 180px;
+ }
+
 
 .filters-container .filters-rating-wrapper label {
     padding-right: 10px;
@@ -101,7 +116,7 @@ header {
     padding-right: 10px;
 }
 
-.filters-container .filters-origin-wrapper label {
+.filters-container .filters-country-wrapper label {
     padding-right: 10px;
 }
 
@@ -161,6 +176,15 @@ aside nav ul li button {
     font-family: 'Oxanium', sans-serif;
     font-size: 18px;
 
+}
+
+
+#btn-apply-filters {
+    padding-left: 24px;
+    padding-right: 24px;
+    border: none;
+    border-radius: 12px;
+    margin-left: 10px;
 }
 
 #btn-list-rated,
@@ -294,6 +318,10 @@ footer p a {
 .movie-release-year {
     background-color: rgb(20, 20, 92);
     color: #fff;
+}
+
+.search-error {
+    text-align: center;
 }
 
 /** MOVIE DETAIL PAGE */
@@ -599,6 +627,11 @@ hr {
     .movie-details-img {
         min-width: 300px;
         max-width: 300px;
+    }
+
+    #btn-apply-filters {
+        padding-top: 8px;
+        padding-bottom: 8px;
     }
 }
 

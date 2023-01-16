@@ -19,6 +19,7 @@
         genreList: [],
         currentMovieList: [],
         currentListing: null,
+        currentSearchQuery: "",
         fetchErrors: {
             fetchGenres: null,
             fetchCountries: null,
@@ -28,25 +29,35 @@
         init: () => {
             DOM.searchForm.submit((e) => {
                 e.preventDefault();
+                refreshPagination();
+
+                App.currentListing = null;
+                App.currentSearchQuery = "";
+
+                listSearched();
+            });
+
+            DOM.btnApplyFilters.click(() => {
+                /*
+                    - nacist hodnoty ze selectu
+                        - kontrola jestli je vubec neco nastaveno - kdyz ne tak se nic nestane / nebo upozorneni uzivatele, ze nic nevybral
+                    - call na api a zavolat funkci na render seznamu filmu s prislusnymi pozadavky (kriteria na discover)
+                */
             });
 
             DOM.Aside.btnNewReleases.click(() => {
+                App.currentSearchQuery = "";
                 if (App.currentListing !== "Recently released") {
-                    App.Pagination.isRendered = false;
-                    App.currentListing = null;
+                    refreshPagination();
                     listLatest();
-                } else {
-                    renderMovieListing(App.currentMovieList);
                 }
             });
 
             DOM.Aside.btnMostPopular.click(() => {
+                App.currentSearchQuery = "";
                 if (App.currentListing !== "Most popular") {
-                    App.Pagination.isRendered = false;
-                    App.currentListing = null;
+                    refreshPagination();
                     listMostPopular();
-                } else {
-                    renderMovieListing(App.currentMovieList);
                 }
             });
 
@@ -68,6 +79,9 @@
             selectCountry: $('select[id="origin"]')
         },
         searchForm: $('.movie-searchbar'),
+        searchFormInput: $('#input-search-title'),
+        btnSearch: $('#btn-search'),
+        btnApplyFilters: $('#btn-apply-filters'),
         contentWrapper: $('.content-wrapper'),
         contentPanel: $('.content-panel'),
         pagination: $('.pagination'),
@@ -83,7 +97,8 @@
         PAGE: "&page=",
         GENRE_LIST: "genre/movie/list",
         COUNTRY_LIST: "configuration/countries",
-        DISCOVER: "discover/movie"
+        DISCOVER: "discover/movie",
+        SEARCH_MOVIE: "search/movie"
     };
 
     const setFilters = async () => {
@@ -236,11 +251,16 @@
         // -> push pagination accordingly so that there are always 5 pages visible
         if (App.Pagination.maxPages - App.Pagination.currentPage < 5) {
             lastPage = App.Pagination.maxPages;
-            firstPage = (App.Pagination.maxPages < 5) ? App.Pagination.maxPages : lastPage - 4;
+            firstPage = (App.Pagination.maxPages < 5) ? App.Pagination.firstVisiblePage : lastPage - 4;
         }
 
         // render only for the first time or when the pagination needs to be updated based on first page
         if (!App.Pagination.isRendered || (firstPage !== App.Pagination.firstVisiblePage)) {
+
+            if (firstPage !== App.Pagination.firstVisiblePage) {
+                DOM.pagination.remove();
+            }
+
             App.Pagination.isRendered = true;
 
             const paginationElement = $('<div class="pagination"></div>');
@@ -339,8 +359,6 @@
         });
     }
 
-    const fetchMovieByTitle = (title) => { };
-
     const fetchMovieById = async (id) => {
         const url = API_STRINGS.BASE + `movie/${id}` + API_STRINGS.KEY;
 
@@ -361,10 +379,46 @@
             App.fetchErrors.fetchMovieCredits = error;
             return false;
         });
-    }
+    };
+
+    const getMovieDetails = async (movieList) => {
+        let movieIndex = 0;
+        for (const movie of movieList) {
+            const movieDetails = await fetchMovieById(movie.id);
+            if (!movieDetails) {
+                break;
+            }
+
+            console.log(movieDetails);
+
+            // movie must have description, genre list, language list, runtime, prod. country list,
+            // rating, release date, poster and must be already released
+            if (movieDetails.overview !== null && movieDetails.overview.length > 0 && movieDetails.genres.length > 0
+                && movieDetails.spoken_languages.length > 0 && movieDetails.original_language.length > 0
+                && movieDetails.production_countries.length > 0 && movieDetails.runtime > 0
+                && movieDetails.release_date.length > 0 && movieDetails.vote_average > 0
+                && movieDetails.poster_path !== null && movieDetails.status !== null
+                && movieDetails.status === "Released") {
+
+                    movieDetails.index = movieIndex;
+                    movieIndex++;
+                    App.currentMovieList.push(movieDetails);
+            }
+
+        }
+
+        if (App.fetchErrors.fetchMovieById !== null) {
+            hideSpinner();
+            showError(App.fetchErrors.fetchMovieById);
+            return false;
+        }
+
+        return true;
+    };
 
     const showError = (error) => {
         DOM.contentPanel.empty();
+        DOM.searchFormInput.val("");
 
         const headingElement = $('<h2 class="content-panel-heading">Error</h2>');
         headingElement.appendTo(DOM.contentPanel);
@@ -372,6 +426,49 @@
         console.log(error);
 
         // todo vypsat error message na stránku
+    };
+
+    const listSearched = () => {
+        refreshContentPanel("Search results");
+        showSpinner();
+
+        if (App.currentSearchQuery === "" && DOM.searchFormInput.val() !== "") {
+            App.currentSearchQuery = DOM.searchFormInput.val();
+            DOM.pagination.remove();
+        }
+
+        DOM.searchFormInput.val('');
+
+        const url = API_STRINGS.BASE + API_STRINGS.SEARCH_MOVIE + API_STRINGS.KEY + `&query=${App.currentSearchQuery.split(' ').join('+')}`
+            + API_STRINGS.PAGE + App.Pagination.currentPage + `&include_adult=false&include_video=false`;
+
+        axios.get(url).then(async (response) => {
+            if (response.data.total_results === 0) {
+                const alertMessageElement = $(`<p class="search-error">No results found for "${App.currentSearchQuery}".</p>`);
+                DOM.contentPanel.append(alertMessageElement);
+                hideSpinner();
+                return;
+            }
+
+            App.currentMovieList = [];
+            App.currentListing = "Search results"
+
+            if (response.data.total_pages > 1) {
+                App.Pagination.maxPages = response.data.total_pages;
+            }
+
+            if (await getMovieDetails(response.data.results)) {
+                renderMovieListing(App.currentMovieList);
+                hideSpinner();
+
+                if (App.Pagination.maxPages > 1) {
+                    renderPagination(listSearched);
+                }
+            }
+        }).catch((error) => {
+            showError(error);
+            hideSpinner();
+        });
     }
 
     const listFiltered = (params) => { };
@@ -381,34 +478,16 @@
         DOM.pagination.remove();
         showSpinner();
 
-        const url = API_STRINGS.BASE + API_STRINGS.NEWEST + API_STRINGS.KEY + API_STRINGS.PAGE + "1";
+        const url = API_STRINGS.BASE + API_STRINGS.NEWEST + API_STRINGS.KEY + API_STRINGS.PAGE + App.Pagination.currentPage;
 
         axios.get(url).then(async (response) => {
-            App.Pagination.currentPage = response.data.page;
             App.currentMovieList = [];
             App.currentListing = "Recently released"
 
-            let movieList = response.data.results;
-            let movieIndex = 0;
-            for (const movie of movieList) {
-                const movieDetails = await fetchMovieById(movie.id);
-                if (!movieDetails) {
-                    break;
-                }
-
-                movieDetails.index = movieIndex;
-                movieIndex++;
-
-                App.currentMovieList.push(movieDetails);
+            if (await getMovieDetails(response.data.results)) {
+                renderMovieListing(App.currentMovieList);
+                hideSpinner();
             }
-
-            if (App.fetchErrors.fetchMovieById !== null) {
-                showError(App.fetchErrors.fetchMovieById)
-            }
-
-            renderMovieListing(App.currentMovieList);
-
-            hideSpinner();
         }).catch((error) => {
             showError(error);
             hideSpinner();
@@ -428,31 +507,13 @@
         axios.get(url).then(async (response) => {
             App.currentMovieList = [];
             App.currentListing = "Most popular"
-            // App.Pagination.maxPages = response.data.total_pages;
             App.Pagination.maxPages = 5;
 
-            let movieList = response.data.results;
-            let movieIndex = 0;
-            for (const movie of movieList) {
-                const movieDetails = await fetchMovieById(movie.id);
-                if (!movieDetails) {
-                    break;
-                }
-
-                movieDetails.index = movieIndex;
-                movieIndex++;
-
-                App.currentMovieList.push(movieDetails);
+            if (await getMovieDetails(response.data.results)) {
+                renderMovieListing(App.currentMovieList);
+                hideSpinner();
+                renderPagination(listMostPopular);
             }
-
-            if (App.fetchErrors.fetchMovieById !== null) {
-                showError(App.fetchErrors.fetchMovieById)
-            }
-
-            renderMovieListing(App.currentMovieList);
-            hideSpinner();
-
-            renderPagination(listMostPopular);
         }).catch((error) => {
             showError(error);
             hideSpinner();
@@ -478,6 +539,10 @@
 
             if (App.currentListing === "Most popular") {
                 renderPagination(listMostPopular);
+            }
+
+            if (App.currentListing === "Search results" && App.Pagination.maxPages > 1) {
+                renderPagination(listSearched);
             }
         });
 
@@ -647,34 +712,22 @@
             actorList.push(person.name);
         });
 
-        console.log(composerList, actorList);
-        if (directorsList !== undefined && directorsList.length > 0) {
-            const directorsElement = $(`<p class="movie-details-directors"><strong>Directors:</strong> ${directorsList.join(', ')}</p>`);
-            resultElement.append(directorsElement);
-        }
-
-        if (writersList !== undefined && writersList.length > 0) {
-            const writersElement = $(`<p class="movie-details-writers"><strong>Writers:</strong> ${writersList.join(', ')}</p>`);
-            resultElement.append(writersElement);
-        }
-
-        if (cameraList !== undefined && cameraList.length > 0) {
-            const cameraElement = $(`<p class="movie-details-camera"><strong>Camera:</strong> ${cameraList.join(', ')}</p>`);
-            resultElement.append(cameraElement);
-        }
-
-        if (composerList !== undefined && composerList.length > 0) {
-            const composersElement = $(`<p class="movie-details-music"><strong>Music:</strong> ${composerList.join(', ')}</p>`);
-            resultElement.append(composersElement);
-        }
-
-        if (actorList !== undefined && actorList.length > 0) {
-            const actorsElement = $(`<p class="movie-details-actors"><strong>Actors:</strong> ${actorList.join(', ')}</p>`);
-            resultElement.append(actorsElement);
-        }
+        appendCredits(resultElement, directorsList, "directors");
+        appendCredits(resultElement, writersList, "writers");
+        appendCredits(resultElement, cameraList, "camera");
+        appendCredits(resultElement, composerList, "music");
+        appendCredits(resultElement, actorList, "actors");
 
         return resultElement;
     };
+
+    const appendCredits = (movieCreditsElement, creditsList, listType) => {
+        if (creditsList !== undefined && creditsList.length > 0) {
+            const title = listType[0].toUpperCase() + listType.slice(1).toLowerCase();
+            const creditsElement = $(`<p class="movie-details-${listType}"><strong>${title}:</strong> ${creditsList.join(', ')}</p>`);
+            movieCreditsElement.append(creditsElement);
+        }
+    }
 
     const rateMovie = (rating) => { };
 
@@ -701,6 +754,16 @@
     };
 
     const showPagination = (movies) => { };
+
+    const refreshPagination = () => {
+        App.Pagination.currentPage = 1;
+        App.Pagination.firstVisiblePage = 1;
+        App.Pagination.lastVisiblePage = 5;
+        App.Pagination.maxPages = null;
+        App.Pagination.isRendered = false;
+
+        DOM.pagination.remove();
+    }
 
     const refreshErrorStatus = () => {
         App.fetchErrors.fetchMovieById = null;

@@ -21,54 +21,55 @@
         <form class="movie-searchbar">
             <h2>Search</h2>
             <div class="movie-searchbar-input-field">
-                <input type="text" id="input-search-title" name="movie-title-input" placeholder="Search for movie...">
+                <input type="text" id="input-search-title" name="movie-title-input" placeholder="Search for movie..." required>
                 <button id="btn-search" name="btn-search">Find</button>
             </div>
+        </form>
+        <div class="movie-listing-filters">
+            <h3>Listing filters</h3>
 
-            <div class="movie-searchbar-filters">
-                <h3>Listing filters</h3>
-
-                <div class="filters-container">
-                    <div class="filters-rating-wrapper">
-                        <label for="rating">Rating:</label>
-                        <select id="rating">
-                            <option value="">--</option>
-                            <option value="highest">From best</option>
-                            <option value="lowest">From worst</option>
-                        </select>
-                    </div>
-
-                    <div class="filters-genre-wrapper">
-                        <label for="genre">Genre:</label>
-                        <select id="genre">
-                            <option value="">--</option>
-                            <!-- and more -->
-                        </select>
-                    </div>
-
-                    <div class="filters-year-wrapper">
-                        <label for="year-from">Years:</label>
-                        <select id="year-from">
-                            <option value="">--</option>
-                            <!-- ... -->
-                        </select>
-                        <span>to</span>
-                        <select id="year-to">
-                            <option value="">--</option>
-                            <!-- ... -->
-                        </select>
-                    </div>
-
-                    <div class="filters-origin-wrapper">
-                        <label for="origin">Country:</label>
-                        <select id="origin">
-                            <option value="">--</option>
-                        </select>
-                    </div>
+            <div class="filters-container">
+                <div class="filters-rating-wrapper">
+                    <label for="rating">Rating:</label>
+                    <select id="rating">
+                        <option value="">--</option>
+                        <option value="highest">From best</option>
+                        <option value="lowest">From worst</option>
+                    </select>
                 </div>
 
+                <div class="filters-genre-wrapper">
+                    <label for="genre">Genre:</label>
+                    <select id="genre">
+                        <option value="">--</option>
+                        <!-- and more -->
+                    </select>
+                </div>
+
+                <div class="filters-year-wrapper">
+                    <label for="year-from">Years:</label>
+                    <select id="year-from">
+                        <option value="">--</option>
+                        <!-- ... -->
+                    </select>
+                    <span>to</span>
+                    <select id="year-to">
+                        <option value="">--</option>
+                        <!-- ... -->
+                    </select>
+                </div>
+
+                <div class="filters-country-wrapper">
+                    <label for="origin">Country:</label>
+                    <select id="origin">
+                        <option value="">--</option>
+                    </select>
+                </div>
+
+                <button id="btn-apply-filters" name="btn-apply-filters">Apply filters</button>
             </div>
-        </form>
+
+        </div>
     </header>
 
     <main>
