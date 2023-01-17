@@ -322,6 +322,83 @@ footer p a {
     text-align: center;
 }
 
+/** FAVOURITE & RATED MOVIE LISTS */
+.movie-list {
+    list-style-type: none;
+    padding: 20px;
+}
+
+.movie-list .movie-list-item {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 30px 30px;
+    gap: 20px;
+    max-width: 1000px;
+    margin-bottom: 10px;
+    box-shadow: inset 0px 0px 8px -2px rgba(0,0,0,0.3);
+    border: 1px solid rgba(0,0,0,0.25);
+    border-radius: 10px;
+}
+
+.movie-list .movie-list-item img {
+    max-height: 160px;
+    max-width: 100%;
+    box-shadow: 3px 6px 9px 2px rgba(0,0,0,0.3);
+}
+
+.movie-list .movie-list-item div {
+    flex: 1;
+    padding-left: 10px;
+}
+
+.movie-list-item button {
+    align-self: center;
+}
+
+.movie-list-item .show-details {
+    margin-left: 5px;
+    border: none;
+    color: #333;
+    background-color: #e9e9e9;
+    font-family: 'Oxanium';
+    font-size: 16px;
+    margin-bottom: 12px;
+    border-radius: 10px;
+    padding: 10px;
+    transition: 0.1s ease-out;
+}
+
+.movie-list-item .show-details:hover{
+    cursor: pointer;
+    text-decoration: underline;
+    background-color: #1a1a1a;
+    color: #e9dd77;
+}
+
+.movie-list-item .btn-list-remove {
+    margin-left: 5px;
+    border: none;
+    color: rgb(255, 255, 255);
+    background-color: #883b3b;
+    font-family: 'Oxanium';
+    font-size: 16px;
+    margin-bottom: 12px;
+    border-radius: 10px;
+    padding: 10px;
+    transition: 0.1s ease-out;
+}
+
+.movie-list-item .btn-list-remove:hover{
+    cursor: pointer;
+    text-decoration: underline;
+    background-color: #e9dd77;
+    color: #030303;
+}
+
 /** MOVIE DETAIL PAGE */
 .back-to-listing {
     margin-left: 5px;
@@ -414,12 +491,13 @@ footer p a {
 }
 
 .movie-details-rating>div,
-.movie-details-favourites>div {
+.movie-details-favourites>i {
     color: #fff;
     background-color: #111;
     border-radius: 50%;
     padding: 15px 10px;
     box-shadow: 2px 3px 14px -2px rgba(0, 0, 0, 0.75);
+    width: 64px;
 }
 
 .movie-details-user-rating {
@@ -441,10 +519,10 @@ footer p a {
     color: #e7bd00;
 }
 
-.movie-details-favourites>div i {
+.movie-details-favourites>i {
     font-size:24px;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .movie-details-genre {
@@ -453,9 +531,13 @@ footer p a {
     padding: 4px 18px;
 }
 
-.movie-details-favourites>div:hover {
+.movie-details-favourites>i:hover {
     cursor: pointer;
     color: rgb(163, 0, 0);
+} 
+
+.movie-details-favourites>.active {
+    color: #e9dd77;
 } 
 
 .rating-high {
@@ -681,6 +763,17 @@ hr {
 
     aside nav ul li button {
         text-align: center;
+    }
+
+    .movie-list .movie-list-item div { 
+        min-width: 80%
+    }
+
+    .movie-list .movie-list-item button { 
+        flex: 1;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        font-size: 18px;
     }
 }
 

@@ -3,7 +3,9 @@
         Pagination: {
             currentPage: 1,
             firstVisiblePage: 1,
-            maxPages: null
+            maxPages: null,
+            maxPerPage: 20,
+            nowShowing: 20
         },
         Filters: {
             rating: "",
@@ -80,6 +82,16 @@
                 }
             });
 
+            DOM.Aside.btnFavourites.click(() => {
+                if (App.currentListing !== "Favourites") {
+                    App.currentSearchQuery = "";
+                    clearSelectedFilters();
+                    refreshPagination();
+                    listFavourites();
+                }
+            });
+
+            setLocalStorage();
             setFilters();
         },
     };
@@ -88,7 +100,8 @@
     const DOM = {
         Aside: {
             btnNewReleases: $('#btn-list-new'),
-            btnMostPopular: $('#btn-list-popular')
+            btnMostPopular: $('#btn-list-popular'),
+            btnFavourites: $('#btn-list-favourites')
         },
         Filters: {
             selectRating: $('select[id="rating"]'),
@@ -119,6 +132,13 @@
         SEARCH_MOVIE: "search/movie",
         MISC_PARAMS: "&include_adult=false&include_video=false"
     };
+
+    const setLocalStorage = () => {
+        const favourites = [];
+        const rated = [];
+        localStorage.setItem('favourites', JSON.stringify(favourites));
+        localStorage.setItem('rated', JSON.stringify(rated));
+    }
 
     const setFilters = async () => {
         const genres = await fetchGenres();
@@ -469,8 +489,8 @@
 
         DOM.searchFormInput.val('');
 
-        const url = API.BASE + API.SEARCH_MOVIE + API.KEY + API.MISC_PARAMS 
-        + `&query=${App.currentSearchQuery.split(' ').join('+')}&page=${App.Pagination.currentPage}`;
+        const url = API.BASE + API.SEARCH_MOVIE + API.KEY + API.MISC_PARAMS
+            + `&query=${App.currentSearchQuery.split(' ').join('+')}&page=${App.Pagination.currentPage}`;
 
         axios.get(url).then(async (response) => {
             if (response.data.total_results === 0) {
@@ -554,7 +574,7 @@
             if (await getMovieDetails(response.data.results)) {
                 renderMovieListing(App.currentMovieList);
                 hideSpinner();
-                
+
                 if (App.Pagination.maxPages > 1) {
                     renderPagination(listFiltered);
                 }
@@ -612,7 +632,95 @@
         });
     };
 
-    const listFavourites = () => { };
+    const listFavourites = async () => {
+        refreshContentPanel("My favourite movies");
+        showSpinner();
+
+        App.currentMovieList = [];
+        App.currentListing = "Favourites";
+        // todo pagination
+        //App.Pagination.maxPages = Math.ceil(currentMovieList.length / 20);
+
+        const cachedFavList = JSON.parse(localStorage.getItem('favourites'));
+
+        if (cachedFavList.length === 0) {
+            const alertMessageElement = $('<p class="search-error">You have no movies in your favourites.</p>');
+            DOM.contentPanel.append(alertMessageElement);
+
+            if (App.Pagination.currentPage === 0) {
+                refreshPagination();
+                DOM.pagination.remove();
+            }
+
+            hideSpinner();
+            return;
+        }
+
+        // rozdelit po strankach 
+        App.Pagination.maxPerPage = 2;
+        App.Pagination.maxPages = Math.ceil(cachedFavList.length / App.Pagination.maxPerPage);
+        App.Pagination.nowShowing = (cachedFavList.length >= App.Pagination.maxPerPage) ? App.Pagination.maxPerPage : cachedFavList.length; 
+
+        const currentPageList = [];
+        const startIndex = (App.Pagination.currentPage > 1) ? (App.Pagination.currentPage - 1) * App.Pagination.maxPerPage : 0;
+        let lastIndex = (App.Pagination.currentPage === 0) ? 0 : (App.Pagination.currentPage * App.Pagination.maxPerPage) - 1;
+    
+        if (lastIndex + 1 >= cachedFavList.length) {
+            lastIndex = cachedFavList.length - 1;
+            App.Pagination.nowShowing = cachedFavList.length - startIndex;
+        }
+
+        for (let i = startIndex; i <= lastIndex; i++) {
+            currentPageList.push(cachedFavList[i]);
+        }
+        
+
+        if (await getMovieDetails(currentPageList)) { 
+            // todo tohle dat do vlastni funkce
+            const listElement = $('<ul class="movie-list"></ul>');
+
+            let listItems = [];
+            App.currentMovieList.forEach((movie) => {
+                const listItem = $(`<li class="movie-list-item">
+                    <img src="${API.BASE_MOVIE_POSTER + movie.poster_path}" alt="Poster for the movie called &quot;${movie.title}&quot;">
+                    <div>
+                        <h2>${movie.title}</h2>
+                        <p>${(movie.release_date).substring(0, 4)}</p>
+                    </div>
+                    <button class="show-details">Show movie details</button>
+                    <button class="btn-list-remove">Remove</button>
+                </li>`);
+    
+                listItem.find('.show-details').click(async () => {
+                    showDetails(movie);
+                });
+
+                listItem.find('.btn-list-remove').click(() => {
+                    removeFromFavourites(movie);
+                    listItem.remove();
+
+                    App.Pagination.nowShowing--;
+
+                    if (App.Pagination.nowShowing === 0) {
+                        App.Pagination.currentPage--;
+                        listFavourites();
+                    }
+                });
+
+                listItems.push(listItem);
+            });
+
+            listElement.append(listItems);
+            DOM.contentPanel.append(listElement);
+
+            hideSpinner();
+            renderPagination(listFavourites);
+        } else {
+            // todo error handling
+            console.log("spatne nacteni detailu filmu");
+        }
+
+     };
 
     const listRated = () => { };
 
@@ -626,6 +734,13 @@
         const btnBackToListing = $(`<button class="back-to-listing"><i class="fa fa-reply-all"></i>Back to movie listing</button>`);
         btnBackToListing.click(() => {
             refreshContentPanel(App.currentListing);
+            if (App.currentListing === "Favourites") {
+                listFavourites();
+                if (App.Pagination.maxPages > 1) {
+                    renderPagination(listFavourites);
+                }
+            }
+
             renderMovieListing(App.currentMovieList);
 
             if (App.currentListing === "Most popular") {
@@ -666,11 +781,42 @@
         const starPanel = renderRatingPanel();
         movieDetailsRatingRowElement.append(starPanel);
 
-        // todo check if movie is in favourites
-        const addToFavouritesElement = $(`
-        <div class="movie-details-favourites">
-            <div><i class="fa fa-heart"></i></div>
-        </div>`);
+        // add/remove from favourites
+        const addToFavouritesElement = $(`<div class="movie-details-favourites"></div>`);
+        
+        if (isFavourite(movie.id)) {
+            addToFavouritesElement.append($('<i class="fa fa-heart active"></i>'));
+            addToFavouritesElement.hover(function() {
+                $(this).find('i').removeClass('fa-heart');
+                $(this).find('i').addClass('fa-times-rectangle');
+            }, function () {
+                $(this).find('i').removeClass('fa-times-rectangle');
+                $(this).find('i').addClass('fa-heart');
+            });
+        } else {
+            addToFavouritesElement.append($('<i class="fa fa-heart"></i>'));
+        }
+ 
+        addToFavouritesElement.click((e) => {
+            if (isFavourite(movie.id)) {
+                removeFromFavourites(movie);
+
+                $(e.currentTarget).find('i').removeClass('active');
+
+            } else {
+                addToFavourites(movie);
+
+                $(e.currentTarget).find('i').addClass('active');
+                $(e.currentTarget).hover(function() {
+                    $(this).find('i').removeClass('fa-heart');
+                    $(this).find('i').addClass('fa-times-rectangle');
+                }, function () {
+                    $(this).find('i').removeClass('fa-times-rectangle');
+                    $(this).find('i').addClass('fa-heart');
+                });
+            }
+        })
+
         movieDetailsRatingRowElement.append(addToFavouritesElement);
         movieDetailsInfo.append(movieDetailsRatingRowElement);
 
@@ -826,13 +972,58 @@
 
     const rateMovie = (rating) => { };
 
-    const addToFavourites = (movie) => { };
+    const addToFavourites = (movie) => { 
+        const movieObject = {
+            id: movie.id,
+            title: movie.title,
+            release_date: movie.release_date,
+            poster: API.BASE_MOVIE_POSTER + movie.poster_path
+        }
+
+        let favList = JSON.parse(localStorage.getItem('favourites'));
+        favList.push(movieObject);
+
+        localStorage.setItem('favourites', JSON.stringify(favList));
+    };
+
+    const removeFromFavourites = (movie) => { 
+        let favList = JSON.parse(localStorage.getItem('favourites'));
+
+        if (favList.length === 0) {
+            return;
+        }
+
+        let foundRemoved = false;
+        favList.forEach((item, index) => {
+            if (item.id === movie.id) {
+                favList.splice(index, 1);
+                foundRemoved = true;
+            }
+        });
+
+        if (foundRemoved) {
+            localStorage.setItem('favourites', JSON.stringify(favList));
+        }
+    };
+
+    const isFavourite = (movie_id) => {
+        const favList = JSON.parse(localStorage.getItem('favourites'));
+        let result = false;
+
+        if (favList.length > 0) {
+            favList.forEach((item) => {
+                if (item.id === movie_id) {
+                    result = true;
+                }
+            });
+        }
+
+        return result;
+    }
 
     const addToRated = (movie) => { };
 
-    const deleteFromRated = (movie) => { };
-
-    const deleteFromFavourites = (movie) => { };
+    const removeFromRated = (movie) => { };
 
     const deleteAllRated = () => { };
 
@@ -863,10 +1054,10 @@
 
     const refreshFilters = () => {
         App.Filters.rating = "",
-        App.Filters.genre = "",
-        App.Filters.yearFrom = "",
-        App.Filters.yearTo = "",
-        App.Filters.country = ""
+            App.Filters.genre = "",
+            App.Filters.yearFrom = "",
+            App.Filters.yearTo = "",
+            App.Filters.country = ""
     };
 
     const clearSelectedFilters = () => {
