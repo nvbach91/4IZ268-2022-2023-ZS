@@ -6,7 +6,6 @@
         Pagination: {
             currentPage: 1,
             firstVisiblePage: 1,
-            lastVisiblePage: 5,
             maxPages: null,
             isRendered: false
         },
@@ -226,33 +225,28 @@
     }
 
     const calcFirstPage = (currentPage) => {
-        switch (currentPage % 5) {
-            case 0:
-                return currentPage - 4;
-            case 1:
-                return currentPage;
-            default:
-                return (currentPage + 1) - (currentPage % 5);
+        if (currentPage <= 5) {
+            return 1;
         }
+
+        let result = Math.floor(currentPage / 5);
+
+        if (currentPage < 15) {
+            if (currentPage === 10) {
+                return 6;
+            }
+
+            return result * 5 + 1;
+        }
+
+        return result * 5;
     }
 
     const renderPagination = (callback) => {
         let firstPage = calcFirstPage(App.Pagination.currentPage);
-        let lastPage = firstPage + 4;
 
-        // user clicked on last visible page and there are more available
-        // -> push pagination another 5 pages further
-        if (App.Pagination.currentPage === lastPage) {
-            lastPage = App.Pagination.currentPage + 4;
-            firstPage = App.Pagination.currentPage;
-        }
-
-        // user clicked on page that is getting close to the very last page
-        // -> push pagination accordingly so that there are always 5 pages visible
-        if (App.Pagination.maxPages - App.Pagination.currentPage < 5) {
-            lastPage = App.Pagination.maxPages;
-            firstPage = (App.Pagination.maxPages < 5) ? App.Pagination.firstVisiblePage : lastPage - 4;
-        }
+        let diff = App.Pagination.maxPages - firstPage;
+        let lastPage = (diff < 4) ? firstPage + diff : firstPage + 4;
 
         // render only for the first time or when the pagination needs to be updated based on first page
         if (!App.Pagination.isRendered || (firstPage !== App.Pagination.firstVisiblePage)) {
@@ -262,23 +256,27 @@
             }
 
             App.Pagination.isRendered = true;
+            App.Pagination.firstVisiblePage = firstPage;
 
             const paginationElement = $('<div class="pagination"></div>');
             const btnPrev = $('<button id="btn-pagination-prev">&lt;&lt;</button>');
             btnPrev.click(() => {
-                // list this page of movies from api
                 if (App.Pagination.currentPage !== 1) {
                     App.Pagination.currentPage--;
+
+                    changeActivePage();
+
                     callback.apply();
                 }
             });
 
             const btnNext = $('<button id="btn-pagination-next">&gt;&gt;</button>');
             btnNext.click(() => {
-                // list this page of movies from api
-
-                if (App.Pagination.currentPage !== App.Pagination.lastVisiblePage) {
+                if (App.Pagination.currentPage !== App.Pagination.maxPages) {
                     App.Pagination.currentPage++;
+
+                    changeActivePage();
+
                     callback.apply();
                 }
             });
@@ -286,10 +284,11 @@
             let paginationElementList = [btnPrev];
 
             // render btnFirst if first visible page is 3 or higher
-            if (firstPage > 2) {
+            if (firstPage >= 5) {
                 const btnFirstElement = $(`<button value="1">1</button>`);
-                btnFirstElement.click(() => {
-                    // list this page of movies from api
+                btnFirstElement.click((e) => {
+                    $(e.currentTarget).addClass('active').siblings().removeClass('active');
+
                     App.Pagination.currentPage = 1;
                     callback.apply();
                 });
@@ -302,11 +301,18 @@
             // render other page buttons
             for (let page = firstPage; page <= lastPage; page++) {
                 const btnPageElement = $(`<button value="${page}">${page}</button>`);
-                btnPageElement.click(() => {
-                    // list this page of movies from api
+
+                if (App.Pagination.currentPage === page) {
+                    btnPageElement.addClass('active');
+                }
+
+                btnPageElement.click((e) => {
+                    $(e.currentTarget).addClass('active').siblings().removeClass('active');
+
                     App.Pagination.currentPage = page;
                     callback.apply();
-                })
+                });
+
                 paginationElementList.push(btnPageElement);
             }
 
@@ -315,13 +321,13 @@
                 const btnLastElement = $(`
                     <button value="${App.Pagination.maxPages}">${App.Pagination.maxPages}</button>
                 `);
-                btnLastElement.click(() => {
-                    // list this page of movies from api
+                btnLastElement.click((e) => {
+                    $(e.currentTarget).addClass('active').siblings().removeClass('active');
                     App.Pagination.currentPage = App.Pagination.maxPages;
                     callback.apply();
                 });
 
-                if (App.Pagination.maxPages - lastPage > 1) {
+                if (App.Pagination.maxPages - lastPage >= 1) {
                     const dotsElement = $('<span>...</span>');
                     paginationElementList.push(dotsElement, btnLastElement);
                 } else {
@@ -335,6 +341,16 @@
             DOM.contentWrapper.append(paginationElement);
             DOM.pagination = $('.pagination');
         }
+    }
+
+    const changeActivePage = () => {
+        DOM.pagination.children().removeClass('active');
+        DOM.pagination.children().each(function() {
+            if (parseInt($(this).val()) === App.Pagination.currentPage) {
+                $(this).addClass('active');
+                return;
+            }
+        });
     }
 
     const fetchGenres = async () => {
@@ -388,8 +404,6 @@
             if (!movieDetails) {
                 break;
             }
-
-            console.log(movieDetails);
 
             // movie must have description, genre list, language list, runtime, prod. country list,
             // rating, release date, poster and must be already released
@@ -758,7 +772,6 @@
     const refreshPagination = () => {
         App.Pagination.currentPage = 1;
         App.Pagination.firstVisiblePage = 1;
-        App.Pagination.lastVisiblePage = 5;
         App.Pagination.maxPages = null;
         App.Pagination.isRendered = false;
 
