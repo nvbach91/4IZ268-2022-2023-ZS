@@ -5,8 +5,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="The Movie Database, TMDB, JavaScript app, 4IZ268, SP2, voll03, FIS VSE">
+    <meta name="author" content="Lukáš Volf (voll03)">
+    <meta name="description" content="Single-page JavaScript application simulating movie database; using TMDB API, jQuery, axios; 2nd semestral project for subject 4IZ268, FIS VSE, winter semester 2022">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oxanium&family=Quicksand&family=Rajdhani&display=swap">
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="./assets/img/favicon.ico" type="image/icon">
     <title>The Movie Database</title>
 </head>
 
@@ -33,8 +38,8 @@
                     <label for="rating">Rating:</label>
                     <select id="rating">
                         <option value="">--</option>
-                        <option value="highest">From best</option>
-                        <option value="lowest">From worst</option>
+                        <option value="vote_average.desc">Best</option>
+                        <option value="vote_average.asc">Worst</option>
                     </select>
                 </div>
 
@@ -68,7 +73,6 @@
 
                 <button id="btn-apply-filters" name="btn-apply-filters">Apply filters</button>
             </div>
-
         </div>
     </header>
 
@@ -115,77 +119,6 @@
                     <p>Good luck & have fun!</p>
                 </div>
 
-                <!--
-                <button class="back-to-listing"><i class="fa fa-reply-all"></i>Back to movie listing</button>
-
-                <div class="movie-details-container">
-                    <div class="movie-details-info">
-                        <h2>Název filmu</h2>
-                        <hr>
-                        <div class="movie-details-original-title-wrapper">
-                            <p class="movie-details-original-title">Originalni nazev filmu</p>
-                            <p class="movie-details-release-date">Released: 15. 12. 2022 </p>
-                        </div>
-                        <div class="movie-details-row">
-                            <div class="movie-details-rating">
-                                <div class="rating-high">90%</div>
-                                <p>Viewer rating</p>
-                            </div>
-
-                            <div class="movie-details-user-rating">
-                                <div class="movie-details-rating-panel">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                            </div>
-
-                            <div class="movie-details-favourites">
-                                <div><i class="fa fa-heart"></i></div>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="movie-details-overview">
-                            <h3>Overview</h3>
-                            <p>
-                                Puss in Boots discovers that his passion for adventure has taken its toll: He
-                                has burned through
-                                eight of his nine lives, leaving him with only one life left. Puss sets out on
-                                an epic journey
-                                to find the mythical Last Wish and restore his nine lives.
-                            </p>
-                        </div>
-                        <hr>
-                        <h3>Genres</h3>
-                        <div class="movie-details-genres">
-                            <div class="movie-details-genre">Action</div>
-                            <div class="movie-details-genre">Comedy</div>
-                            <div class="movie-details-genre">Sci-fi</div>
-                        </div>
-                        <hr>
-                        <h3>Details</h3>
-                        <div class="movie-details-metadata">
-                            <p class="movie-details-origin">Origin country: USA</p>
-                            <p class="movie-details-languages">Languages: EN</p>
-                            <p class="movie-details-runtime">Length: 2h 21m</p>
-                        </div>
-
-                        <div class="movie-details-authors">
-                            <p class="movie-details-directors">Directors: James Cameron</p>
-                            <p class="movie-details-writers">Writers: James Cameron</p>
-                            <p class="movie-details-camera">Camera: James Cameron</p>
-                            <p class="movie-details-music">Music: Hans Zimmer</p>
-                            <p class="movie-details-actors">Actors: xxx, xxx, xxx</p>
-                        </div>
-
-                    </div>
-                    <div class="movie-details-img">
-                        <img src="./assets/img/test.jpg" alt="test movie poster">
-                    </div>
-                </div>
-                -->
             </div>
         </section>
     </main>

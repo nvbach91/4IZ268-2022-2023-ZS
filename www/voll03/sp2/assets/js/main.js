@@ -1,19 +1,16 @@
 (() => {
-    // todo
-
-    // state object
     const App = {
         Pagination: {
             currentPage: 1,
             firstVisiblePage: 1,
-            maxPages: null,
-            isRendered: false
+            maxPages: null
         },
-        selectedParams: {
-            categories: [],
-            origin: "",
-            year: "",
-            rating: ""
+        Filters: {
+            rating: "",
+            genre: "",
+            yearFrom: "",
+            yearTo: "",
+            country: ""
         },
         genreList: [],
         currentMovieList: [],
@@ -28,6 +25,7 @@
         init: () => {
             DOM.searchForm.submit((e) => {
                 e.preventDefault();
+                clearSelectedFilters();
                 refreshPagination();
 
                 App.currentListing = null;
@@ -37,24 +35,46 @@
             });
 
             DOM.btnApplyFilters.click(() => {
-                /*
-                    - nacist hodnoty ze selectu
-                        - kontrola jestli je vubec neco nastaveno - kdyz ne tak se nic nestane / nebo upozorneni uzivatele, ze nic nevybral
-                    - call na api a zavolat funkci na render seznamu filmu s prislusnymi pozadavky (kriteria na discover)
-                */
+                refreshFilters();
+                if (DOM.pagination.length > 0) {
+                    DOM.pagination.remove();
+                }
+
+                App.Filters.rating = DOM.Filters.selectRating.val();
+                App.Filters.genre = DOM.Filters.selectGenre.val();
+                App.Filters.yearFrom = DOM.Filters.selectYearFrom.val();
+                App.Filters.yearTo = DOM.Filters.selectYearTo.val();
+                App.Filters.country = DOM.Filters.selectCountry.val();
+
+                // no filters selected check
+                if (App.Filters.rating === "" && App.Filters.genre === "" && App.Filters.yearFrom === ""
+                    && App.Filters.yearTo === "" && App.Filters.country === "") {
+                    alert('No filters selected!');
+                    return;
+                }
+
+                // yearTo < yearFrom
+                if (parseInt(App.Filters.yearFrom) > parseInt(App.Filters.yearTo)) {
+                    alert('Wrong release years selection!');
+                    return;
+                }
+
+                listFiltered();
             });
 
             DOM.Aside.btnNewReleases.click(() => {
-                App.currentSearchQuery = "";
                 if (App.currentListing !== "Recently released") {
+                    App.currentSearchQuery = "";
+                    clearSelectedFilters();
                     refreshPagination();
                     listLatest();
                 }
             });
 
             DOM.Aside.btnMostPopular.click(() => {
-                App.currentSearchQuery = "";
                 if (App.currentListing !== "Most popular") {
+                    App.currentSearchQuery = "";
+                    clearSelectedFilters();
                     refreshPagination();
                     listMostPopular();
                 }
@@ -88,16 +108,16 @@
     }
 
     // API strings
-    const API_STRINGS = {
+    const API = {
         BASE: "https://api.themoviedb.org/3/",
         BASE_MOVIE_POSTER: "https://image.tmdb.org/t/p/original",
         KEY: "?api_key=3ac4c22045a1dcb03ef960d46c30d0a2",
         NEWEST: "movie/now_playing",
-        PAGE: "&page=",
         GENRE_LIST: "genre/movie/list",
         COUNTRY_LIST: "configuration/countries",
         DISCOVER: "discover/movie",
-        SEARCH_MOVIE: "search/movie"
+        SEARCH_MOVIE: "search/movie",
+        MISC_PARAMS: "&include_adult=false&include_video=false"
     };
 
     const setFilters = async () => {
@@ -116,7 +136,7 @@
         renderGenreFilter(genres);
         renderCountryFilter(countries);
         renderYearFilters();
-    }
+    };
 
     const renderYearFilters = () => {
         const currentYear = new Date().getFullYear();
@@ -137,7 +157,7 @@
 
         DOM.Filters.selectYearFrom.append(yearsFrom);
         DOM.Filters.selectYearTo.append(yearsTo);
-    }
+    };
 
     const renderGenreFilter = (genres) => {
         let genreElementList = [];
@@ -147,7 +167,7 @@
         });
 
         DOM.Filters.selectGenre.append(genreElementList);
-    }
+    };
 
     const renderCountryFilter = (countries) => {
         let countryElementList = [];
@@ -159,7 +179,7 @@
         });
 
         DOM.Filters.selectCountry.append(countryElementList);
-    }
+    };
 
     const renderGenreListing = (genres) => {
         let genreElementList = [];
@@ -169,13 +189,13 @@
         });
 
         return genreElementList;
-    }
+    };
 
     const renderMovieCard = (movie) => {
         const movieCardElement = $(`
         <div class="movie-card">
             <div class="movie-card-poster">
-                <img src="${API_STRINGS.BASE_MOVIE_POSTER + movie.poster_path}" alt="Poster for the movie titled &quot;${movie.title}&quot;">
+                <img src="${API.BASE_MOVIE_POSTER + movie.poster_path}" alt="Poster for the movie titled &quot;${movie.title}&quot;">
             </div>
             <div class="movie-card-info">
                 <h3>${movie.title}</h3>
@@ -222,7 +242,7 @@
 
         movieCardWrapper.append(movieCardList);
         DOM.contentPanel.append(movieCardWrapper);
-    }
+    };
 
     const calcFirstPage = (currentPage) => {
         if (currentPage <= 5) {
@@ -240,7 +260,7 @@
         }
 
         return result * 5;
-    }
+    };
 
     const renderPagination = (callback) => {
         let firstPage = calcFirstPage(App.Pagination.currentPage);
@@ -248,14 +268,10 @@
         let diff = App.Pagination.maxPages - firstPage;
         let lastPage = (diff < 4) ? firstPage + diff : firstPage + 4;
 
-        // render only for the first time or when the pagination needs to be updated based on first page
-        if (!App.Pagination.isRendered || (firstPage !== App.Pagination.firstVisiblePage)) {
+        // render only for the first time or when the pagination needs to be updated
+        if (firstPage === 1 || firstPage !== App.Pagination.firstVisiblePage) {
+            DOM.pagination.remove();
 
-            if (firstPage !== App.Pagination.firstVisiblePage) {
-                DOM.pagination.remove();
-            }
-
-            App.Pagination.isRendered = true;
             App.Pagination.firstVisiblePage = firstPage;
 
             const paginationElement = $('<div class="pagination"></div>');
@@ -341,20 +357,20 @@
             DOM.contentWrapper.append(paginationElement);
             DOM.pagination = $('.pagination');
         }
-    }
+    };
 
     const changeActivePage = () => {
         DOM.pagination.children().removeClass('active');
-        DOM.pagination.children().each(function() {
+        DOM.pagination.children().each(function () {
             if (parseInt($(this).val()) === App.Pagination.currentPage) {
                 $(this).addClass('active');
                 return;
             }
         });
-    }
+    };
 
     const fetchGenres = async () => {
-        const url = API_STRINGS.BASE + API_STRINGS.GENRE_LIST + API_STRINGS.KEY;
+        const url = API.BASE + API.GENRE_LIST + API.KEY;
 
         return await axios.get(url).then((response) => {
             return response.data.genres;
@@ -362,10 +378,10 @@
             App.fetchErrors.fetchGenres = error;
             return false;
         });
-    }
+    };
 
     const fetchCountries = async () => {
-        const url = API_STRINGS.BASE + API_STRINGS.COUNTRY_LIST + API_STRINGS.KEY;
+        const url = API.BASE + API.COUNTRY_LIST + API.KEY;
 
         return await axios.get(url).then((response) => {
             return response.data;
@@ -373,10 +389,10 @@
             App.fetchErrors.fetchCountries = error;
             return false;
         });
-    }
+    };
 
     const fetchMovieById = async (id) => {
-        const url = API_STRINGS.BASE + `movie/${id}` + API_STRINGS.KEY;
+        const url = API.BASE + `movie/${id}` + API.KEY;
 
         return await axios.get(url).then((response) => {
             return response.data;
@@ -384,10 +400,10 @@
             App.fetchErrors.fetchMovieById = error;
             return false;
         });
-    }
+    };
 
     const fetchMovieCredits = async (movie_id) => {
-        const url = API_STRINGS.BASE + `/movie/${movie_id}/credits` + API_STRINGS.KEY + "&sort=popularity";
+        const url = API.BASE + `/movie/${movie_id}/credits` + API.KEY + "&sort=popularity";
 
         return await axios.get(url).then((response) => {
             return response.data;
@@ -414,9 +430,9 @@
                 && movieDetails.poster_path !== null && movieDetails.status !== null
                 && movieDetails.status === "Released") {
 
-                    movieDetails.index = movieIndex;
-                    movieIndex++;
-                    App.currentMovieList.push(movieDetails);
+                movieDetails.index = movieIndex;
+                movieIndex++;
+                App.currentMovieList.push(movieDetails);
             }
 
         }
@@ -453,8 +469,8 @@
 
         DOM.searchFormInput.val('');
 
-        const url = API_STRINGS.BASE + API_STRINGS.SEARCH_MOVIE + API_STRINGS.KEY + `&query=${App.currentSearchQuery.split(' ').join('+')}`
-            + API_STRINGS.PAGE + App.Pagination.currentPage + `&include_adult=false&include_video=false`;
+        const url = API.BASE + API.SEARCH_MOVIE + API.KEY + API.MISC_PARAMS 
+        + `&query=${App.currentSearchQuery.split(' ').join('+')}&page=${App.Pagination.currentPage}`;
 
         axios.get(url).then(async (response) => {
             if (response.data.total_results === 0) {
@@ -465,7 +481,7 @@
             }
 
             App.currentMovieList = [];
-            App.currentListing = "Search results"
+            App.currentListing = "Search results";
 
             if (response.data.total_pages > 1) {
                 App.Pagination.maxPages = response.data.total_pages;
@@ -483,20 +499,83 @@
             showError(error);
             hideSpinner();
         });
-    }
+    };
 
-    const listFiltered = (params) => { };
+    const getFilterParams = () => {
+        let params = "";
+        if (App.Filters.rating !== "") {
+            params += `&sort_by=${App.Filters.rating}&vote_count.gte=1000`;
+        }
+        if (App.Filters.genre !== "") {
+            params += `&with_genres=${App.Filters.genre}`;
+        }
+        if (App.Filters.yearFrom !== "") {
+            params += `&primary_release_date.gte=${App.Filters.yearFrom}-01-01`;
+        }
+        if (App.Filters.yearTo !== "") {
+            params += `&primary_release_date.lte=${App.Filters.yearTo}-12-31`;
+        }
+        if (App.Filters.country !== "") {
+            params += `&with_origin_country=${App.Filters.country}`;
+        }
+
+        return params;
+    };
+
+    const listFiltered = () => {
+        //https://api.themoviedb.org/3/discover/movie?api_key=3ac4c22045a1dcb03ef960d46c30d0a2
+        //&include_adult=false&include_video=false&sort_by=vote_average.desc&with_genres=1&page=1
+
+        // rating - sort_by=vote_average.desc / asc
+        // genre - with_genres=1,2,3, ...
+        // yearFrom - primary_release_date.gte=1990-01-01 
+        // yearTo - primary_release_date.lte=1990-31-12
+        // country - with_origin_country=FR
+        refreshContentPanel("Filtered movies");
+        showSpinner();
+
+        const url = API.BASE + API.DISCOVER + API.KEY
+            + API.MISC_PARAMS + getFilterParams() + "&page=" + App.Pagination.currentPage;
+
+
+        axios.get(url).then(async (response) => {
+            if (response.data.total_results === 0) {
+                const alertMessageElement = $(`<p class="search-error">No results found for selected filters.</p>`);
+                DOM.contentPanel.append(alertMessageElement);
+                hideSpinner();
+                return;
+            }
+
+
+            App.currentMovieList = [];
+            App.currentListing = "Filtered movies";
+            App.Pagination.maxPages = response.data.total_pages;
+
+            if (await getMovieDetails(response.data.results)) {
+                renderMovieListing(App.currentMovieList);
+                hideSpinner();
+                
+                if (App.Pagination.maxPages > 1) {
+                    renderPagination(listFiltered);
+                }
+            }
+        }).catch((error) => {
+            showError(error);
+            hideSpinner();
+        });
+    };
 
     const listLatest = () => {
         refreshContentPanel("Recently released");
         DOM.pagination.remove();
         showSpinner();
 
-        const url = API_STRINGS.BASE + API_STRINGS.NEWEST + API_STRINGS.KEY + API_STRINGS.PAGE + App.Pagination.currentPage;
+        const url = API.BASE + API.NEWEST + API.KEY
+            + "&page=" + App.Pagination.currentPage;
 
         axios.get(url).then(async (response) => {
             App.currentMovieList = [];
-            App.currentListing = "Recently released"
+            App.currentListing = "Recently released";
 
             if (await getMovieDetails(response.data.results)) {
                 renderMovieListing(App.currentMovieList);
@@ -514,13 +593,12 @@
         refreshContentPanel("Most popular");
         showSpinner();
 
-        const url = API_STRINGS.BASE + API_STRINGS.DISCOVER + API_STRINGS.KEY
-            + "&sort_by=popularity.desc&include_adult=false&include_video=false"
-            + API_STRINGS.PAGE + App.Pagination.currentPage;
+        const url = API.BASE + API.DISCOVER + API.KEY + API.MISC_PARAMS
+            + `&sort_by=popularity.desc&page=${App.Pagination.currentPage}`;
 
         axios.get(url).then(async (response) => {
             App.currentMovieList = [];
-            App.currentListing = "Most popular"
+            App.currentListing = "Most popular";
             App.Pagination.maxPages = 5;
 
             if (await getMovieDetails(response.data.results)) {
@@ -541,7 +619,6 @@
     const showDetails = async (movie) => {
         DOM.contentPanel.empty();
         DOM.pagination.remove();
-        App.Pagination.isRendered = false;
 
         refreshErrorStatus();
 
@@ -557,6 +634,10 @@
 
             if (App.currentListing === "Search results" && App.Pagination.maxPages > 1) {
                 renderPagination(listSearched);
+            }
+
+            if (App.currentListing === "Filtered movies" && App.Pagination.maxPages > 1) {
+                renderPagination(listFiltered);
             }
         });
 
@@ -615,7 +696,7 @@
         // image
         const movieDetailsImage = $(`
         <div class="movie-details-img">
-            <img src="${API_STRINGS.BASE_MOVIE_POSTER + movie.poster_path}" alt="Poster for the movie titled &quot;${movie.title}&quot;">
+            <img src="${API.BASE_MOVIE_POSTER + movie.poster_path}" alt="Poster for the movie titled &quot;${movie.title}&quot;">
         </div>`);
 
         movieDetailsContainer.append(movieDetailsInfo, movieDetailsImage);
@@ -650,7 +731,7 @@
         ratingContainer.append(ratingPanelElement);
 
         return ratingContainer;
-    }
+    };
 
     const renderMovieGenres = (movie) => {
         const movieGenresElement = $('<div class="movie-details-genres"></div>');
@@ -662,7 +743,7 @@
 
         movieGenresElement.append(genreElementList);
         return movieGenresElement;
-    }
+    };
 
     const renderMovieMetadata = (movie) => {
         // production countries
@@ -687,7 +768,7 @@
         const runtimeElement = $(` <p class="movie-details-runtime"><strong>Length:</strong> ${movie.runtime} minutes</p>`);
         movieMetadataElement.append(runtimeElement);
         return movieMetadataElement;
-    }
+    };
 
     const renderMovieCredits = async (movie) => {
         const resultElement = $('<div class="movie-details-authors">');
@@ -741,7 +822,7 @@
             const creditsElement = $(`<p class="movie-details-${listType}"><strong>${title}:</strong> ${creditsList.join(', ')}</p>`);
             movieCreditsElement.append(creditsElement);
         }
-    }
+    };
 
     const rateMovie = (rating) => { };
 
@@ -767,21 +848,34 @@
         DOM.spinner.remove();
     };
 
-    const showPagination = (movies) => { };
-
     const refreshPagination = () => {
         App.Pagination.currentPage = 1;
         App.Pagination.firstVisiblePage = 1;
         App.Pagination.maxPages = null;
-        App.Pagination.isRendered = false;
 
         DOM.pagination.remove();
-    }
+    };
 
     const refreshErrorStatus = () => {
         App.fetchErrors.fetchMovieById = null;
         App.fetchErrors.fetchMovieCredits = null;
-    }
+    };
+
+    const refreshFilters = () => {
+        App.Filters.rating = "",
+        App.Filters.genre = "",
+        App.Filters.yearFrom = "",
+        App.Filters.yearTo = "",
+        App.Filters.country = ""
+    };
+
+    const clearSelectedFilters = () => {
+        DOM.Filters.selectRating.val("");
+        DOM.Filters.selectGenre.val("");
+        DOM.Filters.selectYearFrom.val("");
+        DOM.Filters.selectYearTo.val("");
+        DOM.Filters.selectCountry.val("");
+    };
 
     const refreshContentPanel = (title) => {
         // reset fetch error status
@@ -794,7 +888,7 @@
         const headingElement = $(`<h2 class="content-panel-heading">${title}</h2>`);
 
         headingElement.appendTo(DOM.contentPanel);
-    }
+    };
 
     $(document).ready(() => {
         App.init();
