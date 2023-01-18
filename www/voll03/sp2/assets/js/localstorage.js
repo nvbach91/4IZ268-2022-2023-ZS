@@ -101,11 +101,3 @@ export const deleteAll = (type, callback) => {
     DOM.pagination.remove();
     callback.apply();
 };
-
-/**
- * Sets default localStorage values
- */
-export const setDefault = () => {
-    localStorage.setItem('favourites', JSON.stringify([]));
-    localStorage.setItem('rated', JSON.stringify([]));
-};

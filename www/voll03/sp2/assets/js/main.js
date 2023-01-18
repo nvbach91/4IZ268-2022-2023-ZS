@@ -31,7 +31,6 @@ import * as storage from './localstorage.js';
         init: function () {
             this.setSearchAndFilters();
             this.setAsideButtons();
-            storage.setDefault();
             setFilters();
 
             App.currentListing = "Recently released";
