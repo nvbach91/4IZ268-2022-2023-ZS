@@ -525,6 +525,10 @@ footer p a {
     height: 64px;
 }
 
+.movie-details-rating>div {
+    padding-right: 5px;
+}
+
 .movie-details-user-rating {
     padding-left: 8px;
     flex-direction: column;
