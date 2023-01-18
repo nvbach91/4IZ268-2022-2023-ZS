@@ -7,8 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="The Movie Database, TMDB, JavaScript app, 4IZ268, SP2, voll03, FIS VSE">
     <meta name="author" content="Lukáš Volf (voll03)">
-    <meta name="description" content="Single-page JavaScript application simulating movie database; using TMDB API, jQuery, axios; 2nd semestral project for subject 4IZ268, FIS VSE, winter semester 2022">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oxanium&family=Quicksand&family=Rajdhani&display=swap">
+    <meta name="description"
+        content="Single-page JavaScript application simulating movie database; using TMDB API, jQuery, axios; 2nd semestral project for subject 4IZ268, FIS VSE, winter semester 2022">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Oxanium&family=Quicksand&family=Rajdhani&display=swap">
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" href="./assets/img/favicon.ico" type="image/icon">
@@ -16,8 +18,6 @@
 </head>
 
 <body>
-
-    <!-- header w/ logo, title & searchbar -->
     <header>
         <div class="header-banner">
             <img src="./assets/img/logo.svg" alt="TMDB logo" width="128" height="72">
@@ -26,7 +26,8 @@
         <form class="movie-searchbar">
             <h2>Search</h2>
             <div class="movie-searchbar-input-field">
-                <input type="text" id="input-search-title" name="movie-title-input" placeholder="Search for movie..." required>
+                <input type="text" id="input-search-title" name="movie-title-input" placeholder="Search for movie..."
+                    required>
                 <button id="btn-search" name="btn-search">Find</button>
             </div>
         </form>
@@ -47,7 +48,6 @@
                     <label for="genre">Genre:</label>
                     <select id="genre">
                         <option value="">--</option>
-                        <!-- and more -->
                     </select>
                 </div>
 
@@ -55,12 +55,10 @@
                     <label for="year-from">Years:</label>
                     <select id="year-from">
                         <option value="">--</option>
-                        <!-- ... -->
                     </select>
                     <span>to</span>
                     <select id="year-to">
                         <option value="">--</option>
-                        <!-- ... -->
                     </select>
                 </div>
 
@@ -77,53 +75,31 @@
     </header>
 
     <main>
-        <!-- sidebar navigation -->
         <aside>
             <nav>
                 <ul>
                     <li><button id="btn-list-new">New Releases</button></li>
                     <li><button id="btn-list-popular">Most Popular</button></li>
+                    <li>
+                        <hr>
+                    </li>
                     <li><button id="btn-list-rated">Rated</button></li>
                     <li><button id="btn-list-favourites">Favourites</button></li>
+                    <li>
+                        <hr>
+                    </li>
+                    <li><button id="btn-about">About</button></li>
                 </ul>
             </nav>
         </aside>
 
-        <!-- content panel -->
         <section class="content-wrapper">
             <div class="content-panel">
-                <h2 class="content-panel-heading">Vítejte!</h2>
-                <div class="home-text-panel">
-                    <p>Právě se nacházíte na stránkách webové aplikace, kterou jsem vytvořil pro účely kurzu 4IZ268 -
-                        Webové
-                        Technologie vyučovaném na Fakultě informatiky a statistiky Vysoké školy ekonomické v Praze. Tato
-                        webová aplikace
-                        simuluje filmovou databázi a vychází z již podobných existujících webů tohoto typu (např.
-                        <a href="https://www.csfd.cz">CSFD</a>, <a href="https://www.imdb.com">IMDB</a>,
-                        <a href="https://www.themoviedb.org/">TMDB</a> apod.).
-                    </p>
-                    <p>Uživatel aplikace může v databázi vyhledávat filmy a zobrazovat si jejich seznamy podle vybraných
-                        kategorií. Každý film si může rozkliknout detailněji a přidat mu vlastní hodnocení, nebo si
-                        tento
-                        film může také zařadit do seznamu svých oblíbených filmů.</p>
-                    <p>Pro vyhledání libovolného filmu z databáze stačí zadat jeho název do vyhledávače v záhlaví.
-                        Ve vyhledávači je implementováno i jednoduché filtrování. V levé postranní liště jsou rovněž
-                        dostupné základní filtrované seznamy filmů, včetně seznamů uživatelem hodnocených a oblíbených
-                        filmů.</p>
-                    <p>Aplikace je napsaná v JavaScriptu s použitím externích knihoven
-                        <a href="https://api.jquery.com/">jQuery</a> a <a
-                            href="https://axios-http.com/docs/intro">Axios</a>. Pro zobrazení obsahu
-                        využívá <a href="https://developers.themoviedb.org/3">The Movie Database API</a>.
-                        Pro ukládání hodnocení a seznamu oblíbených filmů se využívá pouze localstorage v prohlížeči.
-                    </p>
-                    <p>Good luck & have fun!</p>
-                </div>
-
+                <h2 class="content-panel-heading">The Movie Database</h2>
             </div>
         </section>
     </main>
 
-    <!-- footer w/ additional content -->
     <footer>
         <div class="footer-info">
             <p>&copy; 2022 | Lukáš Volf</p>
