@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>OneNoteASort</title>
+	<link href="css/color-theme.css" rel="stylesheet">
+	<script src="https://unpkg.com/@microsoft/mgt@2/dist/bundle/mgt-loader.js"></script>
+</head>
+
+<body>
+	<h1>auth</h1>
+	<mgt-msal2-provider client-id="c25f4378-030c-4502-897b-45f3ba069317" login-type="redirect/popup"
+		scopes="user.read,people.read">
+	</mgt-msal2-provider>
+	<mgt-login>
+	</mgt-login>
+	<mgt-get class="notebooks" resource="/me/onenote/notebooks" version="beta" scopes="Notes.ReadWrite.All">
+		<template>
+				<div data-for="notebook in value">
+					<button type="button">{{ notebook.displayName }}</button>
+				</div>
+		</template>
+		<template data-type="loading">
+			loading
+		</template>
+		<template data-type="error">
+			{{ this }}
+		</template>
+	</mgt-get>
+</body>
+</html>
