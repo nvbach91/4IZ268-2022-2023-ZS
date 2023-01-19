@@ -237,12 +237,20 @@ article .show-more {
         text-shadow: none;
     }
 
+    article {
+        border: none;
+    }
+
+    .article-img {
+        display: none;
+    }
+
     article h3 a {
         font-size: 18px;
     }
 
     .pagination button, .calendar-year button {
-        background-color: #fff;
+        background-color: none;
         color: #000;
     }
 

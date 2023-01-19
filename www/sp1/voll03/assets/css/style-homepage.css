@@ -60,6 +60,7 @@ section:nth-child(1) {
 
 section .wrapper-section {
     padding: 40px;
+    text-align: start;
 }
 
 section .wrapper-section h2 {
@@ -214,9 +215,16 @@ section .wrapper-section h2 {
         padding: 0;
     }
 
+    .section-stats {
+        max-height: 400px;
+    }
 
     .img-box h3 {
         text-shadow: none;
+    }
+
+    .img-box .wrapper-image {
+        display: none;
     }
 
     .info-box {

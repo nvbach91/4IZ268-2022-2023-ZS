@@ -139,9 +139,9 @@ section .row {
     .row .wrapper-text {
         width: 65%;
     }
-    
-    .row .wrapper-img {
-        width: 35%;
+
+    .wrapper-img {
+        display: none;
     }
 
 }

@@ -74,6 +74,14 @@ p {
     margin-bottom: 8px;
 }
 
+.phone {
+    text-decoration: none;
+}
+
+.phone:hover {
+    text-decoration: underline;
+}
+
 .city-office-personnel-container {
     display: flex;
     flex-direction: row;
@@ -166,8 +174,8 @@ p {
         margin-top: 0;
     }
 
-    .row .city-office-person {
-        min-height: 396px;
+    .city-hall, .row .city-office-person  {
+        display: none;
     }
 
     .row .city-office-person h4 {
@@ -184,6 +192,10 @@ p {
     
     section .row .brick:nth-child(2) {
         width: 55%;
+    }
+
+    a {
+        text-decoration: none;
     }
     
 
