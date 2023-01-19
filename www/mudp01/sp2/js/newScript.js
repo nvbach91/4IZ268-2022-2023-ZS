@@ -202,9 +202,11 @@ window.addEventListener('load', () => {
     let buttonCreated = false;
     logOutImg.on('click',()=>{
         if(!buttonCreated){
-            createButton()
+            createButton();
+            buttonCreated = true;
         }else{
-            $('#logOutButton').remove()
+            $('#logOutButton').remove();
+            buttonCreated = false
         }
     })
     
@@ -214,7 +216,7 @@ window.addEventListener('load', () => {
         logOutButton.attr('class','logOutButton');
         logOutButton.attr('id','logOutButton');
         logOutButton.attr('type','button');
-        logOutButton.text('Odhlásit se');
+        logOutButton.attr('value','Odhlásit se');
         logOutButton.on('click',()=>{
             localStorage.clear();
             location.reload();
@@ -343,6 +345,7 @@ window.addEventListener('load', () => {
         let low = 0;
         let medium = 0;
         let high = 0;
+        let no = 0;
         response.result.items.forEach((event) => {
             try {
                 if (event.source.title === 'nízká') {
@@ -354,7 +357,7 @@ window.addEventListener('load', () => {
                 if (event.source.title === 'vysoká') {
                     high++;
                 }
-            } catch (error) { }
+            } catch (error) { no++}
 
             //according to number of priorities append priority images and titles with number of type (if more then 1)
             const imageDiv = $(`#${day}`);
@@ -365,7 +368,7 @@ window.addEventListener('load', () => {
                 lowImg.attr('alt', 'image indicating low priority');
                 imageDiv.append(lowImg);
                 if (low > 1) {
-                    lowImg.attr('title', `${low}'x'`);
+                    lowImg.attr('title', `${low}x`);
                 }
             }
             if (medium > 0) {
@@ -374,7 +377,7 @@ window.addEventListener('load', () => {
                 mediumImg.attr('alt', 'image indicating medium priority');
                 imageDiv.append(mediumImg);
                 if (medium > 1) {
-                    mediumImg.attr('title', `${medium}'x'`);
+                    mediumImg.attr('title', `${medium}x`);
                 }
             }
             if (high > 0) {
@@ -383,7 +386,16 @@ window.addEventListener('load', () => {
                 highImg.attr('alt', 'image indicating high priority');
                 imageDiv.append(highImg);
                 if (high > 1) {
-                    highImg.attr('title', `${high}'x'`);
+                    highImg.attr('title', `${high}x`);
+                }
+            }
+            if (no > 0) {
+                const noImg = $('<img>');
+                noImg.attr('src', 'img/noPriorityEvent.png');
+                noImg.attr('alt', 'image indicating no priority');
+                imageDiv.append(noImg);
+                if (noImg > 1) {
+                    noImg.attr('title', `${noImg}x`);
                 }
             }
         })
@@ -398,18 +410,22 @@ window.addEventListener('load', () => {
 
         // Create window and its basic structure
         const window = $('<div>');
+        window.attr('class','eventDetailWindow');
 
         const close = $('<input>');
         close.attr('type', 'button');
         close.attr('value', 'X');
+        close.attr('class', 'closeButton');
         close.on('click', () => { window.remove() })
 
         const newEvent = $('<input>');
-        newEvent.attr('type', 'button')
-        newEvent.text('Nový úkol')
+        newEvent.attr('type', 'button');
+        newEvent.attr('class','newEvent');
+        newEvent.attr('value','Nový úkol');
         newEvent.on('click', () => { editEvent('create') })
 
         const title = $('<label>');
+        title.attr('class','eventsTitle')
         title.text(`${day}.${date.val().slice(5, 7)}. ${date.val().slice(0, 4)}`)
 
         const eventsDiv = $('<div>');
@@ -511,11 +527,14 @@ window.addEventListener('load', () => {
     editEvent = (event) => {
         // create the structure of form and fill it
         const window = $('<div>');
+        window.attr('class','eventDetailWindow');
         const form = $('<form>');
+        form.attr('class','eventDetailedForm');
 
         const close = $('<input>');
         close.attr('type', 'button');
         close.attr('value', 'X');
+        close.attr('class', 'closeButton');
         close.on('click', () => { window.remove() })
 
 
@@ -634,20 +653,23 @@ window.addEventListener('load', () => {
         if (event !== 'create') {
             const updateButton = $('<input>');
             updateButton.attr('type', 'button')
-            updateButton.text('Upravit úkol')
-            updateButton.on('click', () => { updateEvent(event.id) })
+            updateButton.attr('class', 'updateButton')
+            updateButton.attr('value','Upravit úkol')
+            updateButton.on('click', () => { updateEvent(event.id);getPriorities(`${new Date(`${date.val().slice(0, 4)}`, `${date.val().slice(5, 7)}`, 0).getDate()}`);fechEvents() })
             form.append(updateButton);
 
             const deleteButton = $('<input>');
-            deleteButton.attr('type', 'button')
-            deleteButton.text('Smazat úkol')
-            deleteButton.on('click', () => { deleteEvent(event.id) })
+            deleteButton.attr('type', 'button');
+            deleteButton.attr('class', 'deleteButton');
+            deleteButton.attr('value','Smazat úkol');
+            deleteButton.on('click', () => { deleteEvent(event.id) ; getPriorities(`${new Date(`${date.val().slice(0, 4)}`,`${date.val().slice(5, 7)}`, 0).getDate()}`);fechEvents()});
             form.append(deleteButton);
         } else {
             const createButton = $('<input>');
-            createButton.attr('type', 'button')
-            createButton.text('Vytvořit nový úkol')
-            createButton.on('click', () => { createNewEvent() })
+            createButton.attr('type', 'button');
+            createButton.attr('class','newEvent');
+            createButton.attr('value','Vytvořit nový úkol');
+            createButton.on('click', () => { createNewEvent();getPriorities(`${new Date(`${date.val().slice(0, 4)}`, `${date.val().slice(5, 7)}`, 0).getDate()}`);fechEvents() });
             form.append(createButton);
         }
 
@@ -689,14 +711,16 @@ window.addEventListener('load', () => {
             event.on('click', () => { editEvent(item) });
 
             const name = $('<div>');
+            name.attr('class','divTasksName');
             if (item.summary !== 'undefined') {
                 name.text(item.summary)
             } else {
                 name.text('Úkol nemá název')
             }
-            event.append(name);
+
 
             const priority = $('<div>');
+            priority.attr('class','divTasksImg');
             const priorityImg = $('<img>');
             priority.append(priorityImg);
             try {
@@ -721,39 +745,49 @@ window.addEventListener('load', () => {
                 priorityImg.attr('alt', 'image indicating no set priority');
             }
             event.append(priority);
+            event.append(name);
 
             try {
                 if (item.visibility === 'public') {
-                    pinned.push(event);
+                    const eventCopy =event.clone(true);
+                    pinned.push(eventCopy);
                 }
 
                 if (new Date(item.end.dateTime.toString().slice(0, 19)).getTime() <= new Date().getTime()) {
-                    past.push(event)
+                    const eventCopy =event.clone(true);
+                    past.push(eventCopy)
                 } else {
-                    future.push(event)
+                    const eventCopy =event.clone(true);
+                    future.push(eventCopy)
                 }
             } catch {
                 if (item.visibility === 'public') {
-                    pinned.push(event);
+                    const eventCopy =event.clone(true);
+                    pinned.push(eventCopy);
                 }
-
+                console.log(item);
                 if (new Date(item.end.date.toString().slice(0, 19)).getTime() <= new Date().getTime()) {
-                    past.push(event)
+                    const eventCopy =event.clone(true);
+                    past.push(eventCopy)
                 } else {
-                    future.push(event)
+                    const eventCopy =event.clone(true);
+                    future.push(eventCopy)
                 }
             }
         })
-
+        pastTasks.empty();
         past.forEach((pastTask) => {
             pastTasks.append(pastTask);
         })
+        futureTasks.empty();
         future.forEach((futureTask) => {
             futureTasks.append(futureTask);
         })
+        pinnedTasks.empty();
         pinned.forEach((pin) => {
             pinnedTasks.append(pin);
         })
     }
     setTimeout(fechEvents,3000) // temporary till UI is done
+    setTimeout(displayDays,3000) // temporary till UI is done
 })
