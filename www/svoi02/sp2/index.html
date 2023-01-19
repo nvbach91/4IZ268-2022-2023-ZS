@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <main>
+        <h1>Snake</h1>
+        <div class="info">
+            <div class="scores">
+                <div class="score">
+                    <p>Score:</p>
+                    <div id="score">0</div>
+                </div>
+                <div class="high-score">
+                    <p>high score:</p>
+                    <div id="high-score">0</div>
+                </div>
+                <button id="restartButton">Restart</button>
+            </div>
+        </div>
+        <div class="controller-status">
+            <div id="not-connected">
+                <div class="loader"></div>
+                <div>Controller not connected. Press PS button to start.</div>
+            </div>
+            <div id="connected">Controller connected.</div>
+        </div>
+        <canvas id="game" width="500" height="500"></canvas>
+    </main>
+    <footer>Copyright © 2023 | Ivan Svoboda</footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.slim.min.js" integrity="sha512-yBpuflZmP5lwMzZ03hiCLzA94N0K2vgBtJgqQ2E1meJzmIBfjbb7k4Y23k2i2c/rIeSUGc7jojyIY5waK3ZxCQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="./main.js"></script>
+</body>
+</html>
