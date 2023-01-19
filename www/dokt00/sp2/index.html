@@ -1,66 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Filmy</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="main.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="css\style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
+        integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
+
 <body>
+    <div class="center">
+        <div class="loader"></div>
+    </div>
     <header>
         <form id="form">
             <input type="text" id="search" class="search" placeholder="Search...">
         </form>
     </header>
-    <h1><span class="h1">(Všechna data budu načítat přes API, aktuální obrázky slouží pouze pro účely stylování)</span></h1>
     <main id="main">
-        <div class="movie">
-            <img src="https://www.themoviedb.org/t/p/original/iB64vpL3dIObOtMZgX3RqdVdQDc.jpg" alt="">
-            <div class="movie-info">
-                <h3>Movie title</h3>
-                <span>9.7 </span>
-            </div>
-            <div class="overview">
-                <h3>Overview</h3>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum, necessitatibus ea, omnis quae commodi a porro iusto expedita laboriosam aliquid consequuntur. Eos mollitia fugit obcaecati numquam debitis soluta illo repellat?
-            </div>
-        </div>
-        <div class="movie">
-            <img src="https://www.themoviedb.org/t/p/original/iB64vpL3dIObOtMZgX3RqdVdQDc.jpg" alt="">
-            <div class="movie-info">
-                <h3>Movie title</h3>
-                <span>9.7 </span>
-            </div>
-            <div class="overview">
-                <h3>Overview</h3>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum, necessitatibus ea, omnis quae commodi a porro iusto expedita laboriosam aliquid consequuntur. Eos mollitia fugit obcaecati numquam debitis soluta illo repellat?
-            </div>
-        </div>
-        <div class="movie">
-            <img src="https://www.themoviedb.org/t/p/original/iB64vpL3dIObOtMZgX3RqdVdQDc.jpg" alt="">
-            <div class="movie-info">
-                <h3>Movie title</h3>
-                <span>9.7 </span>
-            </div>
-            <div class="overview">
-                <h3>Overview</h3>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum, necessitatibus ea, omnis quae commodi a porro iusto expedita laboriosam aliquid consequuntur. Eos mollitia fugit obcaecati numquam debitis soluta illo repellat?
-            </div>
-        </div>
-        <div class="movie">
-            <img src="https://www.themoviedb.org/t/p/original/iB64vpL3dIObOtMZgX3RqdVdQDc.jpg" alt="">
-            <div class="movie-info">
-                <h3>Movie title</h3>
-                <span>9.7 </span>
-            </div>
-            <div class="overview">
-                <h3>Overview</h3>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum, necessitatibus ea, omnis quae commodi a porro iusto expedita laboriosam aliquid consequuntur. Eos mollitia fugit obcaecati numquam debitis soluta illo repellat?
-            </div>
-        </div>
     </main>
+    <h1>IMDB Search</h1>
+    <script src="js\main.js"></script>
 </body>
+
 </html>
