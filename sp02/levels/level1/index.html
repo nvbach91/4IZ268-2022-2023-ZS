@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Book Quiz - Easy</title>
+    <link rel="stylesheet" href="../../assets/css/app.css" />
+    <link rel="stylesheet" href="../../assets/css/game.css" />
+  </head>
+  <body>
+    <header class="header">
+      <p id="title">Book Quiz - Easy</p>
+      <nav class="navbar">
+        <a href="./">Easy</a>
+        <a href="../level2/">Medium</a>
+        <a href="../level3/">Hard</a>
+      </nav>
+    </header>
+    <div class="container">
+      <div id="game" class="justify-center flex-column">
+        <div id="bar">
+          <div id="bar-item">
+            <p id="progressText" class="bar-prefix">
+              Question
+            </p>
+            <div id="progress">
+              <div id="progressFull"></div>
+            </div>
+          </div>
+          <div id="bar-item">
+            <p class="bar-prefix">
+              Score
+            </p>
+            <h1 class="bar-main-text" id="score">
+              0
+            </h1>
+          </div> 
+        </div>
+        <img src="../../pics/1.jpg" id="picture" alt="books">;
+        <h2 id="question">What is the answer to this questions?</h2>
+        <div class="option-container">
+          <p class="option-prefix">A</p>
+          <p class="option-text" data-number="1">Choice 1</p>
+        </div>
+        <div class="option-container">
+          <p class="option-prefix">B</p>
+          <p class="option-text" data-number="2">Choice 2</p>
+        </div>
+        <div class="option-container">
+          <p class="option-prefix">C</p>
+          <p class="option-text" data-number="3">Choice 3</p>
+        </div>
+        <div class="option-container">
+          <p class="option-prefix">D</p>
+          <p class="option-text" data-number="4">Choice 4</p>
+        </div>
+      </div>
+    </div>
+    <script src="../../assets/js/game.js"></script>
+    <script src="../../assets/js/easy.js"></script>
+    <script src="../../assets/js/end.js"></script>
+  </body>
+</html>
