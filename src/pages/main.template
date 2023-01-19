@@ -1,0 +1,7 @@
+<div>
+    <h1>Welcome to the PrivateCloud</h1>
+    <h2>Cloud app for personal server</h2>
+    <button id="logIn">log in</button>
+    <p>This app was created as coursework by Dmitrii Shpagin.</p>
+    <p>For personal use.</p>
+</div>
