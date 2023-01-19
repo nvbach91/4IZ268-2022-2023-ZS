@@ -1,13 +1,87 @@
 <!DOCTYPE html>
-<html lang="cz">
+
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css">
-    <title>Databáze hráčů</title>
+  <title>Databáze hráčů</title>
+
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="./css/style.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400&display=swap');
+  </style>
 </head>
+
 <body>
-    <h1>Databáze hráčů</h1>
+  <h1>Databáze hráčů</h1>
+
+
+
+  <button id="load_excel" onclick="load()" title="Náhled dat bez možnosti úprav">Náhled záznamů</button>
+  <button id="authorize_button" onclick="handleAuthClick()">Přihlásit se</button>
+
+  <!-- <button id="signout_button" onclick="handleSignoutClick()">Odhlásit se</button> -->
+
+  <div>
+
+
+    <div class="inputAndEdit">
+      <div>
+        <label>
+          Jméno
+          <input type="text" id="jmenoInput" />
+        </label>
+      </div>
+      <div>
+        <label>
+          Příjmení
+          <input type="text" id="prijmeniInput" />
+        </label>
+      </div>
+      <div>
+        <label>
+          Rok narození
+          <input type="text" id="datumNarozeniInput" />
+        </label>
+      </div>
+      <div>
+        <label>
+          Váha
+          <input type="text" id="vahaInput" />
+        </label>
+      </div>
+      <div>
+        <label>
+          Výška
+          <input type="text" id="vyskaInput" />
+        </label>
+      </div>
+
+      <button id="write_button" onclick="handleWrite()">Přidat záznam</button>
+      <button id="finish_edit_button" style="visibility: hidden" onclick="handleWrite()">
+        Uložit úpravy
+      </button>
+
+    </div>
+
+    <div class="dataHeadings">
+      <p>Jméno</p>
+      <p>Příjmení</p>
+      <p>Rok narození</p>
+      <p>Váha</p>
+      <p>Výška</p>
+    </div>
+
+
+    <div id="table" class="data"></div>
+
+
+  </div>
+
+  <script src="./js/script.js"></script>
+
+  <script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
+  <script async defer src="https://accounts.google.com/gsi/client" onload="gisLoaded()"></script>
 </body>
+
 </html>

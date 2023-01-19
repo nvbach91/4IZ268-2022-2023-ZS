@@ -1,3 +1,69 @@
-h1{
-    color: blue;
+* {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+button {
+    all: unset;
+    cursor: pointer;
+    border: 1px solid black;
+    padding: 5px;
+}
+
+.inputAndEdit {
+    display: flex;
+    background-color: rgb(204, 204, 204);
+    padding-left: 50px;
+    margin-top: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    align-items: center;
+}
+
+.inputAndEdit div {
+    width: 15%;
+}
+
+.dataHeadings {
+    display: flex;
+    padding-left: 50px;
+    background-color: rgb(233, 233, 233);
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.dataHeadings p {
+    width: 15%;
+    font-weight: bold;
+}
+
+.data {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-left: 50px;
+}
+
+.dataRadek {
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.dataZaznamy {
+    width: 14.6%;
+    border-radius: 1px solid black;
+}
+
+.dataZaznamy2 {
+    display: flex;
+    min-width: 170;
+    margin-left: auto;
+}
+
+.upr {
+    background-color: rgb(153, 255, 153);
+}
+
+.smz {
+    background-color: rgb(255, 117, 117);
+    margin-left: 5px;
 }
