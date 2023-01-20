@@ -326,7 +326,7 @@ import { LocalStorage } from './localstorage.js';
         App.currentListing = type === 'rated' ? "Rated" : "Favourites";
 
         const movieList = type === 'rated' ? LocalStorage.ratedList : LocalStorage.favouritesList;
-        
+
         if (movieList.length === 0) {
             const alertMessageElement = $(`<p class="search-error">You have no ${elementText} movies.</p>`);
             DOM.contentPanel.append(alertMessageElement);
@@ -662,10 +662,6 @@ import { LocalStorage } from './localstorage.js';
         }
 
         return currentPageList;
-    };
-
-    const renderListItem = (movie) => {
-
     };
 
     // renders list elements for favourite or rated movies
@@ -1084,10 +1080,10 @@ import { LocalStorage } from './localstorage.js';
     // refresh filter default values
     const refreshFilters = () => {
         App.Filters.rating = "",
-            App.Filters.genre = "",
-            App.Filters.yearFrom = "",
-            App.Filters.yearTo = "",
-            App.Filters.country = ""
+        App.Filters.genre = "",
+        App.Filters.yearFrom = "",
+        App.Filters.yearTo = "",
+        App.Filters.country = ""
     };
 
     // clear all filters
