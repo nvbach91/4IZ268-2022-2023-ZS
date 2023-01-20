@@ -1,0 +1,26 @@
+{
+    "files":[
+        {
+            "name": "test.test"
+            ,"path": "/"
+        },
+        {
+            "name": "test2.test"
+            ,"path": "/"
+        },
+        {
+            "name": "test3.test"
+            ,"path": "/test_folder/"
+        }
+    ]
+    ,"directories":[
+        {
+            "name": "test_folder"
+            ,"path": "/"
+        }
+        ,{
+            "name": "ahoj"
+            ,"path": "/test_folder/"
+        }
+    ]
+}
