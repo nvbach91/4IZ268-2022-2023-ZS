@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="The Movie Database, TMDB, JavaScript app, 4IZ268, SP2, voll03, FIS VSE">
+    <meta name="author" content="Lukáš Volf (voll03)">
+    <meta name="description"
+        content="Single-page JavaScript application simulating movie database; using TMDB API, jQuery, axios; 2nd semestral project for subject 4IZ268, FIS VSE, winter semester 2022">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Oxanium&family=Quicksand&family=Rajdhani&display=swap">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.7.0/sweetalert2.min.css">
+    <link rel="icon" href="./assets/img/favicon.ico" type="image/icon">
+    <title>The Movie Database</title>
+</head>
+
+<body>
+    <header>
+        <div class="header-banner">
+            <img src="./assets/img/logo.svg" alt="TMDB logo" width="128" height="72">
+            <h1>The Movie Database</h1>
+        </div>
+        <form class="movie-searchbar">
+            <h2>Search</h2>
+            <div class="movie-searchbar-input-field">
+                <input type="text" id="input-search-title" name="movie-title-input" placeholder="Search for movie..."
+                    required>
+                <button id="btn-search" name="btn-search">Find</button>
+            </div>
+        </form>
+        <div class="movie-listing-filters">
+            <h3>Listing filters</h3>
+
+            <div class="filters-container">
+                <div class="filters-rating-wrapper">
+                    <label for="rating">Rating:</label>
+                    <select id="rating">
+                        <option value="">--</option>
+                        <option value="vote_average.desc">Best</option>
+                        <option value="vote_average.asc">Worst</option>
+                    </select>
+                </div>
+
+                <div class="filters-genre-wrapper">
+                    <label for="genre">Genre:</label>
+                    <select id="genre">
+                        <option value="">--</option>
+                    </select>
+                </div>
+
+                <div class="filters-year-wrapper">
+                    <label for="year-from">Years:</label>
+                    <select id="year-from">
+                        <option value="">--</option>
+                    </select>
+                    <span>to</span>
+                    <select id="year-to">
+                        <option value="">--</option>
+                    </select>
+                </div>
+
+                <div class="filters-country-wrapper">
+                    <label for="origin">Country:</label>
+                    <select id="origin">
+                        <option value="">--</option>
+                    </select>
+                </div>
+
+                <button id="btn-apply-filters" name="btn-apply-filters">Apply filters</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <aside>
+            <nav>
+                <ul>
+                    <li><button id="btn-list-new">New Releases</button></li>
+                    <li><button id="btn-list-popular">Most Popular</button></li>
+                    <li>
+                        <hr>
+                    </li>
+                    <li><button id="btn-list-rated">Rated</button></li>
+                    <li><button id="btn-list-favourites">Favourites</button></li>
+                    <li>
+                        <hr>
+                    </li>
+                    <li><button id="btn-about">About</button></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <section class="content-wrapper">
+            <div class="content-panel">
+                <h2 class="content-panel-heading">The Movie Database</h2>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-info">
+            <p>&copy; 2022 | Lukáš Volf</p>
+            <p>FIS VŠE v Praze</p>
+        </div>
+        <p><a href="https://developers.themoviedb.org/3">The Movie Database API</a></p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.2/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.7.0/sweetalert2.min.js"></script>
+    <script src="./assets/js/main.js" type="module"></script>
+</body>
+
+</html>
