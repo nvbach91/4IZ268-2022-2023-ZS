@@ -68,13 +68,21 @@ import { LocalStorage } from './localstorage.js';
                 // no filters selected check
                 if (App.Filters.rating === "" && App.Filters.genre === "" && App.Filters.yearFrom === ""
                     && App.Filters.yearTo === "" && App.Filters.country === "") {
-                    alert('No filters selected!');
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Filter error',
+                            text: 'No filters selected!'
+                        });
                     return;
                 }
 
                 // yearTo < yearFrom
                 if (parseInt(App.Filters.yearFrom) > parseInt(App.Filters.yearTo)) {
-                    alert('Wrong release years selection!');
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Filter error',
+                        text: 'Wrong release years selection!'
+                    });
                     return;
                 }
 
@@ -439,7 +447,6 @@ import { LocalStorage } from './localstorage.js';
         DOM.Filters.selectCountry.append(countryElementList);
     };
 
-
     // render all genres for a movie inside movie card
     const renderGenreListing = (genres) => {
         let genreElementList = [];
@@ -460,7 +467,6 @@ import { LocalStorage } from './localstorage.js';
         const movieCardElement = $(`
         <div class="movie-card">
             <div class="movie-card-poster">
-                <img src="${API.BASE_MOVIE_POSTER + movie.poster_path}" alt="Poster for the movie titled &quot;${movie.title}&quot;">
             </div>
             <div class="movie-card-info">
                 <h3>${movie.title}</h3>
@@ -469,6 +475,12 @@ import { LocalStorage } from './localstorage.js';
             </div>
         </div>
         `);
+
+        // movie poster (if exists)
+        const movieCardPoster = movieCardElement.find('.movie-card-poster');
+        if (movie.poster_path !== null && movie.poster_path !== undefined && movie.poster_path !== "") {
+            movieCardPoster.css('background-image',`url(${API.BASE_MOVIE_POSTER + movie.poster_path})`);
+        } 
 
         const metaDataElement = movieCardElement.find('.movie-meta-data');
 
@@ -909,9 +921,34 @@ import { LocalStorage } from './localstorage.js';
     const appendCredits = (movieCreditsElement, creditsList, listType) => {
         if (creditsList !== undefined && creditsList.length > 0) {
             const title = listType[0].toUpperCase() + listType.slice(1).toLowerCase();
-            const creditsElement = $(`<p class="movie-details-${listType}"><strong>${title}:</strong> ${creditsList.join(', ')}</p>`);
+
+            let creditsElement = "";
+            if (listType === 'actors') {
+                creditsElement = $(`<p class="movie-details-${listType}"><strong>${title}:</strong></p>`);
+                const actorsContainer = $('<div class="movie-actors-container"></div>');
+                const actorsSpanList = renderActorsListing(creditsList);
+
+                actorsContainer.append(actorsSpanList);
+                creditsElement.append(actorsContainer);
+            } else {
+                creditsElement = $(`<p class="movie-details-${listType}"><strong>${title}:</strong> ${creditsList.join(', ')}</p>`);
+            }
+            
             movieCreditsElement.append(creditsElement);
         }
+    };
+
+    // render actor listing - each actor with link to google search
+    const renderActorsListing = (actors) => {
+        let actorElementList = [];
+        actors.forEach((actor) => {
+            let actorElement = $(`<span class="movie-actor">
+                <a href="https://www.google.com/search?q=actor+${actor.split(' ').join('+')}" target="_blank">${actor}</a>
+            </span>`);
+            actorElementList.push(actorElement);
+        });
+
+        return actorElementList;
     };
 
     // assign rating class according to given rating (in %), changes movie rating's border colours

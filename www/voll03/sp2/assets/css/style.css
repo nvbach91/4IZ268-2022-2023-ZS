@@ -2,6 +2,14 @@
     box-sizing: border-box;
 }
 
+hr {
+    margin-top: 0;
+    margin-bottom: 8px;
+    border: 0;
+    height: 1px;
+    background: rgb(44, 44, 44);
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -260,6 +268,13 @@ footer p a {
     background-color: #ffae00;
     transform: scale(1.05);
     cursor: pointer;
+}
+
+.movie-card-poster {
+    height: 360px;
+    background-size: cover;
+    background-color: #333;
+    border-radius: 8px;
 }
 
 .movie-card-poster img {
@@ -621,12 +636,33 @@ footer p a {
     margin-top: 0;
 }
 
-hr {
-    margin-top: 0;
-    margin-bottom: 8px;
-    border: 0;
-    height: 1px;
-    background: rgb(44, 44, 44);
+.movie-actors-container {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/** MOVIE DETAIL - ACTORS */
+.movie-actor {
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+.movie-actor a {
+    background-color: rgb(72, 99, 140);
+    padding: 6px 18px;
+    border-radius: 12px;
+    text-decoration: none;
+    color: #fff;
+    transition: 0.1s ease-out;
+}
+
+.movie-actor a:hover {
+    text-decoration: underline;
+    color: #e9dd77;
+    background-color: #111;
 }
 
 /** PAGINATION */
@@ -660,6 +696,12 @@ hr {
     border: 1px solid rgb(36, 92, 112);
     background-color: rgb(82, 114, 204);
     color: rgb(255, 255, 255);
+}
+
+/** SWEET ALERTS */
+
+.swal2-container {
+    font-family: 'Oxanium';
 }
 
 /** SPINNER */
