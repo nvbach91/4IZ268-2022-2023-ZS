@@ -59,6 +59,7 @@ article {
     border: 1px solid rgb(192, 192, 192);
     box-shadow: 0px 0px 29px -10px rgba(0, 0, 0, 0.35);
     min-height: 290px;
+    text-align: start;
 }
 
 article h3 {
@@ -172,6 +173,7 @@ article .show-more {
 @media print {
     article {
         box-shadow: none;
+        border: none;
     }
 
     article .show-more {
@@ -181,6 +183,10 @@ article .show-more {
     article a, article h3 a {
         color: #000;
         text-shadow: none;
+    }
+
+    article .event-img a img, article .article-img a img  {
+        display: none;
     }
 
     article h3 a {

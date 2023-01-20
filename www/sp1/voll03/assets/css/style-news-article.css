@@ -39,6 +39,7 @@ aside {
 
 article {
     padding: 20px;
+    text-align: start;
 }
 
 .article-img img {
