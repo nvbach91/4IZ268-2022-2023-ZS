@@ -1,4 +1,4 @@
-const apiServer = import.meta.env.DEV ? 'http://localhost:1111' : 'http://localhost:1111'
+const apiServer = import.meta.env.DEV ? 'https://my-json-server.typicode.com/boiledrice/privatecloud/' : 'https://my-json-server.typicode.com/boiledrice/privatecloud/'
 
 const baseFetch = (url, config = {}, params) => {
     return new Promise((resolve, reject) => {
