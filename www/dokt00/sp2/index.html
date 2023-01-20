@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Filmy</title>
-    <link rel="stylesheet" href="css\style.css">
+    <link rel="stylesheet" href="css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
         integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -18,13 +18,28 @@
     </div>
     <header>
         <form id="form">
-            <input type="text" id="search" class="search" placeholder="Search...">
+            <input type="text" name="search" id="search" class="search" placeholder="Search...">
+            <button id="searchButton" class="searchButton">Search</button>
         </form>
+
+        <div>
+            <select name="sort" id="sort" class="sort">
+                <option value="default">Default sorting</option>
+                <option value="alpha,asc">A-Z Ascending</option>
+                <option value="alpha,desc">A-Z Descending</option>
+                <option value="usr,desc">User rating - Descending</option>
+                <option value="usr,asc">User rating - Ascending</option>
+                <option value="votes,desc">Total votes - Descending</option>
+                <option value="release,desc">Release date - Descending</option>
+                <option value="release,asc">Release date - Ascending</option>
+            </select>
+        </div>
+
     </header>
     <main id="main">
     </main>
     <h1>IMDB Search</h1>
-    <script src="js\main.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>
