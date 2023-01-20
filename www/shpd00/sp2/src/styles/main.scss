@@ -1,0 +1,11 @@
+@import 'common.scss';
+
+.app{
+    background-color: #fff;
+    color: #000;
+    // width: clamp(200px,50%,600px);
+    display: flex;
+    justify-content: center;
+    // align-items:center;
+
+}

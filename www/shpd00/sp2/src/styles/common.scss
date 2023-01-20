@@ -1,0 +1,32 @@
+#page-header {
+  background: rgb(172, 172, 172);
+  background: linear-gradient(
+    0deg,
+    rgba(172, 172, 172, 0) 3%,
+    rgba(172, 172, 172, 1) 9%,
+    rgba(255, 245, 238, 1) 100%
+  );
+  display: flex;
+  align-items: center;
+  height: auto;
+  width: 100%;
+  padding-left: 0.5rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.5rem;
+}
+#page-header > #app-logo {
+  height: 2rem;
+  width: auto;
+}
+#page-header > #app-name {
+  font-size: 2em;
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(133, 131, 131);
+  margin: 0;
+  padding-left: 1vh;
+}
+body {
+  background-color: #fff;
+  color: #000;
+  margin: 0;
+}
