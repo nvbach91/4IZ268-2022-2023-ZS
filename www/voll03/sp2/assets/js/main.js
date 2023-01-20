@@ -1,5 +1,5 @@
 import { DOM, API, fetchGenres, fetchCountries, fetchMovieById, fetchMovieCredits } from './resources.js';
-import * as storage from './localstorage.js';
+import { LocalStorage } from './localstorage.js';
 
 (() => {
     // App state object
@@ -29,15 +29,16 @@ import * as storage from './localstorage.js';
 
         // init function
         init: function () {
+            LocalStorage.init();
+
             this.setSearchAndFilters();
             this.setAsideButtons();
             setFilters();
 
             App.currentListing = "Recently released";
             listLatest();
+        },
 
-        }, 
-        
         // setup search and filters
         setSearchAndFilters: function () {
             // search form submit
@@ -80,8 +81,8 @@ import * as storage from './localstorage.js';
                 listFiltered();
             });
 
-        }, 
-        
+        },
+
         // setup aside menu buttons
         setAsideButtons: function () {
             DOM.Aside.btnNewReleases.click(() => App.proccessListing("Recently released", listLatest));
@@ -91,7 +92,7 @@ import * as storage from './localstorage.js';
             DOM.Aside.btnAbout.click(() => App.proccessListing("About", renderAboutPage));
 
         },
-        
+
         // show listing based on type, callback = function to be executed
         proccessListing: function (listingType, callback) {
             if (App.currentListing !== listingType) {
@@ -308,18 +309,26 @@ import * as storage from './localstorage.js';
         });
     };
 
-    // show list of movies that user marked as favourites
-    const listFavourites = async () => {
-        refreshContentPanel("My favourite movies");
+    const listFavourites = () => {
+        listUserMovies('favourites');
+    }
+
+    const listRated = () => {
+        listUserMovies('rated');
+    }
+
+    const listUserMovies = async (type) => {
+        let elementText = (type === 'rated') ? 'rated' : 'favourite';
+        refreshContentPanel(`My ${elementText} movies`);
         showSpinner();
 
         App.currentMovieList = [];
-        App.currentListing = "Favourites";
+        App.currentListing = type === 'rated' ? "Rated" : "Favourites";
 
-        const favList = JSON.parse(localStorage.getItem('favourites'));
-
-        if (favList.length === 0) {
-            const alertMessageElement = $('<p class="search-error">You have no movies in your favourites.</p>');
+        const movieList = type === 'rated' ? LocalStorage.ratedList : LocalStorage.favouritesList;
+        
+        if (movieList.length === 0) {
+            const alertMessageElement = $(`<p class="search-error">You have no ${elementText} movies.</p>`);
             DOM.contentPanel.append(alertMessageElement);
 
             if (App.Pagination.currentPage === 0) {
@@ -332,53 +341,16 @@ import * as storage from './localstorage.js';
         }
 
         // split listing to pages (10 movies per page)
-        const currentPageList = getCurrentPageList(favList);
+        const currentPageList = getCurrentPageList(movieList);
 
         if (await getMovieDetails(currentPageList)) {
-            renderListItems();
-            renderPagination(listFavourites);
+            renderListItems(App.currentListing);
+            renderPagination(listUserMovies, type);
         } else {
             // todo error handling
             console.log("spatne nacteni detailu filmu");
         }
-
-    };
-
-    // show list of movies that user rated
-    const listRated = async () => {
-        refreshContentPanel("My rated movies");
-        showSpinner();
-
-        App.currentMovieList = [];
-        App.currentListing = "Rated";
-
-        const ratedList = JSON.parse(localStorage.getItem('rated'));
-
-        if (ratedList.length === 0) {
-            const alertMessageElement = $('<p class="search-error">You have no rated movies.</p>');
-            DOM.contentPanel.append(alertMessageElement);
-
-            if (App.Pagination.currentPage === 0) {
-                refreshPagination();
-                DOM.pagination.remove();
-            }
-
-            hideSpinner();
-            return;
-        }
-
-        // split listing to pages (10 movies per page)
-        const currentPageList = getCurrentPageList(ratedList);
-
-        if (await getMovieDetails(currentPageList)) {
-            renderListItems("Rated");
-            renderPagination(listRated);
-
-        } else {
-            // todo error handling
-            console.log("spatne nacteni detailu filmu");
-        }
-    };
+    }
 
     // show some error message on page (error handling)
     const showError = (error) => {
@@ -542,7 +514,7 @@ import * as storage from './localstorage.js';
     // for favourites and rated listing - max 10 movies per page
     // for everything else - max 20 movies per page (default API setting)
     // max amount of pages inside pagination = 5
-    const renderPagination = (callback) => {
+    const renderPagination = (callback, type = null) => {
         let firstPage = calcFirstPage(App.Pagination.currentPage);
         let diff = App.Pagination.maxPages - firstPage;
         let lastPage = (diff < 4) ? firstPage + diff : firstPage + 4;
@@ -566,7 +538,7 @@ import * as storage from './localstorage.js';
                     App.Pagination.currentPage--;
 
                     changeActivePage();
-                    callback.apply();
+                    (type === 'rated' || type === 'favourites') ? callback.apply(type) : callback.apply();
                 }
             });
 
@@ -577,7 +549,7 @@ import * as storage from './localstorage.js';
                     App.Pagination.currentPage++;
 
                     changeActivePage();
-                    callback.apply();
+                    (type === 'rated' || type === 'favourites') ? callback.apply(type) : callback.apply();
                 }
             });
 
@@ -590,7 +562,7 @@ import * as storage from './localstorage.js';
                     $(e.currentTarget).addClass('active').siblings().removeClass('active');
 
                     App.Pagination.currentPage = 1;
-                    callback.apply();
+                    (type === 'rated' || type === 'favourites') ? callback.apply(type) : callback.apply();
                 });
 
                 const dotsElement = $('<span>...</span>');
@@ -609,7 +581,7 @@ import * as storage from './localstorage.js';
                     $(e.currentTarget).addClass('active').siblings().removeClass('active');
 
                     App.Pagination.currentPage = page;
-                    callback.apply();
+                    (type === 'rated' || type === 'favourites') ? callback.apply(type) : callback.apply();
                 });
 
                 paginationElementList.push(btnPageElement);
@@ -623,7 +595,7 @@ import * as storage from './localstorage.js';
                 btnLastElement.click((e) => {
                     $(e.currentTarget).addClass('active').siblings().removeClass('active');
                     App.Pagination.currentPage = App.Pagination.maxPages;
-                    callback.apply();
+                    (type === 'rated' || type === 'favourites') ? callback.apply(type) : callback.apply();
                 });
 
                 if (App.Pagination.maxPages - lastPage >= 1) {
@@ -651,7 +623,7 @@ import * as storage from './localstorage.js';
         let result = Math.floor(currentPage / 5);
 
         if (currentPage < 15) {
-            return (currentPage === 10) ? 6 : (result * 5) + 1; 
+            return (currentPage === 10) ? 6 : (result * 5) + 1;
         }
 
         return result * 5;
@@ -692,8 +664,12 @@ import * as storage from './localstorage.js';
         return currentPageList;
     };
 
+    const renderListItem = (movie) => {
+
+    };
+
     // renders list elements for favourite or rated movies
-    const renderListItems = (renderFor = "Favourites") => {
+    const renderListItems = (renderFor = 'Favourites') => {
         const listElement = $('<ul class="movie-list"></ul>');
         let listItems = [];
 
@@ -727,7 +703,7 @@ import * as storage from './localstorage.js';
             // button to remove from fav/rated list 
             const btnRemove = $('<button class="btn-list-remove">Remove</button>');
             btnRemove.click(() => {
-                renderFor === "Rated" ? storage.removeFrom('rated', movie) : storage.removeFrom('favourites', movie);
+                renderFor === "Rated" ? LocalStorage.removeFrom('rated', movie) : LocalStorage.removeFrom('favourites', movie);
 
                 App.Pagination.nowShowing--;
 
@@ -735,7 +711,7 @@ import * as storage from './localstorage.js';
                     App.Pagination.currentPage--;
                 }
 
-                renderFor === "Rated" ? listRated() : listFavourites();
+                renderFor === "Rated" ? listUserMovies('rated') : listUserMovies('favourites');
             });
 
             listItem.append(btnShowDetails, btnRemove);
@@ -748,7 +724,7 @@ import * as storage from './localstorage.js';
         let btnDeleteAllText = renderFor === "Rated" ? "rated" : "favourites";
         const btnDeleteAll = $(`<button class="btn-list-delete-all">Delete all ${btnDeleteAllText}</button>`);
         btnDeleteAll.click(() => {
-            renderFor === "Rated" ? storage.deleteAll('rated', listRated) : storage.deleteAll('favourites', listFavourites);
+            renderFor === "Rated" ? LocalStorage.deleteAll('rated', listUserMovies) : LocalStorage.deleteAll('favourites', listUserMovies);
         });
 
         DOM.contentPanel.append(btnDeleteAll, listElement);
@@ -763,7 +739,7 @@ import * as storage from './localstorage.js';
             starList.push(star);
         }
 
-        const rating = storage.getRating(movie.id);
+        const rating = LocalStorage.getRating(movie.id);
 
         starList.forEach((star, index) => {
             // coloring stars for rated movies
@@ -774,15 +750,15 @@ import * as storage from './localstorage.js';
                 let userStarRating = index + 1;
                 movie.user_star_rating = userStarRating;
 
-                const rating = storage.getRating(movie.id);
+                const rating = LocalStorage.getRating(movie.id);
 
                 // user rates movie for the first time inside its detail page - button to remove rating appears
                 if (rating === 0 && renderFor === "detail" && ratingContainer !== null) {
-                    storage.addTo('rated', movie);
+                    LocalStorage.addTo('rated', movie);
 
                     const btnRemoveRating = $('<button class="remove-rating">Remove rating</button>');
                     btnRemoveRating.click(() => {
-                        storage.removeFrom('rated', movie)
+                        LocalStorage.removeFrom('rated', movie)
                         btnRemoveRating.remove();
 
                         starList.forEach((star) => {
@@ -792,9 +768,9 @@ import * as storage from './localstorage.js';
 
                     ratingContainer.append(btnRemoveRating);
 
-                // change rating only if user clicked different amount of stars
+                    // change rating only if user clicked different amount of stars
                 } else if (rating > 0 && rating !== userStarRating) {
-                    storage.changeRating(movie);
+                    LocalStorage.changeRating(movie);
 
                     starList.forEach((star, index2) => {
                         index >= index2 ? star.addClass("active") : star.removeClass("active");
@@ -808,7 +784,7 @@ import * as storage from './localstorage.js';
                     index >= index2 ? star.addClass("active") : star.removeClass("active");
                 });
             }, function () { // get back
-                const rating = storage.getRating(movie.id);
+                const rating = LocalStorage.getRating(movie.id);
 
                 starList.forEach((star, index2) => {
                     rating > 0 && index2 < rating ? star.addClass("active") : star.removeClass("active");
@@ -831,10 +807,10 @@ import * as storage from './localstorage.js';
         ratingContainer.append(ratingPanelElement);
 
         // render button "remove rating" below stars if the movie is rated
-        if (storage.getRating(movie.id) > 0) {
+        if (LocalStorage.getRating(movie.id) > 0) {
             const btnRemoveRating = $('<button class="remove-rating">Remove rating</button>');
             btnRemoveRating.click(() => {
-                storage.removeFrom('rated', movie)
+                LocalStorage.removeFrom('rated', movie)
                 btnRemoveRating.remove();
 
                 stars.forEach((star) => {
@@ -958,14 +934,14 @@ import * as storage from './localstorage.js';
         const btnBackToListing = $(`<button class="back-to-listing"><i class="fa fa-reply-all"></i>Back to movie listing</button>`);
         btnBackToListing.click(() => {
 
-            (App.currentListing === "Search results") 
-                ? refreshContentPanel(`Search results for &quot;${App.currentSearchQuery}&quot`) 
+            (App.currentListing === "Search results")
+                ? refreshContentPanel(`Search results for &quot;${App.currentSearchQuery}&quot`)
                 : refreshContentPanel(App.currentListing);
 
             if (App.currentListing === "Favourites") {
-                listFavourites();
+                listUserMovies('favourites');
             } else if (App.currentListing === "Rated") {
-                listRated();
+                listUserMovies('rated');
             } else {
                 if (App.currentListing === "Most popular") {
                     renderPagination(listMostPopular);
@@ -1015,7 +991,7 @@ import * as storage from './localstorage.js';
         const addToFavouritesElement = $(`<div class="movie-details-favourites"></div>`);
 
         // check if movie is in favourites and change addToFavourites element accordingly
-        if (storage.isFavourite(movie.id)) {
+        if (LocalStorage.isFavourite(movie.id)) {
             addToFavouritesElement.append($('<i class="fa fa-heart active"></i>'));
             addToFavouritesElement.hover(function () {
                 $(this).find('i').removeClass('fa-heart');
@@ -1030,13 +1006,13 @@ import * as storage from './localstorage.js';
 
         // add to favourites - change heart colour and show red cross upon hover
         addToFavouritesElement.click((e) => {
-            if (storage.isFavourite(movie.id)) {
-                storage.removeFrom('favourites', movie);
+            if (LocalStorage.isFavourite(movie.id)) {
+                LocalStorage.removeFrom('favourites', movie);
 
                 $(e.currentTarget).find('i').removeClass('active');
 
             } else {
-                storage.addTo('favourites', movie);
+                LocalStorage.addTo('favourites', movie);
 
                 // hover magic 
                 $(e.currentTarget).find('i').addClass('active');
@@ -1108,10 +1084,10 @@ import * as storage from './localstorage.js';
     // refresh filter default values
     const refreshFilters = () => {
         App.Filters.rating = "",
-        App.Filters.genre = "",
-        App.Filters.yearFrom = "",
-        App.Filters.yearTo = "",
-        App.Filters.country = ""
+            App.Filters.genre = "",
+            App.Filters.yearFrom = "",
+            App.Filters.yearTo = "",
+            App.Filters.country = ""
     };
 
     // clear all filters
