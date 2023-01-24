@@ -6,62 +6,61 @@
   <title>Databáze hráčů</title>
 
   <meta charset="utf-8" />
-  <link rel="stylesheet" href="./css/style.css">
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400&display=swap');
-  </style>
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet" />
 </head>
 
 <body>
   <h1>Databáze hráčů</h1>
 
+  <button id="load_sheets" title="Náhled dat bez možnosti úprav">
+    Náhled záznamů
+  </button>
+  <button id="authorize_button">Přihlásit se</button>
 
-
-  <button id="load_excel" onclick="load()" title="Náhled dat bez možnosti úprav">Náhled záznamů</button>
-  <button id="authorize_button" onclick="handleAuthClick()">Přihlásit se</button>
-
-  <!-- <button id="signout_button" onclick="handleSignoutClick()">Odhlásit se</button> -->
+  <p id="lastLogin"></p>
 
   <div>
-
-
     <div class="inputAndEdit">
-      <div>
-        <label>
-          Jméno
-          <input type="text" id="jmenoInput" />
-        </label>
-      </div>
-      <div>
-        <label>
-          Příjmení
-          <input type="text" id="prijmeniInput" />
-        </label>
-      </div>
-      <div>
-        <label>
-          Rok narození
-          <input type="text" id="datumNarozeniInput" />
-        </label>
-      </div>
-      <div>
-        <label>
-          Váha
-          <input type="text" id="vahaInput" />
-        </label>
-      </div>
-      <div>
-        <label>
-          Výška
-          <input type="text" id="vyskaInput" />
-        </label>
-      </div>
+      <form class="inputForm">
+        <div>
+          <label>
+            Jméno
+            <input type="text" id="nameInput" />
+          </label>
+        </div>
+        <div>
+          <label>
+            Příjmení
+            <input type="text" id="surnameInput" />
+          </label>
+        </div>
+        <div>
+          <label>
+            Rok narození
+            <input type="number" id="yearInput" />
+          </label>
+        </div>
+        <div>
+          <label>
+            Váha
+            <input type="number" id="weightInput" />
+          </label>
+        </div>
+        <div>
+          <label>
+            Výška
+            <input type="number" id="heightInput" />
+          </label>
+        </div>
+      </form>
 
-      <button id="write_button" onclick="handleWrite()">Přidat záznam</button>
-      <button id="finish_edit_button" style="visibility: hidden" onclick="handleWrite()">
+      <button id="write_button">Přidat záznam</button>
+      <button id="finish_edit_button" style="visibility: hidden">
         Uložit úpravy
       </button>
-
     </div>
 
     <div class="dataHeadings">
@@ -72,10 +71,13 @@
       <p>Výška</p>
     </div>
 
-
     <div id="table" class="data"></div>
+  </div>
 
+  <p id="errMess" class=""></p>
 
+  <div id="spinner" class="spinner">
+    <div></div>
   </div>
 
   <script src="./js/script.js"></script>
