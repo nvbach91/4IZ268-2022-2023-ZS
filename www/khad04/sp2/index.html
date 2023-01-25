@@ -2,53 +2,44 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Dogs Encyclopedia</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
-    <link rel="icon" type="img/png" href="img/pet.png" />
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Cats App</title>
+	<link rel="shortcut icon" href="img/favicon.png" type="image/png">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/modern-normalize@1.1.0/modern-normalize.min.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <header>
-        <div class="logo"><img src="./img/pet.png" alt="logo"></div>
-        <h1>Dogs Encyclopedia</h1>
-    </header>
-    <hr>
-    <main>
-        <p>Add a dog by typing its breed and clicking the button</p>
-        <p>Then you can click on a dog to call it out</p>
-        <form id="dog-form">
-            <div class="form-row">
-                <input id="breed-name" placeholder="Breed name">
-                <button id="add-button">Add</button>
-            </div>
-        </form>
-        <ul id="dogs-list">
-            <li class="dog">
-                <div class="breed-name">Labrador Retriever</div>
-                <div class="breed-photo"><img src="./img/Labrador_Retriever.jpg" alt="Labrador_Retriever"></div>
-                <button class="dog-delete">Delete</button>
-            </li>
-            <li class="dog">
-                <div class="breed-name">Border Collies</div>
-                <div class="breed-photo"><img src="./img/Border_Collies.jpg" alt="Border_Collies"></div>
-                <button class="dog-delete">Delete</button>
-            </li>
-            <li class="dog">
-                <div class="breed-name">Airedale Terrier</div>
-                <div class="breed-photo"><img src="./img/Airedale_Terrier.jpg" alt="Airedale Terrier"></div>
-                <button class="dog-delete">Delete</button>
-            </li>
-        </ul>
-    </main>
-    
-    <footer>2022 &copy; Daria Kharitonova</footer>
+	<div class="container">
+		<header>
+			<h1>Find your favorite cat</h1>
+		</header>
+		<form id="search_form">
+			<div class="form-row">
+				<input type="text" placeholder="e.g. Abyssinian" name="search-term" id="search_term" autofocus>
 
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.slim.min.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/modern-normalize@1.1.0/modern-normalize.min.css"></script>
-    <script src="./main.js"></script>
+				<button type="submit">
+					<img class="button_img" src="img/lupa.png" alt="Magnifier">
+				</button>
+			</div>
+			<div class="form_msg"> msg</div>
+		</form>
+		<section>
+			<ul class="cats">
+
+			</ul>
+		</section>
+
+		<footer>
+			<p><small>2023 © Daria Kharitonova</small></p>
+		</footer>
+	</div>
+	<script src="main.js"></script>
 </body>
 
 </html>
