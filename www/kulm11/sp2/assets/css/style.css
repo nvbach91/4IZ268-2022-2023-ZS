@@ -149,13 +149,15 @@ li button {
 
 @keyframes spinner {
     0% {
-      transform: translate3d(-50%, -50%, 0) rotate(0deg);
+        transform: translate3d(-50%, -50%, 0) rotate(0deg);
     }
+
     100% {
-      transform: translate3d(-50%, -50%, 0) rotate(360deg);
+        transform: translate3d(-50%, -50%, 0) rotate(360deg);
     }
-  }
-  #spinner::before {
+}
+
+#spinner::before {
     animation: 1.5s linear infinite spinner;
     animation-play-state: inherit;
     border: solid 5px #b3b3b3;
@@ -167,4 +169,4 @@ li button {
     position: absolute;
     will-change: transform;
     margin-left: 20px;
-  }
+}

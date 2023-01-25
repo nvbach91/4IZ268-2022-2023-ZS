@@ -21,7 +21,7 @@
                     const movieName = document.createElement("h3");
                     movieName.innerHTML = movieData.Title;
                     const movieInfo = document.createElement("p");
-                    movieInfo.innerHTML =`<strong>Year</strong>: ${movieData.Year}<br><br><strong>IMDb rating</strong>: ${movieData.imdbRating}`;
+                    movieInfo.innerHTML = `<strong>Year</strong>: ${movieData.Year}<br><br><strong>IMDb rating</strong>: ${movieData.imdbRating}`;
                     const movieImageUrl = movieData.Poster;
                     const movieImageElement = document.createElement("img");
                     movieImageElement.setAttribute("src", movieImageUrl);
@@ -310,13 +310,7 @@
     }
 
     function checkHidden(movieHTML, filterStatus) {
-        let hiddenStatus = true;
-        filterStatus.forEach((filter) => {
-            if (!filter) {
-                hiddenStatus = false;
-            }
-        });
-        if (hiddenStatus) {
+        if (!filterStatus.includes(false)) {
             movieHTML.classList.remove("hidden");
         }
         else {
@@ -344,7 +338,7 @@
     movieFormSubmitButton.innerText = "Add";
 
     const spinner = document.createElement("div");
-    spinner.setAttribute("id","spinner");
+    spinner.setAttribute("id", "spinner");
     spinner.classList.add("hidden")
 
     movieForm.appendChild(movieTitleInput);
