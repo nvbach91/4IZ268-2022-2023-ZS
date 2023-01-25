@@ -6,16 +6,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/modern-normalize@1.1.0/modern-normalize.min.css">
+    <link rel="shortcut icon" href="./img/favicon.png" type="image/png">
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.slim.min.js"></script>
 </head>
 
+
+
 <body>
-    <div class="container">
-        <header>
-            <h1>Weather forecast</h1>
-        </header>
-        <form action="" id="search_form">
+    <header>
+        <h1>Weather forecast</h1>
+    </header>
+
+    <div class="form">
+        <form id="search_form">
             <div class="form_row">
                 <input type="text" placeholder="Enter a city " name="search_term" id="search_term" autofocus>
 
@@ -23,43 +31,12 @@
                     <img src="img/search-interface-symbol.png" alt="search">
                 </button>
             </div>
-
+            <p class="form_msg">ahoj, to je msg, tvl</p>
         </form>
     </div>
 
     <section>
         <ul class="cities">
-            <li>
-                <div>
-                    <h3><span class="city_name">Oslo</span><span class="city_country">NO</span></h3>
-                    <h2>-10 <sup>°C</sup></h2>
-                </div>
-                <figure>
-                    <img src="./img/weather/7.png" alt="">
-                </figure>
-                <p class="city_conditions">Sunny</p>
-            </li>
-            <li>
-                <div>
-                    <h3><span class="city_name">Prague</span><span class="city_country">CZ</span></h3>
-                    <h2>6 <sup>°C</sup></h2>
-                </div>
-                <figure>
-                    <img src="./img/weather/7.png" alt="">
-                </figure>
-                <p class="city_conditions">Sunny</p>
-            </li>
-            <li>
-                <div>
-                    <h3><span class="city_name">Madrid</span><span class="city_country">ES</span></h3>
-                    <h2>25 <sup>°C</sup></h2>
-                </div>
-                <figure>
-                    <img src="./img/weather/7.png" alt="">
-                </figure>
-                <p class="city_conditions">Sunny</p>
-            </li>
-
         </ul>
     </section>
 
