@@ -81,7 +81,7 @@ $(document).ready(() => {
       // Pokud se scrolluje dolů, list se pohybuje vlevo
       randomGamesContainer.animate({ scrollLeft: '-=300' });
     } else {
-      // Pokud se scrolluje nahoru, lsit se posouvá vpravo
+      // Pokud se scrolluje nahoru, list se posouvá vpravo
       randomGamesContainer.animate({ scrollLeft: '+=300' });
     }
   });
@@ -95,7 +95,7 @@ $(document).ready(() => {
       // Pokud se scrolluje dolů, list se pohybuje vlevo
       userGamesContainer.animate({ scrollLeft: '-=300' });
     } else {
-      // Pokud se scrolluje nahoru, lsit se posouvá vpravo
+      // Pokud se scrolluje nahoru, listt se posouvá vpravo
       userGamesContainer.animate({ scrollLeft: '+=300' });
     }
   });

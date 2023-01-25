@@ -36,7 +36,6 @@ h1 {
     min-width: 100%;
     color: white; 
     font-size: 36px; 
-    background-image: "";
 }
 
 h2 {
@@ -44,7 +43,6 @@ h2 {
     min-width: 100%;
     color: white; 
     font-size: 36px; 
-    background-image: "";
 }
 label {
     color: white;
@@ -189,7 +187,7 @@ p {
     }
 }
 
-input[type="text"] {
+input {
     width: 20%;
     margin: 8px 0;
     box-sizing: border-box;
