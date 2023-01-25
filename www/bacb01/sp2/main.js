@@ -1,90 +1,171 @@
-let form = document.getElementById("form");
-let textInput = document.getElementById("ntTittleInput");
-let startTimeInput = document.getElementById("ntStartTimeInput");
-let endTimeInput = document.getElementById("ntEndTimeInput");
-let locationInput = document.getElementById("ntLocationInput");
-let textarea = document.getElementById("ntTextArea");
-let msg = document.getElementById("ntMsg");
-let tasks = document.getElementById("tasks");
-let add = document.getElementById("ntAdd");
+let form = document.querySelector("#form");
+let textInput = document.querySelector('input[name="ntTittleInput"');
+let startTimeInput = document.querySelector('input[name="ntStartTimeInput"');
+let endTimeInput = document.querySelector('input[name="ntEndTimeInput"');
+let locationInput = document.querySelector('input[name="ntLocationInput"');
+let textarea = document.querySelector("#ntTextArea");
+let msgDate = document.querySelector("#ntMsgDate");
+let msgLocation = document.querySelector("#ntLocation");
+let taskList = document.querySelector("#tasks");
+let add = document.querySelector("#ntAdd");
+let searchInput = document.querySelector("[data-search]");
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   formValidation();
 });
 
-let formValidation = () => {
-  if (textInput.value === "") {
-    console.log("failure");
-    msg.innerHTML = "Task cannot be blank";
-  } else {
-    console.log("success");
-    msg.innerHTML = "";
-    acceptData();
-    add.setAttribute("data-bs-dismiss", "modal");
-    add.click();
+searchInput.addEventListener("input", e => {
+  const value = e.target.value.toLowerCase();
+  data.forEach((d, ind) => {
+    const isVisible = d.tittle.toLowerCase().includes(value) ||
+      d.description.toLowerCase().includes(value) ||
+      d.startTime.toLowerCase().includes(value) ||
+      d.endTime.toLowerCase().includes(value) ||
+      d.location.toLowerCase().includes(value);
+    console.log(document.getElementsByName(ind));
+    const searchedElement = document.getElementsByName(ind);
+    searchedElement.forEach(x => x.classList.toggle("hide", !isVisible));
+    //searchedElement.classList.toggle("hide", !isVisible);
+  })
+});
 
-    (() => {
-      add.setAttribute("data-bs-dismiss", "");
-    })();
+let formValidation = () => {
+  if (startTimeInput.value > endTimeInput.value) {
+    console.log("failure");
+    msgDate.innerHTML = "Datum nelze nastavit.";
+  }
+  else {
+    if (locationInput.value === "") {
+      const success = (position) => {
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+
+        const geoApiUrl = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=cze`;
+
+        fetch(geoApiUrl)
+          .then(res => res.json())
+          .then(data => {
+            console.log(data.locality);
+            locationInput.value = data.locality;
+          });
+      };
+      const error = () => {
+        msgLocation.innerHTML = "Polohové údaje nejsou dostupné."
+      };
+      navigator.geolocation.getCurrentPosition(success, error);
+      console.log("success");
+      acceptData();
+      add.setAttribute("data-bs-dismiss", "modal");
+      add.click();
+    }
+    else {
+      console.log("success");
+      acceptData();
+      add.setAttribute("data-bs-dismiss", "modal");
+      add.click();
+
+      (() => {
+        add.setAttribute("data-bs-dismiss", "");
+      })();
+    }
   }
 };
 
-let data = [];
+let data = [{}];
 
 let acceptData = () => {
   data.push({
-    text: textInput.value,
+    tittle: textInput.value,
     startTime: startTimeInput.value,
     endTime: endTimeInput.value,
     description: textarea.value,
-    location: locationInput,
+    location: locationInput.value,
   });
 
-  localStorage.setItem("data", JSON.stringify(data));
 
-  console.log(data);
-  createTasks();
+  while (taskList.lastElementChild) {
+    taskList.removeChild(taskList.lastElementChild);
+  };
+
+  createTaskCards();
+  localStorage.setItem("data", JSON.stringify(data));
 };
 
-let createTasks = () => {
-  tasks.innerHTML = "";
-  data.map((x, y) => {
-    console.log(y)
-    return (tasks.innerHTML += `
-    <div id=${y}>
-          <span class="fw-bold">${x.text}</span>
-          <span class="small text-secondary">od:${x.startTime} do:${x.endTime}</span>
-          <p>${x.description}</p>
-  
-          <span class="options">
-            <i onClick= "editTask(this)" data-bs-toggle="modal" data-bs-target="#form" class="fas fa-edit"></i>
-            <i onClick ="deleteTask(this);createTasks()" class="fas fa-trash-alt"></i>
-          </span>
-        </div>
-    `);
-  });
+let createTaskCards = () => {
+  const todoItems = [];
 
+  data.forEach((task, index) => {
+    const element = document.createElement('div');
+    element.setAttribute("name", index)
+
+    const elementTittle = document.createElement('span');
+    elementTittle.classList.add('fw-bold');
+    elementTittle.innerText = task.tittle;
+
+    const elementDates = document.createElement('span');
+    elementDates.classList.add('text-secondary');
+    elementDates.innerText = "Od: " + task.startTime + " Do: " + task.endTime;
+
+    const elementLocation = document.createElement('span');
+    elementLocation.classList.add('text-secondary');
+    elementLocation.innerText = "Místo: " + task.location;
+
+    const elementDescription = document.createElement('p');
+    elementDescription.classList.add('text-secondary');
+    elementDescription.innerText = task.description;
+
+    const elementOption = document.createElement('div');
+
+    element.appendChild(elementTittle);
+    element.appendChild(elementDates);
+    element.appendChild(elementLocation);
+    element.appendChild(elementDescription);
+    element.appendChild(elementOption);
+
+    elementOption.classList.add('options');
+    const elementEdit = document.createElement('i');
+    elementEdit.classList.add('fas');
+    elementEdit.classList.add('fa-edit');
+    elementEdit.setAttribute('data-bs-toggle', 'modal');
+    elementEdit.setAttribute('data-bs-target', '#form');
+    elementEdit.addEventListener('click', () => {
+      data.splice(index, 1);
+      editTaskForm(task);
+    });
+
+    elementOption.appendChild(elementEdit);
+
+    const elementDelete = document.createElement('i');
+    elementDelete.classList.add('fas');
+    elementDelete.classList.add('fa-trash-alt');
+    elementDelete.addEventListener('click', () => {
+      deleteTask(element, index);
+    });
+
+    elementOption.appendChild(elementDelete);
+
+    todoItems.push(element);
+  });
+  taskList.append(...todoItems);
   resetForm();
 };
 
-let deleteTask = (e) => {
-  e.parentElement.parentElement.remove();
-  data.splice(e.parentElement.parentElement.id, 1);
+let deleteTask = (element, index) => {
+  element.remove();
+  data.splice(index, 1);
   localStorage.setItem("data", JSON.stringify(data));
   console.log(data);
-  
 };
 
-let editTask = (e) => {
-  let selectedTask = e.parentElement.parentElement;
+let editTaskForm = (task) => {
+  console.log(data)
 
-  textInput.value = selectedTask.children[0].innerHTML;
-  startTimeInput.value = selectedTask.children[1].innerHTML;
-  endTimeInput.value = selectedTask.children[2].innerHTML;
-  textarea.value = selectedTask.children[3].innerHTML;
-
-  deleteTask(e);
+  textInput.value = task.tittle;
+  textarea.value = task.description;
+  startTimeInput.value = task.startTime;
+  endTimeInput.value = task.endTime;
+  locationInput.value = task.location;
 };
 
 let resetForm = () => {
@@ -96,7 +177,11 @@ let resetForm = () => {
 };
 
 (() => {
-  data = JSON.parse(localStorage.getItem("data")) || []
+  if (localStorage.getItem("data") != null){
+    data = JSON.parse(localStorage.getItem("data")) || []
   console.log(data);
-  createTasks();
+  createTaskCards();}
+  else{
+    localStorage.setItem(data);
+  }
 })();
