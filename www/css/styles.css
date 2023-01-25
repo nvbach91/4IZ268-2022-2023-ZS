@@ -1,0 +1,263 @@
+html, body {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
+    overflow-x: hidden;
+    height: 100%;
+}
+
+h1 {
+    background-color: black;
+    padding: 20px;
+    color: white;
+    font-size: 36px;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+input[type="select"] {
+    background-color: white;
+    padding: 10px;
+    border: 1px solid #c2c2c2;
+    border-radius: 5px;
+    font-size: 18px;
+    color: black;
+}
+
+input[type=submit] {
+    background-color: white;
+    padding: 10px 20px;
+    border: 1px solid #c2c2c2;
+    border-radius: 5px;
+    color: black;
+    font-size: 18px;
+    transition: all 0.2s ease-in-out;
+}
+
+input[type=submit]:hover {
+    background-color: #f0f0f0;
+    border: 1px solid #979797;
+    transition: all 0.2s ease-in-out;
+}
+
+input[type="button"] {
+    background-color: black;
+}
+
+header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav {
+    width: 100%;
+    background-color: black;
+    height: 10vh;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main {
+    padding: 20px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.container div {
+    flex-basis: 33%;
+    background-color: black;
+    height: 40vh;
+    padding: 10px;
+    margin: 10px;
+    color: white;
+    text-align: center;
+    border-radius: 20px;
+    padding: 30px;
+}
+
+.container div h2 {
+    background-color: black;
+    color: white;
+    font-size: 20px;
+    margin: 0;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.container div li {
+    list-style-type: none;
+    text-align: left;
+    cursor: pointer;
+}
+
+.container div h3 {
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.meal__container {
+    background-color: black;
+    height: auto;
+    padding: 20px;
+    margin: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.recipe__container h2 {
+    color: white;
+    display: inline-block;
+    text-align: center;
+    flex-basis: 100%;
+    padding: 0 20px;
+}
+
+.recipe__container ol {
+    color: white;
+    flex-basis: 100%;
+    padding: 0 20px;
+    margin-left: 50px;
+}
+
+#image {
+    padding: 10px;
+    margin: 10px;
+    flex-basis: 20%;
+    min-height: 35vh;
+    height: auto;
+    background-color: aliceblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+}
+
+#title {
+    padding-top: 0px;
+    margin-top: 0px;
+    flex-basis: 100%;
+    display: inline-block;
+    text-align: center;
+}
+
+#recipe {
+    color: white;
+}
+
+form {
+    width: 100%;
+    text-align: center;
+    padding: 15px;
+}
+
+li:hover {
+    color: aqua;
+    transition: 0.25s;
+}
+
+#results h3:hover {
+    color: aqua;
+    transition: 0.25s;
+}
+
+input {
+    margin: 20px;
+    padding: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+.recipe__container {
+    margin-top: 25px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    position: relative;
+    flex-basis: 65%;
+}
+
+.meal__container button {
+    background: white;
+    margin: 20px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    color: black;
+    font-size: 18px;
+    text-transform: uppercase;
+    transition: all 0.2s ease-in-out;
+}
+
+.meal__container button:hover {
+    background: white;
+    padding: 10px 25px;
+    border-radius: 25px;
+    color: black;
+    font-size: 20px;
+    text-transform: uppercase;
+    transition: all 0.2s ease-in-out;
+}
+
+footer {
+    background-color: black;
+    height: 50px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color:white;
+    position: absolute;
+    bottom: 0%;
+}
+
+#spinner-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+}
+
+#spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#spinner .loading {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #3498db;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
