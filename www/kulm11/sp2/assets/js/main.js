@@ -276,8 +276,8 @@
         movieRating.setAttribute("min", 0);
         movieRating.setAttribute("max", 100);
 
-        const localStorageWatched = JSON.parse(localStorage.getItem("watchedList") || "[]");
         movieRating.addEventListener(("change"), () => {
+            const localStorageWatched = JSON.parse(localStorage.getItem("watchedList") || "[]");
             localStorageWatched.forEach((item) => {
                 if (item.title === movieData.Title) {
                     item.userRating = movieRating.value;
@@ -301,7 +301,7 @@
         localStorage.setItem('unwatchedList', JSON.stringify(localStorageUnwatched));
         console.log(localStorage.getItem("unwatchedList"));
 
-        //const localStorageWatched = JSON.parse(localStorage.getItem("watchedList") || "[]");
+        const localStorageWatched = JSON.parse(localStorage.getItem("watchedList") || "[]");
         if (!JSON.stringify(localStorageWatched).includes(JSON.stringify({ title: movieData.Title, userRating: userRating }))) {
             localStorageWatched.push({ title: movieData.Title, userRating: userRating });
         }
