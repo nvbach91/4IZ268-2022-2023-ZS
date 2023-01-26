@@ -2,24 +2,24 @@ $(document).ready(() => {
   var randomGamesContainer = $('#random-games-container');
   var userGamesContainer = $('#user-games-container');
   var emptyText = $('<p>').addClass('empty-text').text('Seznam videoher je prázdný.');
-
   var spinner = $('<div>').addClass('spinner');
   randomGamesContainer.append(spinner);
   spinner.show();
-
   // Nahrání základních her z RAWG
   axios.get('https://api.rawg.io/api/games?key=860c2dc5a48346e69bf64f72d4ffb18b&page_size=25').then(function (response) {
     $.each(response.data.results, function (index, game) {
+      var gameDescription = game.description;
       var gameName = game.name;
       var gameImage = game.background_image;
       var gameSlug = game.slug;
       var gameElement = $('<p>').addClass('game-item').text(gameName);
-      gameElement.append(`<img src="${gameImage}" alt="${gameSlug}" style="width:300px;height:170px;">`);
+      gameElement.append(`<img src="${gameImage}" alt="${gameSlug}">`);
       var addButton = $('<button>').addClass('add-button').text('Přidat na seznam');
       var infoButton = $('<button>').addClass('more-info-button').text('Více informací');
       gameElement.append(addButton, infoButton);
       randomGamesContainer.append(gameElement);
       spinner.hide();
+      $(gameElement).data("desc", gameDescription)
     });
   });
   // Nahrání uživatelských her z localStorage
@@ -34,7 +34,7 @@ $(document).ready(() => {
       var gameImage = game.image;
       var gameSlug = game.slug;
       var gameElement = $('<p>').addClass('user-game-item').text(gameName);
-      gameElement.append(`<img src="${gameImage}" alt="${gameSlug}" style="width:300px;height:170px;">`);
+      gameElement.append(`<img src="${gameImage}" alt="${gameSlug}">`);
       var removeButton = $('<button>').addClass('remove-button').text('Odebrat ze seznamu');
       var infoButton = $('<button>').addClass('more-info-button').text('Více informací');
       gameElement.append(removeButton, infoButton);
@@ -44,7 +44,7 @@ $(document).ready(() => {
 
   //Tlačítko přidání vybrané hry na seznam uživatelských her
   $(document).on('click', '.add-button', function () {
-    var gameName = $(this).parent().text().replace("Přidat na seznam", "").replace("Více informací", "");
+    var gameName = $(this).parent().text().replace('Přidat na seznam', '').replace('Více informací', '');
     var gameImage = $(this).prev().attr('src');
     var gameSlug = $(this).prev().attr('alt');
     var game = { name: gameName, image: gameImage, slug: gameSlug };
@@ -54,13 +54,13 @@ $(document).ready(() => {
     // Kontrola, zda-li je hra již na seznamu. Pokud ano, vyskočí na uživatele alert. Pokud ne, bude přidána na seznam uživatelských her.
     var existingGame = userGames.find(g => g.name === gameName);
     if (existingGame) {
-    $("#more-info-dialog").html(`<p>Videohra ${gameName} je již na seznamu.</p>`);
-    $("#more-info-dialog").dialog("open");
+      $(`#more-info-dialog`).html(`<p>Videohra ${gameName} je již na seznamu.</p>`);
+      $(`#more-info-dialog`).dialog(`open`);
     } else {
       userGames.push(game);
       localStorage.setItem('userGames', JSON.stringify(userGames));
       var gameElement = $('<p>').addClass('user-game-item').text(gameName);
-      gameElement.append(`<img src="${gameImage}" alt="${gameSlug}" style="width:300px;height:170px;">`);
+      gameElement.append(`<img src="${gameImage}" alt="${gameSlug}" id="gameId">`);
       var removeButton = $('<button>').addClass('remove-button').text('Odebrat ze seznamu');
       var infoButton = $('<button>').addClass('more-info-button').text('Více informací');
       gameElement.append(removeButton, infoButton);
@@ -102,7 +102,7 @@ $(document).ready(() => {
 
   // Přidání listeneru pro odstranění hry ze seznamu uživatelských her
   $(document).on('click', '.remove-button', function () {
-    var gameName = $(this).prev().text();
+    var gameName = $(this).parent().text().replace('Odebrat ze seznamu', '').replace('Více informací', '');
     var userGames = JSON.parse(localStorage.getItem('userGames')) || [];
     var gameIndex = userGames.findIndex(game => game.name === gameName);
     userGames.splice(gameIndex, 1);
@@ -113,11 +113,19 @@ $(document).ready(() => {
     }
   });
 
+  // Debounce - vyhledávání se spustí až po prodlevě
+  function debounce(func, timeout = 500) {
+    let timer;
+    return (...args) => {
+      clearTimeout(timer);
+      timer = setTimeout(() => { func.apply(this, args); }, timeout);
+    };
+  };
+
+
   // Funkce vyhledávání. Automaticky se spustí po posledním stisku klávesy v search fieldu, nebo při změně search parametrů
   // Pokud je searchfield prázdný, načte se default list her
-  var searchTimeout;
-  $('#search-field, #page-size-select, #platform-select, #genre-select').on('input', function () {
-    clearTimeout(searchTimeout);
+  $('#search-field, #page-size-select, #platform-select, #genre-select').on('input', debounce(function () {
     randomGamesContainer.empty();
     randomGamesContainer.append(spinner);
     spinner.show();
@@ -126,34 +134,33 @@ $(document).ready(() => {
     var platform = $('#platform-select').val();
     var genre = $('#genre-select').val();
     if (searchTerm.trim() !== "") {
-      searchTimeout = setTimeout(function () {
-        var platformParam = (platform === 'all') ? '' : `&platforms=${platform}`;
-        var genreParam = (genre === 'all') ? '' : `&genres=${genre}`;
-        axios.get(`https://api.rawg.io/api/games?key=860c2dc5a48346e69bf64f72d4ffb18b&search=${searchTerm}&search_exact=1&page_size=${pageSize}${platformParam}${genreParam}`)
-          .then(function (response) {
-            if (response.data.results.length === 0) {
-              randomGamesContainer.empty();
-              var noResultsText = $('<p>').addClass('no-results-text').text('Nebyly nalezeny hry vyhovující vyhledávanému termínu');
-              spinner.hide()
-              randomGamesContainer.append(noResultsText);
-            } else {
-              spinner.hide();
-              randomGamesContainer.empty()
-              randomGamesContainer.find('.no-results-text').remove();
-              $.each(response.data.results, function (index, game) {
-                var gameElement = $('<p>').addClass('game-item').text(game.name);
-                var gameImage = game.background_image;
-                gameElement.append(`<img src="${gameImage}" alt="${game.slug}" style="width:300px;height:170px;">`);
-                var addButton = $('<button>').addClass('add-button').text('Přidat na seznam');
-                gameElement.append(addButton);
-                randomGamesContainer.append(gameElement);
-              });
-            }
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-      }, 10);
+      var platformParam = (platform === 'all') ? '' : `&platforms=${platform}`;
+      var genreParam = (genre === 'all') ? '' : `&genres=${genre}`;
+      axios.get(`https://api.rawg.io/api/games?key=860c2dc5a48346e69bf64f72d4ffb18b&search=${searchTerm}&search_exact=1&page_size=${pageSize}${platformParam}${genreParam}`)
+        .then(function (response) {
+          if (response.data.results.length === 0) {
+            randomGamesContainer.empty();
+            var noResultsText = $('<p>').addClass('no-results-text').text('Nebyly nalezeny hry vyhovující vyhledávanému termínu');
+            spinner.hide()
+            randomGamesContainer.append(noResultsText);
+          } else {
+            spinner.hide();
+            randomGamesContainer.empty()
+            randomGamesContainer.find('.no-results-text').remove();
+            $.each(response.data.results, function (index, game) {
+              var gameElement = $('<p>').addClass('game-item').text(game.name);
+              var gameImage = game.background_image;
+              gameElement.append(`<img src="${gameImage}" alt="${game.slug}">`);
+              var addButton = $('<button>').addClass('add-button').text('Přidat na seznam');
+              var infoButton = $('<button>').addClass('more-info-button').text('Více informací');
+              gameElement.append(addButton, infoButton);
+              randomGamesContainer.append(gameElement);
+            });
+          }
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
     } else {
       randomGamesContainer.empty();
       randomGamesContainer.append(spinner);
@@ -171,18 +178,21 @@ $(document).ready(() => {
             var gameImage = game.background_image;
             var gameSlug = game.slug;
             var gameElement = $('<p>').addClass('game-item').text(gameName);
-            gameElement.append(`<img src="${gameImage}" alt="${gameSlug}" style="width:300px;height:170px;">`);
+            gameElement.append(`<img src="${gameImage}" alt="${gameSlug}">`);
             var addButton = $('<button>').addClass('add-button').text('Přidat na seznam');
-            gameElement.append(addButton);
+            var infoButton = $('<button>').addClass('more-info-button').text('Více informací');
+            gameElement.append(addButton, infoButton);
             spinner.hide();
             randomGamesContainer.append(gameElement);
           });
         });
     }
-  });
+  }));
 
   // Nastavení pop-up dialogu
-  $("#more-info-dialog").dialog({
+  $(`#more-info-dialog`).dialog({
+    autoOpen: false,
+    modal: true,
     autoOpen: false,
     modal: true,
     width: "auto",
@@ -197,14 +207,14 @@ $(document).ready(() => {
     axios.get(`https://api.rawg.io/api/games/${slug}?key=860c2dc5a48346e69bf64f72d4ffb18b`)
       .then(function (response) {
         var game = response.data;
-        $("#more-info-dialog").html(`
+        $('#more-info-dialog').html(`
             <h2>${game.name}</h2>
             <p>${game.description}</p>
-            <img src=${game.background_image} alt=${game.name} style="width:300px;height:170px;">
+            <img src=${game.background_image} alt=${game.name}>
             <p>Datum vydání: ${game.released}</p>
             <p>Žánry: ${game.genres.map(g => g.name).join(', ')}</p>
           `);
-        $("#more-info-dialog").dialog("open");
+        $('#more-info-dialog').dialog(`open`);
       })
       .catch(function (error) {
         console.log(error);

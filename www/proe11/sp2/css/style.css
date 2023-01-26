@@ -1,20 +1,22 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    max-height: 800px;
+}
+
 body {
-    margin: 0;
-    padding: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 800px;
-    font-family: 'Roboto', sans-serif;
     background-color: #b3c0c4;
 }
+
 .header {
     text-align: center;
     margin: 0 auto;
     display: flex;
     justify-content: center;
 }
-
 
 .container {
 
@@ -26,7 +28,7 @@ body {
     background-image: url(../resources/logo.jpg);
     background-repeat: no-repeat;
     background-size: auto 100px;
-    background-position: calc(30%) 20px;
+    background-position: 30% 20px;
     background-color: #333;
     border-radius: 10px;
 }
@@ -34,20 +36,24 @@ body {
 h1 {
     text-align: center;
     min-width: 100%;
-    color: white; 
-    font-size: 36px; 
+    color: white;
+    font-size: 2vw;
 }
 
 h2 {
     text-align: center;
     min-width: 100%;
-    color: white; 
-    font-size: 36px; 
+    color: white;
+    font-size: 2vw;
 }
+
 label {
     color: white;
+    font-size: 1vw;
 }
+
 .line {
+    height: 4vw;
     min-width: 100%;
 }
 
@@ -58,8 +64,8 @@ label {
 }
 
 .game-row {
-    position: relative;
-    width: 1920px;
+
+    width: 100%;
 }
 
 .game-container {
@@ -67,24 +73,25 @@ label {
     flex-wrap: nowrap;
     align-items: center;
     overflow-x: auto;
-    min-height: 300px;
-    background-color: #333333; 
+    min-height: 10vw;
+    background-color: #333333;
 }
 
 .game-item {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 300px;
+    width: 15vw;
     margin: 10px;
-    background-color: #333333; 
+    background-color: #333333;
     border-radius: 5px;
-    box-shadow: 0px 0px 10px #999999; 
+    box-shadow: 0px 0px 10px #999999;
 }
 
 .game-item img {
     margin-bottom: 10px;
-    width: 300px;
+    width: 15vw;
+    height: 8vw;
     border-radius: 5px;
 }
 
@@ -92,44 +99,45 @@ label {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 300px;
+    width: 15vw;
     margin: 10px;
-    background-color: #333333; 
+    background-color: #333333;
     border-radius: 5px;
-    box-shadow: 0px 0px 10px #999999; 
+    box-shadow: 0px 0px 10px #999999;
 }
+
 .user-game-item img {
-    width: 300px;
-    height: 170px;
+    width: 15vw;
+    height: 8vw;
 }
 
 .user-game-item button {
     margin-top: 10px;
-    background-color:  rgb(180, 150, 93); 
-    color: white; 
+    background-color: rgb(180, 150, 93);
+    color: white;
     border-radius: 5px;
     padding: 5px 10px;
-    font-size: 18px; 
+    font-size: 1vw;
 }
 
 .game-item button {
     margin-top: 10px;
-    background-color:  rgb(180, 150, 93); 
-    color: white; 
+    background-color: rgb(180, 150, 93);
+    color: white;
     border-radius: 5px;
     padding: 5px 10px;
-    font-size: 18px; 
+    font-size: 1vw;
 }
+
 p {
-    font-size: 20px;
+    font-size: 1vw;
     color: aliceblue;
 }
 
 #random-games-container {
     display: flex;
-    position: relative;
     padding-top: 10px;
-    max-width: 1280px;
+    max-width: 100vw;
     justify-items: center;
     background-color: #736f6f;
     border-radius: 10px;
@@ -138,8 +146,6 @@ p {
 #user-games-container {
     display: flex;
     position: relative;
-    max-width: 1280px;
-    min-height: 320px;
     justify-items: center;
     background-color: #736f6f;
     border-radius: 10px;
@@ -188,13 +194,17 @@ p {
 }
 
 input {
-    width: 20%;
+    width: 20vw;
     margin: 8px 0;
     box-sizing: border-box;
     border: 2px solid #ccc;
     border-radius: 4px;
-    font-size: 16px;
+    font-size: 1vw;
     text-align: center;
+}
+select {
+    width: 8vw;
+    font-size: 1vw;
 }
 
 #more-info-dialog {
@@ -203,7 +213,12 @@ input {
     text-align: center;
     padding: 20px;
     background-color: #333;
-  }
+}
+
+#more-info-dialog img {
+    width: 300px;
+    height: 170px;
+}
 
 footer {
     background-color: #333;
@@ -214,5 +229,3 @@ footer {
 footer p {
     font-size: 12px;
 }
-
-  
