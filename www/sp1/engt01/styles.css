@@ -379,6 +379,7 @@ main .service-link .service-link-wrapper {
     justify-content: center;
     align-content: center;
     height: 100%;
+    font-size: 24px;
     background: rgba(0, 0, 0, 0.62);
     transition: background-color 250ms ease-in;
 }
