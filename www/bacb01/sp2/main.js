@@ -46,18 +46,17 @@ let formValidation = () => {
         fetch(geoApiUrl)
           .then(res => res.json())
           .then(data => {
-            console.log(data.locality);
             locationInput.value = data.locality;
+            console.log("success");
+            acceptData();
+            add.setAttribute("data-bs-dismiss", "modal");
+            add.click();
           });
       };
       const error = () => {
         msgLocation.innerHTML = "Polohové údaje nejsou dostupné."
       };
       navigator.geolocation.getCurrentPosition(success, error);
-      console.log("success");
-      acceptData();
-      add.setAttribute("data-bs-dismiss", "modal");
-      add.click();
     }
     else {
       console.log("success");
