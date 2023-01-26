@@ -293,8 +293,8 @@ window.addEventListener('load', () => {
         });
     }
 
-    /** ------------------------------------------------------ ---------- END OF REQUEST METHODS DEFINITION--------------------------------------------------------------- */
-    /** --------------------------------------------------------------------- CREATING DAYS IN CALENDAR--------------------------------------------------------------- */
+    /* ------------------------------------------------------ ---------- END OF REQUEST METHODS DEFINITION--------------------------------------------------------------- */
+    /* --------------------------------------------------------------------- CREATING DAYS IN CALENDAR--------------------------------------------------------------- */
     // Set present month and year
     const date = $('#date');
     monthPrefix = () => { if (new Date().getMonth() < 10) { return 0 } else { return '' } };
@@ -329,7 +329,7 @@ window.addEventListener('load', () => {
         })
     }
 
-    /** --------------------------------------------------------------------- DEFINING DAY FUNCTIONS--------------------------------------------------------------- */
+    /* --------------------------------------------------------------------- DEFINING DAY FUNCTIONS--------------------------------------------------------------- */
     // Returns inputed day in 2 digit format
     dayPrefix = (day) => { if (day < 10) { return 0 } else { return '' } };
 
@@ -340,7 +340,7 @@ window.addEventListener('load', () => {
     timeZoneOperation = () => { if (`${(new Date().getTimezoneOffset() / -60)}` < 0) { return '-' } else { return '+' } }
 
     // Apends images of priorities to parametered day
-    getPriorities = async (day) => {
+    getPriorities = async (day,notIncluded) => {
         //send request to api for optaining all events that occure that day
         const response = await getEvents(day);
 
@@ -352,6 +352,24 @@ window.addEventListener('load', () => {
         const imageDiv = $(`#${day}`);
         imageDiv.empty();
         response.result.items.forEach((event) => {
+            let endLoop = false;
+            try {
+                if (notIncluded[0] !== 'undefined') {//if doesnt crash...
+                    try {
+                        if ($.inArray(event.source.title, notIncluded) === -1) {
+                        } else {
+                            endLoop = true;
+                        }
+                    } catch (error) {
+                        if ($.inArray('no', notIncluded) === -1) {
+                            endLoop = true;
+                        }
+                    }
+                }
+            } catch (error) {
+                //sorting wasnt applied
+            }
+            if(!endLoop){
             try {
                 if (event.source.title === 'nízká') {
                     low++;
@@ -361,10 +379,10 @@ window.addEventListener('load', () => {
                 }
                 else if (event.source.title === 'vysoká') {
                     high++;
-                }else{
-                    no++;
+                } else {                    
+                        no++;
                 }
-            } catch (error) { no++ }
+            } catch (error) {no++}
 
             //according to number of priorities append priority images and titles with number of type (if more then 1)
             const imageDiv = $(`#${day}`);
@@ -405,7 +423,7 @@ window.addEventListener('load', () => {
                     noImg.attr('title', `${noImg}x`);
                 }
             }
-        })
+    }})
 
 
     }
@@ -456,7 +474,7 @@ window.addEventListener('load', () => {
                 else if (event.source.title === 'vysoká') {
                     priorityImg.attr('src', 'img/highPriorityEvent.png');
                     priorityImg.attr('alt', 'image indicating high priority');
-                }else{
+                } else {
                     priorityImg.attr('src', 'img/noPriorityEvent.png');
                     priorityImg.attr('alt', 'image indicating no priority');
                 }
@@ -525,8 +543,8 @@ window.addEventListener('load', () => {
         body.append(window);
     }
 
-    /** ---------------------------------------------------------------- END OF DAY FUNCTIONS DEFINITION--------------------------------------------------------------- */
-    /** -------------------------------------------------------------------- DEFINING EVENT FUNCTIONS----------------------------------------------------------------- */
+    /* ---------------------------------------------------------------- END OF DAY FUNCTIONS DEFINITION--------------------------------------------------------------- */
+    /* -------------------------------------------------------------------- DEFINING EVENT FUNCTIONS----------------------------------------------------------------- */
     const pastTasks = $('#divTasksAfter');
     const futureTasks = $('#divTasksBefore');
     const pinnedTasks = $('#divPinnedTasks')
@@ -784,8 +802,8 @@ window.addEventListener('load', () => {
         window.append(form);
         body.append(window)
     }
-    //fech past and future events within 1 year and put them into side divs
-    fechEvents = async () => {
+    // Fech past and future events within 1 year and put them into side divs
+    fechEvents = async (notIncluded) => {
         //send request for all alltime events
         const response = await gapi.client.calendar.events.list({
             'calendarId': 'primary',
@@ -799,6 +817,24 @@ window.addEventListener('load', () => {
 
         // create divs to be displayed on side and base od end time push them into array
         response.result.items.forEach((item) => {
+            let endLoop = false;
+            try {
+                if (notIncluded[0] !== 'undefined') {//if doesnt crash...
+                    try {
+                        if ($.inArray(item.source.title, notIncluded) === -1) {
+                        } else {
+                            endLoop = true;
+                        }
+                    } catch (error) {
+                        if ($.inArray('no', notIncluded) === -1) {
+                            endLoop = true;
+                        }
+                    }
+                }
+            } catch (error) {
+                //sorting wasnt applied
+            }
+            if(!endLoop){
             const event = $('<div>');
             event.attr('id', item.id);
             event.on('click', () => { editEvent(item) });
@@ -867,7 +903,7 @@ window.addEventListener('load', () => {
                     future.push(eventCopy)
                 }
             }
-        })
+        }})
         pastTasks.empty();
         past.forEach((pastTask) => {
             pastTasks.append(pastTask);
@@ -881,4 +917,82 @@ window.addEventListener('load', () => {
             pinnedTasks.append(pin);
         })
     }
+    // Display sorting window, implements sortings by priorities
+    (sort = () => {
+        const sortWindow = $('<div>');
+        sortWindow.attr('id', 'sortWindow');
+        sortWindow.attr('class', 'sortWindow');
+        sortWindow.css('display', 'none');
+
+        $('#filters').on('click', () => { if(sortWindow.css('display')==='none'){sortWindow.css('display','flex')}else{sortWindow.css('display','none')} });
+
+        const sortLowLabel = $('<input>');
+        sortLowLabel.attr('type', 'label');
+        sortLowLabel.attr('value', 'Nízká priorita');
+        sortLowLabel.attr('readonly', '');
+        const sortLowInput = $('<input>');
+        sortLowInput.attr('type', 'checkbox');
+        sortLowInput.attr('name', 'nízká');
+        sortLowInput.attr('checked', true);
+        sortLowInput.on('click', () => { if (sortLowInput.attr('checked') === 'checked') { sortLowInput.attr('checked', false) } else { sortLowInput.attr('checked', 'checked') } });
+        sortWindow.append(sortLowLabel);
+        sortWindow.append(sortLowInput);
+
+        const sortMiddleLabel = $('<input>');
+        sortMiddleLabel.attr('type', 'label');
+        sortMiddleLabel.attr('value', 'Střední priorita');
+        sortMiddleLabel.attr('readonly', '');
+        const sortMiddleInput = $('<input>');
+        sortMiddleInput.attr('type', 'checkbox');
+        sortMiddleInput.attr('name', 'střední');
+        sortMiddleInput.attr('checked', true);
+        sortMiddleInput.on('click', () => { if (sortMiddleInput.attr('checked') === 'checked') { sortMiddleInput.attr('checked', false) } else { sortMiddleInput.attr('checked', 'checked') } });
+        sortWindow.append(sortMiddleLabel);
+        sortWindow.append(sortMiddleInput);
+
+        const sortHignLabel = $('<input>');
+        sortHignLabel.attr('type', 'label');
+        sortHignLabel.attr('value', 'Vysoká priorita');
+        sortHignLabel.attr('readonly', '');
+        const sortHighInput = $('<input>');
+        sortHighInput.attr('type', 'checkbox');
+        sortHighInput.attr('name', 'vysoká');
+        sortHighInput.attr('checked', true);
+        sortHighInput.on('click', () => { if (sortHighInput.attr('checked') === 'checked') { sortHighInput.attr('checked', false) } else { sortHighInput.attr('checked', 'checked') } });
+        sortWindow.append(sortHignLabel);
+        sortWindow.append(sortHighInput);
+
+        const sortNoLabel = $('<input>');
+        sortNoLabel.attr('type', 'label');
+        sortNoLabel.attr('value', 'Bez priority');
+        sortNoLabel.attr('readonly', '');
+        const sortNoInput = $('<input>');
+        sortNoInput.attr('type', 'checkbox');
+        sortNoInput.attr('name', 'null');
+        sortNoInput.attr('checked', true);
+        sortNoInput.on('click', () => { if (sortNoInput.attr('checked') === 'checked') { sortNoInput.attr('checked', false) } else { sortNoInput.attr('checked', 'checked') } });
+        sortWindow.append(sortNoLabel);
+        sortWindow.append(sortNoInput);
+
+        const confirmSort = $('<input>');
+        confirmSort.attr('type', 'button');
+        confirmSort.attr('class', 'confirmSort');
+        confirmSort.attr('value', 'Filtrovat');
+        sortWindow.append(confirmSort);
+        confirmSort.on('click', async () => {
+            loaderActive(true);
+            let notIncluded = [];
+            $.each([sortLowInput, sortMiddleInput, sortHighInput,sortNoInput], (i, val) => {
+                if (val.attr('checked') !== 'checked') {
+                    notIncluded.push(val.attr('name'));
+                }
+            });
+            await fechEvents(notIncluded);
+            for(i=1;i<=`${new Date(`${date.val().slice(0, 4)}`, `${date.val().slice(5, 7)}`, 0).getDate()}`;i++){
+                await getPriorities(i,notIncluded);
+            }
+            loaderActive(false);
+        })
+        body.append(sortWindow);
+    })()
 })
