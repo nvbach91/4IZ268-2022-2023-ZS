@@ -103,6 +103,10 @@ header a/*, .subheader a*/ {
     color: inherit;
 }
 
+header a.active {
+    background-color: rgba(0, 0, 0, .08);
+}
+
 nav/*, #subnav*/ {
     display: flex;
     flex-flow: row wrap;
