@@ -100,8 +100,8 @@
 
   function validateAge() {
     let age = $("#age").val();
-    if (age < 12) {
-      alertTextAge.text("Age must be greater than 12.");
+    if (age < 20 || age > 130) {
+      alertTextAge.text("Age must be greater than 20.");
       alertTextAge.insertAfter(formDiv);
       ageInput.addClass("wrong-input");
       return false;
@@ -138,6 +138,7 @@
           let health = data.health;
           let date = new Date();
           let shortVersionDate = date.toLocaleDateString();
+          bmiTextContainer.append(bmiTextResultSpan);
           bmiTextResultSpan.text("Bmi: " + bmi + " - " + health);
 
           localStorage.setItem("date", shortVersionDate.toString());
