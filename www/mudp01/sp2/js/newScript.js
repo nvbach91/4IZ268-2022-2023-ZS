@@ -145,6 +145,8 @@ window.addEventListener('load', () => {
                         loaderActive(false, true);
                         createLogin();
                     } else {
+                        fechEvents();
+                        displayDays();
                         showContent();
                         loaderActive(false, false);
                     }
@@ -167,10 +169,12 @@ window.addEventListener('load', () => {
             }
             //logined displaying app content
             //initializeApplication();
+            localStorage.setItem('accessToken', gapi.auth.getToken().access_token);
+            fechEvents();
+            displayDays();
             $('#loginWindow').remove();
             showContent();
             loaderActive(false, false);
-            localStorage.setItem('accessToken', gapi.auth.getToken().access_token);
         };
         if (gapi.client.getToken() === null) {
             // Prompt the user to select a Google Account and ask for consent to share their data when establishing a new session.
@@ -181,10 +185,12 @@ window.addEventListener('load', () => {
                 client_id: CLIENT_ID,
                 scope: SCOPES,
                 callback: () => {
+                    localStorage.setItem('accessToken', gapi.auth.getToken().access_token);
+                    fechEvents();
+                    displayDays();
                     showContent();
                     loaderActive(false, false);
                     $('#loginWindow').remove();
-                    localStorage.setItem('accessToken', gapi.auth.getToken().access_token);
                 },
             });
             tokenClient.requestAccessToken({ prompt: '' });
@@ -198,33 +204,31 @@ window.addEventListener('load', () => {
 
     /** --------------------------------------------------------------------- END OF LOG IN PROCESS --------------------------------------------------------------- */
     /** ----------------------------------------------------------------------- LOG OUT PROCESS --------------------------------------------------------------- */
-    const logOutImg =$('#logoutImg');
+    const logOutImg = $('#logoutImg');
     let buttonCreated = false;
-    logOutImg.on('click',()=>{
-        if(!buttonCreated){
+    logOutImg.on('click', () => {
+        if (!buttonCreated) {
             createButton();
             buttonCreated = true;
-        }else{
+        } else {
             $('#logOutButton').remove();
             buttonCreated = false
         }
     })
-    
+
     //creates log out button and appends it on body
-    createButton = () =>{
+    createButton = () => {
         const logOutButton = $('<input>');
-        logOutButton.attr('class','logOutButton');
-        logOutButton.attr('id','logOutButton');
-        logOutButton.attr('type','button');
-        logOutButton.attr('value','Odhlásit se');
-        logOutButton.on('click',()=>{
+        logOutButton.attr('class', 'logOutButton');
+        logOutButton.attr('id', 'logOutButton');
+        logOutButton.attr('type', 'button');
+        logOutButton.attr('value', 'Odhlásit se');
+        logOutButton.on('click', () => {
             localStorage.clear();
             location.reload();
         })
         body.append(logOutButton)
     }
-
-
 
     /** ---------------------------------------------------------------------- END OF LOG OUT PROCESS --------------------------------------------------------------- */
     /** -------------------------------------------------------- ----------- DEFINING REQUEST METHODS --------------------------------------------------------------- */
@@ -289,7 +293,6 @@ window.addEventListener('load', () => {
         });
     }
 
-
     /** ------------------------------------------------------ ---------- END OF REQUEST METHODS DEFINITION--------------------------------------------------------------- */
     /** --------------------------------------------------------------------- CREATING DAYS IN CALENDAR--------------------------------------------------------------- */
     // Set present month and year
@@ -346,18 +349,22 @@ window.addEventListener('load', () => {
         let medium = 0;
         let high = 0;
         let no = 0;
+        const imageDiv = $(`#${day}`);
+        imageDiv.empty();
         response.result.items.forEach((event) => {
             try {
                 if (event.source.title === 'nízká') {
                     low++;
                 }
-                if (event.source.title === 'střední') {
+                else if (event.source.title === 'střední') {
                     medium++;
                 }
-                if (event.source.title === 'vysoká') {
+                else if (event.source.title === 'vysoká') {
                     high++;
+                }else{
+                    no++;
                 }
-            } catch (error) { no++}
+            } catch (error) { no++ }
 
             //according to number of priorities append priority images and titles with number of type (if more then 1)
             const imageDiv = $(`#${day}`);
@@ -410,7 +417,7 @@ window.addEventListener('load', () => {
 
         // Create window and its basic structure
         const window = $('<div>');
-        window.attr('class','eventDetailWindow');
+        window.attr('class', 'eventDetailWindow');
 
         const close = $('<input>');
         close.attr('type', 'button');
@@ -420,12 +427,12 @@ window.addEventListener('load', () => {
 
         const newEvent = $('<input>');
         newEvent.attr('type', 'button');
-        newEvent.attr('class','newEvent');
-        newEvent.attr('value','Nový úkol');
+        newEvent.attr('class', 'newEvent');
+        newEvent.attr('value', 'Nový úkol');
         newEvent.on('click', () => { editEvent('create') })
 
         const title = $('<label>');
-        title.attr('class','eventsTitle')
+        title.attr('class', 'eventsTitle')
         title.text(`${day}.${date.val().slice(5, 7)}. ${date.val().slice(0, 4)}`)
 
         const eventsDiv = $('<div>');
@@ -439,16 +446,19 @@ window.addEventListener('load', () => {
             const priorityImg = $('<img>');
             try {
                 if (event.source.title === 'nízká') {
-                    priorityImg.attr('src', 'img/lowPriorityEvent.png')
+                    priorityImg.attr('src', 'img/lowPriorityEvent.png');
                     priorityImg.attr('alt', 'image indicating low priority');
                 }
-                if (event.source.title === 'střední') {
-                    priorityImg.attr('src', 'img/mediumPriorityEvent.png')
+                else if (event.source.title === 'střední') {
+                    priorityImg.attr('src', 'img/mediumPriorityEvent.png');
                     priorityImg.attr('alt', 'image indicating medium priority');
                 }
-                if (event.source.title === 'vysoká') {
-                    priorityImg.attr('src', 'img/highPriorityEvent.png')
+                else if (event.source.title === 'vysoká') {
+                    priorityImg.attr('src', 'img/highPriorityEvent.png');
                     priorityImg.attr('alt', 'image indicating high priority');
+                }else{
+                    priorityImg.attr('src', 'img/noPriorityEvent.png');
+                    priorityImg.attr('alt', 'image indicating no priority');
                 }
             } catch (error) {
                 priorityImg.attr('src', 'img/noPriorityEvent.png')
@@ -479,7 +489,6 @@ window.addEventListener('load', () => {
                 startInput.attr('value', `00:00`);
             }
 
-
             const endLabel = $('<label>');
             endLabel.text('Konec:');
 
@@ -487,7 +496,7 @@ window.addEventListener('load', () => {
             endInput.attr('type', 'time');
             endInput.attr('readonly', true);
             try {
-                endInput.attr('value', `${event.start.dateTime.slice(11, 16)}`);
+                endInput.attr('value', `${event.end.dateTime.slice(11, 16)}`);
             } catch {
                 endInput.attr('value', `23:59`);
             }
@@ -522,14 +531,13 @@ window.addEventListener('load', () => {
     const futureTasks = $('#divTasksBefore');
     const pinnedTasks = $('#divPinnedTasks')
 
-
     // Display detailed window of inputed day, if event is true only display window for event creation
-    editEvent = (event) => {
+    editEvent = async (event) => {
         // create the structure of form and fill it
         const window = $('<div>');
-        window.attr('class','eventDetailWindow');
+        window.attr('class', 'eventDetailWindow');
         const form = $('<form>');
-        form.attr('class','eventDetailedForm');
+        form.attr('class', 'eventDetailedForm');
 
         const close = $('<input>');
         close.attr('type', 'button');
@@ -552,6 +560,14 @@ window.addEventListener('load', () => {
             }
         }
 
+        //returns date for dateTime format, used for start and end date inputs
+        dayTimePrefix = () => {
+            if ($('.eventsTitle').text().slice(0, 2)[1] === '.') {
+                return `${$('.eventsTitle').text().slice(6)}-${$('.eventsTitle').text().slice(2, 4)}-0${$('.eventsTitle').text().slice(0, 2)[0]}`;
+            } else {
+                return `${$('.eventsTitle').text().slice(7)}-${$('.eventsTitle').text().slice(3, 5)}-${$('.eventsTitle').text().slice(0, 2)}`;
+            }
+        }
 
         const startLabel = $('<label>');
         startLabel.text('Začátek:');
@@ -564,6 +580,11 @@ window.addEventListener('load', () => {
                 startInput.attr('value', `${event.start.dateTime.slice(0, 16)}`);
             } catch {
                 startInput.attr('value', `${event.start.date.slice(0, 16)}`);
+            }
+        } else {
+            try {
+                startInput.attr('value', `${dayTimePrefix()}T00:00`);
+            } catch {
             }
         }
 
@@ -578,6 +599,11 @@ window.addEventListener('load', () => {
                 endInput.attr('value', `${event.end.dateTime.slice(0, 16)}`)
             } catch {
                 endInput.attr('value', `${event.end.date.slice(0, 16)}`)
+            }
+        } else {
+            try {
+                endInput.attr('value', `${dayTimePrefix()}T23:59`);
+            } catch {
             }
         }
 
@@ -650,30 +676,97 @@ window.addEventListener('load', () => {
             }
         } else { optionDefault.attr('selected', true); }
 
+        warning = () => {
+            const warningWindow = $('<div>');
+            warningWindow.attr('class', 'warningWindow');
+            const warningText = $('<p>');
+            warningText.text('Špatná hodnota pro začátek nebo konec: Úkol nemůže končit dříve než začíná.');
+            warningWindow.append(warningText);
+            const warningButton = $('<input>');
+            warningButton.attr('type', 'button');
+            warningButton.on('click', () => { warningWindow.remove() });
+            warningButton.attr('value', 'OK');
+            warningWindow.append(warningButton);
+            body.append(warningWindow);
+        }
+
+        //returns start or end days in valid format -> no 04 but 4 etc.
+        validDay = (startOrEnd) => {
+            if (startOrEnd === 'start') {
+                if (startInput.attr('value')[8] === '0') {
+                    return startInput.val().slice(9, 10);
+                } else {
+                    return startInput.val().slice(8, 10);
+                }
+            }
+            if (startOrEnd === 'end') {
+                if (endInput.attr('value')[8] === '0') {
+                    return endInput.val().slice(9, 10);
+                } else {
+                    return endInput.val().slice(8, 10);
+                }
+            }
+        }
+
         if (event !== 'create') {
             const updateButton = $('<input>');
             updateButton.attr('type', 'button')
             updateButton.attr('class', 'updateButton')
-            updateButton.attr('value','Upravit úkol')
-            updateButton.on('click', () => { updateEvent(event.id);getPriorities(`${new Date(`${date.val().slice(0, 4)}`, `${date.val().slice(5, 7)}`, 0).getDate()}`);fechEvents() })
+            updateButton.attr('value', 'Upravit úkol')
+            updateButton.on('click', async () => {
+                if (new Date(startInput.val()).getTime() > new Date(endInput.val()).getTime()) {
+                    warning();
+                }
+                else {
+                    loaderActive(true);
+                    await updateEvent(event.id);
+                    for (i = validDay('start'); i <= validDay('end'); i++) {
+                        await getPriorities(i);
+                    }
+                    await fechEvents();
+                    $('.eventDetailWindow').remove();
+                    loaderActive(false);
+                }
+            })
             form.append(updateButton);
 
             const deleteButton = $('<input>');
             deleteButton.attr('type', 'button');
             deleteButton.attr('class', 'deleteButton');
-            deleteButton.attr('value','Smazat úkol');
-            deleteButton.on('click', () => { deleteEvent(event.id) ; getPriorities(`${new Date(`${date.val().slice(0, 4)}`,`${date.val().slice(5, 7)}`, 0).getDate()}`);fechEvents()});
+            deleteButton.attr('value', 'Smazat úkol');
+            deleteButton.on('click', async () => {
+                loaderActive(true);
+                await deleteEvent(event.id);
+                for (i = validDay('start'); i <= validDay('end'); i++) {
+                    await getPriorities(i);
+                };
+                await fechEvents();
+                $('.eventDetailWindow').remove();
+                loaderActive(false);
+            });
             form.append(deleteButton);
         } else {
             const createButton = $('<input>');
             createButton.attr('type', 'button');
-            createButton.attr('class','newEvent');
-            createButton.attr('value','Vytvořit nový úkol');
-            createButton.on('click', () => { createNewEvent();getPriorities(`${new Date(`${date.val().slice(0, 4)}`, `${date.val().slice(5, 7)}`, 0).getDate()}`);fechEvents() });
+            createButton.attr('class', 'newEvent');
+            createButton.attr('value', 'Vytvořit nový úkol');
+            createButton.on('click', async () => {
+                if (new Date(startInput.val()).getTime() > new Date(endInput.val()).getTime()) {
+                    warning();
+                }
+                else {
+                    loaderActive(true);
+                    await createNewEvent();
+                    for (i = validDay('start'); i <= validDay('end'); i++) {
+                        await getPriorities(i);
+                    }
+                    await fechEvents();
+                    $('.eventDetailWindow').remove();
+                    loaderActive(false);
+                }
+            });
             form.append(createButton);
         }
-
-
 
         form.append(close);
         form.append(nameLabel);
@@ -691,7 +784,7 @@ window.addEventListener('load', () => {
         window.append(form);
         body.append(window)
     }
-    //fech pash and future events within 1 year and put them into side divs
+    //fech past and future events within 1 year and put them into side divs
     fechEvents = async () => {
         //send request for all alltime events
         const response = await gapi.client.calendar.events.list({
@@ -711,7 +804,7 @@ window.addEventListener('load', () => {
             event.on('click', () => { editEvent(item) });
 
             const name = $('<div>');
-            name.attr('class','divTasksName');
+            name.attr('class', 'divTasksName');
             if (item.summary !== 'undefined') {
                 name.text(item.summary)
             } else {
@@ -720,19 +813,20 @@ window.addEventListener('load', () => {
 
 
             const priority = $('<div>');
-            priority.attr('class','divTasksImg');
+            priority.attr('class', 'divTasksImg');
             const priorityImg = $('<img>');
             priority.append(priorityImg);
             try {
                 if (item.source.title === 'nízká') {
                     priorityImg.attr('src', 'img/lowPriorityEvent.png')
                     priorityImg.attr('alt', 'image indicating low priority');
+
                 }
-                if (item.source.title === 'střední') {
+                else if (item.source.title === 'střední') {
                     priorityImg.attr('src', 'img/mediumPriorityEvent.png')
                     priorityImg.attr('alt', 'image indicating middle priority');
                 }
-                if (item.source.title === 'vysoká') {
+                else if (item.source.title === 'vysoká') {
                     priorityImg.attr('src', 'img/highPriorityEvent.png')
                     priorityImg.attr('alt', 'image indicating high priority');
                 }
@@ -749,28 +843,27 @@ window.addEventListener('load', () => {
 
             try {
                 if (item.visibility === 'public') {
-                    const eventCopy =event.clone(true);
+                    const eventCopy = event.clone(true);
                     pinned.push(eventCopy);
                 }
 
                 if (new Date(item.end.dateTime.toString().slice(0, 19)).getTime() <= new Date().getTime()) {
-                    const eventCopy =event.clone(true);
+                    const eventCopy = event.clone(true);
                     past.push(eventCopy)
                 } else {
-                    const eventCopy =event.clone(true);
+                    const eventCopy = event.clone(true);
                     future.push(eventCopy)
                 }
             } catch {
                 if (item.visibility === 'public') {
-                    const eventCopy =event.clone(true);
+                    const eventCopy = event.clone(true);
                     pinned.push(eventCopy);
                 }
-                console.log(item);
                 if (new Date(item.end.date.toString().slice(0, 19)).getTime() <= new Date().getTime()) {
-                    const eventCopy =event.clone(true);
+                    const eventCopy = event.clone(true);
                     past.push(eventCopy)
                 } else {
-                    const eventCopy =event.clone(true);
+                    const eventCopy = event.clone(true);
                     future.push(eventCopy)
                 }
             }
@@ -788,6 +881,4 @@ window.addEventListener('load', () => {
             pinnedTasks.append(pin);
         })
     }
-    setTimeout(fechEvents,3000) // temporary till UI is done
-    setTimeout(displayDays,3000) // temporary till UI is done
 })
