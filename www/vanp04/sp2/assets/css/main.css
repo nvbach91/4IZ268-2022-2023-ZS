@@ -119,12 +119,12 @@
     flex: 50%;
 }
 
-#content-heading-images {
+.content-heading-images {
     flex: 20%;
     display: flex;
 }
 
-#content-heading-images img{
+.content-heading-images img{
     margin: auto;
 }
 
