@@ -1,6 +1,188 @@
 * {
-    font-family: sans-serif;
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-/* TODO */
+
+body {
+  font-family: sans-serif;
+  color: white;
+  font-size: 25px;
+  text-align: center;
+  padding: 50px;
+  padding-top: 10px;
+  padding-bottom: 54px;
+  background: linear-gradient(to bottom, rgb(43, 43, 43), rgb(9, 9, 82));
+}
+
+.top-header {
+  align-items: center;
+  margin-bottom: 0px;
+  padding-bottom: 0;
+}
+
+.top-header h1 {
+  font-size: 50px;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  text-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.score {
+  margin-top: 0;
+  padding-top: 0;
+  align-items: center;
+  text-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.score-count {
+  color: yellow;
+  font-size: 35px;
+  font-weight: bold;
+  margin-left: 10px;
+  text-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.column ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.board {
+  display: flex;
+  justify-content: space-around;
+}
+
+.board .column {
+  flex: 1;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.board .column header {
+  text-transform: capitalize;
+  background: rgb(16, 16, 152);
+  text-align: center;
+  margin-bottom: 22px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  text-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.board .column li {
+  background: rgb(38, 38, 183);
+  color: yellow;
+  height: 70px;
+  border-radius: 10px;
+  margin-bottom: 6px;
+}
+
+.board .column button {
+  height: 100%;
+  color: inherit;
+  font-size: 40px;
+  border: 0;
+  background: none;
+  display: block;
+  width: 100%;
+  cursor: pointer;
+  text-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5);
+  font-weight: bold;
+}
+
+.board .column button.used {
+  visibility: hidden;
+}
+
+.card-modal {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: rgb(16, 16, 152);
+  position: fixed;
+  font-size: 20px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-modal.visible {
+  opacity: 1;
+  pointer-events: initial;
+}
+
+.card-modal.showing-result .result {
+  display: block;
+}
+
+.card-modal .clue-text {
+  margin-bottom: 50px;
+}
+
+.result,
+.card-modal.showing-result form {
+  display: none;
+}
+
+.card-modal form {
+  display: flex;
+}
+
+.card-modal form input[type=text] {
+  display: block;
+  flex-grow: 1;
+  height: 35px;
+  line-height: 35px;
+  border: 0;
+  text-align: center;
+  font-size: 20px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.card-modal form button[type=submit] {
+  padding-left: 30px;
+  padding-right: 30px;
+  cursor: pointer;
+  font-family: inherit;
+  background: yellow;
+  border: 0;
+  font-size: inherit;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.card-modal-inner {
+  width: 60%;
+  text-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.result_success,
+.result_fail {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.result_success {
+  color: rgb(85, 236, 85);
+}
+
+.result_fail {
+  color: rgb(255, 110, 110);
+}
+
+.result_correct-answer-text {
+  font-weight: bold;
+  font-size: 40px;
+  display: block;
+}
