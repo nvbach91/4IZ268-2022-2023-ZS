@@ -107,6 +107,7 @@
 .content-heading-buttons {
     flex: 20%;
     display: flex;
+    justify-content: center;
 }
 
 #achievements-heading-wrapper button {
@@ -125,6 +126,11 @@
 
 #content-heading-images img{
     margin: auto;
+}
+
+#weather-heading-wrapper {
+    display: flex;
+    align-items: center;
 }
 
 #weather-content-wrapper {

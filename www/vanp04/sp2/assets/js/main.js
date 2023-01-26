@@ -26,6 +26,8 @@
 
     const hourlyWeatherElementWrapper = $('#weather-content-right-wrapper');
 
+    const weatherButton = $('#weather-button');
+
     const spinnerAchivements = $('<span class="loader-ach"></span>');
     const spinnerAnime = $('<span class="loader-an"></span>');
     const spinnerWeatherC = $('<span class="loader-wc"></span>');
@@ -65,8 +67,8 @@
         constructor(weatherMain, wind, humidity, clouds, temp, feelsLike, tempMin, tempMax) {
             this.weatherMain = weatherMain;
             this.wind = wind;
-            this.humidity = humidity,
-                this.clouds = clouds;
+            this.humidity = humidity;
+            this.clouds = clouds;
             this.temp = temp;
             this.feelsLike = feelsLike;
             this.tempMin = tempMin;
@@ -102,63 +104,63 @@
         return day;
     }
 
-    const createCurrentWeatherContentItem = (WeatherCurrent, countryCode, cityName) => {
+    const createCurrentWeatherContentItem = (weatherCurrent, countryCode, cityName) => {
         var currentWeatherItem = $(`<div class="current-weather-item"><h3>Current Weather:</h3></div>`);
 
         const currentWeatherItemList = $('<ul></ul>');
 
         currentWeatherItemList.append(createListItem('current-weather-listItem', 'Country', countryCode));
         currentWeatherItemList.append(createListItem('current-weather-listItem', 'Place', cityName));
-        currentWeatherItemList.append(createListItem('current-weather-listItem', 'Conditions', WeatherCurrent.weatherMain));
-        currentWeatherItemList.append(createListItem('current-weather-listItem', 'Wind Speed', WeatherCurrent.wind, 'knots'));
-        currentWeatherItemList.append(createListItem('current-weather-listItem', 'Humidity', WeatherCurrent.humidity, '%'));
-        currentWeatherItemList.append(createListItem('current-weather-listItem', 'Clouds Coverage', WeatherCurrent.clouds, '%'));
-        currentWeatherItemList.append(createListItem('current-weather-listItem', 'Temperature', WeatherCurrent.temp, 'C'));
-        currentWeatherItemList.append(createListItem('current-weather-listItem', 'Feels Like', WeatherCurrent.feelsLike, 'C'));
-        currentWeatherItemList.append(createListItem('current-weather-listItem', 'Min. Temp', WeatherCurrent.tempMin, 'C'));
-        currentWeatherItemList.append(createListItem('current-weather-listItem', 'Max. Temp', WeatherCurrent.tempMax, 'C'));
+        currentWeatherItemList.append(createListItem('current-weather-listItem', 'Conditions', weatherCurrent.weatherMain));
+        currentWeatherItemList.append(createListItem('current-weather-listItem', 'Wind Speed', weatherCurrent.wind, 'knots'));
+        currentWeatherItemList.append(createListItem('current-weather-listItem', 'Humidity', weatherCurrent.humidity, '%'));
+        currentWeatherItemList.append(createListItem('current-weather-listItem', 'Clouds Coverage', weatherCurrent.clouds, '%'));
+        currentWeatherItemList.append(createListItem('current-weather-listItem', 'Temperature', weatherCurrent.temp, 'C'));
+        currentWeatherItemList.append(createListItem('current-weather-listItem', 'Feels Like', weatherCurrent.feelsLike, 'C'));
+        currentWeatherItemList.append(createListItem('current-weather-listItem', 'Min. Temp', weatherCurrent.tempMin, 'C'));
+        currentWeatherItemList.append(createListItem('current-weather-listItem', 'Max. Temp', weatherCurrent.tempMax, 'C'));
 
         currentWeatherItem.append(currentWeatherItemList);
 
         return currentWeatherItem;
     }
 
-    const createHourlyWeatherItem = (WeatherHourly, hour) => {
+    const createHourlyWeatherItem = (weatherHourly, hour) => {
         const hourWeatherItem = $(`<div class="hourly-weather-item"><h4>Weather at: ${hour}:00</h4></div>`);
 
         const hourWeatherItemList = $('<ul></ul>');
 
-        hourWeatherItemList.append(createListItem('hour-weather-list-item', 'Conditions', WeatherHourly.weatherMain));
-        hourWeatherItemList.append(createListItem('hour-weather-list-item', 'Temperature', WeatherHourly.temp, 'C'));
-        hourWeatherItemList.append(createListItem('hour-weather-list-item', 'Wind', WeatherHourly.wind, 'knots'));
+        hourWeatherItemList.append(createListItem('hour-weather-list-item', 'Conditions', weatherHourly.weatherMain));
+        hourWeatherItemList.append(createListItem('hour-weather-list-item', 'Temperature', weatherHourly.temp, 'C'));
+        hourWeatherItemList.append(createListItem('hour-weather-list-item', 'Wind', weatherHourly.wind, 'knots'));
 
         hourWeatherItem.append(hourWeatherItemList);
 
         return hourWeatherItem;
     }
 
-    const createAchivementContentItem = (Achivement) => {
-        const achivementContentItem = $(`<div class="achivement-item"><h4>${Achivement.name}</h4></div>`);
+    const createAchivementContentItem = (achivement) => {
+        const achivementContentItem = $(`<div class="achivement-item"><h4>${achivement.name}</h4></div>`);
 
         const achivementContentItemList = $('<ul></ul>');
 
-        achivementContentItemList.append(createListItem('achivementListItem', 'Name', Achivement.name));
-        achivementContentItemList.append(createListItem('achivementListItem', 'Type', Achivement.type));
-        achivementContentItemList.append(createListItem('achivementListItem', 'Requirement', Achivement.reqs));
+        achivementContentItemList.append(createListItem('achivementListItem', 'Name', achivement.name));
+        achivementContentItemList.append(createListItem('achivementListItem', 'Type', achivement.type));
+        achivementContentItemList.append(createListItem('achivementListItem', 'Requirement', achivement.reqs));
 
         achivementContentItem.append(achivementContentItemList);
 
         return achivementContentItem;
     }
 
-    const createAnimeContentItem = (Anime) => {
-        const animeContentItem = $(`<div class="anime-item"><h4>${Anime.name}</h4></div>`);
+    const createAnimeContentItem = (anime) => {
+        const animeContentItem = $(`<div class="anime-item"><h4>${anime.name}</h4></div>`);
 
         const animeContentItemList = $('<ul></ul>');
 
-        animeContentItemList.append(createListItem('anime-list-item', 'Members', Anime.members));
-        animeContentItemList.append(createListItem('anime-list-item', 'Rating', Anime.rating));
-        animeContentItemList.append(createListItem('anime-list-item', "Day", Anime.airingDay));
+        animeContentItemList.append(createListItem('anime-list-item', 'Members', anime.members));
+        animeContentItemList.append(createListItem('anime-list-item', 'Rating', anime.rating));
+        animeContentItemList.append(createListItem('anime-list-item', "Day", anime.airingDay));
 
 
         animeContentItem.append(animeContentItemList);
@@ -470,6 +472,12 @@
             achivementListType = 'wvw';
 
             getGwAchievements(achivementListType);
+        }))
+
+        weatherButton.click((e => {
+            e.preventDefault();
+
+            geoLocate();
         }))
     }
 
