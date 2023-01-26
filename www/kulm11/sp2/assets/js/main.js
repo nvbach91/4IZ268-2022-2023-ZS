@@ -1,12 +1,42 @@
 (() => {
 
-    const createMovie = (movieTitle, watched, userRating) => {
-        const movieElement = document.createElement("li");
-        const localStorageUnwatched = JSON.parse(localStorage.getItem("unwatchedList") || "[]");
-        movieElement.setAttribute("class", "movie");
-        const movieTitleUpdated = movieTitle.replace(' ', '+').replace(':', '%3A');
+    const searchResult = (input) => {
+        const movieUrl = `https://www.omdbapi.com/?s=${encodeURIComponent(input)}&apikey=4c7468f7`;
         movieTitleInput.value = "";
-        const movieUrl = `https://www.omdbapi.com/?t=${movieTitleUpdated}&apikey=4c7468f7`;
+        spinner.classList.remove("hidden");
+        axios.get(movieUrl).then((resp) => {
+            if (resp.data.Response === "True") {
+                moviesListResults.innerHTML = "";
+                const result = resp.data.Search;
+                console.log(resp);
+                result.forEach((movie) => {
+                    const movieResult = document.createElement("li");
+                    movieResult.classList.add("result");
+                    const movieTitle = document.createElement("p");
+                    movieTitle.innerHTML = `${movie.Title} (${movie.Year})`;
+                    const addButton = document.createElement("button");
+                    addButton.innerHTML = "Add";
+                    addButton.addEventListener(("click"), () => {
+                        moviesListResults.classList.add("hidden");
+                        listResultsTitle.classList.add("hidden");
+                        createMovie(movie.imdbID, false, 50);
+                    });
+                    movieResult.append(addButton, movieTitle);
+                    moviesListResults.appendChild(movieResult);
+                });
+                moviesListResults.classList.remove("hidden");
+                listResultsTitle.classList.remove("hidden");
+            }
+            spinner.classList.add("hidden");
+        })
+    }
+    const createMovie = (imdbID, watched, userRating) => {
+        const movieElement = document.createElement("li");
+        let isMovieWatched = watched;
+        const localStorageUnwatched = JSON.parse(localStorage.getItem("unwatchedList") || "[]");
+        movieElement.classList.add("movie");
+        movieTitleInput.value = "";
+        const movieUrl = `https://www.omdbapi.com/?i=${encodeURIComponent(imdbID)}&apikey=4c7468f7`;
         spinner.classList.remove("hidden");
         axios.get(movieUrl).then((resp) => {
             const movieData = resp.data;
@@ -14,7 +44,7 @@
                 if (!JSON.stringify(moviesUnwatchedIdList).includes(JSON.stringify(movieData.imdbID)) && !JSON.stringify(moviesWatchedIdList).includes(JSON.stringify(movieData.imdbID))) {
                     moviesUnwatchedIdList[moviesUnwatchedIdList.length] = { data: movieData, html: movieElement, filterStatus: [true, true, true, true, true] };
                     if (!localStorageUnwatched.includes(moviesUnwatchedIdList[moviesUnwatchedIdList.length - 1].data.Title)) {
-                        localStorageUnwatched.push(moviesUnwatchedIdList[moviesUnwatchedIdList.length - 1].data.Title);
+                        localStorageUnwatched.push(moviesUnwatchedIdList[moviesUnwatchedIdList.length - 1].data.imdbID);
                     }
                     localStorage.setItem('unwatchedList', JSON.stringify(localStorageUnwatched));
                     console.log(localStorage.getItem("unwatchedList"));
@@ -32,19 +62,27 @@
                     movieRemoveButton.innerText = "Remove";
                     movieRemoveButton.addEventListener("click", () => {
                         movieElement.remove();
-                        removeItem(moviesUnwatchedIdList, movieData);
-                        var index = localStorageUnwatched.indexOf(movieData.Title);
-                        if (index > -1) {
-                            localStorageUnwatched.splice(index, 1);
+                        if (isMovieWatched) {
+                            removeItem(moviesWatchedIdList, movieData);
                         }
-                        localStorage.setItem('unwatchedList', JSON.stringify(localStorageUnwatched));
-                        console.log(localStorage.getItem("unwatchedList"));
+                        else {
+                            removeItem(moviesUnwatchedIdList, movieData);
+                        }
+                        removeFromLocalStorage(isMovieWatched, movieData.imdbID);
+                        //removeItem(moviesUnwatchedIdList, movieData);
+                        // var index = localStorageUnwatched.indexOf(movieData.Title);
+                        // if (index > -1) {
+                        //     localStorageUnwatched.splice(index, 1);
+                        // }
+                        // localStorage.setItem('unwatchedList', JSON.stringify(localStorageUnwatched));
+                        // console.log(localStorage.getItem("unwatchedList"));
                     })
 
                     const movieWatchedButton = document.createElement("button");
                     movieWatchedButton.innerText = "Watched";
                     movieWatchedButton.setAttribute("class", "watchedButton");
                     movieWatchedButton.addEventListener("click", () => {
+                        isMovieWatched = true;
                         listItemTransport(movieElement, movieData, userRating);
                     })
 
@@ -76,6 +114,12 @@
     const col2 = document.createElement("div");
     col2.setAttribute("id", "col2");
 
+    const moviesListResults = document.createElement("ul");
+    moviesListResults.setAttribute("id", "resultsList");
+    moviesListResults.classList.add("hidden");
+    const listResultsTitle = document.createElement("h2");
+    listResultsTitle.innerHTML = "Results";
+    listResultsTitle.classList.add("hidden");
     const movieListUnwatched = document.createElement("ul");
     movieListUnwatched.setAttribute("id", "unwatchedList");
     const listUnwatchedTitle = document.createElement("h2");
@@ -266,9 +310,32 @@
         moviesWatchedIdList[moviesWatchedIdList.length] = { data: movieData, html: movieHTML, userRating: movieRating, filterStatus: [true, true, true, true, true] };
     }
 
+    function removeFromLocalStorage(watched, title) {
+        let localStorageName = "";
+        if (watched) {
+            localStorageName = "watchedList";
+        }
+        else {
+            localStorageName = "unwatchedList";
+        }
+        const newLocalStorage = JSON.parse(localStorage.getItem(localStorageName));
+        console.log(newLocalStorage);
+        let i = 0;
+        newLocalStorage.every((item) => {
+            if (JSON.stringify(item).includes(title)) {
+                return true;
+            }
+            i++;
+        });
+        newLocalStorage.splice(i, 1);
+        localStorage.setItem(localStorageName, JSON.stringify(newLocalStorage));
+        console.log(localStorage.getItem("unwatchedList"));
+        console.log(localStorage.getItem("watchedList"));
+    }
+
     function listItemTransport(newMovieElement, movieData, userRating) {
-        const movieRemoveButton = newMovieElement.querySelector(".removeButton");
-        movieRemoveButton.remove();
+        //const movieRemoveButton = newMovieElement.querySelector(".removeButton");
+        //movieRemoveButton.remove();
         const movieWatchedButton = newMovieElement.querySelector(".watchedButton");
         movieWatchedButton.remove();
         const movieRating = document.createElement("input");
@@ -279,7 +346,7 @@
         movieRating.addEventListener(("change"), () => {
             const localStorageWatched = JSON.parse(localStorage.getItem("watchedList") || "[]");
             localStorageWatched.forEach((item) => {
-                if (item.title === movieData.Title) {
+                if (item.imdbID === movieData.imdbID) {
                     item.userRating = movieRating.value;
                 }
             });
@@ -294,7 +361,7 @@
         movieInfo.innerHTML = movieInfo.innerHTML + "<br><br><strong>My rating</strong>:";
 
         const localStorageUnwatched = JSON.parse(localStorage.getItem("unwatchedList") || "[]");
-        var index = localStorageUnwatched.indexOf(movieData.Title);
+        var index = localStorageUnwatched.indexOf(movieData.imdbID);
         if (index > -1) {
             localStorageUnwatched.splice(index, 1);
         }
@@ -302,8 +369,8 @@
         console.log(localStorage.getItem("unwatchedList"));
 
         const localStorageWatched = JSON.parse(localStorage.getItem("watchedList") || "[]");
-        if (!JSON.stringify(localStorageWatched).includes(JSON.stringify({ title: movieData.Title, userRating: userRating }))) {
-            localStorageWatched.push({ title: movieData.Title, userRating: userRating });
+        if (!JSON.stringify(localStorageWatched).includes(JSON.stringify({ imdbID: movieData.imdbID, userRating: userRating }))) {
+            localStorageWatched.push({ imdbID: movieData.imdbID, userRating: userRating });
         }
         localStorage.setItem('watchedList', JSON.stringify(localStorageWatched));
         console.log(localStorage.getItem("watchedList"));
@@ -331,7 +398,8 @@
         event.preventDefault();
 
         const movieTitle = movieTitleInput.value;
-        movie = createMovie(movieTitle, false, 50);
+        searchResult(movieTitle);
+        //movie = createMovie(movieTitle, false, 50);
     })
 
     const movieFormSubmitButton = document.createElement("button");
@@ -341,40 +409,19 @@
     spinner.setAttribute("id", "spinner");
     spinner.classList.add("hidden")
 
-    movieForm.appendChild(movieTitleInput);
-    movieForm.appendChild(movieFormSubmitButton);
-
-    row1.appendChild(movieForm);
-    row1.appendChild(spinner);
-
-    col1.appendChild(listUnwatchedTitle);
-    col1.appendChild(movieListUnwatched);
-    col1.appendChild(listWatchedTitle);
-    col1.appendChild(movieListWatched);
-
+    movieForm.append(movieTitleInput, movieFormSubmitButton);
+    row1.append(movieForm, spinner);
+    col1.append(listResultsTitle, moviesListResults, listUnwatchedTitle, movieListUnwatched, listWatchedTitle, movieListWatched);
     col2.appendChild(filtersTitle);
-    filterWatched.appendChild(filterWatchedDescription);
-    filterWatched.appendChild(filterWatchedValue);
-    filterUserRating.appendChild(filterUserRatingDescription);
-    filterUserRating.appendChild(filterUserRatingValue);
-    filterIMDbRating.appendChild(filterIMDbRatingDescription);
-    filterIMDbRating.appendChild(filterIMDbRatingValue);
-    filterMovieTitle.appendChild(filterMovieTitleDescription);
-    filterMovieTitle.appendChild(filterMovieTitleValue);
-    filterYear.appendChild(filterYearDescription);
-    filterYear.appendChild(filterYearValue);
-    filters.appendChild(filterWatched);
-    filters.appendChild(filterUserRating);
-    filters.appendChild(filterIMDbRating);
-    filters.appendChild(filterYear);
-    filters.appendChild(filterMovieTitle);
+    filterWatched.append(filterWatchedDescription, filterWatchedValue);
+    filterUserRating.append(filterUserRatingDescription, filterUserRatingValue);
+    filterIMDbRating.append(filterIMDbRatingDescription, filterIMDbRatingValue);
+    filterMovieTitle.append(filterMovieTitleDescription, filterMovieTitleValue);
+    filterYear.append(filterYearDescription, filterYearValue);
+    filters.append(filterWatched, filterUserRating, filterIMDbRating, filterYear, filterMovieTitle);
     col2.appendChild(filters);
-
-    row2.appendChild(col1);
-    row2.appendChild(col2);
-
-    bodyElement.appendChild(row1);
-    bodyElement.appendChild(row2);
+    row2.append(col1, col2);
+    bodyElement.append(row1, row2);
 
     const localStorageUnwatched = JSON.parse(localStorage.getItem("unwatchedList"));
     const localStorageWatched = JSON.parse(localStorage.getItem("watchedList"));
@@ -385,7 +432,7 @@
     }
     if (localStorageWatched != null) {
         localStorageWatched.forEach((movie) => {
-            const newMovie = createMovie(movie.title, true, movie.userRating);
+            const newMovie = createMovie(movie.imdbID, true, movie.userRating);
         });
     }
 })()
