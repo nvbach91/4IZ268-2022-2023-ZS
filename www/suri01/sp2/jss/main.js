@@ -43,7 +43,7 @@
   ageLabel.attr("for", "age");
   const ageInput = $("<input></input>");
   ageInput.attr("type", "number");
-  ageInput.attr("min", "12");
+  ageInput.attr("min", "20");
   ageInput.attr("id", "age");
 
   const resultButtonBMI = $("<button>Calculate</button>");
@@ -70,76 +70,47 @@
   formBmi.append(ageInput);
   formDiv.append(resultButtonBMI);
 
-  const underWeightText = $("<span>/span>");
-
-  const underWeightIcon = $("<i></i>");
-
   function validateWeight() {
     let weight = $("#weight").val();
     if (weight < 40 || weight > 160) {
       alertTextWeight.text("Weight must be between 40 and 160 kg.");
       alertTextWeight.insertAfter(formDiv);
-
+      weightInput.addClass("wrong-input");
       return false;
     }
+    weightInput.removeClass("wrong-input");
     alertTextWeight.remove();
     return true;
   }
-  $("#weight").on("input", validateWeight);
+  weightInput.on("input", validateWeight);
 
   function validateHeight() {
     let height = $("#height").val();
     if (height < 130 || height > 230) {
-      alertTextHeight.text("Height must be between 130 and 230");
+      alertTextHeight.text("Height must be between 130 and 230 cm.");
       alertTextHeight.insertAfter(formDiv);
+      heightInput.addClass("wrong-input");
       return false;
     }
     alertTextHeight.remove();
+    heightInput.removeClass("wrong-input");
     return true;
   }
-  $("#height").on("input", validateHeight);
+  heightInput.on("input", validateHeight);
 
   function validateAge() {
     let age = $("#age").val();
     if (age < 12) {
-      alertTextAge.text("Age must be greater than 12");
+      alertTextAge.text("Age must be greater than 12.");
       alertTextAge.insertAfter(formDiv);
+      ageInput.addClass("wrong-input");
       return false;
     }
+    ageInput.removeClass("wrong-input");
     alertTextAge.remove();
     return true;
   }
-  $("#age").on("input", validateAge);
-
-  function yourBmi(bmi) {
-    bmiTextContainer.append(bmiTextResultSpan);
-    bmiTextContainer.append(underWeightIcon);
-    bmiTextContainer.append(underWeightText);
-    underWeightIcon.removeClass();
-
-    if (bmi < 16.5) {
-      underWeightText.text("Severely underweight");
-      underWeightIcon.addClass("fa-solid fa-circle-exclamation");
-    } else if (bmi >= 16.5 && bmi < 18.5) {
-      underWeightText.text("Underweight");
-      underWeightIcon.addClass("fa-regular fa-face-worried");
-    } else if (bmi >= 18.5 && bmi < 25) {
-      underWeightText.text("Ideal weight");
-      underWeightIcon.addClass("fa-solid fa-face-smile");
-    } else if (bmi >= 25 && bmi < 30) {
-      underWeightText.text("Slightly overweight");
-      underWeightIcon.addClass("fa-solid fa-face-meh");
-    } else if (bmi >= 30 && bmi < 35) {
-      underWeightText.text("Moderatly overweight");
-      underWeightIcon.addClass("fa-solid fa-face-worried");
-    } else if (bmi >= 35 && bmi < 40) {
-      underWeightText.text("Heavy overweight");
-      underWeightIcon.addClass("fa-solid fa-face-sad-tear");
-    } else if (bmi >= 40) {
-      underWeightText.text("Very heavy overweight");
-      underWeightIcon.addClass("fa-solid fa-face-sad-cry");
-    }
-  }
+  ageInput.on("input", validateAge);
 
   resultButtonBMI.click(() => {
     let height = $("#height").val();
@@ -162,18 +133,38 @@
         },
       })
         .then(function (response) {
-          const bmi = response.data.data.bmi;
-          bmiTextResultSpan.text("Bmi: " + bmi);
-          yourBmi(bmi);
+          const data = response.data.data;
+          let bmi = data.bmi;
+          let health = data.health;
+          let date = new Date();
+          let shortVersionDate = date.toLocaleDateString();
+          bmiTextResultSpan.text("Bmi: " + bmi + " - " + health);
+
+          localStorage.setItem("date", shortVersionDate.toString());
+          let storageBMI = bmiTextResultSpan.text();
+          localStorage.setItem("bmi", storageBMI);
         })
         .catch(function (error) {
           alert("There is something wrong with the API!!");
           console.log(error);
         });
+    } else {
+      validateWeight();
+      validateHeight();
+      validateAge();
     }
-    $("#height").val("");
-    $("#weight").val("");
-    $("#age").val("");
+    heightInput.val("");
+    weightInput.val("");
+    ageInput.val("");
+  });
+
+  $(document).ready(() => {
+    if (localStorage.getItem("bmi") !== null) {
+      const savedBMI = localStorage.getItem("bmi");
+      const savedDate = localStorage.getItem("date");
+      bmiTextContainer.append(bmiTextResultSpan);
+      bmiTextResultSpan.text(savedBMI + " - Date of last submit: " + savedDate);
+    }
   });
 
   const calculatorCal = $("#calculator");
@@ -318,7 +309,8 @@
           <td>${weight}</td>
           <td>
             <img 
-              src="assets/delete.png" 
+              src="assets/delete.png"
+              alt="delete-button-image" 
               data-fat="${FAT.quantity}" 
               data-protein="${PROCNT.quantity}" 
               data-carbs="${CHOCDF.quantity}" 
@@ -341,6 +333,8 @@
       console.error(error);
     }
   }
+
+  const ingredientTextArea = $("#ingredient-text-area");
 
   const addIngr = $("#add-ingredients");
   addIngr.click(async function () {
@@ -365,17 +359,17 @@
     }
 
     updateTotalNutrients();
-    $("#ingredient-text-area").val("");
+    ingredientTextArea.val("");
   });
 
   $(document).ready(() => {
     if (localStorage.getItem("ingredients") !== null) {
       const savedIngredients = JSON.parse(localStorage.getItem("ingredients"));
-      $("#ingredient-text-area").val(savedIngredients.join("\n"));
+      ingredientTextArea.val(savedIngredients.join("\n"));
     }
   });
 
-  $("#ingredient-text-area").on("input", function () {
+  ingredientTextArea.on("input", function () {
     if (this.value.length === 0) {
       localStorage.removeItem("ingredients");
     }

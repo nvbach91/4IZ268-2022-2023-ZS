@@ -39,66 +39,56 @@ header h1 {
 }
 
 #bmi-container p {
-  color: rgb(176, 31, 31);
+  color: #e63946;
   margin-bottom: 0.5rem;
+  font-size: 20px;
 }
 
 #bmi-container label {
   font-size: 20px;
+  margin-right: 5px;
 }
 
 #bmi-container input {
   width: 70px;
   height: 2rem;
   text-align: center;
-  border: 0px;
+  border: 1px solid white;
   border-radius: 7px;
   margin-right: 2rem;
   font-size: 20px;
 }
 
-.fa-circle-exclamation,
-.fa-face-sad-cry {
-  color: red;
-}
-
-.fa-face-worried,
-.fa-face-meh {
-  color: orange;
-}
-
-.fa-face-smile {
-  color: green;
-}
-
-.fa-face-worried {
-  color: blue;
-}
-
-.fa-face-sad-tear {
-  color: purple;
+.wrong-input {
+  outline: 2px solid red;
 }
 
 #bmi-result-text {
-  margin-top: 1rem;
+  margin-top: 2rem;
 }
 
 #bmi-result-text span {
   font-weight: 600;
   margin-left: 5px;
   margin-right: 5px;
+  font-size: 20px;
+  background-color: rgba(250, 128, 114, 0.8);
+  color: rgb(255, 249, 249);
+  padding: 1rem;
+  border-radius: 7px;
 }
 
 #bmi-result {
   background-color: #e07a5f;
   border: 0px;
-  width: 90px;
-  height: 2.5rem;
+  width: 100px;
+  height: 2.7rem;
   border-radius: 7px;
   color: white;
   font-weight: 600;
   font-size: 15px;
-  margin-top: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
 }
 
 #bmi-result:hover {
