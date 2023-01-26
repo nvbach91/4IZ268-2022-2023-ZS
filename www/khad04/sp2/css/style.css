@@ -11,7 +11,6 @@ body {
     align-items: left;
 }
 
-
 header {
     margin: 0 auto;
     text-align: left;
@@ -85,20 +84,23 @@ input[type="text"] {
     border-radius: 10px;
 }
 
+.search_results {
+    max-width: 80%;
+    margin-left: 80px;
+}
 
-
-.cats {
+.cats, .initial_cats {
     display: flex;
     flex-wrap: wrap;
     align-items: stretch;
-    max-width: 60%;
-    margin-left: 80px;
-    margin-top: 40px;
     padding: 0;
     gap: 30px;
     list-style: none;
 }
 
+.breed_name {
+    margin-bottom: 15px;
+}
 
 li {
     display: flex;
@@ -137,19 +139,19 @@ li button:hover {
     border-radius: 5px;
 }
 
-h3 {
-    color: #33312F;
+.search_results_title {
+    margin-top: 20px;
     margin-bottom: 10px;
+    color: #33312F;
 }
 
 li div {
     display: flex;
     gap: 15px;
-
 }
 
-
 .info {
+    display: flex;
     color: #33312F;
     font-weight: 500;
     display: flex;
@@ -157,8 +159,8 @@ li div {
 }
 
 div.center_cropped {
-    width: 200px;
-    height: 200px;
+    width: 180px;
+    height: 180px;
     overflow: hidden;
 }
 
@@ -169,6 +171,8 @@ div.center_cropped img {
 }
 
 .features {
+    display: flex;
+    flex-direction: column;
     color: #33312F;
     text-align: left;
 }
