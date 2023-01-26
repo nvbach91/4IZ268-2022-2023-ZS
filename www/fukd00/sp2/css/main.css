@@ -185,7 +185,7 @@ main {
     margin-bottom: 25px;
 }
 
-.quiz > .quizSidePanel {
+.quiz>.quizSidePanel {
     background-color: transparent;
 }
 
@@ -219,7 +219,7 @@ main {
     font-weight: bolder;
 }
 
-.correctAndBtn {
+.correctAnsBtn {
     margin-top: 15px;
 }
 
