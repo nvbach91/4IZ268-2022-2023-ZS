@@ -1,43 +1,60 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To-do list</title>
+    <meta name="description" content="sp2 webove technologie">
+    <meta name="author" content="Alina Gorshunova">
+    <meta name="keywords" content="4iz268 sp2 javascript aplikace">
+    <title>To do list</title>
     <link rel="stylesheet" href="./css/style.css">
-    <script src="./js/main.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
+    <link rel="icon" href="./img/favicon.ico">
     </head>
 <body>
     <aside>
-        <nav>
-            <ul>
-                <li><a href="./">Today`s tasks</a></li>
-                <li><a href="">Upcoming tasks</a></li>
-                <li><a href="">Categories</a></li>
-            </ul>
-            <a href="">Calendar</a>
-        </nav>
-    </aside>
-    <div class="wrapper">
-        <header>
-            <h1>Today`s tasks</h1>
-            <hr>
-            <form>
-                <input placeholder="keywords" id="keywords">
-                <button id="search">Search</button>
-            </form>
-        </header>
-        <hr>
-        <main>
-            <div class="tasks">
-            </div>
-            <button>Add new task </button>
-        </main>
+    <div class="datetime">
+        <div class="time"></div>
+        <div class="date"></div>
     </div>
-    <hr>
+    <div class="wrapper">
+        <div class="container">
+          <p id="quote">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptas,
+            magni.
+          </p>
+          <h3 id="author">Lorem, ipsum.</h3>
+          <button id="btn">Get Quote</button>
+        </div>
+      </div>
+    </aside>
+    <div class="task-section"> 
+        <header>
+            <h1>To-do list</h1>
+        </header>
+        <div class="todo-section">
+            <form>
+                <input type="text" class="todo-input">
+                <button class="todo-button" type="submit">
+                     + Add new task
+                </button>
+            </form>
+            <div class="todo-container">
+                <ul class="todo-list"></ul>
+            </div>
+        </div>
+    </div>
+   
     <footer>
+        <div class="footer">
+        <p>Ⓒ Alina Gorshunova 2023</p>
+        </div>
     </footer>
+    <script src="./js/main.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 </body>
 </html>
