@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../print.css" media="print">
 
     <!-- source: https://realfavicongenerator.net/ -->
     <link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-touch-icon.png">
@@ -28,13 +29,13 @@
         <a href="../"><h1>Berry&nbsp;servis&nbsp;s.r.o.</h1></a>
         <nav>
             <a href="../services">Přehled&nbsp;služeb</a>
-            <a href="../about">O&nbsp;nás</a>
+            <a href="../about" class="active">O&nbsp;nás</a>
             <a href="../contact">Kontakty</a>
             <a href="../terms">Obchodní&nbsp;podmínky</a>
         </nav>
     </div>
 </header>
-<div id="content">
+<main>
     <h2 id="info-banner">O společnosti Berry servis s.r.o.</h2>
     <section>
         <h2>
@@ -61,8 +62,8 @@
         </p>
     </section>
     <section class="image-section">
-        <img src="../assets/mockup-graphics-TvPoJ6GWNmc-unsplash.jpg" alt="" width="640" height="640"
-             id="image-section-img">
+        <img src="../assets/mockup-graphics-TvPoJ6GWNmc-unsplash.jpg" alt="Ilustrační fotografie malin" width="640"
+             height="640" id="image-section-img">
         <div id="image-section-text">
             <h3>Filosofie společnosti</h3>
             <p>
@@ -89,12 +90,12 @@
     </section>
     <h2>Naše jahody dodáváme v letošní sezoně do obchodních řetězců Kaufland, Makro, Albert, Košík, Rohlík a
         dalších.</h2>
-</div>
+</main>
 <footer>
     <div id="footer-content">
         <div id="contact">
             <h4>RYCHLÝ KONTAKT</h4>
-            tel: +420 321 672 764<br>
+            tel: <a href="tel:+420321672764">+420 321 672 764</a><br>
             email: <a href="mailto:berry.servis@seznam.cz">berry.servis@seznam.cz</a>
             <br><br>
             <a href="../contact">Zobrazit všechny kontakty</a>

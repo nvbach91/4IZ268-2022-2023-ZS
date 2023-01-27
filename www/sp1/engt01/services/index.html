@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../print.css" media="print">
 
     <!-- source: https://realfavicongenerator.net/ -->
     <link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-touch-icon.png">
@@ -27,7 +28,7 @@
     <div id="header-content">
         <a href="../"><h1>Berry&nbsp;servis&nbsp;s.r.o.</h1></a>
         <nav>
-            <a href="../services">Přehled&nbsp;služeb</a>
+            <a href="../services" class="active">Přehled&nbsp;služeb</a>
             <a href="../about">O&nbsp;nás</a>
             <a href="../contact">Kontakty</a>
             <a href="../terms">Obchodní&nbsp;podmínky</a>
@@ -40,7 +41,7 @@
 <!--        <a href="">Obchodní podmínky</a>-->
 <!--    </div>-->
 <!--</div>-->
-<div id="content">
+<main>
     <div class="services">
         <article class="service-link" id="service-self">
             <a href="self">
@@ -120,12 +121,12 @@
             </a>
         </article>
     </div>
-</div>
+</main>
 <footer>
     <div id="footer-content">
         <div id="contact">
             <h4>RYCHLÝ KONTAKT</h4>
-            tel: +420 321 672 764<br>
+            tel: <a href="tel:+420321672764">+420 321 672 764</a><br>
             email: <a href="mailto:berry.servis@seznam.cz">berry.servis@seznam.cz</a>
             <br><br>
             <a href="../contact">Zobrazit všechny kontakty</a>
