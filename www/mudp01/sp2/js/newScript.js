@@ -233,7 +233,7 @@ window.addEventListener('load', () => {
     /** ---------------------------------------------------------------------- END OF LOG OUT PROCESS --------------------------------------------------------------- */
     /** -------------------------------------------------------- ----------- DEFINING REQUEST METHODS --------------------------------------------------------------- */
     // Send request for returning all events durring inputed day
-    getEvents = async (day) => {
+   const getEvents = async (day) => {
         const request = {
             'calendarId': 'primary',
             'timeMin': `${date.val().slice(0, 4)}-${date.val().slice(5, 7)}-${dayPrefix(day)}${day}T00:00:00${timeZoneOperation()}${timeZonePrefix()}${(new Date().getTimezoneOffset() / 60).toString().slice(1, 3)}:00`,
@@ -245,7 +245,7 @@ window.addEventListener('load', () => {
 
     }
 
-    createNewEvent = async () => {
+   const createNewEvent = async () => {
         const pinn = () => { if ($('#pinnedInput').attr('checked') === 'checked') { return 'public' } else { return 'private' } }
         await gapi.client.calendar.events.insert({
             'calendarId': 'primary',
@@ -269,14 +269,14 @@ window.addEventListener('load', () => {
         });
     }
 
-    deleteEvent = async (eventId) => {
+    const deleteEvent = async (eventId) => {
         await gapi.client.calendar.events.delete({
             'calendarId': 'primary',
             'eventId': eventId
         })
     }
 
-    updateEvent = async (eventId) => {
+   const updateEvent = async (eventId) => {
         const pinn = () => { if ($('#pinnedInput').attr('checked') === 'checked') { return 'public' } else { return 'private' } }
         await gapi.client.calendar.events.update({
             'calendarId': 'primary',
@@ -309,14 +309,18 @@ window.addEventListener('load', () => {
     // Create divs with days and its priority images and appends them to calendarBody    
     const displayDays = () => {
         let daysHolder = [];
+        const dayNames = ['Ne','Po','Út','St','Čt','Pá','So'];
         for (let i = 1; i <= `${new Date(`${date.val().slice(0, 4)}`, `${date.val().slice(5, 7)}`, 0).getDate()}`; i++) {
             const day = $('<div>');
             const dayNumber = $('<div>');
             dayNumber.text(`${i}.`)
+            const dayName = $('<div>');
+            dayName.text(dayNames[(new Date(`${date.val().slice(0, 4)}-${date.val().slice(5,7)}-${i}`)).getDay()]);
             const dayPriority = $('<div>');
             dayPriority.attr('id', i);
             day.append(dayPriority);
             day.append(dayNumber);
+            day.append(dayName);
             getPriorities(i);
             day.on('click', () => {
                 getDayWindow(i);
@@ -846,6 +850,15 @@ window.addEventListener('load', () => {
             } else {
                 name.text('Úkol nemá název')
             }
+
+            const date =$('<div>');
+            date.attr('class','sideEventDate');
+            try{
+                date.text(`${item.start.dateTime.slice(8,10)}. ${item.start.dateTime.slice(5,7)}. - ${item.end.dateTime.slice(8,10)}. ${item.end.dateTime.slice(5,7)}.`);
+            }catch(error){
+                date.text(`${item.start.date.slice(0, 16)}`);
+            }
+            name.append(date);
 
 
             const priority = $('<div>');
