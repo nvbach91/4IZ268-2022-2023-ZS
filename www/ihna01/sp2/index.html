@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/modern-normalize@1.1.0/modern-normalize.min.css">
+    <link rel="shortcut icon" href="./img/favicon.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.slim.min.js"></script>
+</head>
+
+
+
+<body>
+    <header>
+        <h1>Weather forecast</h1>
+    </header>
+
+    <div class="form">
+        <form id="search_form">
+            <div class="form_row">
+                <input type="text" placeholder="Enter a city " name="search_term" id="search_term" autofocus>
+
+                <button type="submit">
+                    <img src="img/search-interface-symbol.png" alt="search">
+                </button>
+            </div>
+            <p class="form_msg"></p>
+        </form>
+    </div>
+
+    <div class="loader"></div>
+
+    <section>
+        <ul class="cities">
+        </ul>
+    </section>
+
+
+    <script src="main.js"></script>
+
+</body>
+
+</html>
