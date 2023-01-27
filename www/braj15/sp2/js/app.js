@@ -64,12 +64,29 @@
     recipeStepList.attr('id', 'recipe');
     recipeContainer.append(recipeStepList);
 
+    const orderSelect = $('<select>');
+    orderSelect.attr('id', 'order');
+    orderSelect.attr('name', 'order');
+
+    const optionDesc = $('<option>').text("Descending");
+    const optionAsc = $('<option>').text("Ascending");
+    optionDesc.attr('value', 'DESC');
+    optionAsc.attr('value', 'ASCE');
+
+    const labelOption = $('<label>').text("Order by likes:");
+
+
+    orderSelect.append(optionDesc);
+    orderSelect.append(optionAsc);
+    formElement.append(labelOption);
+    formElement.append(orderSelect);
+
     mainElement.append(mealContainer);
 
     mealContainer.append(recipeContainer);
 
-    let apiKey = "3b85b10dc713484398143741bbfcd892";
-
+    let apiKey = "1961be2e72ea481d8dbfc63298ff0ecb";
+    let mealList = [];
 
     const inputElement = $("#ingredients");
     const fridgeElement = $("#fridge");
@@ -132,7 +149,6 @@
                         createListElement(ingredienceLowerCase);
                         inputElement.val("");
                         localStorage.setItem("ingredientList", JSON.stringify(ingredientsList));
-                        console.log(localStorage.getItem("ingredientList"));
                         return;
 
                     }
@@ -151,12 +167,8 @@
         ingredientsListElement.append(listElement);
         listElement.click(() => {
             ingredientsList.forEach(ingredience => {
-                console.log(`${ingredience}Remove ingredient`);
-                console.log(listElement.text());
                 if (`${ingredience}Remove ingredient` == listElement.text()) {
-                    console.log("jsem tady kamo")
                     ingredientsList.splice(ingredientsList.indexOf(ingredience), 1);
-                    console.log(ingredientsList)
                 }
             })
             listElement.remove();
@@ -180,6 +192,7 @@
             .catch(function (error) {
                 alert("WHOOPS! There is a problem with your connection or the API endpoint does not work properly. Please try again later.")
                 $("#spinner-container").addClass("hidden");
+                console.log(error);
             });
 
     }
@@ -246,16 +259,27 @@
         });
     }
 
+    const orderItems = (list) => {
+        if (orderSelect.val() === "DESC") {
+            list.sort((a, b) => b.attr('likes') - a.attr('likes'));
+        } else {
+            list.sort((a, b) => a.attr('likes') - b.attr('likes'));
+        }
+        return list;
+    }
+
     const displayResults = (recipes) => {
         divRecipe.empty();
         divRecipe.append("<h2>Recipe</h2>");
         let mealList = [];
         for (let i = 0; i < recipes.length; i++) {
-            let meal = $("<h3>").text(recipes[i].title);
+            let meal = $("<h3>").text(`${recipes[i].title} ${recipes[i].likes}`);
+            meal.attr('likes', recipes[i].likes);
             meal.val(recipes[i].title);
             meal.attr('class', `meal-item`);
+
             mealList.push(meal);
-            let mealName = recipes[i].title;
+
 
             meal.click(() => {
                 mealContainer.removeClass("hidden");
@@ -281,8 +305,16 @@
 
             })
         }
+
+        $('#order').on("change", () => {
+            displayResults(recipes);
+        });
+
+        mealList = orderItems(mealList);
         divRecipe.append(...mealList);
     }
+
+
 
 
 })();

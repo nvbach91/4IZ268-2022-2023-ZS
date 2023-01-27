@@ -8,6 +8,20 @@ body {
     height: 100%;
 }
 
+label {
+    margin-right: 10px;
+}
+
+select {
+    background-color: white;
+    padding: 10px 20px;
+    border: 1px solid #c2c2c2;
+    border-radius: 5px;
+    color: black;
+    font-size: 18px;
+    transition: all 0.2s ease-in-out;
+}
+
 h1 {
     background-color: black;
     padding: 20px;
