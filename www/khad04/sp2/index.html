@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Cats App</title>
+	<link rel="shortcut icon" href="img/favicon.png" type="image/png">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/modern-normalize@1.1.0/modern-normalize.min.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+	<div class="container">
+		<header>
+			<h1>Find your favorite cat</h1>
+		</header>
+		<form id="search_form">
+			<div class="form-row">
+				<input type="text" placeholder="e.g. Abyssinian" name="search-term" id="search_term" autofocus>
+
+				<button type="submit">
+					<img class="button_img" src="img/lupa.png" alt="Magnifier">
+				</button>
+			</div>
+			<div class="form_msg"> msg</div>
+		</form>
+		<div  id="loader" class="loader"> </div>
+		<div class="results">
+			<section class="search_results">
+				<h3 class="search_results_title">Search result:</h3>
+				<ul class="cats">
+	
+				</ul>
+				<h3 class="search_results_title">You searched for:</h3>
+				<ul class="initial_cats">
+				</ul>
+			</section>
+	
+			<section class="search_results">
+				<h3 class="search_results_title">Your favorite cats:</h3>
+				<ul class="favorite_cats">
+	
+				</ul>
+			</section>	
+		</div>
+		
+	</div>
+		<footer>
+			<p><small>2023 © Daria Kharitonova</small></p>
+		</footer>
+	
+	<script src="js/main.js"></script>
+</body>
+
+</html>
