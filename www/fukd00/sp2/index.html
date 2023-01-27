@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master Trivia is a trivia quiz app. Choose from more than 20 categories to test your knowledge.">
+    <meta name="author" content="Dominik Fuka">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css"
         integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA=="
         crossorigin="anonymous" referrerpolicy="no-referrer">
@@ -18,8 +20,7 @@
             <img class="logo" src="./img/master-trivia-logo.svg" alt="Master Trivia logo">
         </figure>
         <nav>
-            <button id="homepageBtn" type="button" class="btn btn-light btn-nav"
-                onclick="homepageBtnClicked()">Homepage</button>
+            <button id="homepageBtn" type="button" class="btn btn-light btn-nav">Homepage</button>
             <button type="button" class="btn btn-light btn-nav">My statistics</button>
         </nav>
     </header>
@@ -38,9 +39,9 @@
                         <p><b>What would you like to do next?</b></p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                            onclick="hideCongratsModal()">Back to questions</button>
-                        <button type="button" class="btn btn-warning" onclick="showResultScreenBtnClick()">Show
+                        <button id="hideCongratsModalBtn" type="button" class="btn btn-secondary"
+                            data-dismiss="modal">Back to questions</button>
+                        <button id="showResultScreenModalBtn" type="button" class="btn btn-warning">Show
                             results</button>
                     </div>
                 </div>
@@ -53,12 +54,9 @@
         <section class="sectionWrapper difficulty hidden">
             <h1>Difficulty</h1>
             <div id="difficultySelection" class="difficultySelection">
-                <button id="easy" type="button" class="btn btn-success"
-                    onclick="difficultyButtonClicked(this.id)">Easy</button>
-                <button id="medium" type="button" class="btn btn-primary"
-                    onclick="difficultyButtonClicked(this.id)">Medium</button>
-                <button id="hard" type="button" class="btn btn-danger"
-                    onclick="difficultyButtonClicked(this.id)">Hard</button>
+                <button id="easyDiffBtn" type="button" class="btn btn-success">Easy</button>
+                <button id="mediumDiffBtn" type="button" class="btn btn-primary">Medium</button>
+                <button id="hardDiffBtn" type="button" class="btn btn-danger">Hard</button>
             </div>
         </section>
         <section class="sectionWrapper quiz hidden">
@@ -67,7 +65,7 @@
             <aside>
                 <h2>Question list</h2>
                 <h5 id="quizSuccessRatio" class="quizSuccessRatio">Answer question for success rate</h5>
-                <button type="button" class="btn btn-secondary restartQuizBtn" onclick="restartQuiz()">Restart
+                <button id="restartQuizBtn" type="button" class="btn btn-secondary restartQuizBtn">Restart
                     quiz</button>
                 <div id="questionList" class="questionList"></div>
             </aside>
@@ -107,13 +105,11 @@
                 </tbody>
             </table>
             <section class="resultScreenNav">
-                <button type="button" class="btn btn-secondary" onclick="hideResultScreen()">Back to questions</button>
+                <button id="resScrHideBtn" type="button" class="btn btn-secondary">Back to questions</button>
                 <div>
-                    <button type="button" class="btn btn-primary" onclick="homepageBtnClicked()">Start new quiz</button>
-                    <button type="button" class="btn btn-primary" onclick="newQuizSameSettingsBtnClick()">Take similar
-                        quiz</button>
-                    <button type="button" class="btn btn-info" onclick="newQuizSameQuestionsBtnClick()">Restart this
-                        quiz</button>
+                    <button id="resScrNewQuizBtn" type="button" class="btn btn-primary">Start new quiz</button>
+                    <button id="resScrSimilarQuizBtn" type="button" class="btn btn-primary">Take similar quiz</button>
+                    <button id="resScrResetQuizBtn" type="button" class="btn btn-info">Restart this quiz</button>
                 </div>
             </section>
         </section>
