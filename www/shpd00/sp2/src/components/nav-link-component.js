@@ -4,21 +4,22 @@ class NavLink extends HTMLElement {
   constructor() {
     super();
     this.selected = false;
-    const shadow = this.attachShadow({ mode: "open" });
-    const wrapper = document.createElement("div");
-    wrapper.setAttribute("class", "nav_link_wrapper");
-    wrapper.innerHTML = `\
-            <a class='nav_link'></a>
-        `;
+    const shadow = this.attachShadow({ mode: "open" })
+    
     const style = document.createElement("style");
     style.textContent = `
             .nav_link_wrapper{
                 padding: 20px;
             }
-            .nav_link
-            }
         `;
     shadow.appendChild(style);
+
+    const wrapper = document.createElement("div");
+    wrapper.setAttribute("class", "nav_link_wrapper");
+    wrapper.innerHTML = `\
+            <a class='nav_link'></a>
+        `;
+    
     shadow.appendChild(wrapper);
   }
   static get observedAttributes() {

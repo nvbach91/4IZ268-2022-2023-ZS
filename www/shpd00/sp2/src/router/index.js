@@ -3,12 +3,12 @@ import Route from "route-parser";
 
 import MainPage from "../pages/main.template";
 import FilesPage from "../pages/files.template";
-import UsersPage from "../pages/users.template";
+import LoginPage from "../pages/login.template";
 
 export const routes = {
   Main: new Route(appConstants.routes.index),
   Files: new Route(appConstants.routes.files),
-  Users: new Route(appConstants.routes.users),
+  Login: new Route(appConstants.routes.login),
 };
 
 export const render = (path) => {
@@ -18,8 +18,8 @@ export const render = (path) => {
     result = MainPage();
   } else if (routes.Files.match(path)) {
     result = FilesPage();
-  } else if (routes.Users.match(path)) {
-    result = UsersPage();
+  } else if (routes.Login.match(path)) {
+    result = LoginPage();
   } else {
     result += path;
   }

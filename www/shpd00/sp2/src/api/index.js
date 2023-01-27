@@ -1,1 +1,1 @@
-export {default as filesApi} from './filesApi'
+export { default as filesApi } from "./filesApi";
