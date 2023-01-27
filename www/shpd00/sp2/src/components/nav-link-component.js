@@ -39,7 +39,6 @@ class NavLink extends HTMLElement {
     e.preventDefault();
     const { pathname: path } = new URL(e.target.href);
     goTo(path);
-    // goTo('/files')
   };
 }
 customElements.define("nav-link", NavLink);

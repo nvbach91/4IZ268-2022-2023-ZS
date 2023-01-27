@@ -1,6 +1,7 @@
 import "./files-browser-sub-components"
 import { goTo } from "../router";
 import { getActualUser } from "../service/activeUsers.js";
+import { getFileContent } from "../api/filesFoldersApi";
 
 class FilesBrowser extends HTMLElement {
   constructor() {
@@ -81,7 +82,7 @@ class FilesBrowser extends HTMLElement {
     const filesGridContainer = document.createElement("div");
     filesGridContainer.setAttribute("class", "fg_container");
     this.filesGrid = document.createElement("files-grid");
-    this.filesGrid.addEventListener("click", (e) => this.refreshFileView());
+    this.filesGrid.addEventListener("click", (e) => this.refresh());
     this.filesGrid.setAttribute("path", this.activePath);
     filesGridContainer.appendChild(this.filesGrid);
     this.fileView = document.createElement("content-view");
@@ -97,10 +98,10 @@ class FilesBrowser extends HTMLElement {
   }
 
   connectedCallback() {
-    this.refreshFileView();
+    this.refresh();
   }
 
-  refreshFileView() {
+  refresh() {
     this.activePath = this.filesGrid.path;
     this.pathHeader.setAttribute("path", this.activePath);
     this.activeFile = this.filesGrid.activeFile;
@@ -112,7 +113,15 @@ class FilesBrowser extends HTMLElement {
     } else {
       this.fileViewContainer.setAttribute("style", "");
       this.fileView.setAttribute("file_name", this.activeFile.name);
-      this.fileView.setAttribute("content", this.activeFile.content);
+      const fileContentRequest = getFileContent(this.activeFile);
+      fileContentRequest.then((content) => {
+      this.fileView.setAttribute("content", content[0].content);
+      })
+
+
+
+      // this.fileView.setAttribute("file_name", this.activeFile.name);
+      // this.fileView.setAttribute("content", this.activeFile.content);
     }
   }
 }

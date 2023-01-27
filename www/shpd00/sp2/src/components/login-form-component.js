@@ -51,31 +51,6 @@ class LoginForm extends HTMLElement {
     }
     shadow.appendChild(container);
   }
-  // static get observedAttributes() {
-  //   return ["file_name"];
-  // }
-  // connectedCallback() {
-  //   const shadow = this.shadowRoot;
-  //   shadow.querySelector(".file_name_wrapper").innerText =
-  //     this.getAttribute("file_name");
-  // }
-
-
-
-  // onClick = (e) => {
-  //     e.preventDefault()
-  //     if(!this.selected){
-  //         const { pathname: path} = new URL(e.target.fileLocation)
-  //         goTo(path)
-  //     }
-  // }
 }
-// function tryLogIn(){
-//   const username = document.querySelector('login-form .username_input').value;
-//   // const password = document.querySelector('login-form .password_input').value;
-//   const test = document.createElement("h2");
-//   test.innerText = "test";
-//   document.querySelector('login-form').appendChild(test);
-// }
 customElements.define("login-form", LoginForm);
 

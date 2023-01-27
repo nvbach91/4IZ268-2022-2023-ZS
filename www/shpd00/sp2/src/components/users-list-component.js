@@ -1,6 +1,3 @@
-// import { getUser } from "../api/userApi";
-// import { goTo } from "../router";
-// import "./../styles/loginform.scss"
 import { getActiveUsers} from "../service/activeUsers";
 
 class UsersList extends HTMLElement {

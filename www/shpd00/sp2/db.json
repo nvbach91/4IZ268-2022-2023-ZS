@@ -1,28 +1,46 @@
 {
     "files": [
         {
-            "name": "test.test"
+            "fileid": 0
+            ,"name": "test.test"
             ,"path": "/"
-            ,"content": "test content"
             ,"userid": 0
         },
         {
-            "name": "test2.test"
+            "fileid": 1
+            ,"name": "test2.test"
             ,"path": "/"
-            ,"content": "test content"
             ,"userid": 0
         },
         {
-            "name": "test3.test"
+            "fileid": 2
+            ,"name": "test3.test"
             ,"path": "/test_folder/"
-            ,"content": "test content"
             ,"userid": 0
         }
         ,{
-            "name": "svit-mesicku.txt"
+            "fileid": 3
+            ,"name": "svit-mesicku.txt"
             ,"path": "/"
-            ,"content": "Svit, mesicku, polehoucku<br>skrz ten husty mrak;<br>jak pak se ti Brixen libi?<br>Neskared se tak!<br>Nepospichej, pozastav se,<br>nechod jeste spat,<br>abych s tebou jen chvilinku moh'<br>diskurirovat.<br>Nejsem zdejsi, muj mesicku!<br>tot znas podle kriku;<br>neutikej, nejsem ,,treu und bieder--,<br>jsem zde jen ve cviku."
             ,"userid": 1
+        }
+    ]
+    ,"files-content": [
+        {
+            "fileid": 0
+            ,"content": "test content"
+        },
+        {
+            "fileid": 1
+            ,"content": "test content"
+        },
+        {
+            "fileid": 2
+            ,"content": "test content"
+        }
+        ,{
+            "fileid": 3
+            ,"content": "Svit, mesicku, polehoucku<br>skrz ten husty mrak;<br>jak pak se ti Brixen libi?<br>Neskared se tak!<br>Nepospichej, pozastav se,<br>nechod jeste spat,<br>abych s tebou jen chvilinku moh'<br>diskurirovat.<br>Nejsem zdejsi, muj mesicku!<br>tot znas podle kriku;<br>neutikej, nejsem ,,treu und bieder--,<br>jsem zde jen ve cviku."
         }
     ]
     ,"directories": [
@@ -54,4 +72,5 @@
             ,"userid"   : 1
         }
     ]
+    
 }

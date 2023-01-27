@@ -15,8 +15,15 @@ export const getDirectories = (path) => {
   );
 };
 
+export const getFileContent = (file) => {
+  return dbApi.get(
+    `/files-content?fileid=${file.fileid}`
+  );
+}
+
 export default {
   getFiles,
   getDirectories,
   putDir,
+  getFileContent
 };
