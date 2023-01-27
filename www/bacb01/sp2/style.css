@@ -149,3 +149,23 @@ body {
     color: orange;
     cursor: pointer;
 }
+
+.loader {
+    visibility: visible;
+    width: 2rem;
+    height: 2rem;
+    border: 5px solid lightgray;
+    border-top: 6px solid orange;
+    border-radius: 100%;
+    margin: auto;
+    visibility: visible;
+    animation: spin 1s infinite linear;
+}
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
