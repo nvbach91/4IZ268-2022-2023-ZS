@@ -4,87 +4,64 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="SP1">
+    <meta name="description" content="SP2">
     <meta name="author" content="Marchenko Pavlo">
-    <meta name="keywords" content="SP1, semestralni prace, obleceni, clothes">
+    <meta name="keywords" content="SP2, semestral work, weather, air">
     <title>SP2</title>
-    <link rel="icon" type="image/x-icon" href="favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon.ico">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-
-    <div class="layout">
-
-        <div class="main-header">
-            <h1 class="dnt">LOGO</h1>
-            <h3 class="f1">feature 1</h3>
-            <h3 class="f2">feature 2</h3>
-            <h3 class="f3">feature 3</h3>
+    <header>
+        <div class="logo">
+            <img src="./assets/logo.png" alt="logo">
+            <h2>Weather Application</h2>
         </div>
-
     
-
-        
-        <div class="main">
-
-            <div class="kpis">
-
-                    
-
-                  <input type="text" class="country"> Enter your country
-                 
-                  <input type="text" class="city"> Enter your city
-                 
-               
-               
-
-               
-
+    </header>
+    <main>
+        <section class="control">
+            <div class="inputs">
+                <div class="wrapper-city">
+                    <label for="cityInput">
+                        <span>Select the city</span>
+                    </label>
+                    <input type="text" value="prague" name="city" id="cityInput">
+                </div>
+                <div class="wrapper-type">
+                    <label for="typeSelect">
+                        <span>Select data type</span>
+                    </label>
+                    <select name="city" id="typeSelect">
+                        <option value="quality">Air Quality</option>
+                        <option value="temperature">Temperature</option>
+                    </select>
+                </div>
+                <div class="buttons">
+                    <button class="primary" onclick="fetchByType()">Fetch</button>
+                    <button class="refresh" onclick="clearValue()">Clear</button>
+                </div>
             </div>
+        </section>
 
-            <div class="kpis">
-
-                <button>Show temperature for last 30 days</button>
-                <button class="qlt">Show quality of air</button>
-
-            </div>
-
-            
-            <div class="graf">
-
-                
-
-            </div>
-
-            <div class="lorem">
-
-                <h3>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Esse numquam similique eligendi laudantium sint tempora rem porro quae aspernatur tenetur ipsum asperiores, facilis doloribus qui non rerum laborum atque. Iusto!</h3>
-
-            </div>
-
-
-
-        </div>
-
-        <div class="graph">
-            <h2>graph</h2>
-        </div>
-
-        <div class="footer">
-
-        
-          
-            <h3>MP 2022</h3>
-             
-         </div>
-
-
-       
-
-
-
-    </div>
+        <section class="graph">
+            <div id="graph"></div>
+        </section>
+    </main>
+    <footer>
+        <h3>Created by Pavlo Marchenko, VŠE 2023 ©</h3>
+    </footer>
     
-</body>
+    <script
+            src="https://code.jquery.com/jquery-3.6.3.js"
+            integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.5/axios.js"
+            integrity="sha512-FchLfuM3Ci/+q/GnIbfZa+cieb7FA0gDZHXK3USCFpYpeldq8NerYV3rwVeLmwlhSfbTTGHMbbNhP6YWKtbuhQ=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="./main.js"></script>
+
+    </body>
 </html>
