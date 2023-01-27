@@ -33,14 +33,27 @@
     const spinnerWeatherC = $('<span class="loader-wc"></span>');
     const spinnerWeatherH = $('<span class="loader-wh"></span>');
 
+    const animeButtons = [];
+
     const animeButtonToday = $('#anime-button-today');
     const animeButtonSeasonal = $('#anime-button-seasonal');
     const animeButtonUsers = $('#anime-button-users');
     const animeButtonScore = $('#anime-button-score');
 
+    animeButtons.push(animeButtonToday);
+    animeButtons.push(animeButtonSeasonal);
+    animeButtons.push(animeButtonUsers);
+    animeButtons.push(animeButtonScore);
+
+    const achivementButtons = [];
+
     const achievementsButtonFractals = $('#achievements-button-fractals');
     const achievementsButtonPVE = $('#achievements-button-pve');
     const achievementsButtonWVW = $('#achievements-button-wvw');
+
+    achivementButtons.push(achievementsButtonFractals);
+    achivementButtons.push(achievementsButtonPVE);
+    achivementButtons.push(achievementsButtonWVW);
 
     const daysOfWeek = ["Sundays", "Mondays", "Tuesdays", "Wednesdays", "Thursdays", "Fridays", "Saturdays"];
 
@@ -410,69 +423,26 @@
     }
 
     const initButtons = () => {
-        animeButtonSeasonal.click((e => {
-            e.preventDefault();
 
-            animeListType = 'seasonal';
+        animeButtons.forEach(element => {
+            element.click((e => {
+                if ($(element).attr('data-type') === 'today' || $(element).attr('data-type') == 'seasonal') {
+                    animeListType = $(element).attr('data-type');
+                } else if ($(element).attr('data-type') === 'users' || $(element).attr('data-type') == 'score') {
+                    sortByAnime = $(element).attr('data-type');
+                }
+                e.preventDefault();
+                getAnimeList(sortByAnime, animeListType);
+            }))
+        });
 
-            getAnimeList(sortByAnime, animeListType);
-
-            console.log(sortByAnime, animeListType);
-        }))
-
-        animeButtonToday.click((e => {
-            e.preventDefault();
-
-            animeListType = 'today';
-
-            getAnimeList(sortByAnime, animeListType);
-
-            console.log(sortByAnime, animeListType);
-        }))
-
-        animeButtonUsers.click((e => {
-            e.preventDefault();
-
-            sortByAnime = 'users';
-
-            getAnimeList(sortByAnime, animeListType);
-
-            console.log(sortByAnime, animeListType);
-        }))
-
-        animeButtonScore.click((e => {
-            e.preventDefault();
-
-            sortByAnime = 'score';
-
-            getAnimeList(sortByAnime, animeListType);
-
-            console.log(sortByAnime, animeListType);
-        }))
-
-        achievementsButtonFractals.click((e => {
-            e.preventDefault();
-
-            achivementListType = 'fractals';
-
-            getGwAchievements(achivementListType);
-        }))
-
-        achievementsButtonPVE.click((e => {
-            e.preventDefault();
-
-            achivementListType = 'pve';
-
-            getGwAchievements(achivementListType);
-        }))
-
-        achievementsButtonWVW.click((e => {
-            e.preventDefault();
-
-            achivementListType = 'wvw';
-
-            getGwAchievements(achivementListType);
-        }))
+        achivementButtons.forEach(element => {
+            element.click((e => {
+                e.preventDefault();
+                achivementListType = $(element).attr('data-type');
+                getGwAchievements(achivementListType);
+            }))
+        })
 
         weatherButton.click((e => {
             e.preventDefault();
@@ -505,6 +475,8 @@
     }
 
     geoLocate();
+
+    const somestuff = animeButtonSeasonal[0].dataset.type;
 
     getAnimeList(sortByAnime, animeListType);
 
