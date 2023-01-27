@@ -5,14 +5,20 @@ $(document).ready(() => {
   const scoreContainer = $("#score");
   const restartButton = $("#restartButton");
   const highScoreContainer = $("#high-score");
+  const speedSlider = $("#my-range")
+  const sizeSlider = $("#size-range")
+
+  const snakeColorContainer = $('#snake-color')
+  const foodColorContainer = $('#food-color')
 
   //game customization
-  const gameBoardColor = "#fff";
+  let gameBoardColor = '#455A64';
   const gameBoardBorderColor = "#27373F";
-  const snakeColor = "white";
-  const foodColor = "#4FC3F7";
-  const cellSize = 25;
-  const snakeSpeed = 75;
+  let snakeColor = snakeColorContainer.val();
+  let foodColor = foodColorContainer.val();
+  
+  let cellSize = 25;
+  let snakeSpeed = 150 - speedSlider.val();
 
   let isGameRunning = false;
 
@@ -22,6 +28,8 @@ $(document).ready(() => {
   let foodYCoordinates;
 
   let score = 0;
+  let time = new Date().toLocaleTimeString('en-US', { hour12: false });
+  // let minutes = date.getMinutes();
 
   let snake = [
     { x: cellSize * 3, y: 0 },
@@ -31,21 +39,35 @@ $(document).ready(() => {
   ];
 
   const checkLocalStorage = () => {
+    
     if (localStorage.score == undefined) {
       localStorage.setItem("score", 0);
+      localStorage.setItem("name", '')
+
+
+      localStorage.setItem("date",'')
+      
     }
-    return localStorage.score;
+    return [localStorage.score, localStorage.name, localStorage.date];
   };
 
   let highScore = checkLocalStorage();
-  highScoreContainer.text(highScore);
+  highScoreContainer.text(`${highScore[1]} - ${highScore[2]}:  ${highScore[0]}`);
 
 
   const startGame = () => {
+
+    snakeColor = snakeColorContainer.val();
+    foodColor = foodColorContainer.val();
+    
     isGameRunning = true;
+    snakeSpeed = 150 - speedSlider.val();
+    // cellSize = 25;
+
     scoreContainer.text(score);
     highScore = checkLocalStorage();
-    highScoreContainer.text(highScore);
+    highScoreContainer.text(`${highScore[1]} - ${highScore[2]}:  ${highScore[0]}`);
+
     createFood();
     displayFood();
     nextTick();
@@ -102,7 +124,7 @@ $(document).ready(() => {
   };
 
   const drawCell = (i, j) => {
-    ctx.strokeRect(i * cellSize, j * cellSize, cellSize, cellSize);
+    ctx.strokeRect(i * cellSize, j * cellSize,  cellSize,  cellSize);
   };
 
   const drawSnake = () => {
@@ -126,35 +148,41 @@ $(document).ready(() => {
   };
 
   const changeDirection = (event) => {
-    const keyPressed = event.keyCode;
-    const LEFT = 37;
-    const UP = 38;
-    const RIGHT = 39;
-    const DOWN = 40;
+    setTimeout (() => {
+      const keyPressed = event.keyCode;
+      const LEFT = 37;
+      const UP = 38;
+      const RIGHT = 39;
+      const DOWN = 40;
 
-    const goingUp = yVelocity == -cellSize;
-    const goingDown = yVelocity == cellSize;
-    const goingRight = xVelocity == cellSize;
-    const goingLeft = xVelocity == -cellSize;
+      const A = 65;
+      const W = 87;
+      const D = 68;
+      const S = 83;
 
-    switch (true) {
-      case keyPressed == LEFT && !goingRight:
-        xVelocity = -cellSize;
-        yVelocity = 0;
-        break;
-      case keyPressed == UP && !goingDown:
-        xVelocity = 0;
-        yVelocity = -cellSize;
-        break;
-      case keyPressed == RIGHT && !goingLeft:
-        xVelocity = cellSize;
-        yVelocity = 0;
-        break;
-      case keyPressed == DOWN && !goingUp:
-        xVelocity = 0;
-        yVelocity = cellSize;
-        break;
-    }
+      const goingUp = yVelocity == -cellSize;
+      const goingDown = yVelocity == cellSize;
+      const goingRight = xVelocity == cellSize;
+      const goingLeft = xVelocity == -cellSize;
+
+      switch (true) {
+        case (keyPressed == LEFT || keyPressed == A) && !goingRight:
+          xVelocity = -cellSize;
+          yVelocity = 0;
+          break;
+        case (keyPressed == UP || keyPressed == W) && !goingDown:
+          xVelocity = 0;
+          yVelocity = -cellSize;
+          break;
+        case (keyPressed == RIGHT || keyPressed == D) && !goingLeft:
+          xVelocity = cellSize;
+          yVelocity = 0;
+          break;
+        case (keyPressed == DOWN || keyPressed == S) && !goingUp:
+          xVelocity = 0;
+          yVelocity = cellSize;
+          break;
+    }}, 50)
   };
 
   const checkGameOver = () => {
@@ -179,6 +207,14 @@ $(document).ready(() => {
     }
   };
 
+  const getName = () => {
+    const name = prompt("New highscore! Plaese enter your name", "John");
+    if (!name) {
+      return "Unknown"
+    }
+    return name;
+  };
+
   const diplayGameOver = () => {
     isGameRunning = false;
     ctx.fillStyle = "#455a64";
@@ -193,6 +229,12 @@ $(document).ready(() => {
       ctx.strokeRect(160, 220, 180, 80);
       ctx.fillStyle = "white";
       ctx.fillText(`New high score: ${score}`, 250, 280);
+      
+      localStorage.name = getName();
+      time = new Date().toLocaleTimeString('en-US', { hour12: false })
+      localStorage.date = time
+      
+
     } else {
       ctx.fillRect(160, 220, 180, 50);
       ctx.strokeRect(160, 220, 180, 50);
@@ -208,8 +250,7 @@ $(document).ready(() => {
   const restartGame = () => {
     score = 0;
     xVelocity = cellSize;
-    console.log(xVelocity)
-    console.log(snakeSpeed)
+
     yVelocity = 0;
     snake = [
       { x: cellSize * 3, y: 0 },
@@ -217,7 +258,9 @@ $(document).ready(() => {
       { x: cellSize, y: 0 },
       { x: 0, y: 0 },
     ];
-    highScoreContainer.text(highScore);
+    console.log(highScore)
+    console.log(sizeSlider.val())
+    highScoreContainer.text(`${highScore[1]}, ${highScore[2]}: ${highScore[0]}`);
     startGame();
   };
 
@@ -297,7 +340,6 @@ $(document).ready(() => {
   $(window).on("gamepadconnected", (event) => {
     handleConnectDisconnect(true);
     handleButtonsEntries();
-    // startGame()
   });
 
   $(window).on("gamepaddisconnected", (event) => {

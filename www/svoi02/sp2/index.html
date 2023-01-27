@@ -31,6 +31,23 @@
             <div id="connected">Controller connected.</div>
         </div>
         <canvas id="game" width="500" height="500"></canvas>
+        <div class="info custom">
+            <div class="speed">
+                <p>Speed</p>
+                <input type="range" min="0" max="100" step="25" value="75" class="slider" id="my-range">
+            </div>
+            <div class="speed">
+                <p>Size</p>
+                <input type="range" min="10" max="50" step="15" value="25" class="slider" id="size-range">
+            </div>
+
+            <div class="colors">
+                <p>Snake</p>
+                <input type="color" id="snake-color" value="#ffffff">
+                <p>food</p>
+                <input type="color" id="food-color" value="#4FC3F7">
+            </div>
+        </div>
     </main>
     <footer>Copyright © 2023 | Ivan Svoboda</footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.slim.min.js" integrity="sha512-yBpuflZmP5lwMzZ03hiCLzA94N0K2vgBtJgqQ2E1meJzmIBfjbb7k4Y23k2i2c/rIeSUGc7jojyIY5waK3ZxCQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
