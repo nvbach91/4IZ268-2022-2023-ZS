@@ -1,23 +1,4 @@
 (() => {
-  let prevScrollpos = $(window).scrollTop();
-  let navbarVisible = true;
-  let timeoutSet;
-
-  $(window).on("scroll", function () {
-    clearTimeout(timeoutSet);
-    timeoutSet = setTimeout(function () {
-      let currentScrollPos = $(window).scrollTop();
-      if (currentScrollPos > prevScrollpos && navbarVisible) {
-        $("#navbar").slideUp();
-        navbarVisible = false;
-      } else if (currentScrollPos < prevScrollpos && !navbarVisible) {
-        $("#navbar").slideDown();
-        navbarVisible = true;
-      }
-      prevScrollpos = currentScrollPos;
-    }, 50);
-  });
-
   const bmiContainer = $("#bmi-container");
   const h2BMI = $("<h2>BMI</h2>");
   const formDiv = $("<div></div>");
@@ -144,6 +125,19 @@
           localStorage.setItem("date", shortVersionDate.toString());
           let storageBMI = bmiTextResultSpan.text();
           localStorage.setItem("bmi", storageBMI);
+          Swal.fire({
+            title: "BMI Result",
+            text: "Your BMI is: " + bmi + " - " + health,
+            icon: "success",
+            confirmButtonText: "Let's go",
+            confirmButtonColor: "green",
+            showClass: {
+              popup: "animate__animated animate__zoomInDown",
+            },
+            hideClass: {
+              popup: "animate__animated animate__rotateOut",
+            },
+          });
         })
         .catch(function (error) {
           alert("There is something wrong with the API!!");
@@ -163,8 +157,20 @@
     if (localStorage.getItem("bmi") !== null) {
       const savedBMI = localStorage.getItem("bmi");
       const savedDate = localStorage.getItem("date");
-      bmiTextContainer.append(bmiTextResultSpan);
-      bmiTextResultSpan.text(savedBMI + " - Date of last submit: " + savedDate);
+      Swal.fire({
+        template: "#my-template",
+        title: "Your last BMI result",
+        text: "Date: " + savedDate + " - " + savedBMI,
+        icon: "info",
+        confirmButtonText: "Okay",
+        confirmButtonColor: "#a2d2ff",
+        showClass: {
+          popup: "animate__animated animate__fadeInDown",
+        },
+        hideClass: {
+          popup: "animate__animated animate__fadeOutUp",
+        },
+      });
     }
   });
 
@@ -286,6 +292,19 @@
         textAreaText.text(
           `${ingredient} does not exist in our Database or the input is incorrect!`
         );
+        Swal.fire({
+          title: "We are sorry!",
+          text: `${ingredient} does not exist in our Database or the input is incorrect!`,
+          icon: "error",
+          confirmButtonText: "OK",
+          confirmButtonColor: "red",
+          showClass: {
+            popup: "animate__animated animate__tada",
+          },
+          hideClass: {
+            popup: "animate__animated animate__backOutDown",
+          },
+        });
         textAreaText.insertAfter(addIngr);
         return;
       }
@@ -300,6 +319,8 @@
       const weight = `${Math.trunc(totalWeight * 1000) / 1000} g`;
       const { FAT, PROCNT, CHOCDF, FASAT, CHOLE, NA, CA, K, FE } =
         totalNutrients;
+
+      console.log(data);
 
       tbodyTable.append(
         `<tr>
@@ -384,7 +405,7 @@
 
   tbodyTable.on("click", "img", function () {
     const row = $(this).closest("tr");
-    const calories = parseFloat(row.find("td:nth-child(4)").text());
+    const calories = row.find("td:nth-child(4)").text();
 
     if (!isNaN(caloriesAll)) {
       caloriesAll -= calories;
