@@ -32,32 +32,6 @@ class UsersList extends HTMLElement {
 
     shadow.appendChild(container);
   }
-  // static get observedAttributes() {
-  //   return ["file_name"];
-//   }
-//   connectedCallback() {
-//     const shadow = this.shadowRoot;
-//     this.username=this.getAttribute('username');
-//     shadow.querySelector(".username").innerText ='test';
-//   }
-
-
-
-  // onClick = (e) => {
-  //     e.preventDefault()
-  //     if(!this.selected){
-  //         const { pathname: path} = new URL(e.target.fileLocation)
-  //         goTo(path)
-  //     }
-  // }
-
-// function tryLogIn(){
-//   const username = document.querySelector('login-form .username_input').value;
-//   // const password = document.querySelector('login-form .password_input').value;
-//   const test = document.createElement("h2");
-//   test.innerText = "test";
-//   document.querySelector('login-form').appendChild(test);
-// }
 }
 customElements.define("users-list", UsersList);
 
