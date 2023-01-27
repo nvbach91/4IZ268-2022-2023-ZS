@@ -1,0 +1,278 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
+
+* {
+  font-family: "Quicksand", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+  height: 10vh;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  background-color: #e07a5f;
+  color: white;
+  text-align: center;
+  line-height: 10vh;
+  position: fixed;
+  width: 100%;
+  top: 0%;
+}
+
+header h1 {
+  font-size: 50px;
+}
+
+#bmi-container {
+  text-align: center;
+  width: 90%;
+  margin: 3rem auto;
+  padding: 2rem 0;
+  border-radius: 7px;
+  background-color: #ecf1f5;
+  margin-top: 7rem;
+}
+
+#bmi-container h2 {
+  font-size: 50px;
+  margin-bottom: 2rem;
+}
+
+#bmi-container p {
+  color: #e63946;
+  margin-bottom: 0.5rem;
+  font-size: 20px;
+}
+
+#bmi-container label {
+  font-size: 20px;
+  margin-right: 5px;
+}
+
+#bmi-container input {
+  width: 70px;
+  height: 2rem;
+  text-align: center;
+  border: 1px solid white;
+  border-radius: 7px;
+  margin-right: 2rem;
+  font-size: 20px;
+}
+
+.wrong-input {
+  outline: 2px solid red;
+}
+
+#bmi-result-text {
+  margin-top: 2rem;
+}
+
+#bmi-result-text span {
+  font-weight: 600;
+  margin-left: 5px;
+  margin-right: 5px;
+  font-size: 20px;
+  background-color: rgba(250, 128, 114, 0.8);
+  color: rgb(255, 249, 249);
+  padding: 1rem;
+  border-radius: 7px;
+}
+
+#bmi-result {
+  background-color: #e07a5f;
+  border: 0px;
+  width: 100px;
+  height: 2.7rem;
+  border-radius: 7px;
+  color: white;
+  font-weight: 600;
+  font-size: 15px;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+#bmi-result:hover {
+  cursor: pointer;
+  background-color: #dc6b4c;
+  transition: 0.3s;
+}
+
+#calculator {
+  width: 90%;
+  margin: 3rem auto;
+  text-align: center;
+  border-radius: 7px;
+  background-color: #ecf1f5;
+  padding-top: 0.2rem;
+}
+
+#calculator h2 {
+  font-size: 50px;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+}
+
+#calculator p {
+  font-size: 20px;
+  padding: 0 1rem;
+}
+
+#calculator p span {
+  color: salmon;
+}
+
+#calculator form {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+}
+
+#calculator form textarea {
+  height: 60%;
+  border-radius: 15px;
+  border: 0px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  outline: 0;
+  resize: vertical;
+  padding: 10px;
+  font-size: 20px;
+}
+
+#calculator form textarea:focus {
+  border: 2px solid salmon;
+}
+
+#calculator table {
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  background-color: white;
+}
+
+#calculator table thead {
+  height: 3rem;
+}
+
+#calculator table tbody tr td img {
+  width: 30%;
+}
+
+#calculator table tbody tr td img:hover {
+  width: 40%;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+#calculator table thead tr th {
+  width: 70px;
+}
+
+#calculator table tbody tr td {
+  text-align: center;
+  height: 3rem;
+}
+
+#add-ingredients {
+  width: 40%;
+  height: 3rem;
+  margin-top: 10px;
+  border-radius: 10px;
+  border: 0px;
+  background-color: #e07a5f;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+#add-ingredients:hover {
+  cursor: pointer;
+  background-color: #dc6b4c;
+  transition: 0.3s;
+}
+
+#result-nutrition {
+  border: 0px;
+  width: 25%;
+  border-radius: 15px;
+  text-align: left;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  background-color: white;
+}
+
+#result-nutrition h2 {
+  font-size: 30px;
+  text-align: center;
+  border-bottom: 1px solid black;
+  border-bottom-width: 0.5rem;
+  margin: 1rem;
+  border-color: #adb5bd;
+}
+
+#result-nutrition div:nth-of-type(1) h3 {
+  font-size: 35px;
+  padding-bottom: 10px;
+}
+
+#result-nutrition div:nth-of-type(1) {
+  display: flex;
+  justify-content: space-evenly;
+  border-bottom: 8px solid #92989e;
+  margin: 0 15px;
+  margin-bottom: 1rem;
+}
+
+#result-nutrition p {
+  font-size: 13px;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+#total-nutrients h3 {
+  font-size: 20px;
+  margin-bottom: 5px;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  padding-bottom: 0.5rem;
+  font-weight: 100;
+  border-bottom: 1px solid rgb(106, 103, 103);
+}
+
+#total-nutrients {
+  margin-bottom: 2rem;
+}
+
+#nutr-form form p {
+  margin-top: 2rem;
+  color: rgb(194, 49, 49);
+}
+
+#nutr-form {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 2rem 0;
+}
+
+#result table {
+  margin-bottom: 3rem;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #f3f3f3;
+  border-top-color: #3498db;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner.show {
+  display: block;
+}
+.spinner {
+  display: none;
+}
