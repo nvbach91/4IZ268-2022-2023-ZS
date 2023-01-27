@@ -1,0 +1,76 @@
+{
+    "files": [
+        {
+            "fileid": 0
+            ,"name": "test.test"
+            ,"path": "/"
+            ,"userid": 0
+        },
+        {
+            "fileid": 1
+            ,"name": "test2.test"
+            ,"path": "/"
+            ,"userid": 0
+        },
+        {
+            "fileid": 2
+            ,"name": "test3.test"
+            ,"path": "/test_folder/"
+            ,"userid": 0
+        }
+        ,{
+            "fileid": 3
+            ,"name": "svit-mesicku.txt"
+            ,"path": "/"
+            ,"userid": 1
+        }
+    ]
+    ,"files-content": [
+        {
+            "fileid": 0
+            ,"content": "test content"
+        },
+        {
+            "fileid": 1
+            ,"content": "test content"
+        },
+        {
+            "fileid": 2
+            ,"content": "test content"
+        }
+        ,{
+            "fileid": 3
+            ,"content": "Svit, mesicku, polehoucku<br>skrz ten husty mrak;<br>jak pak se ti Brixen libi?<br>Neskared se tak!<br>Nepospichej, pozastav se,<br>nechod jeste spat,<br>abych s tebou jen chvilinku moh'<br>diskurirovat.<br>Nejsem zdejsi, muj mesicku!<br>tot znas podle kriku;<br>neutikej, nejsem ,,treu und bieder--,<br>jsem zde jen ve cviku."
+        }
+    ]
+    ,"directories": [
+        {
+            "name": "test_folder"
+            ,"path": "/"
+            ,"userid": 0
+        },
+        {
+            "name": "ahoj"
+            ,"path": "/test_folder/"
+            ,"userid": 0
+        }
+        ,{
+            "name": "nova slozka"
+            ,"path": "/"
+            ,"userid": 1
+        }
+    ]
+    ,"users": [
+        {
+            "username"  : "user"
+            ,"password" : "password"
+            ,"userid"   : 0
+        },
+        {
+            "username"  : "boiledRice"
+            ,"password" : "boiledRice"
+            ,"userid"   : 1
+        }
+    ]
+    
+}
