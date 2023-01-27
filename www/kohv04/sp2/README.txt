@@ -56,7 +56,7 @@ ale jeho varible. Nejspíš to nemění nic na tom, že to vybírám stále víc
 e) Formátování kódu - Přidal jsem tab a spaces tam, kde má být.
 
 
-
+Ukázat problem se search.
 
 
 

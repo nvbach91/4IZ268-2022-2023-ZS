@@ -201,6 +201,21 @@ body {
   border: 1px solid black;
 }
 
+.nominatim.ol-search.ol-unselectable.ol-control.ol-collapsed {
+  position: relative;
+  display: block;
+  margin: 5px auto auto 10px ;
+  background: transparent;
+}
+
+.nominatim.ol-search.ol-unselectable.ol-control {
+  position: relative;
+  display: block;
+  margin: 5px auto auto 10px ;
+  background: transparent;
+}
+
+
 
 
 
