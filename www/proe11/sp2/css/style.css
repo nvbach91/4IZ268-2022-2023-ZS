@@ -27,7 +27,7 @@ body {
     max-height: 720px;
     background-image: url(../resources/logo.jpg);
     background-repeat: no-repeat;
-    background-size: auto 100px;
+    background-size: auto 5vw;
     background-position: 30% 20px;
     background-color: #333;
     border-radius: 10px;
@@ -137,7 +137,7 @@ p {
 #random-games-container {
     display: flex;
     padding-top: 10px;
-    max-width: 100vw;
+    max-width: 1280px;
     justify-items: center;
     background-color: #736f6f;
     border-radius: 10px;
@@ -146,6 +146,7 @@ p {
 #user-games-container {
     display: flex;
     position: relative;
+    max-width: 1280px;
     justify-items: center;
     background-color: #736f6f;
     border-radius: 10px;
@@ -168,7 +169,7 @@ p {
 
 .spinner {
     position: absolute;
-    padding-left: 47%;
+    padding-left: 30%;
 
 }
 
@@ -202,6 +203,7 @@ input {
     font-size: 1vw;
     text-align: center;
 }
+
 select {
     width: 8vw;
     font-size: 1vw;
