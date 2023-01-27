@@ -166,6 +166,29 @@ body {
   display: block;
   margin: 5px auto auto 10px ;
 }
+
+/* Search bar */
+
+.ol-search ul {
+  color: #333;
+  font-size:0.85em;
+  max-width: 21em;
+}
+.ol-search ul i {
+  display: block;
+  color: #333;
+  font-size:0.85em;
+}
+.info {
+  display: inline-block;
+  width: 100%;
+}
+.info a img {
+  height: 100px;
+  margin-right: .5em;
+  float: left;
+}
+
 /* Measuring */
 
 .ol-tooltip {
@@ -177,6 +200,8 @@ body {
   opacity: 0.8;
   border: 1px solid black;
 }
+
+
 
 
 

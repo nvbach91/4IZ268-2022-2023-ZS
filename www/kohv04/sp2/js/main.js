@@ -35,11 +35,42 @@ $(document).ready(() => {
         type: 'base',
         source: osmSource
     });
-    
+
+    // Dark style --- Scrapped
+    //const DarkModeJson = 'https://api.maptiler.com/maps/darkmatter/style.json?key=rRDokw8lRfAhrZylUirr';
+    //const DarkModeUrl = 'https://api.maptiler.com/maps/darkmatter/?key=rRDokw8lRfAhrZylUirr#0.17/0/36';
+
+    // Toner style
+    const TonerOsmSource = new ol.source.Stamen({
+        layer: 'toner',
+        crossOrigin: 'anonymous'
+    });
+
+    const TonerOsmTile = new ol.layer.Tile({
+        title: 'Toner Open Street Map',
+        visible: false,
+        type: 'base',
+        source: TonerOsmSource
+    });
+    // Terrain style
+    const TerrainOsmSource = new ol.source.Stamen({
+        layer: 'terrain',
+        crossOrigin: 'anonymous'
+    });
+
+    const TerrainOsmTile = new ol.layer.Tile({
+        title: 'Terrain Open Street Map',
+        visible: false,
+        type: 'base',
+        source: TerrainOsmSource
+    });
+
+
+    // Base Group
     const baseGroup = new ol.layer.Group({
         title: 'Maps',
         fold: true, 
-        layers: [osmTile, noneTile],
+        layers: [osmTile, noneTile, TonerOsmTile, TerrainOsmTile],
     });
     
     map.addLayer(baseGroup);
@@ -108,118 +139,38 @@ $(document).ready(() => {
     
     // Getting and making a layer. This loading process uses AJAX, even though we do not have AJAX directly in the code.
     
-    const BritishMuseumUrl = 'https://nominatim.openstreetmap.org/search.php?q=British+Museum&format=geojson&limit=1';
-    const TheTowerUrl = 'https://nominatim.openstreetmap.org/search.php?q=Tower+of+London&format=geojson&limit=1';
-    const BigBenUrl = 'https://nominatim.openstreetmap.org/search.php?q=Big+Ben&format=geojson&limit=1';
-    const BuckinghamPalaceUrl = 'https://nominatim.openstreetmap.org/search.php?q=Buckingham+Palace&format=geojson&limit=1';
-    const WestminsterAbbeyUrl = 'https://nominatim.openstreetmap.org/search.php?q=Westminster+Abbey&format=geojson&limit=1';
-    
-    
-    const BritishMuseum = new ol.layer.Vector({
-        title: "British Museum",
-        visible: true,
-        source: new ol.source.Vector({
-            url: BritishMuseumUrl,
-            format: new ol.format.GeoJSON(),
-            tiled: true,
-            projection: 'EPSG:4326'
-        }),
-        style: new ol.style.Style({
-            image: new ol.style.Icon({
-                src: 'https://img.icons8.com/cotton/2x/museum.png',
-                scale: 0.1
+    const createLayer = (title, url, color, image) => {
+        return new ol.layer.Vector({
+            title: title,
+            visible: true,
+            source: new ol.source.Vector({
+                url: url,
+                format: new ol.format.GeoJSON(),
+                tiled: true,
+                projection: 'EPSG:4326'
+            }),
+            style: new ol.style.Style({
+                image: (image ? new ol.style.Icon({
+                    src: image,
+                    scale: 0.1
+                }) : new ol.style.Circle({
+                    fill: new ol.style.Fill({
+                        color: color
+                    }),
+                    stroke: new ol.style.Stroke({
+                        color: color
+                    }),
+                    radius: 5
+                }))
             })
-        })
-    });
+        });
+    };
     
-    const TheTower = new ol.layer.Vector({
-        title: "The Tower",
-        visible: true,
-        source: new ol.source.Vector({
-            url: TheTowerUrl,
-            format: new ol.format.GeoJSON(),
-            tiled: true,
-            projection: 'EPSG:4326'
-        }),
-        style: new ol.style.Style({
-            image: new ol.style.Circle({
-                fill: new ol.style.Fill({
-                    color: '#006400'
-                }),
-                stroke: new ol.style.Stroke({
-                    color: '#006400'
-                }),
-                radius: 5
-            })
-        })
-    });
-    
-    const BigBen = new ol.layer.Vector({
-        title: "Big Ben",
-        visible: true,
-        source: new ol.source.Vector({
-            url: BigBenUrl,
-            format: new ol.format.GeoJSON(),
-            tiled: true,
-            projection: 'EPSG:4326'
-        }),
-        style: new ol.style.Style({
-            image: new ol.style.Circle({
-                fill: new ol.style.Fill({
-                    color: '#FF0000'
-                }),
-                stroke: new ol.style.Stroke({
-                    color: '#FF0000'
-                }),
-                radius: 5
-            })
-        })
-    });
-    
-    const BuckinghamPalace = new ol.layer.Vector({
-        title: "Buckingham Palace",
-        visible: true,
-        source: new ol.source.Vector({
-            url: BuckinghamPalaceUrl,
-            format: new ol.format.GeoJSON(),
-            tiled: true,
-            projection: 'EPSG:4326'
-        }),
-        style: new ol.style.Style({
-            image: new ol.style.Circle({
-                fill: new ol.style.Fill({
-                    color: '#0000FF'
-                }),
-                stroke: new ol.style.Stroke({
-                    color: '#0000FF'
-                }),
-                radius: 5
-            })
-        })
-    });
-    
-    const WestminsterAbbey = new ol.layer.Vector({
-        title: "Westminster Abbey",
-        visible: true,
-        source: new ol.source.Vector({
-            url: WestminsterAbbeyUrl,
-            format: new ol.format.GeoJSON(),
-            tiled: true,
-            projection: 'EPSG:4326'
-        }),
-        style: new ol.style.Style({
-            image: new ol.style.Circle({
-                fill: new ol.style.Fill({
-                    color: '#FFFF00'
-                }),
-                stroke: new ol.style.Stroke({
-                    color: '#FFFF00'
-                }),
-                radius: 5
-            })
-        })
-    });
-    
+    const BritishMuseum = createLayer("British Museum", 'https://nominatim.openstreetmap.org/search.php?q=British+Museum&format=geojson&limit=1', null, 'https://img.icons8.com/cotton/2x/museum.png');
+    const TheTower = createLayer("The Tower", 'https://nominatim.openstreetmap.org/search.php?q=Tower+of+London&format=geojson&limit=1', '#006400');
+    const BigBen = createLayer("Big Ben", 'https://nominatim.openstreetmap.org/search.php?q=Big+Ben&format=geojson&limit=1', '#FF0000');
+    const BuckinghamPalace = createLayer("Buckingham Palace", 'https://nominatim.openstreetmap.org/search.php?q=Buckingham+Palace&format=geojson&limit=1', '#0000FF');
+    const WestminsterAbbey = createLayer("Westminster Abbey", 'https://nominatim.openstreetmap.org/search.php?q=Westminster+Abbey&format=geojson&limit=1', '#FFFF00');
     
     // Making a group for overlays
     const overlayGroup = new ol.layer.Group({
@@ -236,7 +187,7 @@ $(document).ready(() => {
         layers: [BritishMuseum, TheTower, BigBen, BuckinghamPalace, WestminsterAbbey]
     });
     
-    
+    //BritishMuseum, TheTower, BigBen, BuckinghamPalace, WestminsterAbbey 
     map.addLayer(placesGroup);
     
     // Making Layer Switcher
@@ -249,14 +200,12 @@ $(document).ready(() => {
     map.addControl(layerSwitcher);
     
     // Making the layers invisible so the application starts faster
-    CzechiaWater.setVisible(false);
-    EuNutsTile.setVisible(false);
-    EuUrbanAreas.setVisible(false);
     
-    TheTower.setVisible(false);
-    BigBen.setVisible(false);
-    BuckinghamPalace.setVisible(false);
-    WestminsterAbbey.setVisible(false);
+    let invisible = [CzechiaWater, EuNutsTile, EuUrbanAreas, TheTower, BigBen, BuckinghamPalace, WestminsterAbbey];
+
+    for (var i = 0; i < invisible.length; i++) {
+        invisible[i].setVisible(false);
+    }
     
     
     /// Adding latitude and longitude to the mouse position
@@ -277,7 +226,7 @@ $(document).ready(() => {
     // Custom features
     
     // Adding fullscreen feature
-    const fullscreenButton = $('<button>').html('<img src="./source/images/expand.svg" alt="" class= "FeatureImg"></img>').addClass('myButton');
+    const fullscreenButton = $('<button>').html('<img src="./source/images/expand.svg" alt="" class= "FeatureImg">').addClass('myButton');
     const fullscreenElement = $('<div>').addClass('FullscreenButtonDiv').append(fullscreenButton);
     const fullscreenControl = new ol.control.Control({
         element: fullscreenElement[0]
@@ -301,7 +250,7 @@ $(document).ready(() => {
     
     // Home feature
     const $homeButton = $('<button>')
-        .html('<img src="./source/images/house.svg" alt="" class= "FeatureImg"></img>')
+        .html('<img src="./source/images/house.svg" alt="" class= "FeatureImg">')
         .addClass('myButton');
     
     const $homeElement = $('<div>')
@@ -321,7 +270,7 @@ $(document).ready(() => {
     
     // Info feature --- Scrapped
     const $infoButton = $('<button>')
-        .html('<img src="./source/images/info.svg" alt="" class= "FeatureImg"></img>')
+        .html('<img src="./source/images/info.svg" alt="" class= "FeatureImg">')
         .addClass('myButton')
         .attr('id', 'InfoButton');
     
@@ -372,14 +321,16 @@ $(document).ready(() => {
     // Geolocation 
     // With relation to the element
     
-    $("#Crosshair").on("click", function (evet) {
-        $("#Crosshair").toggleClass("clicked");
-        if ($("#Crosshair").hasClass("clicked")) {
-            startLocate();
-        } else {
-            stopLocate();
-        }
-    });
+    let $crosshair = $("#Crosshair");
+
+    $crosshair.on("click", function (evet) {
+            $(this).toggleClass("clicked");
+            if ($(this).hasClass("clicked")) {
+                startLocate();
+            } else {
+                stopLocate();
+            }
+        });
     
     // Locating features
     
@@ -447,31 +398,31 @@ $(document).ready(() => {
     
     // Measure distance
     const distanceButton = $('<button>')
-    .html('<img src="./source/images/ruler-vertical.svg" alt="" class= "FeatureImg"></img>')
-    .addClass('myButton')
-    .attr('id', 'distanceButton');
+        .html('<img src="./source/images/ruler-vertical.svg" alt="" class= "FeatureImg">')
+        .addClass('myButton')
+        .attr('id', 'distanceButton');
     
     const distanceElement = $('<div>')
-    .addClass('distanceButtonDiv')
-    .append(distanceButton);
+        .addClass('distanceButtonDiv')
+        .append(distanceButton);
     
     const distanceControl = new ol.control.Control({
-    element: distanceElement[0]
+        element: distanceElement[0]
     });
     
     let distanceFlag = false;
     distanceButton.on("click", () =>{
-    distanceButton.toggleClass('clicked');
-    distanceFlag = !distanceFlag;
-    $("#map").css("cursor", "default");
-    if(distanceFlag){
-    map.removeInteraction(draw);
-    addInteraction('LineString');
-    } else {
-    map.removeInteraction(draw);
-    source.clear();
-    $('.ol-tooltip.ol-tooltip-static').remove();
-    }
+        distanceButton.toggleClass('clicked');
+        distanceFlag = !distanceFlag;
+        $("#map").css("cursor", "default");
+        if(distanceFlag){
+            map.removeInteraction(draw);
+            addInteraction('LineString');
+        } else {
+            map.removeInteraction(draw);
+            source.clear();
+            $('.ol-tooltip.ol-tooltip-static').remove();
+        }
     });
     
     map.addControl(distanceControl);
@@ -479,7 +430,7 @@ $(document).ready(() => {
     // Measure zone
     
     const zoneButton = $('<button>')
-        .html('<img src="./source/images/ruler-combined.svg" alt="" class= "FeatureImg"></img>')
+        .html('<img src="./source/images/ruler-combined.svg" alt="" class= "FeatureImg">')
         .addClass('myButton')
         .attr('id', 'zoneButton');
     
@@ -648,6 +599,47 @@ $(document).ready(() => {
         positioning: 'bottom-center'
         });
         map.addOverlay(measureTooltip);
-        }
+        };
+
+
+
+
+    // Search feature ---- Not working
+    // Set the search control 
+   let search = new ol.control.SearchNominatim({
+    polygon: $("#polygon").prop("checked"),
+    reverse: true,
+    position: true	// Search, with priority to geo position
+  });
+  map.addControl (search);
+
+  // Select feature when click on the reference index
+  search.on('select', function(e) {
+    sLayer.getSource().clear();
+    // Check if we get a geojson to describe the search
+    if (e.search.geojson) {
+      let format = new ol.format.GeoJSON();
+      let f = format.readFeature(e.search.geojson, { dataProjection: "EPSG:4326", featureProjection: map.getView().getProjection() });
+      sLayer.getSource().addFeature(f);
+      let view = map.getView();
+      let resolution = view.getResolutionForExtent(f.getGeometry().getExtent(), map.getSize());
+      let zoom = view.getZoomForResolution(resolution);
+      let center = ol.extent.getCenter(f.getGeometry().getExtent());
+      // redraw before zoom
+      setTimeout(function(){
+        view.animate({
+        center: center,
+        zoom: Math.min (zoom, 16)
+      });
+      }, 100);
+    } else {
+      map.getView().animate({
+        center:e.coordinate,
+        zoom: Math.max (map.getView().getZoom(),16)
+      });
+    }
+  });
+
+
         
-    });
+});
