@@ -1,0 +1,249 @@
+* {
+    box-sizing: border-box;
+}
+
+#heading-wrapper {
+    display: flex;
+    align-items: center;
+    width: 99vw;
+    height: 8vh;
+    border: 1px solid black;
+}
+
+#heading {
+    flex: 50%;
+    text-align: center;
+}
+
+#logo img {
+    max-width: 100px;
+    flex: 50%;
+}
+
+#content-wrapper {
+    margin-top: 5px;
+    display: flex;
+    width: 99vw;
+    height: 88vh;
+    border: 1px solid lightgrey;
+}
+
+#content-wrapper h3 {
+    border-bottom: 1px solid grey;
+    text-align: center;
+}
+
+#left-content-wrapper {
+    margin: 10px;
+    flex: 50%;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.459);
+}
+
+#weather-wrapper {
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+    flex: 50%;
+    background-color: lightgrey;
+    overflow-y: scroll;
+}
+
+#achievements-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+    flex: 50%;
+    background-color: lightgrey;
+    overflow-y: scroll;
+}
+
+#right-content-wrapper {
+    margin: 10px;
+    flex: 50%;
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.459);
+}
+
+#anime-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+    background-color: lightgrey;
+    overflow-y: scroll;
+}
+
+.content-heading {
+    flex: 60%;
+    margin: 5px;
+    text-align: center;
+    border: 1px solid grey;
+}
+
+#achievements-heading-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+#achievements-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 8px;
+}
+
+#achievements-content-wrapper .loader-ach {
+    margin: auto;
+}
+
+#anime-heading-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.content-heading-buttons {
+    flex: 20%;
+    display: flex;
+    justify-content: center;
+}
+
+#achievements-heading-wrapper button {
+    margin: 2px;
+}
+
+#anime-heading-wrapper button {
+    margin: 2px;
+    flex: 50%;
+}
+
+.content-heading-images {
+    flex: 20%;
+    display: flex;
+}
+
+.content-heading-images img{
+    margin: auto;
+}
+
+#weather-heading-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+#weather-content-wrapper {
+    display: flex;
+    margin: 5px;
+}
+
+#weather-content-wrapper h4 {
+    text-align: center;
+}
+
+#weather-content-left-wrapper {
+    padding: 5px;
+    flex: 1 1 50%;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid gray;
+}
+
+#weather-content-left-wrapper .loader-wc {
+    margin: auto;
+}
+
+#weather-content-right-wrapper {
+    padding: 5px;
+    flex: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+#weather-content-right-wrapper .loader-wh {
+    margin: auto;
+}
+
+#anime-content-wrapper {
+    margin: 5px;
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+}
+
+#anime-content-wrapper .loader-an {
+    margin: auto;
+}
+
+#anime-content-wrapper div {
+    width: 100%;
+}
+
+.anime-item ul {
+    font-size: 0.875em;
+}
+
+.achivement-item {
+    font-size: 0.875em;
+}
+
+.loader-ach {
+    width: 48px;
+    height: 48px;
+    border: 5px solid rgb(20, 2, 2);
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+
+.loader-an {
+    width: 48px;
+    height: 48px;
+    border: 5px solid rgb(20, 2, 2);
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+
+.loader-wh {
+    width: 48px;
+    height: 48px;
+    border: 5px solid rgb(20, 2, 2);
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+
+.loader-wc {
+    width: 48px;
+    height: 48px;
+    border: 5px solid rgb(20, 2, 2);
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@media screen and (max-width: 800px) {
+    #content-wrapper {
+        flex-direction: column;
+    }
+}
