@@ -10,6 +10,16 @@ body {
     color: white;
 }
 
+main {
+    display: flex;
+    flex-direction: row;
+}
+
+.left {
+    margin-right: 50px;
+}
+
+
 h1 {
     text-align: center;
 }
@@ -36,7 +46,12 @@ p {
     justify-content: space-between;
 }
 
-#restartButton {
+#name-time {
+    text-transform: none;
+    /* flex-direction: column; */
+}
+
+.buttons {
     background-color: #FFA000;
 	text-transform: uppercase;
 	font-size: 14px;
@@ -118,8 +133,9 @@ input {
   }
 
 .custom {
-    margin-top: 60px;
+    /* margin-top: 60px; */
     text-align: left;
+    height: 260px;
 }
 
 .slider {
@@ -167,8 +183,36 @@ input {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin: 20px;
 }
 
 .colors p {
     width: 20%;
 }
+
+.diff {
+    margin-bottom: 30px;
+    margin-top: 0px;
+}
+
+
+
+#snake-color, #food-color {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 50px;
+    height: 40px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  #snake-color::-webkit-color-swatch, #food-color::-webkit-color-swatch {
+    border-radius: 5px;
+    border: none;
+    /* border: 8px solid #FFA00; */
+  }
+  #snake-color::-moz-color-swatch, #food-color::-webkit-color-swatch {
+    border-radius: 15px;
+    /* border: 7px solid #000000; */
+  }

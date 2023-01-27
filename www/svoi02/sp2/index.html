@@ -8,21 +8,25 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <main>
+    <header>
         <h1>Snake</h1>
-        <div class="info">
-            <div class="scores">
-                <div class="score">
-                    <p>Score:</p>
-                    <div id="score">0</div>
+    </header>
+    <main>
+        <div class="left">
+            <div class="info">
+                <div class="scores">
+                    <div class="score">
+                        <p>Score:</p>
+                        <div id="score">0</div>
+                    </div>
+                    <div class="high-score">
+                        <p>high score:</p>
+                        <div id="name-time"></div>
+                        <div id="high-score">0</div>
+                    </div>
+                    <button id="restartButton" class="buttons">Restart</button>
                 </div>
-                <div class="high-score">
-                    <p>high score:</p>
-                    <div id="high-score">0</div>
-                </div>
-                <button id="restartButton">Restart</button>
             </div>
-        </div>
         <div class="controller-status">
             <div id="not-connected">
                 <div class="loader"></div>
@@ -30,17 +34,17 @@
             </div>
             <div id="connected">Controller connected.</div>
         </div>
-        <canvas id="game" width="500" height="500"></canvas>
         <div class="info custom">
+            <div class="speed diff">
+                <p>Size</p>
+                    <button class="buttons" id="small">Small</button>
+                    <button class="buttons" id="medium">Medium</button>
+                    <button class="buttons" id="large">Large</button>
+                </div>
             <div class="speed">
                 <p>Speed</p>
-                <input type="range" min="0" max="100" step="25" value="75" class="slider" id="my-range">
+                <input type="range" min="0" max="125" step="25" value="75" class="slider" id="my-range">
             </div>
-            <div class="speed">
-                <p>Size</p>
-                <input type="range" min="10" max="50" step="15" value="25" class="slider" id="size-range">
-            </div>
-
             <div class="colors">
                 <p>Snake</p>
                 <input type="color" id="snake-color" value="#ffffff">
@@ -48,9 +52,14 @@
                 <input type="color" id="food-color" value="#4FC3F7">
             </div>
         </div>
+        
+        </div>
+        <canvas id="game" width="500" height="500"></canvas>
+
     </main>
     <footer>Copyright © 2023 | Ivan Svoboda</footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.slim.min.js" integrity="sha512-yBpuflZmP5lwMzZ03hiCLzA94N0K2vgBtJgqQ2E1meJzmIBfjbb7k4Y23k2i2c/rIeSUGc7jojyIY5waK3ZxCQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="./main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js" integrity="sha512-zJYu9ICC+mWF3+dJ4QC34N9RA0OVS1XtPbnf6oXlvGrLGNB8egsEzu/5wgG90I61hOOKvcywoLzwNmPqGAdATA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </body>
 </html>

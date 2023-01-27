@@ -5,8 +5,12 @@ $(document).ready(() => {
   const scoreContainer = $("#score");
   const restartButton = $("#restartButton");
   const highScoreContainer = $("#high-score");
+  const nameContainer = $("#name-time");
   const speedSlider = $("#my-range")
-  const sizeSlider = $("#size-range")
+  
+  const small = $('#small');
+  const medium = $('#medium');
+  const large = $('#large');
 
   const snakeColorContainer = $('#snake-color')
   const foodColorContainer = $('#food-color')
@@ -17,7 +21,11 @@ $(document).ready(() => {
   let snakeColor = snakeColorContainer.val();
   let foodColor = foodColorContainer.val();
   
+  let foodImage = 'https://unsplash.com/photos/xII7efH1G6o';
+  
+  
   let cellSize = 25;
+  let size = 25;
   let snakeSpeed = 150 - speedSlider.val();
 
   let isGameRunning = false;
@@ -38,21 +46,30 @@ $(document).ready(() => {
     { x: 0, y: 0 },
   ];
 
-  const checkLocalStorage = () => {
+
+  const apiURL = `https://picsum.photos/v2/list`
+  axios.get(apiURL).then((resp) => {
+    const foodImages = resp.data;
+    console.log(foodImages);
+    const image = foodImages[Math.floor(Math.random()*foodImages.length)];
+    console.log(image.url);
     
+    foodImage = image.download_url
+  });
+
+  const checkLocalStorage = () => {
     if (localStorage.score == undefined) {
       localStorage.setItem("score", 0);
       localStorage.setItem("name", '')
-
-
       localStorage.setItem("date",'')
-      
     }
     return [localStorage.score, localStorage.name, localStorage.date];
   };
 
   let highScore = checkLocalStorage();
-  highScoreContainer.text(`${highScore[1]} - ${highScore[2]}:  ${highScore[0]}`);
+  nameContainer.text(`${highScore[1]} - ${highScore[2]}`)
+  highScoreContainer.text(highScore[0]);
+  
 
 
   const startGame = () => {
@@ -66,7 +83,8 @@ $(document).ready(() => {
 
     scoreContainer.text(score);
     highScore = checkLocalStorage();
-    highScoreContainer.text(`${highScore[1]} - ${highScore[2]}:  ${highScore[0]}`);
+    highScoreContainer.text(highScore[0]);
+    nameContainer.text(`${highScore[1]} - ${highScore[2]}`);
 
     createFood();
     displayFood();
@@ -83,7 +101,16 @@ $(document).ready(() => {
 
     foodXCoordinates = foodCoordinates.x;
     foodYCoordinates = foodCoordinates.y;
+    axios.get(apiURL).then((resp) => {
+      const foodImages = resp.data;
+      console.log(foodImages);
+      const image = foodImages[Math.floor(Math.random()*foodImages.length)];
+      console.log(image.url);
+      
+      foodImage = image.download_url
+    });
   };
+
 
   const isSnakeNotThere = (coordinates) => {
     return snake.find((c) => c.x === coordinates.x && c.y === coordinates.y);
@@ -96,9 +123,21 @@ $(document).ready(() => {
   };
 
   const displayFood = () => {
-    ctx.fillStyle = foodColor;
-    ctx.fillRect(foodXCoordinates, foodYCoordinates, cellSize, cellSize);
+    console.log(foodImage)
+    const img = new Image()
+
+    img.onload = () => {
+      ctx.drawImage(img,foodXCoordinates,foodYCoordinates, cellSize, cellSize);
+    };
+    img.src = foodImage
+    // ctx.fillRect(foodXCoordinates, foodYCoordinates, cellSize, cellSize);
+    // ctx.fillStyle = pattern;
   };
+
+  const getFoodImage = () => {
+    
+      return foodImage;
+  }
 
   const nextTick = () => {
     if (isGameRunning) {
@@ -120,7 +159,7 @@ $(document).ready(() => {
     ctx.strokeStyle = gameBoardBorderColor;
     ctx.fillStyle = gameBoardColor;
     ctx.lineWidth = 1;
-    for (var i = 0; i < 25; ++i) for (var j = 0; j < 25; ++j) drawCell(i, j);
+    for (var i = 0; i < size; ++i) for (var j = 0; j < size; ++j) drawCell(i, j);
   };
 
   const drawCell = (i, j) => {
@@ -208,7 +247,7 @@ $(document).ready(() => {
   };
 
   const getName = () => {
-    const name = prompt("New highscore! Plaese enter your name", "John");
+    const name = prompt("New highscore! Please enter your name", "John");
     if (!name) {
       return "Unknown"
     }
@@ -259,8 +298,9 @@ $(document).ready(() => {
       { x: 0, y: 0 },
     ];
     console.log(highScore)
-    console.log(sizeSlider.val())
-    highScoreContainer.text(`${highScore[1]}, ${highScore[2]}: ${highScore[0]}`);
+    // nameContainer.text(`${highScore[1]} - ${highScore[2]}:`);
+    // highScoreContainer.text(highScore[0]);
+
     startGame();
   };
 
@@ -350,5 +390,18 @@ $(document).ready(() => {
     if (!isGameRunning) {
         restartGame();
     }
+  });
+
+  small.click(() => {
+    cellSize = 50;
+    size = 10;
+  });
+  medium.click(() => {
+    cellSize = 25;
+    size = 25;
+  });
+  large.click(() => {
+    cellSize = 10;
+    size = 50;
   });
 });
