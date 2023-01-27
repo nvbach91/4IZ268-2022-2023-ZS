@@ -16,11 +16,21 @@
    <div class="app">
       <header class="top-header">
          <h1>Jeopardy!</h1>
-         <p class="score">Score: <span class="score-count"></span></p>
-      </header>
-
+         <p class="score">Score: <span class="score-count" id="score-cnt"></span></p>   
+         <button class="restart">Restart</button>
+         <select class="options">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+         </select>
+         </header>
+      
+      <div class="loader"></div>
       <!-- container pro plochu hry -->
       <div class="board">
+         
          <!-- kategorie -->
       </div>
 
@@ -32,7 +42,7 @@
             </h2>
             <!-- pole pro odpoved -->
             <form autocomplete="off">
-               <input name="user-answer" type="text" />
+               <input name="user-answer" type="text" required/>
                <button type="submit">Answer</button>
             </form>
             <!-- vysledek -->
