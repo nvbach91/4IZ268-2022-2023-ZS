@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="icon" type="image/x-icon" href="./resources/favicon.png">
+
+  <title>Herní knihovna</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+</head>
+
+<body>
+
+
+  <div class="container">
+    <header>    
+      <h1>Herní knihovna</h1>
+      <p>Erich Pross, proe11@vse.cz, 2023</p>
+    </header>
+    <div class="filters">
+      <input id="search-field" type="text" placeholder="Název videohry">
+      <label for="page-size-select">Počet her:</label>
+      <select id="page-size-select">
+        <option value="10">10</option>
+        <option value="20">20</option>
+        <option value="40">40</option>
+      </select>
+      <label for="platform-select">Platformy:</label>
+      <select id="platform-select">
+        <option value="all">Všechny</option>
+        <option value="48">Nintendo Switch</option>
+        <option value="49">PlayStation 4</option>
+        <option value="6">PC</option>
+      </select>
+      <label for="genre-select">Žánry:</label>
+      <select id="genre-select">
+        <option value="all">Všechny</option>
+        <option value="28">Akční</option>
+        <option value="4">Adventura</option>
+        <option value="2">RPG</option>
+      </select>
+    </div>
+    <div class="row">
+      <div class="game-row">
+        <div class="game-container" id="random-games-container"></div>
+      </div>
+      <div id="more-info-dialog"></div>
+
+    </div>
+    <div class="line">
+      <h2>Hry uložené uživatelem:</h2>
+    </div>
+    <div class="row">
+      <div class="game-row">
+        <div class="game-container" id="user-games-container"></div>
+      </div>
+    </div>
+    <footer>
+      <p>Erich Pross, 2023</p>
+      <p><a href= "mailto:proe11@vse.cz">proe11@vse.cz</a></p>
+    </footer>
+  </div>
+
+
+
+
+
+  
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="./js/main.js"></script>
+
+
+
+
+</body>
+
+
+</html>
