@@ -173,6 +173,7 @@ li img {
 
 #resultsList {
     list-style-type: none;
+    animation: appear-animation .3s linear;
 }
 
 #resultsList li {

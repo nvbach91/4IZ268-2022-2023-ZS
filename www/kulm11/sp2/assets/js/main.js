@@ -8,7 +8,13 @@
             if (resp.data.Response === "True") {
                 moviesListResults.innerHTML = "";
                 const result = resp.data.Search;
+                result.sort((a, b) => {
+                    const fieldsA = a.Year.split("–");
+                    const fieldsB = b.Year.split("–");
+                    return Number(fieldsB[0]) - Number(fieldsA[0]);
+                });
                 console.log(resp);
+                const tempList = [];
                 result.forEach((movie) => {
                     const movieResult = document.createElement("li");
                     movieResult.classList.add("result");
@@ -19,11 +25,16 @@
                     addButton.addEventListener(("click"), () => {
                         moviesListResults.classList.add("hidden");
                         listResultsTitle.classList.add("hidden");
-                        createMovie(movie.imdbID, false, 50);
+                        const chosenMovie = createMovie(movie.imdbID, false, 50);
+                        movieListUnwatched.appendChild(chosenMovie);
                     });
                     movieResult.append(addButton, movieTitle);
-                    moviesListResults.appendChild(movieResult);
+                    tempList.push(movieResult);
+                    console.log(tempList);
                 });
+                tempList.forEach((item) => {
+                    moviesListResults.appendChild(item);
+                })
                 moviesListResults.classList.remove("hidden");
                 listResultsTitle.classList.remove("hidden");
             }
@@ -35,6 +46,7 @@
         let isMovieWatched = watched;
         const localStorageUnwatched = JSON.parse(localStorage.getItem("unwatchedList") || "[]");
         movieElement.classList.add("movie");
+        movieElement.classList.add("hidden");
         movieTitleInput.value = "";
         const movieUrl = `https://www.omdbapi.com/?i=${encodeURIComponent(imdbID)}&apikey=4c7468f7`;
         spinner.classList.remove("hidden");
@@ -43,7 +55,7 @@
             if (movieData.Response === "True") {
                 if (!JSON.stringify(moviesUnwatchedIdList).includes(JSON.stringify(movieData.imdbID)) && !JSON.stringify(moviesWatchedIdList).includes(JSON.stringify(movieData.imdbID))) {
                     moviesUnwatchedIdList[moviesUnwatchedIdList.length] = { data: movieData, html: movieElement, filterStatus: [true, true, true, true, true] };
-                    if (!localStorageUnwatched.includes(moviesUnwatchedIdList[moviesUnwatchedIdList.length - 1].data.Title)) {
+                    if (!localStorageUnwatched.includes(moviesUnwatchedIdList[moviesUnwatchedIdList.length - 1].data.imdbID)) {
                         localStorageUnwatched.push(moviesUnwatchedIdList[moviesUnwatchedIdList.length - 1].data.imdbID);
                     }
                     localStorage.setItem('unwatchedList', JSON.stringify(localStorageUnwatched));
@@ -69,13 +81,6 @@
                             removeItem(moviesUnwatchedIdList, movieData);
                         }
                         removeFromLocalStorage(isMovieWatched, movieData.imdbID);
-                        //removeItem(moviesUnwatchedIdList, movieData);
-                        // var index = localStorageUnwatched.indexOf(movieData.Title);
-                        // if (index > -1) {
-                        //     localStorageUnwatched.splice(index, 1);
-                        // }
-                        // localStorage.setItem('unwatchedList', JSON.stringify(localStorageUnwatched));
-                        // console.log(localStorage.getItem("unwatchedList"));
                     })
 
                     const movieWatchedButton = document.createElement("button");
@@ -84,6 +89,7 @@
                     movieWatchedButton.addEventListener("click", () => {
                         isMovieWatched = true;
                         listItemTransport(movieElement, movieData, userRating);
+                        movieListWatched.append(movieElement);
                     })
 
                     movieElement.appendChild(movieImageElement);
@@ -91,11 +97,12 @@
                     movieElement.appendChild(movieInfo);
                     movieElement.appendChild(movieRemoveButton);
                     movieElement.appendChild(movieWatchedButton);
-                    movieListUnwatched.appendChild(movieElement);
+                    //movieListUnwatched.appendChild(movieElement);
                     if (watched) {
                         listItemTransport(movieElement, movieData, userRating);
                     }
                 }
+                movieElement.classList.remove("hidden");
                 spinner.classList.add("hidden");
             }
         })
@@ -237,7 +244,8 @@
     const filterYearValue = document.createElement("input");
     filterYearValue.addEventListener("change", () => {
         moviesWatchedIdList.forEach((movie) => {
-            if (Number(movie.data.Year) < Number(filterYearValue.value)) {
+            const fields = movie.data.Year.split("–");
+            if (Number(fields[0]) < Number(filterYearValue.value)) {
                 movie.filterStatus[3] = false;
                 checkHidden(movie.html, movie.filterStatus);
             }
@@ -247,7 +255,8 @@
             }
         });
         moviesUnwatchedIdList.forEach((movie) => {
-            if (Number(movie.data.Year) < Number(filterYearValue.value)) {
+            const fields = movie.data.Year.split("–");
+            if (Number(fields[0]) < Number(filterYearValue.value)) {
                 movie.filterStatus[3] = false;
                 checkHidden(movie.html, movie.filterStatus);
             }
@@ -304,7 +313,7 @@
     }
 
     function addWatchedMovie(movieData, movieHTML, userRating) {
-        movieListWatched.appendChild(movieHTML);
+        //movieListWatched.appendChild(movieHTML);
         const movieRating = movieHTML.querySelector("input");
         movieRating.setAttribute("value", userRating);
         moviesWatchedIdList[moviesWatchedIdList.length] = { data: movieData, html: movieHTML, userRating: movieRating, filterStatus: [true, true, true, true, true] };
@@ -320,24 +329,34 @@
         }
         const newLocalStorage = JSON.parse(localStorage.getItem(localStorageName));
         console.log(newLocalStorage);
-        let i = 0;
-        newLocalStorage.every((item) => {
-            if (JSON.stringify(item).includes(title)) {
-                return true;
-            }
-            i++;
-        });
-        newLocalStorage.splice(i, 1);
+        // let index = 0;
+        // newLocalStorage.every((item) => {
+        //     console.log(item);
+        //     console.log(title);
+        //     if (JSON.stringify(item).includes(title)) {
+        //         return true;
+        //     }
+        //     index++;
+        // });
+        if(watched){
+            var index = newLocalStorage.map(e => e.imdbID).indexOf(title);
+            newLocalStorage.splice(index, 1);
+        }
+        else{
+            var index = newLocalStorage.indexOf(title);
+            newLocalStorage.splice(index, 1);
+        }
+        //console.log(index);
         localStorage.setItem(localStorageName, JSON.stringify(newLocalStorage));
         console.log(localStorage.getItem("unwatchedList"));
         console.log(localStorage.getItem("watchedList"));
     }
 
     function listItemTransport(newMovieElement, movieData, userRating) {
-        //const movieRemoveButton = newMovieElement.querySelector(".removeButton");
-        //movieRemoveButton.remove();
         const movieWatchedButton = newMovieElement.querySelector(".watchedButton");
         movieWatchedButton.remove();
+        const movieRemoveButton = newMovieElement.querySelector(".removeButton");
+        movieRemoveButton.remove();
         const movieRating = document.createElement("input");
         movieRating.setAttribute("type", "number");
         movieRating.setAttribute("min", 0);
@@ -355,6 +374,7 @@
         });
 
         newMovieElement.appendChild(movieRating);
+        newMovieElement.appendChild(movieRemoveButton);
         removeItem(moviesUnwatchedIdList, movieData);
         addWatchedMovie(movieData, newMovieElement, userRating);
         const movieInfo = newMovieElement.querySelector("p");
@@ -399,7 +419,6 @@
 
         const movieTitle = movieTitleInput.value;
         searchResult(movieTitle);
-        //movie = createMovie(movieTitle, false, 50);
     })
 
     const movieFormSubmitButton = document.createElement("button");
@@ -427,12 +446,20 @@
     const localStorageWatched = JSON.parse(localStorage.getItem("watchedList"));
     if (localStorageUnwatched != null) {
         localStorageUnwatched.forEach((movie) => {
-            createMovie(movie);
+            const tempList = []
+            tempList.push(createMovie(movie));
+            tempList.forEach((item) =>{
+                movieListUnwatched.appendChild(item);
+            })
         });
     }
     if (localStorageWatched != null) {
         localStorageWatched.forEach((movie) => {
-            const newMovie = createMovie(movie.imdbID, true, movie.userRating);
+            const tempList = [];
+            tempList.push(createMovie(movie.imdbID, true, movie.userRating));
+            tempList.forEach((item) =>{
+                movieListWatched.appendChild(item);
+            })
         });
     }
 })()
