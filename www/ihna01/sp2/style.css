@@ -100,6 +100,24 @@ form button:active {
 }
 
 
+.loader.visible {
+    border: 5px solid #F2E307;
+    border-top: 5px solid #F2F0F0;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 50px auto;
+}
+@keyframes spin {
+    from {
+        transform: rotate(0deg)
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 
 
 .cities {
@@ -109,7 +127,7 @@ form button:active {
     max-width: 60%;
     padding: 0;
     margin: 0 auto;
-    gap: 50px;
+    gap: 40px;
 }
 
 .cities li {
