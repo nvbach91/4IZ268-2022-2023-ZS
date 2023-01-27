@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SP2">
+    <meta name="author" content="Marchenko Pavlo">
+    <meta name="keywords" content="SP2, semestral work, weather, air">
+    <title>SP2</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon.ico">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="./assets/logo.png" alt="logo">
+            <h2>Weather Application</h2>
+        </div>
+    
+    </header>
+    <main>
+        <section class="control">
+            <div class="inputs">
+                <div class="wrapper-city">
+                    <label for="cityInput">
+                        <span>Select the city</span>
+                    </label>
+                    <input type="text" value="prague" name="city" id="cityInput">
+                </div>
+                <div class="wrapper-type">
+                    <label for="typeSelect">
+                        <span>Select data type</span>
+                    </label>
+                    <select name="city" id="typeSelect">
+                        <option value="quality">Air Quality</option>
+                        <option value="temperature">Temperature</option>
+                    </select>
+                </div>
+                <div class="buttons">
+                    <button class="primary" onclick="fetchByType()">Fetch</button>
+                    <button class="refresh" onclick="clearValue()">Clear</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="graph">
+            <div id="graph"></div>
+        </section>
+    </main>
+    <footer>
+        <h3>Created by Pavlo Marchenko, VŠE 2023 ©</h3>
+    </footer>
+    
+    <script
+            src="https://code.jquery.com/jquery-3.6.3.js"
+            integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.5/axios.js"
+            integrity="sha512-FchLfuM3Ci/+q/GnIbfZa+cieb7FA0gDZHXK3USCFpYpeldq8NerYV3rwVeLmwlhSfbTTGHMbbNhP6YWKtbuhQ=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="./main.js"></script>
+
+    </body>
+</html>
