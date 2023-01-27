@@ -1,0 +1,223 @@
+/* Base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+#map {
+  width: 100vw;
+  height: 100vh;
+}
+
+/*  */
+.mousePosition {
+  position: fixed;
+  top: auto;
+  right: auto;
+  left: 50%;
+  bottom: 5px;
+  transform: translateX(-50%);
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 5px;
+  background-color: rgba(168, 167, 167, 0.6);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 14px;
+}
+
+/* Popup */
+.ol-popup {
+  position: absolute;
+  background-color: rgba(242, 242, 242);
+  box-shadow: 0 1px 4px black;
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #cdcdcd;
+  bottom: 12px;
+  left: -50px;
+  min-width: 250px;
+}
+
+.ol-popup:after, ol.popup:before {
+  top: 100%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+.ol-popup:after {
+  border-top-color: white;
+  border-width: 10px;
+  left: 48px;
+  margin-left: -10px;
+}
+.ol-popup:before {
+  border-top-color: #cdcdcd;
+  border-width: 11px;
+  left: 48px;
+  margin-left: -11px;
+}
+.ol-popup-closer {
+  text-decoration: none;
+  position: absolute;
+  top: 2px;
+  right: 8px;
+}
+.ol-popup-closer:after {
+  content: "X";
+}
+
+/*  Button for features */
+.myButton {
+  background-color: rgb(238, 240, 245);
+  color: white;
+  font-weight: 700;
+  text-align: center;
+  height: 25px;
+  width: 25px;
+  border-radius: 3px;
+  border: none;
+  align-items: center;
+}
+
+.myButton:hover {
+  background-color: lightblue;
+  border: 1px solid black;
+}
+
+.myButton.clicked {
+  background-color: rgb(135, 161, 232);
+}
+
+.myButton.clicked:hover {
+  background-color: rgb(28, 74, 201);
+}
+
+/* Feature divs */
+
+.FullscreenButtonDiv {
+  position: relative;
+  display: block;
+  margin: 10px auto auto 10px;
+}
+
+.HomeButtonDiv {
+  position: relative;
+  display: block;
+  margin: 5px auto auto 10px;
+}
+
+.HomeButtonDiv {
+  position: relative;
+  display: block;
+  margin: 5px auto auto 10px;
+}
+
+.InfoDiv {
+  position: relative;
+  display: none;
+/* Scrapped feature */
+  margin: 5px auto auto 10px;
+}
+
+.FeatureImg {
+  width:20px;
+  height:20px;
+  filter:brightness(0);
+  vertical-align: middle ;
+}
+
+/* Geolocation crosshair */
+#Crosshair {
+  z-index: 2000;
+  position: absolute;
+  background-color: transparent;
+  width: 40px;
+  height: 30px;
+  right: 20px;
+  bottom: 20px;
+  border: none;
+  color: black;
+  font-size:x-large;
+}
+
+#Crosshair.clicked {
+  color: darkblue;
+}
+
+/* Measure buttons */
+#distanceButton {
+  position: relative;
+  display: block;
+  margin: 5px auto auto 10px ;
+}
+
+#zoneButton {
+  position: relative;
+  display: block;
+  margin: 5px auto auto 10px ;
+}
+
+/* Search bar */
+
+.ol-search ul {
+  color: #333;
+  font-size:0.85em;
+  max-width: 21em;
+}
+.ol-search ul i {
+  display: block;
+  color: #333;
+  font-size:0.85em;
+}
+.info {
+  display: inline-block;
+  width: 100%;
+}
+.info a img {
+  height: 100px;
+  margin-right: .5em;
+  float: left;
+}
+
+/* Measuring */
+
+.ol-tooltip {
+  position: relative;
+  background: rgb(166, 165, 165);
+  border-radius: 5px;
+  color: black;
+  padding: 5px 10px;
+  opacity: 0.8;
+  border: 1px solid black;
+}
+
+.nominatim.ol-search.ol-unselectable.ol-control.ol-collapsed {
+  position: relative;
+  display: block;
+  margin: 5px auto auto 10px ;
+  background: transparent;
+}
+
+.nominatim.ol-search.ol-unselectable.ol-control {
+  position: relative;
+  display: block;
+  margin: 5px auto auto 10px ;
+  background: transparent;
+}
+
+
+
+
+
+
+
