@@ -13,12 +13,11 @@
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
     <script src="https://pokeapi.co/api/v2/pokemon"></script>
     <script src="main.js"></script>
-    
+
     <div class="main-bar">
         <input type="image" class="reset" id="reset" src="reset.png">
         <h1 class="main-header">PokéWordle</h1>
-        <input type="image" class="help" id="help" src="help.png" onclick="help()">
-        <input type="image" class="settings" id="settings" src="settings.png" onclick="settings()">
+        <input type="image" class="help" id="help" src="help.png">
     </div>
     <div class="category-names">
         <h3>BASE HP</h3>
@@ -36,6 +35,9 @@
             <input type="text" id="input" name="input">
             <button id="button">Confirm</button>
         </div>
+    </div>
+    <div class="help-popup" id="help-popup">
+        <!-- Space to generate help message to. -->
     </div>
     <footer class="footer">
         Icons made by inkubators and Freepik from "www.flaticon.com".

@@ -15,20 +15,20 @@ body {
     margin-top: 8px;
 }
 
-.main-bar input{
+.main-bar input {
     height: 48px;
     width: 48px;
 }
 
-.reset{
+.reset {
     margin-right: 32px;
 }
 
-.help{
+.help {
     margin-left: 32px;
 }
 
-.category-names{
+.category-names {
     display: flex;
     justify-content: center;
     gap: 16px;
@@ -55,14 +55,38 @@ body {
     align-items: center;
 }
 
-.input-box{
+.input-box {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
 
-.footer{
+.help-popup {
+    margin-left: 20%;
+    margin-right: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.help-title {
+    display: flex;
+}
+
+.help-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.help-msg {
+    display: flex;
+}
+
+.footer {
     display: flex;
     position: fixed;
     bottom: 0;
