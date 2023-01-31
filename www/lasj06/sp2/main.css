@@ -31,8 +31,28 @@ body {
 .category-names{
     display: flex;
     justify-content: center;
-    margin: 16px;
     gap: 16px;
+}
+
+.game-board {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.row {
+    display: flex;
+}
+
+.box {
+    display: flex;
+    border: 2px solid white;
+    border-radius: 3px;
+    margin: 16px;
+    height: 3rem;
+    width: 3rem;
+    justify-content: center;
+    align-items: center;
 }
 
 .input-box{

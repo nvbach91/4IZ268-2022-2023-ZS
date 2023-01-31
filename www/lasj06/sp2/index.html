@@ -15,20 +15,20 @@
     <script src="main.js"></script>
     
     <div class="main-bar">
-        <input type="image" class="reset" id="reset" src="reset.png" onclick="reset()">
+        <input type="image" class="reset" id="reset" src="reset.png">
         <h1 class="main-header">PokéWordle</h1>
         <input type="image" class="help" id="help" src="help.png" onclick="help()">
         <input type="image" class="settings" id="settings" src="settings.png" onclick="settings()">
     </div>
     <div class="category-names">
-        <h3>GEN</h3>
+        <h3>BASE HP</h3>
         <h3>TYPE 1</h3>
         <h3>TYPE 2</h3>
         <h3>HEIGHT</h3>
         <h3>WEIGHT</h3>
     </div>
-    <div class="game-display">
-        <!--place to display guess results-->
+    <div class="game-board" id="game-board">
+        <!-- Space to generate guess results to. -->
     </div>
     <div class="input-box">
         <label for="input">Guess a Pokémon</label>
