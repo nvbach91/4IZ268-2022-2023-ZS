@@ -86,7 +86,7 @@ async function fetchQuality() {
 		chart: {
 			type: 'line'
 		}, series: [{
-			name: 'temp', data: qualities
+			name: 'qual', data: qualities
 		}], xaxis: {
 			categories: keys
 		}
