@@ -23,7 +23,8 @@ export const createColumnMapping = ({
                 dataSource.findIndex((item) => item.slug === slug),
                 updated
             ),
-            option.getOrElse<Array<RowData>>(() => [])
+            option.getOrElse<Array<RowData>>(() => []),
+            setDataSource
         );
 
     const handleDelete = (slug: GameInfo['slug']) => {
@@ -55,7 +56,7 @@ export const createColumnMapping = ({
                         value={estimatedLength ?? 0}
                         onChange={(value) => {
                             if (value !== null) {
-                                setDataSource(updateDataSource(slug, { ...other, slug, name, estimatedLength: value }));
+                                updateDataSource(slug, { ...other, slug, name, estimatedLength: value });
                             }
                         }}
                     />
@@ -104,11 +105,16 @@ export const createColumnMapping = ({
             align: 'center',
             sorter: (a, b) => boolean.Ord.compare(a.owned ?? false, b.owned ?? false),
             sortDirections: ['ascend', 'descend', 'ascend'],
-            render: (_, { slug, owned, ...other }) => (
+            render: (_, { slug, owned, playing, ...other }) => (
                 <Checkbox
                     checked={owned}
                     onChange={(event) => {
-                        setDataSource(updateDataSource(slug, { ...other, slug, owned: event.target.checked }));
+                        updateDataSource(slug, {
+                            ...other,
+                            slug,
+                            owned: event.target.checked,
+                            playing: event.target.checked ? playing : false,
+                        });
                     }}
                 />
             ),
@@ -126,7 +132,7 @@ export const createColumnMapping = ({
                     value={excitement ?? 0}
                     onChange={(value) => {
                         if (value !== null) {
-                            setDataSource(updateDataSource(slug, { ...other, slug, excitement: value }));
+                            updateDataSource(slug, { ...other, slug, excitement: value });
                         }
                     }}
                 />
@@ -145,15 +151,13 @@ export const createColumnMapping = ({
                     disabled={!owned}
                     checked={playing}
                     onChange={(event) => {
-                        setDataSource(
-                            updateDataSource(slug, {
-                                ...other,
-                                slug,
-                                owned,
-                                finished: false,
-                                playing: event.target.checked,
-                            })
-                        );
+                        updateDataSource(slug, {
+                            ...other,
+                            slug,
+                            owned,
+                            finished: false,
+                            playing: event.target.checked,
+                        });
                     }}
                 />
             ),
@@ -169,14 +173,12 @@ export const createColumnMapping = ({
                 <Checkbox
                     checked={finished}
                     onChange={(event) => {
-                        setDataSource(
-                            updateDataSource(slug, {
-                                ...other,
-                                slug,
-                                playing: false,
-                                finished: event.target.checked,
-                            })
-                        );
+                        updateDataSource(slug, {
+                            ...other,
+                            slug,
+                            playing: false,
+                            finished: event.target.checked,
+                        });
                     }}
                 />
             ),
