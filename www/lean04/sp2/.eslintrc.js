@@ -20,7 +20,7 @@ module.exports = {
     plugins: ['react', 'react-hooks', '@typescript-eslint', 'prettier'],
     rules: {
         'arrow-parens': ['error', 'always'],
-        'comma-dangle': ['error', 'always-multiline'],
+        'comma-dangle': ['off'],
         'consistent-return': ['off'],
         curly: ['error', 'multi-line', 'consistent'],
         'func-names': ['error'],
@@ -67,7 +67,7 @@ module.exports = {
         'no-promise-executor-return': 'off',
 
         camelcase: [
-            'error',
+            'warn',
             {
                 properties: 'always',
                 ignoreDestructuring: false,
@@ -111,7 +111,7 @@ module.exports = {
         'jsx-a11y/no-static-element-interactions': ['warn'],
 
         'react/default-props-match-prop-types': ['error', { allowRequiredDefaults: true }],
-        'react/jsx-handler-names': ['error', { eventHandlerPrefix: 'handle', eventHandlerPropPrefix: 'on' }],
+        'react/jsx-handler-names': ['warn', { eventHandlerPrefix: 'handle', eventHandlerPropPrefix: 'on' }],
         'react/jsx-filename-extension': ['off'],
         'react/jsx-curly-spacing': ['error', 'never'],
         'react/no-danger': ['error'],

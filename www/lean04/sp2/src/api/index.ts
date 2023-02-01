@@ -1,0 +1,1 @@
+export { rawg } from './rawg';
