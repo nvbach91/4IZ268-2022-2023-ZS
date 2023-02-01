@@ -49,6 +49,13 @@ export const AddGameModal = (props: ModalProps) => {
         rawg(url)
             .then(({ data }) => {
                 setResults((currentGames) => [...currentGames.slice(0, -10), ...data.results]);
+                setNextSearchUrl(data.next);
+            })
+            .catch((error) => {
+                messageApi.open({
+                    type: 'error',
+                    content: error.message,
+                });
             })
             .finally(() => {
                 setIsFetchingMore(false);
