@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://code.jquery.com/jquery-3.2.1.min.js">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/oauth-io/oauth-js/c5af4519/dist/oauth.js">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/4.12.0/bootstrap-social.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Aplikácia na odosielanie príspevkov</h1>
+    <label class="post">Príspevok</label>
+    <textarea id="myTextArea" class="center" placeholder="Vlož text príspevku :)"></textarea>
+    <button onfocus="clearTextArea()">Odoslať</button>
+    <div class="sendAndLog">
+        <label>
+            <input type="checkbox"> Odoslať príspevok na Facebook
+        </label>
+        <div>
+            <a id="facebook-button" class="btn btn-block btn-social btn-facebook"
+                onclick="_gaq.push(['_trackEvent', 'btn-social', 'click', 'btn-facebook']);">
+                <i class="fa fa-facebook"></i> Prihlásiť sa na Facebook
+            </a>
+        </div>
+    </div>
+    <div class="sendAndLog">
+        <label>
+            <input type="checkbox"> Odoslať príspevok na Twitter
+        </label>
+        <a id="twitter-button" class="btn btn-block btn-social btn-twitter">
+            <i class="fa fa-twitter"></i> Prihlásiť sa na Twitter
+        </a>
+    </div>
+</body>
+</html>
