@@ -18,13 +18,14 @@ export const createColumnMapping = ({
     notificationInstance,
 }: UseColumnMappingArgs): ColumnsType<RowData> => {
     const updateDataSource = (slug: string, updated: RowData) =>
-        flow(
-            array.updateAt<RowData>(
-                dataSource.findIndex((item) => item.slug === slug),
-                updated
-            ),
-            option.getOrElse<Array<RowData>>(() => []),
-            setDataSource
+        setDataSource(
+            flow(
+                array.updateAt<RowData>(
+                    dataSource.findIndex((item) => item.slug === slug),
+                    updated
+                ),
+                option.getOrElse<Array<RowData>>(() => [])
+            )
         );
 
     const handleDelete = (slug: GameInfo['slug']) => {
