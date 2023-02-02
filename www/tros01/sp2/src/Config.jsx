@@ -1,6 +1,9 @@
 import { useState, useCallback } from "react";
 
 export default function Config(){
+    const [cID, setCID] = useState('');
+    const [aID, setAID] = useState('');
+
     return (
         <>
         <br/><ClientIdForm />
@@ -13,31 +16,37 @@ export default function Config(){
 
 function ClientIdForm() {
     const [clientId, setClientId] = useState('');
-    const getCID = useCallback((CID) => {
-        return clientId;
-    })
+    const saveCID = useCallback(() => {
+        save2local('cId',clientId);
+    });
+    const logt = () => console.log("ccccccccccc");
     return (
       <label>
       clientID
-      <form onSubmit={save2local('cId',clientId)}>
+      <form onSubmit={saveCID}>
         <input value={clientId} onChange={e => setClientId(e.target.value)} />
         <button type="submit" >S</button>
       </form>
       
-      <button onClick={console.log(getCID())}>cc</button>
+      <button onClick={logt}>cc</button>
       </label>
     );
   }
 
 function AuthorityIdForm() {
     const [authorityId, setAuthorityId] = useState('');
+    const saveAID = useCallback(() => {
+        save2local('aId',authorityId);
+    });
+
     return (
       <label>
         authorityId
-      <form>
+      <form onSubmit={saveAID}>
         <input value={authorityId} onChange={e => setAuthorityId(e.target.value)} />
+        <button type="submit" >S</button>
       </form>
-      <button onClick={save2local('aId',authorityId)}>S</button>
+      
       </label>
     );
   }
