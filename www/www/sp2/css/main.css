@@ -1,0 +1,7 @@
+.blur{
+    filter: blur(6px);
+}
+.result>img{
+    height: 400px;
+    width: 266px;
+}
