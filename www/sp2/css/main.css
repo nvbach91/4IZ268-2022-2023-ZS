@@ -1,0 +1,100 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: lightgray;
+    margin: 0;
+}
+
+.main-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 8px;
+}
+
+.main-bar input {
+    height: 48px;
+    width: 48px;
+}
+
+.reset {
+    margin-right: 32px;
+}
+
+.help {
+    margin-left: 32px;
+}
+
+.category-names {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+
+.game-board {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.row {
+    display: flex;
+}
+
+.box {
+    display: flex;
+    border: 2px solid white;
+    border-radius: 3px;
+    margin: 16px;
+    height: 3rem;
+    width: 3rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.help-popup {
+    margin-left: 20%;
+    margin-right: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.help-title {
+    display: flex;
+}
+
+.help-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.help-msg {
+    display: flex;
+}
+
+.win {
+    display: flex;
+    font-size: x-large;
+    font-style: oblique;
+}
+
+.footer {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    font-size: 12px;
+}
