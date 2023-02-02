@@ -86,6 +86,12 @@ body {
     display: flex;
 }
 
+.win {
+    display: flex;
+    font-size: x-large;
+    font-style: oblique;
+}
+
 .footer {
     display: flex;
     position: fixed;

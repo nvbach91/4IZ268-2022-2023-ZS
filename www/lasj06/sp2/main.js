@@ -1,9 +1,8 @@
-var randomnumber = (Math.random() * (1008 - 1 + 1)) << 0;
-
 $(document).ready(() => {
 
-    i = 1;
-    n = false;
+    const randomnumber = (Math.random() * (1008 - 1 + 1)) << 0;
+    var guessIteration = 1;
+    var isHelpDisplayed = false;
 
     $.ajax({
         method: 'GET',
@@ -30,16 +29,16 @@ $(document).ready(() => {
     });
 
     $('#help').click(function () {
-        if (n) {
+        if (isHelpDisplayed) {
             ;
         } else {
             $('#help-popup').append($('<div class="help-title"><h4>H E L P</h4></div><div class="help-content"><div class="help-msg"><p>This message will provide basic information on how to play this game, your goal is to guess the randomly generated pokemon by comparing it in the 5 above attributes to pokemon you guess. Under the attributes results will show you how the target pokemon compares to the pokemon you guessed.<br><br>= - The value of this attribute is same between the target pokemon and the pokemon you guessed.<br>↑ - The value of this attribute is higher for the target pokemon than for the pokemon you guessed.<br>↓ - The value of this attribute is lower for the target pokemon than for the pokemon you guessed.<br><br>✓ - The target pokemon has the same type in this type slot as the pokemon you guessed.<br>~ - The target pokemon has the same type as the pokemon you guessed, but in the other slot.<br>✕ - The target pokemon does not have this type.<br><br>Another important information is that if a pokemon has no secondary typing, it is treated as a separate type we call "none".</p></div><div class="help-exit"><input type="button" value="Close help" class="help-btn" id="help-btn"></input></div></div>'));
-            n = true;
+            isHelpDisplayed = true;
         }
     });
 
     $('#help-popup').on("click", '#help-btn', function () {
-        n = false;
+        isHelpDisplayed = false;
         $('#help-popup').empty();
     });
 
@@ -65,53 +64,48 @@ $(document).ready(() => {
             console.log(guessData);
 
             if (guessData[0] == resultData[0]) {
-                console.log("win");
-                //win
-            } else {
-                $('#game-board').append($('<div class="row" id="row' + i + '"></div>'));
-
-                if (guessData[1] == resultData[1]) {
-                    $('#row' + i).append($('<div class="box">=</div>'));
-                } else if (guessData[1] < resultData[1]) {
-                    $('#row' + i).append($('<div class="box">↑</div>'));
-                } else if (guessData[1] > resultData[1]) {
-                    $('#row' + i).append($('<div class="box">↓</div>'));
-                }
-
-                if (guessData[2] == resultData[2]) {
-                    $('#row' + i).append($('<div class="box">✓</div>'));
-                } else if (guessData[2] == resultData[3]) {
-                    $('#row' + i).append($('<div class="box">~</div>'));
-                } else {
-                    $('#row' + i).append($('<div class="box">✕</div>'));
-                }
-
-                if (guessData[3] == resultData[3]) {
-                    $('#row' + i).append($('<div class="box">✓</div>'));
-                } else if (guessData[3] == resultData[2]) {
-                    $('#row' + i).append($('<div class="box">~</div>'));
-                } else {
-                    $('#row' + i).append($('<div class="box">✕</div>'));
-                }
-
-                if (guessData[4] == resultData[4]) {
-                    $('#row' + i).append($('<div class="box">=</div>'));
-                } else if (guessData[4] < resultData[4]) {
-                    $('#row' + i).append($('<div class="box">↑</div>'));
-                } else if (guessData[4] > resultData[4]) {
-                    $('#row' + i).append($('<div class="box">↓</div>'));
-                }
-
-                if (guessData[5] == resultData[5]) {
-                    $('#row' + i).append($('<div class="box">=</div>'));
-                } else if (guessData[5] < resultData[5]) {
-                    $('#row' + i).append($('<div class="box">↑</div>'));
-                } else if (guessData[5] > resultData[5]) {
-                    $('#row' + i).append($('<div class="box">↓</div>'));
-                }
-
-                i = i + 1;
+                $('#input-box').empty();
+                $('#input-box').append($('<div class="win">You Win!</div>'));
             }
+
+            $('#game-board').append($('<div class="row" id="row' + guessIteration + '"></div>'));
+            if (guessData[1] == resultData[1]) {
+                $('#row' + guessIteration).append($('<div class="box">=</div>'));
+            } else if (guessData[1] < resultData[1]) {
+                $('#row' + guessIteration).append($('<div class="box">↑</div>'));
+            } else if (guessData[1] > resultData[1]) {
+                $('#row' + guessIteration).append($('<div class="box">↓</div>'));
+            }
+            if (guessData[2] == resultData[2]) {
+                $('#row' + guessIteration).append($('<div class="box">✓</div>'));
+            } else if (guessData[2] == resultData[3]) {
+                $('#row' + guessIteration).append($('<div class="box">~</div>'));
+            } else {
+                $('#row' + guessIteration).append($('<div class="box">✕</div>'));
+            }
+            if (guessData[3] == resultData[3]) {
+                $('#row' + guessIteration).append($('<div class="box">✓</div>'));
+            } else if (guessData[3] == resultData[2]) {
+                $('#row' + guessIteration).append($('<div class="box">~</div>'));
+            } else {
+                $('#row' + guessIteration).append($('<div class="box">✕</div>'));
+            }
+            if (guessData[4] == resultData[4]) {
+                $('#row' + guessIteration).append($('<div class="box">=</div>'));
+            } else if (guessData[4] < resultData[4]) {
+                $('#row' + guessIteration).append($('<div class="box">↑</div>'));
+            } else if (guessData[4] > resultData[4]) {
+                $('#row' + guessIteration).append($('<div class="box">↓</div>'));
+            }
+            if (guessData[5] == resultData[5]) {
+                $('#row' + guessIteration).append($('<div class="box">=</div>'));
+            } else if (guessData[5] < resultData[5]) {
+                $('#row' + guessIteration).append($('<div class="box">↑</div>'));
+            } else if (guessData[5] > resultData[5]) {
+                $('#row' + guessIteration).append($('<div class="box">↓</div>'));
+            }
+            guessIteration = guessIteration + 1;
+            
 
         })
         document.getElementById('input').value = '';
