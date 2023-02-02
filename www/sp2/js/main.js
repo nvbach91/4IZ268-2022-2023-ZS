@@ -17,7 +17,7 @@ $(document).ready(() => {
             var type2 = "none";
         } else {
             var type2 = data.types[1].type.name;
-        };
+        }
         const height = data.height;
         const weight = data.weight;
         resultData = [name, baseHP, type1, type2, height, weight]
@@ -30,7 +30,6 @@ $(document).ready(() => {
 
     $('#help').click(function () {
         if (isHelpDisplayed) {
-            ;
         } else {
             $('#help-popup').append($('<div class="help-title"><h4>H E L P</h4></div><div class="help-content"><div class="help-msg"><p>This message will provide basic information on how to play this game, your goal is to guess the randomly generated pokemon by comparing it in the 5 above attributes to pokemon you guess. Under the attributes results will show you how the target pokemon compares to the pokemon you guessed.<br><br>= - The value of this attribute is same between the target pokemon and the pokemon you guessed.<br>↑ - The value of this attribute is higher for the target pokemon than for the pokemon you guessed.<br>↓ - The value of this attribute is lower for the target pokemon than for the pokemon you guessed.<br><br>✓ - The target pokemon has the same type in this type slot as the pokemon you guessed.<br>~ - The target pokemon has the same type as the pokemon you guessed, but in the other slot.<br>✕ - The target pokemon does not have this type.<br><br>Another important information is that if a pokemon has no secondary typing, it is treated as a separate type we call "none".</p></div><div class="help-exit"><input type="button" value="Close help" class="help-btn" id="help-btn"></input></div></div>'));
             isHelpDisplayed = true;
@@ -57,7 +56,7 @@ $(document).ready(() => {
                 var type2 = "none";
             } else {
                 var type2 = data.types[1].type.name;
-            };
+            }
             const height = data.height;
             const weight = data.weight;
             guessData = [name, baseHP, type1, type2, height, weight]
