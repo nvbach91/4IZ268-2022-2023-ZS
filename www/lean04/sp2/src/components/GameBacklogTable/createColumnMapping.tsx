@@ -55,6 +55,8 @@ export const createColumnMapping = ({
                 <Space>
                     <InputNumber
                         value={estimatedLength ?? 0}
+                        min={0}
+                        step={1}
                         onChange={(value) => {
                             if (value !== null) {
                                 updateDataSource(slug, { ...other, slug, name, estimatedLength: value });
@@ -131,6 +133,9 @@ export const createColumnMapping = ({
             render: (_, { slug, excitement, ...other }) => (
                 <InputNumber
                     value={excitement ?? 0}
+                    min={0}
+                    max={10}
+                    step={1}
                     onChange={(value) => {
                         if (value !== null) {
                             updateDataSource(slug, { ...other, slug, excitement: value });

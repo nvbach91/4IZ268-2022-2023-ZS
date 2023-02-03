@@ -9,12 +9,24 @@ interface AddGameButtonProps {
     gameInfo: GameInfo;
 }
 
+// eslint-disable-next-line camelcase
+const filterGameInfoFields = ({ background_image, genres, metacritic, name, platforms, released, slug }: GameInfo) => ({
+    // eslint-disable-next-line camelcase
+    background_image,
+    genres,
+    metacritic,
+    name,
+    platforms,
+    released,
+    slug,
+});
+
 export const AddGameButton = ({ gameInfo, loading }: AddGameButtonProps) => {
     const [notificationApi, contextHolder] = notification.useNotification();
     const { dataSource, setDataSource } = useContext(DataSourceContext);
 
     const handleClick = () => {
-        setDataSource(array.prepend(gameInfo));
+        setDataSource(array.prepend(filterGameInfoFields(gameInfo)));
         notificationApi.success({ message: `${gameInfo.name} added to backlog` });
     };
 

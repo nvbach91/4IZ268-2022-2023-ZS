@@ -2,6 +2,7 @@ import { notification, Table } from 'antd';
 import { string } from 'fp-ts';
 import { useContext } from 'react';
 import { DataSourceContext, TableFilterContext } from '../../contexts';
+import { normalizeString } from '../../utils';
 import { createColumnMapping } from './createColumnMapping';
 
 export const GameBacklogTable = () => {
@@ -18,7 +19,9 @@ export const GameBacklogTable = () => {
                 dataSource={
                     tableFilterValue === string.empty
                         ? dataSource
-                        : dataSource.filter(({ name }) => name.toLowerCase().includes(tableFilterValue.toLowerCase()))
+                        : dataSource.filter(({ name }) =>
+                              normalizeString(name).includes(normalizeString(tableFilterValue))
+                          )
                 }
                 pagination={{ position: ['topRight', 'bottomRight'] }}
             />
