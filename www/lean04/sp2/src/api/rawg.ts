@@ -1,8 +1,6 @@
 import axios from 'axios';
 import { GameInfo } from '../types';
 
-const apiKey = 'b705c5897b954f31954253bedbeaa46b';
-
 interface RawgQueryParameters {
     search: string;
     page: number;
@@ -23,6 +21,6 @@ export const rawg = (value: RawgQueryParameters | string) => {
     }
     const { search, page, pageSize } = value;
     return axios<RawgResponse>(
-        `https://rawg.io/api/games?token&key=${apiKey}&search=${search}&page=${page}&page_size=${pageSize}&search_precise=true`
+        `https://rawg.io/api/games?token&key=${process.env.REACT_APP_RAWG_API_KEY}&search=${search}&page=${page}&page_size=${pageSize}&search_precise=true`
     );
 };

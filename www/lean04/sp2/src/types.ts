@@ -15,6 +15,7 @@ interface Genre {
 export interface GameInfo {
     slug: string;
     name: string;
+    background_image: string | null;
     platforms: Array<Platform> | null;
     released: string | null;
     metacritic: number | null;

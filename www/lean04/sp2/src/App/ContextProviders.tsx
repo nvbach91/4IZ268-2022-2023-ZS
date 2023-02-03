@@ -3,8 +3,10 @@ import { ReactNode, useEffect, useMemo, useState } from 'react';
 import { DataSourceContext, TableFilterContext } from '../contexts';
 import { RowData } from '../types';
 
+const gameDataSourceKey = 'gameDataSource';
+
 export const ContextProviders = ({ children }: { children: ReactNode }) => {
-    const persistedDataSource = window.localStorage.getItem('dataSource');
+    const persistedDataSource = window.localStorage.getItem(gameDataSourceKey);
     const [dataSource, setDataSource] = useState<Array<RowData>>(
         persistedDataSource ? JSON.parse(persistedDataSource) : []
     );
@@ -12,7 +14,7 @@ export const ContextProviders = ({ children }: { children: ReactNode }) => {
     const [tableFilterValue, setTableFilterValue] = useState(string.empty);
 
     useEffect(() => {
-        window.localStorage.setItem('dataSource', JSON.stringify(dataSource));
+        window.localStorage.setItem(gameDataSourceKey, JSON.stringify(dataSource));
     }, [dataSource]);
 
     const memoizedDataSourceContextValue = useMemo(() => ({ dataSource, setDataSource }), [dataSource, setDataSource]);
