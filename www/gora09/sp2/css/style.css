@@ -6,7 +6,7 @@
 
 body {
     background-color: rgb(230, 230, 230);
-    font-family: Cabin, Arial;
+    font-family: Cabin,s Arial;
 }
 
 aside {
@@ -95,8 +95,7 @@ form button:hover {
 }
 
 .todo {
-    min-width: 400px;
-    max-width: 100%;
+    width: 70%;
     background-color: white;
     display: flex;
     justify-content: space-between;
@@ -244,6 +243,7 @@ select {
     font-weight: 700;
     color: rgb(226, 156, 43);
     cursor: pointer;
+    margin-top: 15px;
   }
 
   .container button:hover {
@@ -268,3 +268,4 @@ iframe {
     width: 20%;
     height: 200px;
 }
+

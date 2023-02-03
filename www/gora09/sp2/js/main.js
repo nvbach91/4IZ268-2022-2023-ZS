@@ -164,6 +164,8 @@ let quote = document.getElementById("quote");
 let author = document.getElementById("author");
 let btn = document.getElementById("btn");
 const url = "https://api.quotable.io/random";
+
+
 let getQuote = () => {
   fetch(url)
     .then((data) => data.json())
@@ -173,4 +175,30 @@ let getQuote = () => {
     });
 };
 window.addEventListener("load", getQuote);
-btn.addEventListener("click", getQuote);
+
+
+function createTodo(event){
+  getQuote();
+  const todoDiv = document.createElement('div');
+  todoDiv.classList.add("todo");
+  const newTodo = document.createElement('li');
+  newTodo.innerText = quote.innerText + " - " + author.innerText; 
+  newTodo.classList.add('todo-item');
+  todoDiv.appendChild(newTodo);
+  //add to storage
+  saveLocalTodos(todoInput.value);
+  //completed btn
+  const completedButton = document.createElement('button');
+  completedButton.innerHTML = '<ion-icon name="checkmark-outline"></ion-icon>';
+  completedButton.classList.add("complete-btn");
+  todoDiv.appendChild(completedButton);
+  //delete btn
+  const trashButton = document.createElement('button');
+  trashButton.innerHTML = '<ion-icon name="trash-outline"></ion-icon>';
+  trashButton.classList.add("trash-btn");
+  todoDiv.appendChild(trashButton);
+  //append
+  todoList.appendChild(todoDiv);
+};
+
+btn.addEventListener("click", createTodo);
