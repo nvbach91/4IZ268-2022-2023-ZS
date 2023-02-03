@@ -1,6 +1,6 @@
 $(document).ready(() => {
 
-    const randomnumber = (Math.random() * (1008 - 1 + 1)) << 0;
+    const randomnumber = ((Math.random() * (1008 - 1 + 1)) + 1) << 0;
     var guessIteration = 1;
     var isHelpDisplayed = false;
 
@@ -12,7 +12,6 @@ $(document).ready(() => {
         const name = data.species.name;
         const baseHP = data.stats[0].base_stat;
         const type1 = data.types[0].type.name;
-        console.log(Object.keys(data.types).length)
         if (Object.keys(data.types).length == 1) {
             var type2 = "none";
         } else {
@@ -41,12 +40,13 @@ $(document).ready(() => {
         $('#help-popup').empty();
     });
 
-    $("#button").click(function () {
-        const guessValue = document.getElementById('input').value;
+    $("#input-box").submit(function () {
+
+        var test = document.getElementById('input')
 
         $.ajax({
             method: 'GET',
-            url: 'https://pokeapi.co/api/v2/pokemon/' + guessValue,
+            url: 'https://pokeapi.co/api/v2/pokemon/' + test.value,
             dataType: 'json',
         }).done(function (data) {
             const name = data.species.name;
@@ -59,55 +59,98 @@ $(document).ready(() => {
             }
             const height = data.height;
             const weight = data.weight;
-            guessData = [name, baseHP, type1, type2, height, weight]
+            const sprites = data.sprites.front_default;
+            guessData = [name, baseHP, type1, type2, height, weight, sprites];
+            guessAbilities = 'Abilities: ';
+            for (let i = 0; i < Object.keys(data.abilities).length; i++) {
+                guessAbilities += data.abilities[i].ability.name;
+                guessAbilities += ", ";
+            }
+            guessAbilities = guessAbilities.slice(0, -2);
+
+            console.log(guessAbilities);
             console.log(guessData);
+
+            $('#game-board').append($('<div class="row" id="row' + guessIteration + '"></div>'));
+
+            $('#row' + guessIteration).append($('<div class="sna-holder" id="sna-holder' + guessIteration + '"></div>'));
+
+            $('#sna-holder' + guessIteration).append($('<div class="pokemon-holder" id="pokemon-holder' + guessIteration + '"></div>'));
+
+            $('#pokemon-holder' + guessIteration).append($('<img class="sprite" src="' + guessData[6] +'" class="pokemon-name">'));
+            $('#pokemon-holder' + guessIteration).append($('<div class="name">' + guessData[0] + '</div>'));
+
+            $('#sna-holder' + guessIteration).append($('<div class="abilities" id="abilities' + guessIteration + '">' + guessAbilities + '</div>'));
+
+            $('#row' + guessIteration).append($('<div class="box-holder" id="box-holder' + guessIteration + '"></div>'));
+
+            if (guessData[1] == resultData[1]) {
+                $('#box-holder' + guessIteration).append($('<div class="box">=</div>'));
+            } else if (guessData[1] < resultData[1]) {
+                $('#box-holder' + guessIteration).append($('<div class="box">↑</div>'));
+            } else if (guessData[1] > resultData[1]) {
+                $('#box-holder' + guessIteration).append($('<div class="box">↓</div>'));
+            }
+            if (guessData[2] == resultData[2]) {
+                $('#box-holder' + guessIteration).append($('<div class="box">✓</div>'));
+            } else if (guessData[2] == resultData[3]) {
+                $('#box-holder' + guessIteration).append($('<div class="box">~</div>'));
+            } else {
+                $('#box-holder' + guessIteration).append($('<div class="box">✕</div>'));
+            }
+            if (guessData[3] == resultData[3]) {
+                $('#box-holder' + guessIteration).append($('<div class="box">✓</div>'));
+            } else if (guessData[3] == resultData[2]) {
+                $('#box-holder' + guessIteration).append($('<div class="box">~</div>'));
+            } else {
+                $('#box-holder' + guessIteration).append($('<div class="box">✕</div>'));
+            }
+            if (guessData[4] == resultData[4]) {
+                $('#box-holder' + guessIteration).append($('<div class="box">=</div>'));
+            } else if (guessData[4] < resultData[4]) {
+                $('#box-holder' + guessIteration).append($('<div class="box">↑</div>'));
+            } else if (guessData[4] > resultData[4]) {
+                $('#box-holder' + guessIteration).append($('<div class="box">↓</div>'));
+            }
+            if (guessData[5] == resultData[5]) {
+                $('#box-holder' + guessIteration).append($('<div class="box">=</div>'));
+            } else if (guessData[5] < resultData[5]) {
+                $('#box-holder' + guessIteration).append($('<div class="box">↑</div>'));
+            } else if (guessData[5] > resultData[5]) {
+                $('#box-holder' + guessIteration).append($('<div class="box">↓</div>'));
+            }
 
             if (guessData[0] == resultData[0]) {
                 $('#input-box').empty();
                 $('#input-box').append($('<div class="win">You Win!</div>'));
+                const caughtPokemon = {
+                    name: guessData[0],
+                    sprite: guessData[6]
+                };
+                localStorage.setItem(guessData[0], JSON.stringify(caughtPokemon));
             }
 
-            $('#game-board').append($('<div class="row" id="row' + guessIteration + '"></div>'));
-            if (guessData[1] == resultData[1]) {
-                $('#row' + guessIteration).append($('<div class="box">=</div>'));
-            } else if (guessData[1] < resultData[1]) {
-                $('#row' + guessIteration).append($('<div class="box">↑</div>'));
-            } else if (guessData[1] > resultData[1]) {
-                $('#row' + guessIteration).append($('<div class="box">↓</div>'));
-            }
-            if (guessData[2] == resultData[2]) {
-                $('#row' + guessIteration).append($('<div class="box">✓</div>'));
-            } else if (guessData[2] == resultData[3]) {
-                $('#row' + guessIteration).append($('<div class="box">~</div>'));
-            } else {
-                $('#row' + guessIteration).append($('<div class="box">✕</div>'));
-            }
-            if (guessData[3] == resultData[3]) {
-                $('#row' + guessIteration).append($('<div class="box">✓</div>'));
-            } else if (guessData[3] == resultData[2]) {
-                $('#row' + guessIteration).append($('<div class="box">~</div>'));
-            } else {
-                $('#row' + guessIteration).append($('<div class="box">✕</div>'));
-            }
-            if (guessData[4] == resultData[4]) {
-                $('#row' + guessIteration).append($('<div class="box">=</div>'));
-            } else if (guessData[4] < resultData[4]) {
-                $('#row' + guessIteration).append($('<div class="box">↑</div>'));
-            } else if (guessData[4] > resultData[4]) {
-                $('#row' + guessIteration).append($('<div class="box">↓</div>'));
-            }
-            if (guessData[5] == resultData[5]) {
-                $('#row' + guessIteration).append($('<div class="box">=</div>'));
-            } else if (guessData[5] < resultData[5]) {
-                $('#row' + guessIteration).append($('<div class="box">↑</div>'));
-            } else if (guessData[5] > resultData[5]) {
-                $('#row' + guessIteration).append($('<div class="box">↓</div>'));
-            }
             guessIteration = guessIteration + 1;
-            
-
         })
-        document.getElementById('input').value = '';
+    
+        test.value = '';
+        //document.getElementById('input-box').reset();
+        return false;
     });
 
+    const caughtPokemons = { ...localStorage };
+    pokemonElements = [];
+    //vytvořit dočasné pole
+
+    for (pokemon in caughtPokemons) {
+        //vytvořit elementy, každý element přidat do dočasného pole
+        var pokemonTransfer = JSON.parse(localStorage.getItem(pokemon));
+        elementName = $('<div>' + pokemonTransfer.name + '</div>');
+        elementSprite = $('<img src=' + pokemonTransfer.sprite + '>');
+        pokemonElements.push(elementName);
+        pokemonElements.push(elementSprite);
+    }
+
+    $('#caught-pokemon').append(pokemonElements);
+    //obsah dočasného pole appendovat na místo v html
 });
