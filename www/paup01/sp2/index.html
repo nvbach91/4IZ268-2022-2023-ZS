@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="Pavel Paur" >
+    <meta name="author" content="Pavel Paur">
     <meta name="description" content="Semestrální práce">
     <meta name="keywords" content="html, css, movie, generator">
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>Search or generate a movie</title>
 </head>
+
 <body>
     <h1 class="title">Search or generate a movie</h1>
 
@@ -20,7 +22,6 @@
         </form>
 
         <form id="generateForm" class="generateForm">
-            <button id="generateButton" class="generateButton">Generate random movies</button>
             <select name="sorter" id="sorter" class="sorter">
                 <option value="default">Default sorting</option>
                 <option value="alphabeticalA">Alphabetical from A</option>
@@ -28,17 +29,21 @@
                 <option value="releaseNew">From newest</option>
                 <option value="releaseOld">From oldest</option>
             </select>
+            <button id="generateButton" class="generateButton">Generate random movies</button>
         </form>
         <button id="findFavoritesButton" class="findFavoritesButton">Show favorites</button>
         <hr>
+
     </header>
-    <h2>Results:</h2>
+    <h2 class="results">Results:</h2>
     <div class="spinner"></div>
     <div class="error-pop-up">Please fill-in the search field</div>
     <div class="error-pop-up2">Unexpected error.Please try again</div>
+    <div class="error-pop-up3">You don't have any saved movies yet</div>
     <main id="main"></main>
     <noscript>You need to enable JavaScript to run this website.</noscript>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.2/jquery.min.js"></script>
     <script src="./assets/js/script.js"></script>
 </body>
+
 </html>

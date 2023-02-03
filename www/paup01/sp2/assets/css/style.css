@@ -1,7 +1,8 @@
-*{
+* {
     box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
 body {
     background-color: rgb(62, 62, 62);
     padding: 0;
@@ -78,7 +79,7 @@ body {
     height: 60px;
 }
 
-h2{
+h2 {
     color: antiquewhite;
     font-size: 32px;
 }
@@ -91,9 +92,9 @@ main {
 
 .spinner {
     display: none;
-    position:fixed;
+    position: fixed;
     left: 45%;
-    top: 50%;
+    top: 60%;
     width: 200px;
     height: 200px;
     border: 5px solid #FFF;
@@ -101,83 +102,104 @@ main {
     border-radius: 50%;
     box-sizing: border-box;
     animation: rotation 1s linear infinite;
-    }
+}
 
-    @keyframes rotation {
+@keyframes rotation {
     0% {
         transform: rotate(0deg);
     }
+
     100% {
         transform: rotate(360deg);
     }
-    } 
+}
 
-    .error-pop-up {
-        display: none;
-        position:absolute;
-	    top:50%;
-	    left:37%;
-	    width: 500px;
-        height: 200px;
-        background-color: rgb(125, 125, 125);
-        box-sizing: border-box;
-        padding: 20px;
-        border-radius: 5px;
-        font-size: 32px;
-        color: white;
-        padding-top: 75px;
-        
-    }
+.error-pop-up {
+    display: none;
+    position: absolute;
+    top: 60%;
+    left: 37%;
+    width: 500px;
+    height: 200px;
+    background-color: rgb(125, 125, 125);
+    box-sizing: border-box;
+    padding: 20px;
+    border-radius: 5px;
+    font-size: 32px;
+    color: white;
+    padding-top: 75px;
 
-    .error-pop-up2 {
-        display: none;
-        position:absolute;
-	    top:50%;
-	    left:37%;
-	    width: 500px;
-        height: 200px;
-        background-color: rgb(125, 125, 125);
-        box-sizing: border-box;
-        padding: 20px;
-        border-radius: 5px;
-        font-size: 32px;
-        color: white;
-        padding-top: 75px;
-        
-    }
+}
 
-    .movie {
-        width: 350px;
-        margin: 10px;
-        background-color: antiquewhite;
-        height: 700px;
-        box-shadow: 0 4px 5px rgb(0, 0, 0, 0.2);
-        overflow: hidden;
-        border-radius: 5px;
-        display: inline;
-    }
-    .description {
-        font-size: 14px;
-    }
+.error-pop-up2 {
+    display: none;
+    position: absolute;
+    top: 60%;
+    left: 37%;
+    width: 500px;
+    height: 200px;
+    background-color: rgb(125, 125, 125);
+    box-sizing: border-box;
+    padding: 20px;
+    border-radius: 5px;
+    font-size: 32px;
+    color: white;
+    padding-top: 75px;
 
-   
+}
 
-    .moviePoster {
-        max-width: 350px;
-    }
+.error-pop-up3 {
+    display: none;
+    position: absolute;
+    top: 60%;
+    left: 37%;
+    width: 500px;
+    height: 200px;
+    background-color: rgb(125, 125, 125);
+    box-sizing: border-box;
+    padding: 20px;
+    border-radius: 5px;
+    font-size: 32px;
+    color: white;
+    padding-top: 75px;
 
-    .favoriteIcon {
-        top: 0;
-        right: 0;
-        position: absolute;
-    }
+}
 
-    .findFavoritesButton {
-        background-color: whitesmoke;
-        border-radius: 5px;
-        border: none;
-        text-align: center;
-        font-size: 24px;
-        height: 60px;
-    }
+.movie {
+    width: 350px;
+    margin: 10px;
+    background-color: antiquewhite;
+    height: 700px;
+    box-shadow: 0 4px 5px rgb(0, 0, 0, 0.2);
+    overflow: hidden;
+    border-radius: 5px;
+    display: inline;
+}
+
+.description {
+    font-size: 14px;
+}
+
+
+
+.moviePoster {
+    max-width: 350px;
+}
+
+.favoriteIcon {
+    position: sticky;
+    top: 0;
+    right: 0;
+
+}
+
+.findFavoritesButton {
+    background-color: whitesmoke;
+    border-radius: 5px;
+    border: none;
+    text-align: center;
+    font-size: 24px;
+    height: 60px;
+}
+
 /*todo* prubeh /
