@@ -1,0 +1,43 @@
+.container {
+    display: flex;
+    flex-direction: row;
+}
+
+.column {
+    width: 30%;
+}
+
+.img_container {
+    margin-right: 20%;
+    margin-top: 15%;
+    height: auto;
+    width: 500px;
+}
+
+.img_prv>.banana {
+    height: auto;
+    width: 75px;
+}
+
+.img_container>img {
+
+    height: inherit;
+    width: inherit;
+    position: relative;
+}
+
+.img_container>.text_container {
+    position: absolute;
+    top: 45%;
+    left: 20%;
+}
+
+.img_container>.from_who {
+    position: absolute;
+    top: 50%;
+    left: 25%;
+}
+
+.generator {
+    padding: 10px;
+}
