@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@200;400&family=Carter+One&family=Kaushan+Script&family=Montserrat:ital,wght@0,100;0,700;1,200;1,400&family=Pompiere&family=Satisfy&display=swap');
+
+.header {
+  background-color: darkgray;
+  color: tomato;
+  opacity: 0.9;
+  padding: 1em;
+}
+
+h1 {
+  font-family: 'Carter One', cursive;
+  font-weight: bolder;
+  font-size: 45px;
+  letter-spacing: 2px;
+}
+
+.user-form div{
+  font-family: 'Assistant', sans-serif;
+  color: darkcyan;
+  letter-spacing: 2px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/*.refresh{
+  margin-left: 40px;
+  width: 50%;
+}*/
+
+.wrap{
+  display: flex;
+}
+
+h2 {
+  font-family: 'Assistant', sans-serif;
+  color: darkcyan;
+  letter-spacing: 3px;
+  font-size: 28px;
+}
+
+h3 {
+  font-family: 'Assistant', sans-serif;
+  color: darkcyan;
+  letter-spacing: 2px;
+  padding-left: 20px;
+  font-size: 18px;
+}
+
+.results{
+  width: 80%;
+  margin-left: 15px;
+}
+
+.recipe-results {
+  display: flex;
+  flex-wrap: wrap;
+  font-family: 'Assistant', sans-serif;
+  align-items: center;
+  justify-content: center;
+}
+
+.recipe-results div {
+  padding: 10px;
+  margin: 7px;
+  width: 28%;
+}
+
+.recipe-results div img {
+  width: 80%;
+  object-fit: cover;
+}
+
+.user-form {
+  margin-top: 10px;
+  width: 80%;
+  float: left;
+}
+
+.favorite ul li {
+  list-style: none;
+}
+
+.input {
+  width: 100%;
+}
+
+.side-panel{
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  text-align: center;
+}
+
+* {
+  font-family: 'Assistant', sans-serif;
+  font-size: 15px;
+}
+
+.ingredient-search-history li {
+  list-style: none;
+}
+
