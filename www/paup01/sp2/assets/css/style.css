@@ -1,0 +1,183 @@
+*{
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+body {
+    background-color: rgb(62, 62, 62);
+    padding: 0;
+    text-align: center;
+}
+
+.title {
+    color: antiquewhite;
+    font-size: 64px;
+}
+
+.searchForm {
+    margin: 20px;
+}
+
+.search {
+    background-color: whitesmoke;
+    border-radius: 5px;
+    border: none;
+    text-align: center;
+    font-size: 24px;
+    height: 60px;
+    width: 450px;
+}
+
+.search:focus {
+    outline: none;
+}
+
+.searchButton {
+    background-color: whitesmoke;
+    border-radius: 5px;
+    border: none;
+    text-align: center;
+    font-size: 24px;
+    height: 60px;
+}
+
+.sorter {
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 24px;
+    padding: 0px;
+    outline: none;
+    height: 60px;
+}
+
+.generateForm {
+    margin: 20px;
+}
+
+.number {
+    background-color: whitesmoke;
+    border-radius: 5px;
+    border: none;
+    text-align: center;
+    font-size: 24px;
+    height: 60px;
+    width: 450px;
+}
+
+.number:focus {
+    outline: none;
+}
+
+.generateButton {
+    background-color: whitesmoke;
+    border-radius: 5px;
+    border: none;
+    text-align: center;
+    font-size: 24px;
+    height: 60px;
+}
+
+h2{
+    color: antiquewhite;
+    font-size: 32px;
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.spinner {
+    display: none;
+    position:fixed;
+    left: 45%;
+    top: 50%;
+    width: 200px;
+    height: 200px;
+    border: 5px solid #FFF;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+    }
+
+    @keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+    } 
+
+    .error-pop-up {
+        display: none;
+        position:absolute;
+	    top:50%;
+	    left:37%;
+	    width: 500px;
+        height: 200px;
+        background-color: rgb(125, 125, 125);
+        box-sizing: border-box;
+        padding: 20px;
+        border-radius: 5px;
+        font-size: 32px;
+        color: white;
+        padding-top: 75px;
+        
+    }
+
+    .error-pop-up2 {
+        display: none;
+        position:absolute;
+	    top:50%;
+	    left:37%;
+	    width: 500px;
+        height: 200px;
+        background-color: rgb(125, 125, 125);
+        box-sizing: border-box;
+        padding: 20px;
+        border-radius: 5px;
+        font-size: 32px;
+        color: white;
+        padding-top: 75px;
+        
+    }
+
+    .movie {
+        width: 350px;
+        margin: 10px;
+        background-color: antiquewhite;
+        height: 700px;
+        box-shadow: 0 4px 5px rgb(0, 0, 0, 0.2);
+        overflow: hidden;
+        border-radius: 5px;
+        display: inline;
+    }
+    .description {
+        font-size: 14px;
+    }
+
+   
+
+    .moviePoster {
+        max-width: 350px;
+    }
+
+    .favoriteIcon {
+        top: 0;
+        right: 0;
+        position: absolute;
+    }
+
+    .findFavoritesButton {
+        background-color: whitesmoke;
+        border-radius: 5px;
+        border: none;
+        text-align: center;
+        font-size: 24px;
+        height: 60px;
+    }
+/*todo* prubeh /
