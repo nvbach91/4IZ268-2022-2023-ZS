@@ -8,6 +8,10 @@ let answers = [];
 let message = pageEles(main, 'div', '', 'message');
 let btnsDel = [];
 let fileSelect = pageEles(main, 'ul', '', 'file-selection');;
+let table = [];
+let testFileName = "";
+let userEmailAdress = "";
+let questions= [];
 start();
 function start() {
     arrSelector.innerHTML = '';
@@ -17,6 +21,7 @@ function start() {
 }
 
 function loadData() {
+    console.log(gapi.auth2)
     fileSelect.style.display = 'none';
     fetch(url, {
         method: 'GET',
@@ -26,6 +31,9 @@ function loadData() {
     })
         .then(res => res.json())
         .then(data => {
+            data.sort(() => {
+                return Math.random() - 0.5;
+            })
             const temp = {
                 total: data.length,
                 q: data,
@@ -36,11 +44,13 @@ function loadData() {
             for (let i = 0; i < temp.total; i++) {
                 answers[i] = [false, null];
 
+
             };
+            
             question = temp.q[0];
             createQuestion(temp);
             createNav(temp);
-
+    
         })
 }
 function createNav(data) {
@@ -54,7 +64,6 @@ function createNav(data) {
             question = data.q[data.counter];
             el.remove();
             createQuestion(data);
-
         }
     }
 }
@@ -84,7 +93,6 @@ function createQuestion(data) {
             createQuestion(data);
         }
     }
-
 
     const prevBtn = pageEles(main, 'button', '3', 'nav-btn');
     prevBtn.classList.add("previous");
@@ -127,6 +135,9 @@ function createEnd(data) {
     console.log(answers);
     let incorrectAnswersDiv = pageEles(message, 'div', `<p>Incorrect answers:</p>` + incorrects, 'incorrects');
     data.finished = true;
+    getUserInfo();
+    table = [`${count} of ${data.total}`, testFileName,];
+    console.log(table);
     restartBtn.onclick = () => {
         incorrectAnswersDiv.remove();
         data.finished = false;
@@ -147,6 +158,7 @@ function outputQuestion(question, parent, data) {
     arr.sort(() => {
         return Math.random() - 0.5;
     })
+    
     const btns = pageEles(parent, 'div', '', 'options')
     let classIndex = 0;
     arr.forEach(e => {
@@ -160,8 +172,8 @@ function outputQuestion(question, parent, data) {
 
         if (data.finished) {
             optemp.disabled = true;
-            if (question.answer == e) {
-                optemp.style.backgroundColor = "rgb(128, 255, 128)";
+            if (quetion.answer == e) {
+                optemsp.style.backgroundColor = "rgb(128, 255, 128)";
             }
             else if (e == answers[data.counter][1]) {
                 optemp.style.backgroundColor = "rgb(255, 128, 128)";
@@ -169,6 +181,7 @@ function outputQuestion(question, parent, data) {
 
         }
         if (optemp.innerHTML == answers[data.counter][1]) optemp.classList.add('clicked-answer');
+
         optemp.onclick = () => {
 
             optemp.classList.add('clicked-answer');
@@ -227,7 +240,7 @@ const DISCOVERY_DOC = 'https://www.googleapis.com/discovery/v1/apis/drive/v3/res
 
 // Authorization scopes required by the API; multiple scopes can be
 // included, separated by spaces.
-const SCOPES = 'https://www.googleapis.com/auth/drive.metadata.readonly';
+const SCOPES = 'https://www.googleapis.com/auth/drive.metadata.readonly https://www.googleapis.com/auth/userinfo.email';
 
 let tokenClient;
 let gapiInited = false;
@@ -269,6 +282,7 @@ function gisLoaded() {
     maybeEnableButtons();
 }
 
+
 /**
  * Enables user interaction after all libraries are loaded.
  */
@@ -281,15 +295,24 @@ function maybeEnableButtons() {
 /**
  *  Sign in the user upon button click.
  */
+
+
 function handleAuthClick() {
     tokenClient.callback = async (resp) => {
         if (resp.error !== undefined) {
             throw (resp);
         }
+        gapi.auth2.init({
+            client_id: CLIENT_ID,
+            scope: SCOPES,
+            
+        });
+        gapiInited = true;
         document.getElementById('signout_button').style.visibility = 'visible';
         document.getElementById('authorize_button').innerText = 'Refresh';
         await listFiles();
-    };
+    }
+
 
     if (gapi.client.getToken() === null) {
         // Prompt the user to select a Google Account and ask for consent to share their data
@@ -299,6 +322,7 @@ function handleAuthClick() {
         // Skip display of account chooser and consent dialog for an existing session.
         tokenClient.requestAccessToken({ prompt: '' });
     }
+
 }
 
 /**
@@ -315,6 +339,13 @@ function handleSignoutClick() {
     }
 }
 
+/**function getUserInfo() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    var profile = auth2.currentUser.get().getBasicProfile();
+    console.log(profile.getEmail());
+    console.log(gapi.auth2)
+}
+*/
 /**
  * Print metadata for first 10 files.
  */
@@ -338,11 +369,12 @@ async function listFiles() {
     // Flatten to string to display function pageEles(parent, tagName, html, className) {
     console.log(files);
     files.forEach(file => {
-        let item = pageEles(fileSelect, 'li', file.name, 'file-item');
+        let item = pageEles(fileSelect, 'li', file.name, 'file-item')
         item.onclick = () => {
             url = "https://www.googleapis.com/drive/v3/files/" + file.id + "?supportsAllDrives=true&alt=media&key=" + API_KEY;
             loadData();
+            testFileName = file.name;
         }
-
     });
+
 }
