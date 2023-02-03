@@ -16,32 +16,37 @@
         </div>
     </header>
     <div>
-        <div class="tile is-ancestor">
-            <div class="ingredient-search-container tile is-4 is-vertical is-parent control">
+        <div class="wrap">
+            <div class="side-panel">
                 <form class="user-form">
-                    <input class="input is-primary block" type="text" id="q"
-                        placeholder="Enter ingredients here Ex. avocado, chicken, rice">
-                    <button 
-                        type="submit" class="search-btn">Search</button>
-                    <h3>Recently Searched:
-                        <div class="ingredient-search-history"></div>
-                    </h3>
-                    <!-- use local storage to append saved ingredients here -->
+                    <input class="input" type="text" id="q" placeholder="Enter ingredients here Ex. chicken, rice">
+                    <button type="submit" class="search-btn">Search</button>
+                    <p id="err"></p>
                 </form>
+                <h3>Recently Searched: </h3>
+                <div class="ingredient-search-history"></div>
+                <!-- useA local storage to append saved ingredients here -->
+                <h3>Favorite:</h3>
+                <!--<button class="refresh" type="button">Update</button> -->
+                <div class="favorite"></div>
+                <!-- use local storage to append favorites recipes here -->
+            
             </div>
-            <div class="results tile is-parent column">
-                <article class="tile is-child notification box is-12 has-background-success-light">
-                    <h2 class="content title is-4 has-text-link">Your Recipe Results:</h2>
+            <div class="results">
+                <article class="tile">
+                    <h2 class="content">Your Recipe Results:</h2>
                     <span class="recipe-results"> </span>
                     <!-- recipes will populate here upon clicking search using javascript createElement -->
+                    <span class="pop-up"></span>
                 </article>
             </div>
         </div>
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.2/jquery.min.js"
+        integrity="sha512-tWHlutFnuG0C6nQRlpvrEhE4QpkG1nn2MOUMWmUeRePl4e3Aki0VB6W1v3oLjFtd0hVOtRQ9PHpSfN6u6/QXkQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="./script.js"></script>
 </body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.2/jquery.min.js"
-    integrity="sha512-tWHlutFnuG0C6nQRlpvrEhE4QpkG1nn2MOUMWmUeRePl4e3Aki0VB6W1v3oLjFtd0hVOtRQ9PHpSfN6u6/QXkQ=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="./script.js"></script>
 
 </html>

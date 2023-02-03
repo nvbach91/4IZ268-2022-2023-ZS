@@ -10,40 +10,83 @@
 h1 {
   font-family: 'Carter One', cursive;
   font-weight: bolder;
-  font-size: 48px;
+  font-size: 45px;
   letter-spacing: 2px;
+}
+
+.user-form div{
+  font-family: 'Assistant', sans-serif;
+  color: darkcyan;
+  letter-spacing: 2px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/*.refresh{
+  margin-left: 40px;
+  width: 50%;
+}*/
+
+.wrap{
+  display: flex;
 }
 
 h2 {
   font-family: 'Assistant', sans-serif;
   color: darkcyan;
   letter-spacing: 3px;
+  font-size: 28px;
 }
 
 h3 {
   font-family: 'Assistant', sans-serif;
   color: darkcyan;
-  letter-spacing: 3px;
-  padding: 20px;
+  letter-spacing: 2px;
+  padding-left: 20px;
+  font-size: 18px;
+}
+
+.results{
+  width: 80%;
+  margin-left: 15px;
 }
 
 .recipe-results {
-  flex-wrap: wrap;
   display: flex;
+  flex-wrap: wrap;
   font-family: 'Assistant', sans-serif;
-  overflow-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 }
 
 .recipe-results div {
   padding: 10px;
   margin: 7px;
+  width: 28%;
 }
 
-a {
-  font-family: 'Assistant', sans-serif;
-  font-size: 15px;
-  font-weight: bolder;
-  word-wrap: break-word;
+.recipe-results div img {
+  width: 80%;
+  object-fit: cover;
+}
+
+.user-form {
+  margin-top: 10px;
+  width: 80%;
+  float: left;
+}
+
+.favorite ul li {
+  list-style: none;
+}
+
+.input {
+  width: 100%;
+}
+
+.side-panel{
+  display: flex;
+  flex-direction: column;
 }
 
 header {
@@ -51,16 +94,11 @@ header {
 }
 
 * {
-  box-sizing: 0px;
   font-family: 'Assistant', sans-serif;
+  font-size: 15px;
 }
 
-#ingredient-search-history li {
+.ingredient-search-history li {
   list-style: none;
-  font-family: 'Assistant', sans-serif;
 }
 
-.alternatives {
-  font-size: 13px;
-  word-wrap: break-word;
-}
