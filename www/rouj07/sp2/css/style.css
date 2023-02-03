@@ -60,6 +60,7 @@ main {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    
 }
 
 .box {
@@ -67,7 +68,7 @@ main {
     background-color: #f6e8b1;
     border-radius: 20px;
     margin: 30px;
-    height: 500px;
+    min-height: 500px;
     position: relative;
 }
 
@@ -164,7 +165,39 @@ footer {
     background-color: #f6e8b1;
     text-align: center;
     padding: 10px;
-    position: fixed;
+    position: relative;
     bottom: 0;
     left: 0;
+}
+
+.particular {
+    height: 100%;
+    display: none;
+}
+
+.output {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+img:not(.poster) {
+    width: 60%;
+    height: 100%;
+}
+
+h4 {
+    margin: 5px;
+    text-align: center;
+}
+
+.item {
+    width: 30%;
+    margin: 5px;
+    padding-left: 1px;
+    padding-right: 1px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
