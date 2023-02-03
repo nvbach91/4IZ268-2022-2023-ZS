@@ -1,27 +1,38 @@
 import {HTTPService} from "../service/httpservice.js";
 import {Query} from "../util/query.js";
 
+const TYPE_MAP = {
+    0: "bi-train-lightrail-front",
+    1: "bi-train-front-fill",
+    2: "bi-train-front",
+    3: "bi-truck-front"
+}
 const CIS_ID_NAME = "cisId";
-const LIST_ITEM = `<div class="card mb-2" data-scheduled-departure="#scheduled#" data-delay="#delay#" data-line="#line#" data-direction="#direction#" data-trip-id="#tripId#">
-<div class="card-body row">
-<div class="col">
-    <p class="h3">#line#</p>
-    <p class="mb-0">Nástupiště #platform#</p>
-</div>
-<div class="col">
-    <p class="mb-3 fw-bolder">#direction#</p>
-    <p class="mb-0 scheduledDeparture">00:00</p>
-</div>
-<div class="col">
-    <p class="h3 remainingTime">00:00</p>
-</div>
-</div>
+const LIST_ITEM = `
+<div class="card mb-2" data-scheduled-departure="#scheduled#" data-delay="#delay#" data-line="#line#" data-direction="#direction#" data-trip-id="#tripId#">
+    <div class="card-body row">
+        <div class="col">
+            <p class="h3">#line#</p>
+            <p class="mb-0">Nástupiště #platform#</p>
+        </div>
+        <div class="col">
+            <p class="mb-3 fw-bolder">#direction#</p>
+            <p class="mb-0 scheduledDeparture">00:00</p>
+        </div>
+        <div class="col">
+            <p class="h3 remainingTime">00:00</p>
+        </div>
+        <div class="col">
+           <i class="bi #type#" style="font-size: 2.5rem"></i>
+        </div>
+    </div>
 </div>
 `
 export class StopPage {
     constructor() {
         this.httpService = new HTTPService()
         this.departureList = document.querySelector("#departuresList");
+        this.stopNameEl = document.querySelector("#stopName");
         this.allowedTypes = [0, 1, 2, 3]; // Tram, Metro, Train, Bus
     }
 
@@ -48,13 +59,15 @@ export class StopPage {
         this.departureList.innerHTML = "";
         this.httpService.getDepartureBoard(this.cisId)
             .then((data) => {
-                document.querySelector("#stopName").textContent = data.stops[0].stopName;
+                this.stopNameEl.textContent = data.stops[0].stopName;
+                let appendHtml = "";
                 data.departures.forEach((value) => {
+
                     if (!this.allowedTypes.includes(value.route.type)) {
                         return;
                     }
 
-                    this.departureList.innerHTML += (
+                     appendHtml += (
                         LIST_ITEM
                             .replaceAll("#scheduled#", value.departureTimestamp.scheduled)
                             .replaceAll("#tripId#", value.trip.id)
@@ -62,10 +75,12 @@ export class StopPage {
                             .replaceAll("#line#", value.route.shortName)
                             .replaceAll("#direction#", value.trip.headsign)
                             .replaceAll("#platform#", value.stop.platformCode)
+                            .replaceAll("#type#", TYPE_MAP[value.route.type])
                     );
                 });
-                this.updateRemainingTime();
+                this.departureList.innerHTML = appendHtml;
                 this.departureListElements = document.querySelectorAll("#departuresList > div");
+                this.updateRemainingTime();
             })
     }
 
@@ -90,7 +105,7 @@ export class StopPage {
                     delay = 0;
                     isDelayAvailable = false
                 }
-                el.querySelector(".scheduledDeparture").textContent = scheduledDeparture.format("hh:mm") + " (+ " + (isDelayAvailable ? this.convertSeconds(delay) : "??") + ")";
+                el.querySelector(".scheduledDeparture").textContent = scheduledDeparture.format("HH:mm") + " (" + (delay >= 0 ? "+ " : "") + (isDelayAvailable ? this.convertSeconds(delay) : "??") + ")";
                 let predictedDeparture = moment(scheduledDeparture).add(delay, 's');
                 let diffDuration = moment.duration(predictedDeparture.diff(now));
                 el.querySelector(".remainingTime").textContent = this.convertSeconds(diffDuration.asSeconds())
@@ -119,14 +134,15 @@ export class StopPage {
 
     convertSeconds(seconds) {
         seconds = parseInt(seconds);
-        let minutes = Math.floor(seconds / 60);
-        let remainingSeconds = seconds % 60;
+        let secondsAbsolute = Math.abs(seconds);
+        let minutes = Math.floor(secondsAbsolute / 60);
+        let remainingSeconds = secondsAbsolute % 60;
 
         if (remainingSeconds < 10) {
             remainingSeconds = "0" + remainingSeconds;
         }
 
-        return minutes + ":" + remainingSeconds;
+        return (seconds < 0 ? "- " : "") +  minutes + ":" + remainingSeconds;
     }
 
 }
