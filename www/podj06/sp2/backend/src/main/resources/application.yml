@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    hikari:
+      connection-timeout: 20000
+      maximum-pool-size: 5
+
+springdoc:
+  swagger-ui:
+    path: "/docs"
+    disable-swagger-default-url: true
