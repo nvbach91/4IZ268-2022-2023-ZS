@@ -1,91 +1,129 @@
+function addAssets() {
+    let images = [
+        // characters
+        { id: "player", src: "assets/chadpavel.png", alt: "Player element" },
+        { id: "babis", src: "assets/babis.png", alt: "Enemy element" },
+        { id: "cat1", src: "", alt: "Element 1 for a cat" },
+        { id: "cat2", src: "", alt: "Element 2 for a cat" },
+        { id: "cat3", src: "", alt: "Element 3 for a cat" },
+        // effects
+        { id: "blood", src: "assets/blood.png", alt: "Blood effect element" },
+        { id: "bullet", src: "assets/bullet.png", alt: "Bullet effect element" },
+    ];
+    let sounds = [
+        { id: "powerup", src: "assets/powerup.wav", alt: "Powerup sound" },
+        { id: "powerdown", src: "assets/powerdown.wav", alt: "Powerdown sound" },
+        { id: "jachcemmir", src: "assets/jachcemmir.wav", alt: "Babis death sound" },
+        { id: "shot", src: "assets/shot.wav", alt: "Shot sound" },
+        { id: "nashledanou", src: "assets/nashledanou.wav", alt: "Babis collison sound" },
+    ];
+
+    for (let i = 0; i < images.length; i++) {
+        let imgElement = document.createElement("img");
+        imgElement.id = images[i].id;
+        imgElement.src = images[i].src;
+        imgElement.alt = images[i].alt;
+        document.body.appendChild(imgElement);
+    }
+
+    for (let i = 0; i < sounds.length; i++) {
+        let soundElement = document.createElement("audio");
+        soundElement.id = sounds[i].id;
+        soundElement.src = sounds[i].src;
+        soundElement.alt = sounds[i].alt;
+        document.body.appendChild(soundElement);
+    }
+};
+addAssets();
 var game = null;
-window.addEventListener('load', function(){
+window.addEventListener('load', function () {
     // canvas setup
     const canvas = document.getElementById('canvas1');
     const ctx = canvas.getContext('2d');
     canvas.width = 1000;
     canvas.height = 500;
-    const urls = ["url1", "url2", "url3"];
-    const url1 = "https://community-placekitten.p.rapidapi.com/150/150";
-    const url2 = "https://community-placekitten.p.rapidapi.com/100/100";
-    const url3 = "https://community-placekitten.p.rapidapi.com/50/50";
-    const headers = {
-    "X-RapidAPI-Key": "2f4898235cmsh2ca9cd357e660e8p1d37cejsn0cd5e77ccb01",
-    "X-RapidAPI-Host": "community-placekitten.p.rapidapi.com"
+    const urls = {
+        url1: "https://community-placekitten.p.rapidapi.com/150/150",
+        url2: "https://community-placekitten.p.rapidapi.com/100/100",
+        url3: "https://community-placekitten.p.rapidapi.com/50/50"
     };
 
-    urls.forEach((url, index) => {
-    const fetchUrl = eval(url);
-    const imgElement = document.getElementById(`cat${index + 1}`);
-    fetch(fetchUrl, { headers: headers })
-      .then(response => {
-        if (response.ok) {
-          return response.blob();
-        }
-        throw new Error("Network response was not ok");
-      })
-      .then(blob => {
-        const imgUrl = URL.createObjectURL(blob);
-        imgElement.src = imgUrl;
-      })
-      .catch(error => {
-        console.error("There was a problem with the fetch operation:", error);
-      });
+    const headers = {
+        "X-RapidAPI-Key": "2f4898235cmsh2ca9cd357e660e8p1d37cejsn0cd5e77ccb01",
+        "X-RapidAPI-Host": "community-placekitten.p.rapidapi.com"
+    };
+
+    Object.entries(urls).forEach(([key, fetchUrl]) => {
+        const imgElement = document.getElementById(`cat${key.slice(-1)}`);
+        fetch(fetchUrl, { headers: headers })
+            .then(response => {
+                if (response.ok) {
+                    return response.blob();
+                }
+                throw new Error("Network response was not ok");
+            })
+            .then(blob => {
+                const imgUrl = URL.createObjectURL(blob);
+                imgElement.src = imgUrl;
+            })
+            .catch(error => {
+                console.error("There was a problem with the fetch operation:", error);
+            });
     });
 
     class InputHandler {
-        constructor(game){
+        constructor(game) {
             this.game = game;
             window.addEventListener('keydown', e => {
-                if ((   (e.key === 'ArrowUp') ||
-                        (e.key === 'ArrowDown')
-                ) && this.game.keys.indexOf(e.key) === -1){
+                if (((e.key === 'ArrowUp') ||
+                    (e.key === 'ArrowDown')
+                ) && this.game.keys.indexOf(e.key) === -1) {
                     this.game.keys.push(e.key);
-                } else if ( e.key === ' '){
+                } else if (e.key === ' ') {
                     this.game.player.shootTop();
-                } else if ( e.key === 'd'){
+                } else if (e.key === 'd') {
                     this.game.debug = !this.game.debug;
                 }
             });
-            window.addEventListener('keyup', e =>{
-                if (this.game.keys.indexOf(e.key) > -1){
+            window.addEventListener('keyup', e => {
+                if (this.game.keys.indexOf(e.key) > -1) {
                     this.game.keys.splice(this.game.keys.indexOf(e.key), 1);
                 }
             });
         }
     }
     class SoundController {
-        constructor(){
+        constructor() {
             this.powerUpSound = document.getElementById('powerup');
             this.powerDownSound = document.getElementById('powerdown');
             this.explosionSound = document.getElementById('jachcemmir');
             this.shotSound = document.getElementById('shot');
             this.hitSound = document.getElementById('nashledanou');
         }
-        powerUp(){
+        powerUp() {
             this.powerUpSound.currentTime = 0;
             this.powerUpSound.play();
         }
-        powerDown(){
+        powerDown() {
             this.powerDownSound.currentTime = 0;
             this.powerDownSound.play();
         }
-        explosion(){
+        explosion() {
             this.explosionSound.currentTime = 0;
             this.explosionSound.play();
         }
-        shot(){
+        shot() {
             this.shotSound.currentTime = 0;
             this.shotSound.play();
         }
-        hit(){
+        hit() {
             this.hitSound.currentTime = 0;
             this.hitSound.play();
         }
     }
 
     class Projectile {
-        constructor(game, x, y){
+        constructor(game, x, y) {
             this.game = game;
             this.x = x;
             this.y = y;
@@ -98,11 +136,11 @@ window.addEventListener('load', function(){
             this.maxFrame = 2;
             this.fps = 10;
             this.timer = 0;
-            this.interval = 1000/this.fps;
+            this.interval = 1000 / this.fps;
         }
-        update(deltaTime){
+        update(deltaTime) {
             this.x += this.speed;
-            if (this.timer > this.interval){
+            if (this.timer > this.interval) {
                 if (this.frameX < this.maxFrame) this.frameX++;
                 else this.frameX = 0;
                 this.timer = 0;
@@ -111,12 +149,12 @@ window.addEventListener('load', function(){
             }
             if (this.x > this.game.width * 0.95) this.markedForDeletion = true;
         }
-        draw(context){
+        draw(context) {
             context.drawImage(this.image, this.frameX * this.width, 0, this.width, this.height, this.x, this.y, this.width, this.height);
         }
     }
     class Particle {
-        constructor(game, x, y){
+        constructor(game, x, y) {
             this.game = game;
             this.x = x;
             this.y = y;
@@ -135,18 +173,18 @@ window.addEventListener('load', function(){
             this.bounced = 0;
             this.bottomBounceBoundary = Math.random() * 80 + 60;
         }
-        update(){
+        update() {
             this.angle += this.va;
             this.speedY += this.gravity;
             this.x -= this.speedX + this.game.speed;
             this.y += this.speedY;
             if (this.y > this.game.height + this.size || this.x < 0 - this.size) this.markedForDeletion = true;
-            if (this.y > this.game.height - this.bottomBounceBoundary && this.bounced < 5){
+            if (this.y > this.game.height - this.bottomBounceBoundary && this.bounced < 5) {
                 this.bounced++;
                 this.speedY *= -0.7;
             }
         }
-        draw(context){
+        draw(context) {
             context.save();
             context.translate(this.x, this.y);
             context.rotate(this.angle);
@@ -155,7 +193,7 @@ window.addEventListener('load', function(){
         }
     }
     class Player {
-        constructor(game){
+        constructor(game) {
             this.game = game;
             this.width = 120;
             this.height = 190;
@@ -171,7 +209,7 @@ window.addEventListener('load', function(){
             this.powerUpTimer = 0;
             this.powerUpLimit = 10000;
         }
-        update(deltaTime){
+        update(deltaTime) {
             if (this.game.keys.includes('ArrowUp')) this.speedY = -this.maxSpeed;
             else if (this.game.keys.includes('ArrowDown')) this.speedY = this.maxSpeed;
             else this.speedY = 0;
@@ -185,8 +223,8 @@ window.addEventListener('load', function(){
             });
             this.projectiles = this.projectiles.filter(projectile => !projectile.markedForDeletion);
             // power up
-            if (this.powerUp){
-                if (this.powerUpTimer > this.powerUpLimit){
+            if (this.powerUp) {
+                if (this.powerUpTimer > this.powerUpLimit) {
                     this.powerUpTimer = 0;
                     this.powerUp = false;
                     this.game.sound.powerDown();
@@ -196,27 +234,27 @@ window.addEventListener('load', function(){
                 }
             }
         }
-        draw(context){
+        draw(context) {
             if (this.game.debug) context.strokeRect(this.x, this.y, this.width, this.height);
             this.projectiles.forEach(projectile => {
                 projectile.draw(context);
             });
             context.drawImage(this.image, this.frameX * this.width, this.frameY * this.height, this.width, this.height, this.x, this.y, this.width, this.height);
         }
-        shootTop(){
-            if (this.game.ammo > 0){
+        shootTop() {
+            if (this.game.ammo > 0) {
                 this.projectiles.push(new Projectile(this.game, this.x + 90, this.y + 46));
                 this.game.ammo--;
             }
             this.game.sound.shot();
             if (this.powerUp) this.shootBottom();
         }
-        shootBottom(){
-            if (this.game.ammo > 0){
+        shootBottom() {
+            if (this.game.ammo > 0) {
                 this.projectiles.push(new Projectile(this.game, this.x + 90, this.y + 33));
             }
         }
-        enterPowerUp(){
+        enterPowerUp() {
             this.powerUpTimer = 0;
             this.powerUp = true;
             if (this.game.ammo < this.game.maxAmmo) this.game.ammo = this.game.maxAmmo;
@@ -224,7 +262,7 @@ window.addEventListener('load', function(){
         }
     }
     class Enemy {
-        constructor(game){
+        constructor(game) {
             this.game = game;
             this.x = this.game.width;
             this.speedX = Math.random() * -5 - 0.5;
@@ -232,22 +270,22 @@ window.addEventListener('load', function(){
             this.frameX = 0;
             this.frameY = 0;
         }
-        update(){
+        update() {
             this.x += this.speedX - this.game.speed;
             if (this.x + this.width < 0) this.markedForDeletion = true;
             // sprite animation
         }
-        draw(context){
+        draw(context) {
             if (this.game.debug) context.strokeRect(this.x, this.y, this.width, this.height);
             context.drawImage(this.image, this.frameX * this.width, this.frameY * this.height, this.width, this.height, this.x, this.y, this.width, this.height);
-            if (this.game.debug){
+            if (this.game.debug) {
                 context.font = '20px Helvetica';
                 context.fillText(this.lives, this.x, this.y);
             }
         }
     }
     class Babis extends Enemy {
-        constructor(game){
+        constructor(game) {
             super(game);
             this.width = 140;
             this.height = 171;
@@ -260,7 +298,7 @@ window.addEventListener('load', function(){
     }
 
     class Cat1 extends Enemy {
-        constructor(game){
+        constructor(game) {
             super(game);
             this.width = 150;
             this.height = 150;
@@ -272,7 +310,7 @@ window.addEventListener('load', function(){
         }
     }
     class Cat2 extends Enemy {
-        constructor(game){
+        constructor(game) {
             super(game);
             this.width = 100;
             this.height = 100;
@@ -284,7 +322,7 @@ window.addEventListener('load', function(){
         }
     }
     class Cat3 extends Enemy {
-        constructor(game){
+        constructor(game) {
             super(game);
             this.width = 50;
             this.height = 50;
@@ -297,7 +335,7 @@ window.addEventListener('load', function(){
     }
 
     class Explosion {
-        constructor(game, x, y){
+        constructor(game, x, y) {
             this.game = game;
             this.frameX = 0;
             this.spriteWidth = 200;
@@ -308,13 +346,13 @@ window.addEventListener('load', function(){
             this.y = y - this.height * 0.5;
             this.fps = 30;
             this.timer = 0;
-            this.interval = 1000/this.fps;
+            this.interval = 1000 / this.fps;
             this.markedForDeletion = false;
             this.maxFrame = 8;
         }
-        update(deltaTime){
+        update(deltaTime) {
             this.x -= this.game.speed;
-            if (this.timer > this.interval){
+            if (this.timer > this.interval) {
                 this.frameX++;
                 this.timer = 0;
             } else {
@@ -322,19 +360,19 @@ window.addEventListener('load', function(){
             }
             if (this.frameX > this.maxFrame) this.markedForDeletion = true;
         }
-        draw(context){
+        draw(context) {
             context.drawImage(this.image, this.frameX * this.spriteWidth, 0, this.spriteWidth, this.spriteHeight, this.x, this.y, this.width, this.height);
         }
     }
-    
+
     class UI {
-        constructor(game){
+        constructor(game) {
             this.game = game;
             this.fontSize = 25;
             this.fontFamily = 'Bangers';
             this.color = 'yellow';
         }
-        draw(context){
+        draw(context) {
             context.save();
             context.fillStyle = this.color;
             context.shadowOffsetX = 2;
@@ -347,32 +385,40 @@ window.addEventListener('load', function(){
             const formattedTime = (this.game.gameTime * 0.001).toFixed(1);
             context.fillText('Timer: ' + formattedTime, 20, 100);
             // game over messages
-            if (this.game.gameOver){
+            if (this.game.gameOver) {
                 context.textAlign = 'center';
                 let message1;
                 let message2;
-                if (this.game.score > this.game.winningScore){
+                let message3;
+                let topscore = localStorage.getItem("topscore");
+                if (this.game.score > this.game.winningScore) {
                     message1 = 'GIGACHAD PAVEL WINS!';
                     message2 = 'Congratulations Mr. Sharpshooter!';
+                    message3 = "Highest score is " + (topscore ? JSON.parse(topscore) : 0);
                 } else {
                     message1 = 'GAME OVER!';
                     message2 = 'Shoot more accurately and try again!';
+                    message3 = "Highest score is " + (topscore ? JSON.parse(topscore) : 0);
                 }
                 context.font = '60px ' + this.fontFamily;
                 context.fillText(message1, this.game.width * 0.5, this.game.height * 0.5 - 20);
                 context.font = '35px ' + this.fontFamily;
                 context.fillText(message2, this.game.width * 0.5, this.game.height * 0.5 + 20);
+                context.font = '50px ' + this.fontFamily;
+                context.fillText(message3, this.game.width * 0.5, this.game.height * 0.5 + 200);
             }
             // ammo
             if (this.game.player.powerUp) context.fillStyle = '#ffffbd';
-            for (let i = 0; i < this.game.ammo; i++){
+            for (let i = 0; i < this.game.ammo; i++) {
                 context.fillRect(20 + 5 * i, 50, 3, 20);
             }
             context.restore();
         }
     }
     class Game {
-        constructor(width, height){
+        constructor(width, height) {
+            this.difficulty = null;
+            this.formFilled = false;
             this.gameStarted = false;
             this.width = width;
             this.height = height;
@@ -386,124 +432,194 @@ window.addEventListener('load', function(){
             this.explosions = [];
             this.enemyTimer = 0;
             this.enemyInterval = 1750;
-            this.ammo = 30;
+            this.ammo = null;
             this.maxAmmo = 50;
             this.ammoTimer = 0;
             this.ammoInterval = 350;
             this.gameOver = false;
             this.score = 0;
-            this.winningScore = 222;
+            this.winningScore = null;
             this.gameTime = 0;
             this.timeLimit = 60000;
-            this.speed = 1; 
+            this.speed = 1;
             this.debug = false;
         }
-        
-        startGame() {
-            this.gameStarted = true;
+
+        setDifficulty(difficulty) {
+            this.difficulty = difficulty;
+            switch (difficulty) {
+                case 'easy':
+                    this.speed = 1;
+                    this.winningScore = 150;
+                    this.ammo = 30;
+                    break;
+                case 'medium':
+                    this.speed = 2;
+                    this.winningScore = 225;
+                    this.ammo = 40;
+                    break;
+                case 'hard':
+                    this.speed = 5;
+                    this.winningScore = 300;
+                    this.ammo = 50;
+                    break;
+                case 'extreme':
+                    this.speed = 20;
+                    this.winningScore = 350;
+                    this.ammo = 50;
+                    break;
+                default:
+                    break;
+            }
         }
 
-        update(deltaTime){
-        if (this.gameStarted) {
-            if (!this.gameOver) {
-            this.gameTime += deltaTime;
-            if (this.gameTime > this.timeLimit) {
-                this.gameOver = true;
-                this.particles = [];
-                this.enemies = [];
-            }
-            this.player.update(deltaTime);
-            if (this.ammoTimer > this.ammoInterval){
-                if (this.ammo < this.maxAmmo) this.ammo++;
-                this.ammoTimer = 0;
-            } else {
-                this.ammoTimer += deltaTime;
-            }
-            this.particles.forEach(particle => particle.update());
-            this.particles = this.particles.filter(particle => !particle.markedForDeletion);
-            this.explosions = this.explosions.filter(explosion => !explosion.markedForDeletion);
-            this.enemies.forEach(enemy => {
-                enemy.update();
-                if (this.checkCollision(this.player, enemy)){
-                    enemy.markedForDeletion = true;
-                    if (enemy.type === 'babis') {
-                        this.sound.hit();
-                        }
-                    for (let i = 0; i < enemy.score; i++){
-                        this.particles.push(new Particle(this, enemy.x + enemy.width * 0.5, enemy.y + enemy.height * 0.5));
-                    }
-                    if (enemy.type === 'cat') this.player.enterPowerUp(this.score = this.score + 5);
-                    else if (!this.gameOver) this.score--;
+        startGame() {
+            if (this.difficulty != null) {
+                if (this.formFilled = true) {
+                    this.gameStarted = true;
                 }
-                this.player.projectiles.forEach(projectile => {
-                    if (this.checkCollision(projectile, enemy)){
-                        enemy.lives--;
-                        projectile.markedForDeletion = true;
-                        this.particles.push(new Particle(this, enemy.x + enemy.width * 0.5, enemy.y + enemy.height * 0.5));
-                        if (enemy.lives <= 0){
-                            for (let i = 0; i < enemy.score; i++){
+            }
+        }
+
+        update(deltaTime) {
+            if (this.gameStarted) {
+                if (!this.gameOver) {
+                    this.gameTime += deltaTime;
+                    if (this.gameTime > this.timeLimit) {
+                        let topscore = JSON.parse(localStorage.getItem("topscore"));
+                        if (!topscore || this.score > JSON.parse(topscore)) {
+                            localStorage.setItem("topscore", JSON.stringify(this.score));
+                        }
+                        this.gameOver = true;
+                        this.particles = [];
+                        this.enemies = [];
+                    }
+                    this.player.update(deltaTime);
+                    if (this.ammoTimer > this.ammoInterval) {
+                        if (this.ammo < this.maxAmmo) this.ammo++;
+                        this.ammoTimer = 0;
+                    } else {
+                        this.ammoTimer += deltaTime;
+                    }
+                    this.particles.forEach(particle => particle.update());
+                    this.particles = this.particles.filter(particle => !particle.markedForDeletion);
+                    this.explosions = this.explosions.filter(explosion => !explosion.markedForDeletion);
+                    this.enemies.forEach(enemy => {
+                        enemy.update();
+                        if (this.checkCollision(this.player, enemy)) {
+                            enemy.markedForDeletion = true;
+                            if (enemy.type === 'babis') {
+                                this.sound.hit();
+                            }
+                            for (let i = 0; i < enemy.score; i++) {
                                 this.particles.push(new Particle(this, enemy.x + enemy.width * 0.5, enemy.y + enemy.height * 0.5));
                             }
-                            enemy.markedForDeletion = true;
-                            if (enemy.type === 'babis') 
-                                this.sound.explosion();
-                                
-                            if (!this.gameOver) this.score += enemy.score;
+                            if (enemy.type === 'cat') this.player.enterPowerUp(this.score = this.score + 5);
+                            else if (!this.gameOver) this.score--;
                         }
+                        this.player.projectiles.forEach(projectile => {
+                            if (this.checkCollision(projectile, enemy)) {
+                                enemy.lives--;
+                                projectile.markedForDeletion = true;
+                                this.particles.push(new Particle(this, enemy.x + enemy.width * 0.5, enemy.y + enemy.height * 0.5));
+                                if (enemy.lives <= 0) {
+                                    for (let i = 0; i < enemy.score; i++) {
+                                        this.particles.push(new Particle(this, enemy.x + enemy.width * 0.5, enemy.y + enemy.height * 0.5));
+                                    }
+                                    enemy.markedForDeletion = true;
+                                    if (enemy.type === 'babis')
+                                        this.sound.explosion();
+
+                                    if (!this.gameOver) this.score += enemy.score;
+                                }
+                            }
+                        })
+                    });
+                    this.enemies = this.enemies.filter(enemy => !enemy.markedForDeletion);
+                    if (this.enemyTimer > this.enemyInterval && !this.gameOver) {
+                        this.addEnemy();
+                        this.enemyTimer = 0;
+                    } else {
+                        this.enemyTimer += deltaTime;
                     }
-                })
-            });
-            this.enemies = this.enemies.filter(enemy => !enemy.markedForDeletion);
-            if (this.enemyTimer > this.enemyInterval && !this.gameOver){
-                this.addEnemy();
-                this.enemyTimer = 0;
-            } else { 
-                this.enemyTimer += deltaTime;
-            }
+                }
             }
         }
-        }
-        draw(context){
+        draw(context) {
             if (this.gameStarted) {
-            this.ui.draw(context);
-            this.player.draw(context);
-            this.particles.forEach(particle => particle.draw(context));
-            this.enemies.forEach(enemy => {
-                enemy.draw(context);
-            });
+                this.ui.draw(context);
+                this.player.draw(context);
+                this.particles.forEach(particle => particle.draw(context));
+                this.enemies.forEach(enemy => {
+                    enemy.draw(context);
+                });
             }
         }
-        addEnemy(){
+        addEnemy() {
             const randomize = Math.random();
             if (randomize < 0.88) this.enemies.push(new Babis(this));
             else if (randomize < 0.92) this.enemies.push(new Cat1(this));
-            else if(randomize < 0.96) this.enemies.push(new Cat2(this));
+            else if (randomize < 0.96) this.enemies.push(new Cat2(this));
             else this.enemies.push(new Cat3(this));
         }
-        addExplosion(enemy){{
-            this.explosions.push(new Explosion(this));
+        addExplosion(enemy) {
+            {
+                this.explosions.push(new Explosion(this));
             }
         }
-        checkCollision(rect1, rect2){
-            return (        rect1.x < rect2.x + rect2.width &&
-                            rect1.x + rect1.width > rect2.x &&
-                            rect1.y < rect2.y + rect2.height &&
-                            rect1.height + rect1.y > rect2.y)
+        checkCollision(rect1, rect2) {
+            return (rect1.x < rect2.x + rect2.width &&
+                rect1.x + rect1.width > rect2.x &&
+                rect1.y < rect2.y + rect2.height &&
+                rect1.height + rect1.y > rect2.y)
         }
     }
 
     game = new Game(canvas.width, canvas.height);
     const startButton = document.createElement("button");
+    const settingsButton = document.createElement("button");
+    const form = document.getElementById('difficulty-form');
+    form.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const select = document.getElementById('difficulty-select');
+        const selectedDifficulty = select.options[select.selectedIndex].value;
+        switch (selectedDifficulty) {
+            case 'easy':
+                game.setDifficulty('easy');
+                break;
+            case 'medium':
+                game.setDifficulty('medium');
+                break;
+            case 'hard':
+                game.setDifficulty('hard');
+                break;
+            case 'extreme':
+                game.setDifficulty('extreme');
+                break;
+            default:
+                break;
+        }
+    });
+    form.appendChild(settingsButton);
+
+    document.querySelector('button[type="submit"]').addEventListener("click", function () {
+        this.formFilled = true;
+        this.style.display = "none";
+    });
+    document.body.appendChild(settingsButton);
+
     startButton.innerHTML = "Start game";
     startButton.className = "start-button";
     startButton.addEventListener("click", () => {
-    game.startGame();
-    startButton.style.display = "none";
+        game.startGame();
+        startButton.style.display = "none";
+        document.querySelector('button[type="submit"]').style.display = 'none';
     });
     document.body.appendChild(startButton);
 
     let lastTime = 0;
-    function animate(timeStamp){
+    function animate(timeStamp) {
         const deltaTime = timeStamp - lastTime;
         lastTime = timeStamp;
         ctx.clearRect(0, 0, canvas.width, canvas.height);
