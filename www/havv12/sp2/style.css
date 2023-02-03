@@ -1,0 +1,262 @@
+#btn,
+#btn:hover {
+    transition: 1s;
+    transform: translateY(0)
+}
+
+#btn,
+.file-selection,
+.message,
+.question {
+    grid-column-start: 2;
+    grid-column-end: 4;
+    margin: auto
+}
+
+#btn,
+.btns,
+.container,
+.message,
+.question,
+.question_text {
+    margin: auto
+}
+
+.nav-btn.next,
+.nav-btn.previous {
+    font-family: webdings;
+    font-size: 40px
+}
+
+.nav-btn.end,
+.nav-btn.next,
+.nav-btn.previous {
+    display: block;
+    cursor: pointer
+}
+
+#btn,
+.nav-btn.end,
+.restart {
+    font-weight: 700
+}
+
+html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2em
+}
+
+.container {
+    background-color: rgba(0, 195, 255, .317);
+    width: 50vw;
+    height: 60vh;
+    text-align: center;
+    justify-content: center;
+    align-content: center;
+    grid-auto-flow: column;
+    display: grid;
+    border-radius: 15px;
+    grid-template-columns: [start] 20% [line1] 30% [line2] 30% [line3] 20% [end];
+    grid-template-rows: [start] 15% [line1] 10% [line2] 25% [line3] 25% [line4] 25% [end]
+}
+
+.file-selection li,
+button {
+    cursor: pointer;
+    box-shadow: rgba(60, 64, 67, .3) 0 1px 2px 0, rgba(60, 64, 67, .15) 0 1px 3px 1px;
+    background-color: #fff;
+    border: none;
+    border-radius: 5px
+}
+
+
+
+button:disabled {
+    background-color: #e7e4e4;
+    color: #000;
+    box-shadow: rgba(50, 50, 93, .25) 0 30px 60px -12px inset, rgba(0, 0, 0, .3) 0 18px 36px -18px inset
+}
+
+#btn {
+    color: #fff;
+    background-color: #06c;
+    padding: 10px 30px;
+    border: 2px solid #06c;
+    box-shadow: #000 0 0 0 0;
+    border-radius: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+    grid-row-start: 2;
+    grid-row-end: 3
+}
+
+#btn:hover {
+    padding: 10px 50px;
+    background-color: #fff;
+    color: #06c !important;
+    border: 2px solid #06c
+}
+
+.file-selection {
+    list-style: none;
+    padding: 0
+}
+
+.file-selection li {
+    border-radius: 5px;
+    width: 100%;
+    margin: 5px auto;
+    padding: 5px;
+    background-color: #fff
+}
+
+.message {
+    grid-row-start: 1;
+    grid-row-end: 2
+}
+
+
+.question {
+    grid-row-start: 2;
+    grid-row-end: 5;
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-template-rows: subgrid
+}
+
+.options,
+.question_text {
+    grid-column-start: 1;
+    grid-column-end: 3
+}
+
+.question_text {
+    grid-row-start: 1;
+    grid-row-end: 2
+}
+
+.options {
+    grid-row-start: 2;
+    grid-row-end: 4;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px
+}
+
+.btns {
+    border: 0;
+    font-size: .5em;
+    width: 100%;
+    height: 100%
+}
+
+.arrSelector {
+    padding: 0;
+    grid-row-start: 5;
+    grid-row-end: 6;
+    grid-column-start: 2;
+    grid-column-end: 4;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap
+}
+
+.btns,
+.index-button {
+    border-radius: 5px;
+    background-color: #fff
+}
+
+.btns:hover,
+.file-selection li:hover,
+.index-button:hover {
+    background-color: #2345b310
+}
+
+.nav-btn.end,
+.nav-btn.next,
+.nav-btn.previous,
+.restart {
+    grid-row-start: 5;
+    background-color: transparent
+}
+
+.index-button {
+    border: 0;
+    padding: 0 10px;
+    height: 30%;
+    margin: 10px 5px 0
+}
+
+.restart {
+    grid-column-start: 4;
+    font-family: arial;
+    font-size: .6em
+}
+
+.nav-btn {
+    margin: 10px;
+    border: 0;
+    box-shadow: none
+}
+
+.nav-btn.next {
+    grid-column-start: 4
+}
+
+.nav-btn.previous {
+    grid-column-start: 1
+}
+
+.nav-btn.end {
+    grid-column-start: 4;
+    font-family: arial;
+    font-size: .6em
+}
+
+.clicked-answer {
+    background-color: #2345b347
+}
+
+@media only screen and (max-width:600px) {
+    html {
+        font-size: 1.3em
+    }
+
+    body {
+        margin: 0
+    }
+
+    .container {
+        width: 100vw;
+        height: 100vh;
+        grid-template-columns: [start] 0% [line1] 50% [line2] 50% [line3] 0% [end];
+        grid-template-rows: [start] 15% [line1] 10% [line2] 25% [line3] 25% [line4] 25% [end];
+        justify-content: flex-start
+    }
+
+    .nav-btn.end,
+    .nav-btn.next,
+    .restart {
+        grid-row-start: 5;
+        grid-column-start: 3;
+        width: 30%;
+        margin-left: auto;
+        height: 30%
+    }
+
+    .nav-btn.previous {
+        grid-row-start: 5;
+        grid-column-start: 2;
+        width: 30%;
+        height: 30%
+    }
+
+    .btns {
+        font-size: .8em
+    }
+}
