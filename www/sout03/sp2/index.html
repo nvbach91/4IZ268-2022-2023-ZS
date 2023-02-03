@@ -9,9 +9,12 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/3.6.2/fetch.js"
+        integrity="sha512-20FZL4lG1jTZXPeMkblgj4b/fsXASK5aW87Tm7Z5QK9QmmYleVGM0NlS9swfb6XT8yrFTAWkq3QfnMe7MKIX8A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://code.jquery.com/jquery-3.6.2.min.js"
         integrity="sha256-2krYZKh//PcchRtd+H+VyyQoZ/e3EcrkxhM8ycwASPA=" crossorigin="anonymous"></script>
-        <link rel="icon" type="image/x-icon" href="./images/favicon.png">
+    <link rel="icon" type="image/x-icon" href="./images/favicon.png">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.js"
         integrity="sha512-sn/GHTj+FCxK5wam7k9w4gPPm6zss4Zwl/X9wgrvGMFbnedR8lTUSLdsolDRBRzsX6N+YgG6OWyvn9qaFVXH9w=="
@@ -24,7 +27,7 @@
 <body>
     <div class="container">
 
-        <div class="column img_container" id="img_container">
+        <div class="column  img_container" id="img_container">
             <img id="output" alt="image" src="#" class="img">
             <div class="text_container" id="text_i">
 
@@ -44,27 +47,27 @@
             <input id="name" type="text">
             <br>
             <h4>Barva textu</h4>
-            <input id="color" type="color">
+            <input id="#style-btn color" type="color" class="style">
             <br>
             <h4>Font?</h4>
-            <select id="font-picker">
+            <select id="#style-btn" class="style">
                 <option value="Arial" selected>Arial</option>
                 <option value="Verdana ">Verdana </option>
                 <option value="Impact ">Impact </option>
                 <option value="Comic Sans MS">Comic Sans MS</option>
             </select>
             <h4>Velikost fontu</h4>
-            <select id="size">
+            <select id="#style-btn" class="style">
                 <option value="7" selected>7</option>
                 <option value="10">10</option>
                 <option value="20">20</option>
                 <option value="30">30</option>
             </select>
             <h4>Obrázek z webu</h4>
-
+            <!--
             <form method="post">
 
-                <input type="radio" name="group1" value="102">
+                <input type="radio" name="group1" value="[102,]">
                 <p>maliny na dřevě</p>
                 <input type="radio" name="group1" value="56">
                 <p>Happy Birthday</p>
@@ -73,15 +76,20 @@
                 <input type="radio" name="group1" value="120">
                 <p>Noční obloha</p>
 
-            </form>
+            </form>-->
             <button class="button btn-success submit" id="submit">Obrázek z internetu</button>
 
             <h4>Obrázek od vás</h4>
 
             <input class="form-control" type="file" id="formFile">
             <h4>Sdílejte a stahujte své výtvory</h4>
+
             <button class="share btn-black" id="share">Sdílet</button>
             <button class="down btn-blue" id="download">Stáhnout</button>
+
+        </div>
+        <div class="column img_prv">
+
         </div>
 
 
